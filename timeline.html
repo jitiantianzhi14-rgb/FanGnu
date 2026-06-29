@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>年表 — FanGNU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Antique&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --red: #e63329; --black: #111; --white: #fff; --gray: #888; --border: #ddd; --bg: #fbf2d9; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--black); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 52px; }
+    .nav-logo { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 700; }
+    .nav-logo .red { color: var(--red); }
+    .nav-links { display: flex; gap: 1.75rem; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; }
+    .nav-links a { color: var(--gray); transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--black); }
+    .nav-links a.active { border-bottom: 1px solid var(--black); }
+    .page-header { padding: 3rem 2rem 2.5rem; border-bottom: 2px solid var(--black); background: var(--white); }
+    .page-header-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+    .page-header-tag::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--red); }
+    .page-header-title { font-family: 'Zen Antique', serif; font-size: 64px; line-height: 1; }
+    .page-header-title .red { color: var(--red); }
+    .page-header-desc { font-size: 12px; color: var(--gray); margin-top: 1rem; letter-spacing: 0.05em; }
+    .content { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
+    .tl-year-block { display: grid; grid-template-columns: 80px 1fr; gap: 0; margin-bottom: 0; }
+    .tl-year-col { padding-top: 2px; }
+    .tl-year-num { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 700; color: var(--black); position: sticky; top: 70px; }
+    .tl-events { border-left: 2px solid var(--border); padding-left: 2rem; padding-bottom: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .tl-event { position: relative; }
+    .tl-event::before { content: ''; position: absolute; left: -2.5rem; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--white); border: 2px solid var(--border); }
+    .tl-event.milestone::before { background: var(--red); border-color: var(--red); }
+    .tl-event-date { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); margin-bottom: 3px; }
+    .tl-event-title { font-size: 14px; font-weight: 700; color: var(--black); }
+    .tl-event-body { font-size: 12px; color: #555; margin-top: 4px; line-height: 1.75; }
+    .tl-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; padding: 1px 7px; background: var(--border); color: var(--gray); display: inline-block; margin-bottom: 4px; }
+    .tl-tag.music { background: #e8f0ff; color: #2255cc; }
+    .tl-tag.live { background: #ffe8e8; color: var(--red); }
+    .tl-tag.award { background: #fffbe6; color: #aa8800; }
+    .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); }
+    .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
+    .footer-logo .red { color: var(--red); }
+    .footer-copy { font-size: 10px; color: var(--gray); text-align: right; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header-title { font-size: 44px; }
+      .tl-year-block { grid-template-columns: 60px 1fr; }
+      .tl-year-num { font-size: 16px; }
+      .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Fan<span class="red">GNU</span></a>
+    <div class="nav-links">
+      <a href="members.html">メンバー</a>
+      <a href="discography.html">ディスコグラフィー</a>
+      <a href="live.html">ライブ</a>
+      <a href="timeline.html" class="active">年表</a>
+      <a href="blog.html">ブログ</a>
+      <a href="bbs.html">掲示板</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-tag">TIMELINE</div>
+    <h1 class="page-header-title">年表<span class="red">.</span></h1>
+    <p class="page-header-desc">Srv.Vinci結成から現在まで — King Gnuの軌跡。</p>
+  </div>
+
+  <div class="content">
+
+    <div class="tl-year-block">
+      <div class="tl-year-col"><div class="tl-year-num">2026</div></div>
+      <div class="tl-events">
+        <div class="tl-event milestone">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2026.01.09</div>
+          <div class="tl-event-title">シングル「愛憎」リリース</div>
+          <div class="tl-event-body">呪術廻戦 死滅回游編 オープニングテーマ。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-year-block">
+      <div class="tl-year-col"><div class="tl-year-num">2025</div></div>
+      <div class="tl-events">
+        <div class="tl-event milestone">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2025.09.01</div>
+          <div class="tl-event-title">「So Bad」リリース</div>
+          <div class="tl-event-body">USJハロウィンホラーナイト2025公式テーマ曲。</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2025.03.01</div>
+          <div class="tl-event-title">「Twilight!!!」リリース</div>
+          <div class="tl-event-body">劇場版名探偵コナン 隻眼の残像 エンディングテーマ。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-year-block">
+      <div class="tl-year-col"><div class="tl-year-num">2024</div></div>
+      <div class="tl-events">
+        <div class="tl-event milestone">
+          <div class="tl-tag live">LIVE</div>
+          <div class="tl-event-date">2024.12</div>
+          <div class="tl-event-title">東京ドーム5DAYS</div>
+          <div class="tl-event-body">東京ドームで5公演を開催。全公演ソールドアウト。</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2024.03</div>
+          <div class="tl-event-title">「逆夢」進撃の巨人 The Final Season Part3 ED</div>
+          <div class="tl-event-body">進撃の巨人最終章のエンディングテーマとして配信。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-year-block">
+      <div class="tl-year-col"><div class="tl-year-num">2023</div></div>
+      <div class="tl-events">
+        <div class="tl-event milestone">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2023.10.06</div>
+          <div class="tl-event-title">「Specialz」リリース</div>
+          <div class="tl-event-body">呪術廻戦 渋谷事変 オープニングテーマ。国際的に大きな反響を呼ぶ。</div>
+        </div>
+        <div class="tl-event milestone">
+          <div class="tl-tag live">LIVE</div>
+          <div class="tl-event-date">2023.07</div>
+          <div class="tl-event-title">スタジアムツアー開催</div>
+          <div class="tl-event-body">味の素スタジアム・ヤンマースタジアム長居で公演。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-year-block">
+      <div class="tl-year-col"><div class="tl-year-num">2022</div></div>
+      <div class="tl-events">
+        <div class="tl-event milestone">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2022.11.16</div>
+          <div class="tl-event-title">4thアルバム「THE GREATEST UNKNOWN」リリース</div>
+          <div class="tl-event-body">オリコン週間アルバムランキング1位獲得。</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2022.01.12</div>
+          <div class="tl-event-title">「逆夢」リリース</div>
+          <div class="tl-event-body">進撃の巨人 The Final Season Part2 エンディングテーマ。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-year-block">
+      <div class="tl-year-col"><div class="tl-year-num">2021</div></div>
+      <div class="tl-events">
+        <div class="tl-event milestone">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2021.07.16</div>
+          <div class="tl-event-title">映画「竜とそばかすの姫」音楽担当</div>
+          <div class="tl-event-body">常田大希が細田守監督作品の劇伴・楽曲制作を担当（millennium parade名義含む）。</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2021.06.16</div>
+          <div class="tl-event-title">「一途 / 涙」リリース</div>
+          <div class="tl-event-body">映画「東京リベンジャーズ」主題歌。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-year-block">
+      <div class="tl-year-col"><div class="tl-year-num">2020</div></div>
+      <div class="tl-events">
+        <div class="tl-event milestone">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2020.01.15</div>
+          <div class="tl-event-title">3rdアルバム「CEREMONY」リリース</div>
+          <div class="tl-event-body">オリコン週間1位。「白日」「三文小説」収録。</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2020.10.21</div>
+          <div class="tl-event-title">「三文小説」リリース</div>
+          <div class="tl-event-body">ドラマ「この恋あたためますか」主題歌。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-year-block">
+      <div class="tl-year-col"><div class="tl-year-num">2019</div></div>
+      <div class="tl-events">
+        <div class="tl-event milestone">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2019.02.13</div>
+          <div class="tl-event-title">「白日」リリース・大ヒット</div>
+          <div class="tl-event-body">ドラマ「イノセンス 冤罪弁護士」主題歌。ストリーミング累計10億回再生超えを記録し、King Gnuを一躍国民的バンドへ押し上げる。</div>
+        </div>
+        <div class="tl-event milestone">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2019.01.23</div>
+          <div class="tl-event-title">メジャー1stアルバム「Sympa」リリース</div>
+          <div class="tl-event-body">EMI Records Japanよりメジャーデビュー。</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-tag award">AWARD</div>
+          <div class="tl-event-date">2019.12</div>
+          <div class="tl-event-title">第61回日本レコード大賞 優秀作品賞</div>
+          <div class="tl-event-body">「白日」が優秀作品賞を受賞。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-year-block">
+      <div class="tl-year-col"><div class="tl-year-num">2017</div></div>
+      <div class="tl-events">
+        <div class="tl-event milestone">
+          <div class="tl-event-date">2017</div>
+          <div class="tl-event-title">King GNU に改名</div>
+          <div class="tl-event-body">Srv.VinciからKing Gnuへバンド名を変更。新メンバーの新井和輝・勢喜遊が加入し現在の4人体制が確立。</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-tag music">MUSIC</div>
+          <div class="tl-event-date">2017</div>
+          <div class="tl-event-title">King GNU EP リリース</div>
+          <div class="tl-event-body">改名後初のEP。SNSを中心に話題を集め始める。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-year-block">
+      <div class="tl-year-col"><div class="tl-year-num">2013</div></div>
+      <div class="tl-events">
+        <div class="tl-event milestone">
+          <div class="tl-event-date">2013</div>
+          <div class="tl-event-title">Srv.Vinci 結成</div>
+          <div class="tl-event-body">常田大希と井口理が東京藝術大学在学中に結成。インディーズで活動を開始。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <a href="index.html" class="footer-logo">Fan<span class="red">GNU</span></a>
+    <div class="footer-copy">非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>© FanGNU Unofficial</div>
+  </footer>
+</body>
+</html>
