@@ -27,30 +27,46 @@
     .page-header-title { font-family: 'Zen Antique', serif; font-size: 64px; line-height: 1; letter-spacing: -0.02em; }
     .page-header-title .red { color: var(--red); }
     .page-header-desc { font-size: 12px; color: var(--gray); margin-top: 1rem; letter-spacing: 0.05em; }
+    .page-header-actions { display: flex; gap: 10px; margin-top: 1.25rem; }
+    .header-btn { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; border: 1px solid var(--black); padding: 8px 18px; background: var(--black); color: var(--white); transition: background 0.15s; }
+    .header-btn:hover { background: var(--red); border-color: var(--red); }
 
-    .filter-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; gap: 8px; flex-wrap: wrap; }
-    .filter-btn { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; border: 1px solid var(--border); padding: 5px 14px; cursor: pointer; background: var(--white); transition: background 0.15s, color 0.15s; }
+    .filter-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0.9rem 2rem; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .filter-btn { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; border: 1px solid var(--border); padding: 4px 14px; cursor: pointer; background: var(--white); transition: background 0.15s, color 0.15s; }
     .filter-btn:hover, .filter-btn.active { background: var(--black); color: var(--white); border-color: var(--black); }
+    .filter-count { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); margin-left: auto; }
 
     .content { max-width: 1100px; margin: 0 auto; padding: 2rem; }
 
-    .era-section { margin-bottom: 3rem; }
-    .era-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 8px; }
-    .era-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--red); }
+.disc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
 
-    .disc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .disc-card { background: var(--white); padding: 1.25rem; display: flex; flex-direction: column; gap: 8px; }
-    .disc-type { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: var(--white); background: var(--black); padding: 2px 8px; display: inline-block; width: fit-content; }
-    .disc-type.album { background: var(--red); }
-    .disc-type.single { background: #555; }
-    .disc-type.indie { background: #888; }
-    .disc-year { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); }
+    .disc-card { background: var(--white); padding: 1rem; display: flex; flex-direction: column; gap: 5px; }
+    .disc-card.hidden { display: none; }
+
+    .disc-type-badge { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: var(--white); padding: 2px 8px; display: inline-block; width: fit-content; }
+    .disc-type-badge.ALBUM  { background: var(--red); }
+    .disc-type-badge.SINGLE { background: #444; }
+    .disc-type-badge.EP     { background: #2255cc; }
+    .disc-type-badge.COVER  { background: #119944; }
+    .disc-type-badge.INDIE  { background: #888; }
+
+    .disc-year  { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); }
     .disc-title { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.3; }
-    .disc-title-en { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); }
-    .disc-note { font-size: 11px; color: #555; margin-top: 4px; line-height: 1.6; }
-    .disc-tracks { margin-top: 8px; }
-    .disc-track-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 0.1em; margin-bottom: 4px; }
-    .disc-track-list { font-size: 11px; color: #444; line-height: 1.8; }
+    .disc-note  { font-size: 11px; color: #555; line-height: 1.6; }
+
+    .disc-tracks { margin-top: 6px; }
+    .disc-track-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--gray); letter-spacing: 0.1em; margin-bottom: 3px; }
+    .disc-track-list  { font-size: 11px; color: #444; line-height: 1.8; }
+
+    .mv-thumb-wrap { margin-top: 10px; position: relative; cursor: pointer; }
+    .mv-thumb-wrap img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+    .mv-thumb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); transition: background 0.15s; }
+    .mv-thumb-wrap:hover .mv-thumb-play { background: rgba(0,0,0,0.45); }
+    .mv-thumb-play-btn { width: 44px; height: 44px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .mv-thumb-play-btn::after { content: ''; border-style: solid; border-width: 9px 0 9px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+    .mv-embed { display: none; }
+    .mv-embed.open { display: block; margin-top: 10px; }
+    .mv-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
 
     .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); margin-top: 2rem; }
     .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
@@ -83,152 +99,22 @@
   <div class="page-header">
     <div class="page-header-tag">DISCOGRAPHY</div>
     <h1 class="page-header-title">ディスコグラフィー<span class="red">.</span></h1>
-    <p class="page-header-desc">Srv.Vinci時代のインディーズ作品から最新シングルまで、全作品を収録。</p>
-    <a href="tieup.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:1.25rem;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;border:1px solid #111;padding:8px 18px;background:#111;color:#fff;transition:background 0.15s;">タイアップ一覧 →</a>
+    <p class="page-header-desc">King Gnu 名義の全シングル・アルバムを収録。</p>
+    <div class="page-header-actions">
+      <a href="tieup.html" class="header-btn">タイアップ一覧 →</a>
+    </div>
   </div>
 
   <div class="filter-bar">
-    <button class="filter-btn active">ALL</button>
-    <button class="filter-btn">ALBUM</button>
-    <button class="filter-btn">SINGLE</button>
-    <button class="filter-btn">INDIE</button>
+    <button class="filter-btn active" data-filter="ALL">ALL</button>
+    <button class="filter-btn" data-filter="ALBUM">ALBUM</button>
+    <button class="filter-btn" data-filter="SINGLE">SINGLE</button>
+    <button class="filter-btn" data-filter="EP">EP</button>
+    <button class="filter-btn" data-filter="COVER">COVER</button>
+    <span class="filter-count" id="filterCount"></span>
   </div>
 
-  <div class="content">
-
-    <div class="era-section">
-      <div class="era-label">2024 — 2025</div>
-      <div class="disc-grid">
-        <div class="disc-card">
-          <span class="disc-type single">SINGLE</span>
-          <div class="disc-year">2026.01.09</div>
-          <div class="disc-title">愛憎</div>
-          <div class="disc-note">呪術廻戦 死滅回游編 オープニングテーマ</div>
-        </div>
-        <div class="disc-card">
-          <span class="disc-type single">SINGLE</span>
-          <div class="disc-year">2025.09.01</div>
-          <div class="disc-title">So Bad</div>
-          <div class="disc-note">USJハロウィンホラーナイト2025 公式テーマ</div>
-        </div>
-        <div class="disc-card">
-          <span class="disc-type single">SINGLE</span>
-          <div class="disc-year">2025.03.01</div>
-          <div class="disc-title">Twilight!!!</div>
-          <div class="disc-note">劇場版名探偵コナン 隻眼の残像 エンディングテーマ</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="era-section">
-      <div class="era-label">2022 — 2023</div>
-      <div class="disc-grid">
-        <div class="disc-card">
-          <span class="disc-type album">ALBUM</span>
-          <div class="disc-year">2022.11.16</div>
-          <div class="disc-title">THE GREATEST UNKNOWN</div>
-          <div class="disc-note">4thアルバム。ロック・ポップス・クラシックなど多彩なサウンドを融合。</div>
-          <div class="disc-tracks">
-            <div class="disc-track-label">TRACKS</div>
-            <div class="disc-track-list">飛行艇 / 硝子窓 / Zom 100 / 千両役者 / 傘 / 一途 / 逆夢 / 育ちすぎた朝顔 / BOY / The hole / 雨燦々 / 万葉集 / 白日 (2022)</div>
-          </div>
-        </div>
-        <div class="disc-card">
-          <span class="disc-type single">SINGLE</span>
-          <div class="disc-year">2023.10.06</div>
-          <div class="disc-title">Specialz</div>
-          <div class="disc-note">呪術廻戦 渋谷事変 オープニングテーマ</div>
-        </div>
-        <div class="disc-card">
-          <span class="disc-type single">SINGLE</span>
-          <div class="disc-year">2022.01.12</div>
-          <div class="disc-title">逆夢</div>
-          <div class="disc-note">進撃の巨人 The Final Season Part2 エンディングテーマ</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="era-section">
-      <div class="era-label">2020 — 2021</div>
-      <div class="disc-grid">
-        <div class="disc-card">
-          <span class="disc-type album">ALBUM</span>
-          <div class="disc-year">2020.01.15</div>
-          <div class="disc-title">CEREMONY</div>
-          <div class="disc-note">3rdアルバム。オリコン週間1位獲得。「白日」収録。</div>
-          <div class="disc-tracks">
-            <div class="disc-track-label">TRACKS</div>
-            <div class="disc-track-list">三文小説 / 傘 / 飛行艇 / 千両役者 / 白日 / to the moon and back / 壇上 / Teenager Forever / 小さな惑星 / 泡 / Slumberland / 整形前夜</div>
-          </div>
-        </div>
-        <div class="disc-card">
-          <span class="disc-type single">SINGLE</span>
-          <div class="disc-year">2020.10.21</div>
-          <div class="disc-title">三文小説 / stardom</div>
-          <div class="disc-note">ドラマ「この恋あたためますか」主題歌 / au CMソング</div>
-        </div>
-        <div class="disc-card">
-          <span class="disc-type single">SINGLE</span>
-          <div class="disc-year">2021.06.16</div>
-          <div class="disc-title">一途 / 涙</div>
-          <div class="disc-note">映画「東京リベンジャーズ」主題歌 / au CMソング</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="era-section">
-      <div class="era-label">2018 — 2019</div>
-      <div class="disc-grid">
-        <div class="disc-card">
-          <span class="disc-type album">ALBUM</span>
-          <div class="disc-year">2019.01.23</div>
-          <div class="disc-title">Sympa</div>
-          <div class="disc-note">メジャー1stアルバム。「白日」「Prayer X」収録。</div>
-          <div class="disc-tracks">
-            <div class="disc-track-label">TRACKS</div>
-            <div class="disc-track-list">Prayer X / 白日 / It's a small world / Teenager Forever / どろん / McDonald Romance / Slumberland / Flash!!! / を待ちわびて / The hole / 破裂 / Vinyl</div>
-          </div>
-        </div>
-        <div class="disc-card">
-          <span class="disc-type single">SINGLE</span>
-          <div class="disc-year">2019.02.13</div>
-          <div class="disc-title">白日</div>
-          <div class="disc-note">ドラマ「イノセンス 冤罪弁護士」主題歌。累計10億回再生超え。</div>
-        </div>
-        <div class="disc-card">
-          <span class="disc-type album">ALBUM</span>
-          <div class="disc-year">2018.03.27</div>
-          <div class="disc-title">あどけない春の話</div>
-          <div class="disc-note">インディーズ2ndアルバム（King GNU名義）</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="era-section">
-      <div class="era-label">2013 — 2017 / Srv.Vinci era</div>
-      <div class="disc-grid">
-        <div class="disc-card">
-          <span class="disc-type indie">INDIE</span>
-          <div class="disc-year">2017</div>
-          <div class="disc-title">King GNU EP</div>
-          <div class="disc-note">バンド名改名後初のEP。</div>
-        </div>
-        <div class="disc-card">
-          <span class="disc-type indie">INDIE</span>
-          <div class="disc-year">2015</div>
-          <div class="disc-title">Srv.Vinci 各種音源</div>
-          <div class="disc-note">Srv.Vinci名義でのインディーズ活動期音源。</div>
-        </div>
-        <div class="disc-card">
-          <span class="disc-type indie">INDIE</span>
-          <div class="disc-year">2013</div>
-          <div class="disc-title">活動開始</div>
-          <div class="disc-note">常田大希・井口理により東京藝大在学中に結成。</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <div class="content" id="discContent"></div>
 
   <footer class="footer">
     <a href="index.html" class="footer-logo">Fan<span class="red">GNU</span></a>
@@ -239,27 +125,149 @@
   </footer>
 
   <script>
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        const filter = this.textContent.trim();
-        document.querySelectorAll('.disc-card').forEach(card => {
-          const type = card.querySelector('.disc-type').textContent.trim();
-          if (filter === 'ALL') {
-            card.style.display = '';
-          } else if (filter === 'ALBUM' && type === 'ALBUM') {
-            card.style.display = '';
-          } else if (filter === 'SINGLE' && type === 'SINGLE') {
-            card.style.display = '';
-          } else if (filter === 'INDIE' && type === 'INDIE') {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+  const DISCS = [
+    // ─── 2025–2026 ───────────────────────────────────────
+    {
+      era: '2025 — 2026',
+      items: [
+        { type: 'SINGLE', year: '2026.01.09', title: '愛憎',       note: '呪術廻戦 死滅回游編 オープニングテーマ', yt: 'zz2a9Q2Wru0' },
+        { type: 'SINGLE', year: '2025.09.01', title: 'So Bad',     note: 'USJハロウィンホラーナイト2025 公式テーマ', yt: 'd4st4aEjQ28' },
+        { type: 'SINGLE', year: '2025.03.01', title: 'Twilight!!!',note: '劇場版名探偵コナン 隻眼の残像 エンディングテーマ', yt: 'qIcIpSyHcyM' },
+      ]
+    },
+    // ─── 2023–2024 ───────────────────────────────────────
+    {
+      era: '2023 — 2024',
+      items: [
+        { type: 'SINGLE', year: '2024',       title: 'ねっこ',     note: '', yt: 'jz8O2t2r8Gs' },
+        { type: 'SINGLE', year: '2024',       title: 'MASCARA',    note: '', yt: 'Fm7Qu2YzlIM' },
+        { type: 'SINGLE', year: '2023.10.06', title: 'Specialz',   note: '呪術廻戦 渋谷事変 オープニングテーマ', yt: 'fhzKLBZJC3w' },
+      ]
+    },
+    // ─── 2022 ────────────────────────────────────────────
+    {
+      era: '2022',
+      items: [
+        {
+          type: 'ALBUM', year: '2022.11.16', title: 'THE GREATEST UNKNOWN', note: '4thアルバム。オリコン週間1位獲得。',
+          tracks: '飛行艇 / 硝子窓 / Zom 100 / 千両役者 / 傘 / 一途 / 逆夢 / 育ちすぎた朝顔 / BOY / The hole / 雨燦々 / 万葉集'
+        },
+        { type: 'SINGLE', year: '2022.11',   title: '硝子窓',     note: '',                                        yt: 'DAzN019hKhc' },
+        { type: 'SINGLE', year: '2022.09',   title: '雨燦々',     note: '',                                        yt: 'C47K1TX9PAA' },
+        { type: 'SINGLE', year: '2022.06',   title: 'カメレオン', note: '',                                        yt: 'BOrdMrh4uKg' },
+        { type: 'SINGLE', year: '2022.01.12',title: '逆夢',       note: '進撃の巨人 The Final Season Part2 ED',    yt: 'M6gcoDN9jBc' },
+      ]
+    },
+    // ─── 2020–2021 ───────────────────────────────────────
+    {
+      era: '2020 — 2021',
+      items: [
+        {
+          type: 'ALBUM', year: '2020.01.15', title: 'CEREMONY', note: '3rdアルバム。オリコン週間1位獲得。',
+          tracks: '三文小説 / 傘 / 飛行艇 / 千両役者 / 白日 / to the moon and back / 壇上 / Teenager Forever / 小さな惑星 / 泡 / Slumberland / 整形前夜'
+        },
+        { type: 'SINGLE', year: '2021.06.16',title: '一途',       note: '映画「東京リベンジャーズ」主題歌',         yt: 'hm1na9R2uYA' },
+        { type: 'SINGLE', year: '2021',       title: 'BOY',        note: '',                                        yt: 'n0QNaym0jDI' },
+        { type: 'SINGLE', year: '2021',       title: 'F.O.O.L',    note: '',                                        yt: 'cu7uQhDM1oY' },
+        { type: 'COVER',  year: '2021',       title: '飾りじゃないのよ涙は', note: '井上陽水カバー',                yt: 'cAVnxFszvKo' },
+        { type: 'SINGLE', year: '2020.10.21', title: '三文小説',   note: 'ドラマ「この恋あたためますか」主題歌',   yt: 'Y8HeOA95UzQ' },
+        { type: 'SINGLE', year: '2020.10.21', title: 'Stardom',    note: 'au CMソング',                             yt: 'k7rHDHJG1jA' },
+        { type: 'SINGLE', year: '2020',       title: '泡',         note: '',                                        yt: 'jSf6S6ny6-A' },
+        { type: 'SINGLE', year: '2020',       title: '千両役者',   note: '',                                        yt: 'YOYeJn4mz8M' },
+      ]
+    },
+    // ─── 2018–2019 ───────────────────────────────────────
+    {
+      era: '2018 — 2019',
+      items: [
+        {
+          type: 'ALBUM', year: '2019.01.23', title: 'Sympa', note: 'メジャー1stアルバム。「白日」「Prayer X」収録。',
+          tracks: 'Prayer X / 白日 / It\'s a small world / Teenager Forever / どろん / McDonald Romance / Slumberland / Flash!!! / を待ちわびて / The hole / 破裂 / Vinyl'
+        },
+        { type: 'SINGLE', year: '2019.02.13', title: '白日',            note: 'ドラマ「イノセンス 冤罪弁護士」主題歌。ストリーミング累計10億回超', yt: 'ony539T074w' },
+        { type: 'SINGLE', year: '2019',       title: '傘',              note: '',                   yt: 'g4_nRpHotMo' },
+        { type: 'SINGLE', year: '2019',       title: '飛行艇',          note: '',                   yt: 'MSv7NbfbtU8' },
+        { type: 'SINGLE', year: '2019',       title: 'Teenager Forever',note: '',                   yt: 'XPUN-w543bc' },
+        { type: 'SINGLE', year: '2019',       title: 'Slumberland',     note: '',                   yt: 'C66yySFa48A' },
+        { type: 'SINGLE', year: '2018',       title: 'Prayer X',        note: '',                   yt: 'L-Bzhpm8h0o' },
+        { type: 'SINGLE', year: '2018',       title: 'Flash!!!',        note: '',                   yt: 'j_NHrPC3ij8' },
+        { type: 'SINGLE', year: '2018',       title: 'Vinyl',           note: '',                   yt: 'RLAw8Ct9k48' },
+        { type: 'SINGLE', year: '2018',       title: 'McDonald Romance',note: '',                   yt: 'YeBt1NhOJtA' },
+      ]
+    },
+    // ─── 2017 ────────────────────────────────────────────
+    {
+      era: '2017 / King Gnu インディーズ',
+      items: [
+        { type: 'EP',     year: '2017',       title: 'Tokyo Rendez-Vous', note: 'King Gnu名義初期作品', yt: 'XDiuwqJg8pU' },
+      ]
+    },
+  ];
+
+  function escH(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function buildCard(item) {
+    const tracksHtml = item.tracks
+      ? `<div class="disc-tracks"><div class="disc-track-label">TRACKS</div><div class="disc-track-list">${escH(item.tracks)}</div></div>`
+      : '';
+    const mvBtnHtml = item.yt
+      ? `<div class="mv-thumb-wrap" data-yt="${escH(item.yt)}">
+           <img src="https://img.youtube.com/vi/${escH(item.yt)}/mqdefault.jpg" alt="${escH(item.title)} MV" loading="lazy">
+           <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
+         </div>
+         <div class="mv-embed"></div>`
+      : '';
+    return `
+      <div class="disc-card" data-type="${escH(item.type)}">
+        <span class="disc-type-badge ${escH(item.type)}">${escH(item.type)}</span>
+        <div class="disc-year">${escH(item.year)}</div>
+        <div class="disc-title">${escH(item.title)}</div>
+        ${item.note ? `<div class="disc-note">${escH(item.note)}</div>` : ''}
+        ${tracksHtml}
+        ${mvBtnHtml}
+      </div>`;
+  }
+
+  function render(filter) {
+    const content = document.getElementById('discContent');
+    const allItems = DISCS.flatMap(era => era.items);
+    content.innerHTML = `<div class="disc-grid">${allItems.map(buildCard).join('')}</div>`;
+
+    applyFilter(filter);
+
+    content.querySelectorAll('.mv-thumb-wrap').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const embed = thumb.nextElementSibling;
+        thumb.style.display = 'none';
+        embed.classList.add('open');
+        embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${thumb.dataset.yt}?rel=0&autoplay=1" allowfullscreen allow="autoplay"></iframe>`;
       });
     });
+  }
+
+  function applyFilter(filter) {
+    let total = 0;
+    document.querySelectorAll('.disc-card').forEach(card => {
+      const match = filter === 'ALL' || card.dataset.type === filter;
+      card.classList.toggle('hidden', !match);
+      if (match) total++;
+    });
+    document.getElementById('filterCount').textContent = total + ' 件';
+  }
+
+  // 初期描画
+  render('ALL');
+
+  // フィルターボタン
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(btn.dataset.filter);
+    });
+  });
   </script>
 
 </body>
