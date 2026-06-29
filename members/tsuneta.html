@@ -55,6 +55,12 @@
     .tl-title { font-weight: 700; color: var(--black); margin-bottom: 2px; }
 
     .works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .news-list { display: flex; flex-direction: column; }
+    .news-item { display: flex; align-items: baseline; gap: 10px; padding: 9px 0; border-bottom: 1px solid #eee; font-size: 12px; }
+    .news-item:last-child { border-bottom: none; }
+    .news-date { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); white-space: nowrap; }
+    .news-badge { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; padding: 1px 6px; white-space: nowrap; }
+    .news-text { color: #333; line-height: 1.6; }
     .work-item { background: var(--white); padding: 1rem 1.25rem; }
     .work-year { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); margin-bottom: 4px; }
     .work-title { font-size: 13px; font-weight: 700; color: var(--black); }
@@ -195,6 +201,11 @@
       </div>
     </div>
 
+    <div class="section">
+      <div class="sec-label">NEWS</div>
+      <div class="news-list" id="newsContainer"></div>
+    </div>
+
     <div class="nav-bottom">
       <a href="../members.html" class="nav-btn">← MEMBERS</a>
       <a href="iguchi.html" class="nav-btn next">井口理 →</a>
@@ -210,5 +221,7 @@
     </div>
   </footer>
 
+  <script src="../news.js"></script>
+  <script>renderNewsInteractive('newsContainer', { member: 'tsuneta', pageSize: 5 });</script>
 </body>
 </html>
