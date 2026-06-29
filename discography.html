@@ -402,7 +402,20 @@
         } else {
           btn.classList.add('open');
           embed.classList.add('open');
-          embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${btn.dataset.yt}?rel=0&autoplay=1" allowfullscreen allow="autoplay"></iframe>`;
+          const yt = btn.dataset.yt;
+          embed.innerHTML = `
+            <div class="mv-thumb-wrap" data-yt="${yt}">
+              <img src="https://img.youtube.com/vi/${yt}/mqdefault.jpg" alt="thumbnail" loading="lazy">
+              <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
+            </div>
+            <div class="mv-embed"></div>`;
+          embed.querySelector('.mv-thumb-wrap').addEventListener('click', () => {
+            const thumbWrap = embed.querySelector('.mv-thumb-wrap');
+            const mv = embed.querySelector('.mv-embed');
+            thumbWrap.style.display = 'none';
+            mv.classList.add('open');
+            mv.innerHTML = `<iframe src="https://www.youtube.com/embed/${yt}?rel=0&autoplay=1" allowfullscreen allow="autoplay"></iframe>`;
+          });
         }
       });
     });
