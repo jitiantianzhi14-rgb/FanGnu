@@ -48,7 +48,8 @@
     .disc-type-badge.SINGLE { background: #444; }
     .disc-type-badge.EP     { background: #2255cc; }
     .disc-type-badge.COVER  { background: #119944; }
-    .disc-type-badge.INDIE  { background: #888; }
+    .disc-type-badge.INDIE      { background: #888; }
+    .disc-type-badge.UNRELEASED { background: #7c3aed; }
 
     .disc-year  { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); }
     .disc-title { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.3; }
@@ -138,6 +139,7 @@
     <button class="filter-btn" data-filter="SINGLE">SINGLE</button>
     <button class="filter-btn" data-filter="EP">EP</button>
     <button class="filter-btn" data-filter="COVER">COVER</button>
+    <button class="filter-btn" data-filter="UNRELEASED">UNRELEASED</button>
     <span class="filter-count" id="filterCount"></span>
   </div>
 
@@ -158,6 +160,14 @@
 
   <script>
   const DISCS = [
+    // ─── 未発表 ───────────────────────────────────────────
+    {
+      era: 'UNRELEASED',
+      items: [
+        { type: 'UNRELEASED', year: '—', title: 'VIVID RED', note: 'ライブで披露された未発表曲' },
+        { type: 'UNRELEASED', year: '—', title: 'catch!!!',  note: 'ライブで披露された未発表曲' },
+      ]
+    },
     // ─── 2025–2026 ───────────────────────────────────────
     {
       era: '2025 — 2026',
