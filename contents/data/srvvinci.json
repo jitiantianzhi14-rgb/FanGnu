@@ -1,0 +1,77 @@
+{
+  "groups": [
+    {
+      "name": "Srv.Vinci",
+      "desc": "常田大希を中心とした前身バンド（〜2017年）",
+      "demos": [
+        { "title": "Stem", "yt": "YiQTjl71ipM" },
+        { "title": "ABUKU", "yt": "6QQoZW0SOnI" },
+        { "title": "Cheap Transistor", "yt": null },
+        { "title": "もっと静かに狂わせて", "yt": null }
+      ],
+      "singles": [
+        { "title": "都", "yt": null }
+      ],
+      "albums": [
+        {
+          "title": "トーキョー・カオティック",
+          "yt": "91ClD6WZB20",
+          "tracks": [
+            { "num": 1, "title": "ロウラヴ" },
+            { "num": 2, "title": "サマーレイン・ダイバー" },
+            { "num": 3, "title": "Vinyl" },
+            { "num": 4, "title": "破裂" }
+          ]
+        },
+        {
+          "title": "Mad me more softly",
+          "yt": "pooEvhVCiyE",
+          "tracks": [
+            { "num": 1, "title": "Devil's MC" },
+            { "num": 2, "title": "PPL" },
+            { "num": 3, "title": "Heroine" },
+            { "num": 4, "title": "Those Sunny Smiles" },
+            { "num": 5, "title": "Mommy's Tummy" },
+            { "num": 6, "title": "Zero Gravity Toilet" },
+            { "num": 7, "title": "Diving To You" },
+            { "num": 8, "title": "Abnormal Pressure" },
+            { "num": 9, "title": "Plastic Rain" },
+            { "num": 10, "title": "\"I'm outta here.\"" }
+          ]
+        },
+        { "title": "謎", "yt": null, "tracks": [] },
+        { "title": "NUMÉRO × THE ROOTS OF BLOOD", "yt": null, "tracks": [] },
+        { "title": "Re:?", "yt": null, "tracks": [] }
+      ]
+    },
+    {
+      "name": "Mrs.Vinci",
+      "desc": "常田大希の別名義プロジェクト",
+      "singles": [
+        { "title": "In Tokyo", "yt": "GXk_ANNlXEU" },
+        { "title": "In Rose", "yt": "YZLNZ7lfd_s", "yt2": "nwotP3Wbcbs" }
+      ]
+    },
+    {
+      "name": "Diddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室",
+      "desc": "Hello From Underground シリーズ各バージョン",
+      "compilations": [
+        {
+          "title": "Hello From Underground（Diddi's Asianground Jam 版）",
+          "url": "https://www.audioleaf.com/didis_jam/",
+          "tracks": ["前触?"]
+        },
+        {
+          "title": "Hello from underground（Diddy's Underground Jam 版）",
+          "url": "https://www.audioleaf.com/diddy-s/",
+          "tracks": ["チープなメディア", "アンダーグラウンド?", "新宿メトロライン"]
+        },
+        {
+          "title": "hello from underground（ディディーの地下室 版）",
+          "url": "https://www.audioleaf.com/diddys_underground/",
+          "tracks": ["新宿メトロライン", "東京", "コルトレーンズ・ゲリラ"]
+        }
+      ]
+    }
+  ]
+}

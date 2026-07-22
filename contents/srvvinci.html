@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前身バンド ディスコグラフィー — FanGNU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Antique&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --red: #e63329; --black: #111; --white: #fff; --gray: #888; --border: #ddd; --bg: #fbf2d9; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--black); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 52px; }
+    .nav-logo { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 700; }
+    .nav-logo .red { color: var(--red); }
+    .nav-links { display: flex; gap: 1.75rem; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; }
+    .nav-links a { color: var(--gray); transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--black); }
+    .nav-links a.active { border-bottom: 1px solid var(--black); }
+
+    .page-header { padding: 3rem 2rem 2.5rem; border-bottom: 2px solid var(--black); background: var(--white); }
+    .page-header-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+    .page-header-tag::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--red); }
+    .page-header-title { font-family: 'Zen Antique', serif; font-size: 52px; line-height: 1; letter-spacing: -0.01em; }
+    .page-header-title .red { color: var(--red); }
+    .page-header-desc { font-size: 12px; color: var(--gray); margin-top: 1rem; letter-spacing: 0.05em; }
+    .page-header-actions { display: flex; gap: 10px; margin-top: 1.25rem; }
+    .header-btn { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; border: 1px solid var(--black); padding: 8px 18px; background: var(--black); color: var(--white); transition: background 0.15s; }
+    .header-btn:hover { background: var(--red); border-color: var(--red); }
+
+    .group-section { border-bottom: 3px solid var(--black); }
+    .group-header { background: var(--black); color: var(--white); padding: 1.25rem 2rem; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+    .group-name { font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 700; letter-spacing: 0.04em; }
+    .group-desc { font-size: 11px; color: #aaa; }
+    .group-body { padding: 2rem; display: flex; flex-direction: column; gap: 2rem; max-width: 1100px; margin: 0 auto; }
+
+    .sub-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+    .sub-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--red); }
+
+    .disc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .disc-card { background: var(--white); padding: 1.25rem; display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border); }
+    .disc-type-badge { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: var(--white); padding: 2px 8px; display: inline-block; width: fit-content; }
+    .badge-DEMO   { background: #7c3aed; }
+    .badge-SINGLE { background: #444; }
+    .disc-title { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.3; }
+
+    .mv-thumb-wrap { margin-top: 10px; position: relative; cursor: pointer; }
+    .mv-thumb-wrap img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+    .mv-thumb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); transition: background 0.15s; }
+    .mv-thumb-wrap:hover .mv-thumb-play { background: rgba(0,0,0,0.45); }
+    .mv-thumb-play-btn { width: 44px; height: 44px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .mv-thumb-play-btn::after { content: ''; border-style: solid; border-width: 9px 0 9px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+    .mv-embed { display: none; }
+    .mv-embed.open { display: block; margin-top: 10px; }
+    .mv-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
+
+    .album-card { background: var(--white); border: 1px solid var(--border); margin-bottom: 16px; }
+    .album-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .album-title { font-size: 17px; font-weight: 700; }
+    .album-yt-thumb { padding: 1rem 1.5rem 0; }
+    .track-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .track-row { display: flex; align-items: center; gap: 10px; padding: 9px 1.25rem; border-bottom: 1px solid #f0f0f0; border-right: 1px solid #f0f0f0; }
+    .track-row:nth-child(even) { border-right: none; }
+    .track-row:nth-last-child(-n+2) { border-bottom: none; }
+    .track-num  { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #bbb; width: 22px; flex-shrink: 0; }
+    .track-title { font-size: 12px; font-weight: 500; flex: 1; }
+    .tbd { padding: 0.75rem 1.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); border-top: 1px solid var(--border); }
+
+    .comp-card { background: var(--white); border: 1px solid var(--border); padding: 1.25rem 1.5rem; margin-bottom: 12px; display: flex; flex-direction: column; gap: 10px; }
+    .comp-header { display: flex; align-items: flex-start; gap: 10px; }
+    .comp-title { font-size: 14px; font-weight: 700; flex: 1; }
+    .comp-link-btn { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; background: var(--black); color: var(--white); border: none; padding: 5px 12px; white-space: nowrap; flex-shrink: 0; text-decoration: none; transition: background 0.15s; display: inline-block; }
+    .comp-link-btn:hover { background: var(--red); }
+    .comp-tracks { display: flex; flex-wrap: wrap; gap: 6px; }
+    .comp-track { font-size: 11px; background: var(--bg); padding: 3px 10px; border: 1px solid #e5ddc8; color: #444; }
+
+    .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); }
+    .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
+    .footer-logo .red { color: var(--red); }
+    .footer-copy { font-size: 10px; color: var(--gray); letter-spacing: 0.05em; text-align: right; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header-title { font-size: 36px; }
+      .disc-grid { grid-template-columns: 1fr; gap: 12px; }
+      .track-grid { grid-template-columns: 1fr; }
+      .track-row { border-right: none; }
+      .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">Fan<span class="red">GNU</span></a>
+    <div class="nav-links">
+      <a href="members/members.html">メンバー</a>
+      <a href="discography.html">ディスコグラフィー</a>
+      <a href="live.html">ライブ</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-tag">DISCOGRAPHY / EARLY ERA</div>
+    <h1 class="page-header-title">前身バンド<span class="red">.</span></h1>
+    <p class="page-header-desc">King Gnu 結成以前の活動記録。</p>
+    <div class="page-header-actions">
+      <a href="discography.html" class="header-btn">← King Gnu ディスコグラフィー</a>
+    </div>
+  </div>
+
+  <div id="pageBody"></div>
+
+  <footer class="footer">
+    <a href="../index.html" class="footer-logo">Fan<span class="red">GNU</span></a>
+    <div class="footer-copy">
+      非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>
+      © FanGNU Unofficial
+    </div>
+  </footer>
+
+  <script>
+  function escH(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function thumbBlock(yt) {
+    return `<div class="mv-thumb-wrap" data-yt="${escH(yt)}">
+      <img src="https://img.youtube.com/vi/${escH(yt)}/mqdefault.jpg" alt="thumbnail" loading="lazy">
+      <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
+    </div>
+    <div class="mv-embed"></div>`;
+  }
+
+  function buildDiscCard(type, item) {
+    const mv = item.yt
+      ? `<div style="margin-top:8px">${thumbBlock(item.yt)}${item.yt2 ? thumbBlock(item.yt2) : ''}</div>`
+      : '';
+    return `<div class="disc-card">
+      <span class="disc-type-badge badge-${escH(type)}">${escH(type)}</span>
+      <div class="disc-title">${escH(item.title)}</div>
+      ${mv}
+    </div>`;
+  }
+
+  function buildAlbumCard(album) {
+    const thumbPart = album.yt
+      ? `<div class="album-yt-thumb">${thumbBlock(album.yt)}</div>` : '';
+    const trackPart = album.tracks && album.tracks.length
+      ? `<div class="track-grid">${album.tracks.map(t =>
+          `<div class="track-row">
+            <span class="track-num">${String(t.num).padStart(2,'0')}</span>
+            <span class="track-title">${escH(t.title)}</span>
+          </div>`).join('')}</div>`
+      : `<div class="tbd">トラックリスト準備中</div>`;
+    return `<div class="album-card">
+      <div class="album-header"><span class="album-title">${escH(album.title)}</span></div>
+      ${thumbPart}
+      ${trackPart}
+    </div>`;
+  }
+
+  function buildCompCard(comp) {
+    const tracks = comp.tracks.map(t => `<span class="comp-track">${escH(t)}</span>`).join('');
+    return `<div class="comp-card">
+      <div class="comp-header">
+        <span class="comp-title">${escH(comp.title)}</span>
+        <a href="${escH(comp.url)}" target="_blank" rel="noopener" class="comp-link-btn">audioleaf ↗</a>
+      </div>
+      <div class="comp-tracks">${tracks}</div>
+    </div>`;
+  }
+
+  function renderGroup(group) {
+    let parts = '';
+    if (group.demos) parts += `<div><div class="sub-label">DEMO</div><div class="disc-grid">${group.demos.map(d => buildDiscCard('DEMO', d)).join('')}</div></div>`;
+    if (group.singles) parts += `<div><div class="sub-label">SINGLE</div><div class="disc-grid">${group.singles.map(d => buildDiscCard('SINGLE', d)).join('')}</div></div>`;
+    if (group.albums) parts += `<div><div class="sub-label">ALBUM</div>${group.albums.map(buildAlbumCard).join('')}</div>`;
+    if (group.compilations) parts += `<div><div class="sub-label">COMPILATION</div>${group.compilations.map(buildCompCard).join('')}</div>`;
+    return `<div class="group-section">
+      <div class="group-header">
+        <span class="group-name">${escH(group.name)}</span>
+        <span class="group-desc">${escH(group.desc)}</span>
+      </div>
+      <div class="group-body">${parts}</div>
+    </div>`;
+  }
+
+  function bindThumbs() {
+    document.querySelectorAll('.mv-thumb-wrap').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const embed = thumb.nextElementSibling;
+        thumb.style.display = 'none';
+        embed.classList.add('open');
+        embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${thumb.dataset.yt}?rel=0&autoplay=1" allowfullscreen allow="autoplay"></iframe>`;
+      });
+    });
+  }
+
+  fetch('data/srvvinci.json')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('pageBody').innerHTML = data.groups.map(renderGroup).join('');
+      bindThumbs();
+    })
+    .catch(err => {
+      document.getElementById('pageBody').textContent = 'データの読み込みに失敗しました。';
+      console.error(err);
+    });
+  </script>
+
+</body>
+</html>

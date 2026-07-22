@@ -1,0 +1,157 @@
+{
+  "eras": [
+    {
+      "era": "2025 — 2026",
+      "items": [
+        { "type": "SINGLE", "year": "2026.02.11", "title": "AIZO", "note": "呪術廻戦 死滅回游編 オープニングテーマ", "yt": "zz2a9Q2Wru0" },
+        { "type": "SINGLE", "year": "2025.09.05", "title": "SO BAD", "note": "USJハロウィンホラーナイト2025 公式テーマ", "yt": "d4st4aEjQ28" },
+        { "type": "SINGLE", "year": "2025.04.18", "title": "TWILIGHT!!!", "note": "劇場版名探偵コナン 隻眼の残像 エンディングテーマ", "yt": "qIcIpSyHcyM" }
+      ]
+    },
+    {
+      "era": "2023 — 2024",
+      "items": [
+        { "type": "SINGLE", "year": "2024.10.21", "title": "ねっこ", "note": "", "yt": "jz8O2t2r8Gs" },
+        { "type": "SINGLE", "year": "2024.10.04", "title": "MASCARA", "note": "", "yt": "Fm7Qu2YzlIM" },
+        { "type": "SINGLE", "year": "2023.09.06", "title": "SPECIALZ", "note": "呪術廻戦 渋谷事変 オープニングテーマ", "yt": "fhzKLBZJC3w" }
+      ]
+    },
+    {
+      "era": "2022",
+      "items": [
+        {
+          "type": "ALBUM", "year": "2022.11.16", "title": "THE GREATEST UNKNOWN", "note": "4thアルバム。オリコン週間1位獲得。",
+          "tracks": "飛行艇 / 硝子窓 / Zom 100 / 千両役者 / 傘 / 一途 / 逆夢 / 育ちすぎた朝顔 / BOY / The hole / 雨燦々 / 万葉集"
+        },
+        { "type": "SINGLE", "year": "2022.11", "title": "硝子窓", "note": "", "yt": "DAzN019hKhc" },
+        { "type": "SINGLE", "year": "2022.07.15", "title": "雨燦々", "note": "", "yt": "C47K1TX9PAA" },
+        { "type": "SINGLE", "year": "2022.03.16", "title": "カメレオン", "note": "", "yt": "BOrdMrh4uKg" },
+        { "type": "SINGLE", "year": "2021.12.29", "title": "逆夢", "note": "進撃の巨人 The Final Season Part2 ED", "yt": "M6gcoDN9jBc" }
+      ]
+    },
+    {
+      "era": "2020 — 2021",
+      "items": [
+        {
+          "type": "ALBUM", "year": "2020.01.15", "title": "CEREMONY", "note": "3rdアルバム。オリコン週間1位獲得。",
+          "tracks": "三文小説 / 傘 / 飛行艇 / 千両役者 / 白日 / to the moon and back / 壇上 / Teenager Forever / 小さな惑星 / 泡 / Slumberland / 整形前夜"
+        },
+        { "type": "SINGLE", "year": "2021.06.16", "title": "一途", "note": "映画「東京リベンジャーズ」主題歌", "yt": "hm1na9R2uYA" },
+        { "type": "SINGLE", "year": "2021", "title": "BOY", "note": "", "yt": "n0QNaym0jDI" },
+        { "type": "SINGLE", "year": "2021", "title": "F.O.O.L", "note": "", "yt": "cu7uQhDM1oY" },
+        { "type": "COVER", "year": "2021", "title": "飾りじゃないのよ涙は", "note": "井上陽水カバー", "yt": "cAVnxFszvKo" },
+        { "type": "SINGLE", "year": "2020.10.21", "title": "三文小説", "note": "ドラマ「この恋あたためますか」主題歌", "yt": "Y8HeOA95UzQ" },
+        { "type": "SINGLE", "year": "2020.10.21", "title": "Stardom", "note": "au CMソング", "yt": "k7rHDHJG1jA" },
+        { "type": "SINGLE", "year": "2020", "title": "泡", "note": "", "yt": "jSf6S6ny6-A" },
+        { "type": "SINGLE", "year": "2020", "title": "千両役者", "note": "", "yt": "YOYeJn4mz8M" }
+      ]
+    },
+    {
+      "era": "2018 — 2019",
+      "items": [
+        {
+          "type": "ALBUM", "year": "2019.01.23", "title": "Sympa", "note": "メジャー1stアルバム。「白日」「Prayer X」収録。",
+          "tracks": "Prayer X / 白日 / It's a small world / Teenager Forever / どろん / McDonald Romance / Slumberland / Flash!!! / を待ちわびて / The hole / 破裂 / Vinyl"
+        },
+        { "type": "SINGLE", "year": "2019.02.13", "title": "白日", "note": "ドラマ「イノセンス 冤罪弁護士」主題歌。ストリーミング累計10億回超", "yt": "ony539T074w" },
+        { "type": "SINGLE", "year": "2019", "title": "傘", "note": "", "yt": "g4_nRpHotMo" },
+        { "type": "SINGLE", "year": "2019", "title": "飛行艇", "note": "", "yt": "MSv7NbfbtU8" },
+        { "type": "SINGLE", "year": "2019", "title": "Teenager Forever", "note": "", "yt": "XPUN-w543bc" },
+        { "type": "SINGLE", "year": "2019", "title": "Slumberland", "note": "", "yt": "C66yySFa48A" },
+        { "type": "SINGLE", "year": "2018", "title": "Prayer X", "note": "", "yt": "L-Bzhpm8h0o" },
+        { "type": "SINGLE", "year": "2018", "title": "Flash!!!", "note": "", "yt": "j_NHrPC3ij8" },
+        { "type": "SINGLE", "year": "2018", "title": "Vinyl", "note": "", "yt": "RLAw8Ct9k48" },
+        { "type": "SINGLE", "year": "2018", "title": "McDonald Romance", "note": "", "yt": "YeBt1NhOJtA" }
+      ]
+    },
+    {
+      "era": "2017 / King Gnu インディーズ",
+      "items": [
+        { "type": "EP", "year": "2017", "title": "Tokyo Rendez-Vous", "note": "King Gnu名義初期作品", "yt": "XDiuwqJg8pU" }
+      ]
+    },
+    {
+      "era": "UNRELEASED",
+      "items": [
+        { "type": "UNRELEASED", "year": "—", "title": "VIVID RED", "note": "ライブで披露された未発表曲" },
+        { "type": "UNRELEASED", "year": "—", "title": "catch!!!", "note": "ライブで披露された未発表曲" }
+      ]
+    }
+  ],
+  "albums": [
+    {
+      "title": "THE GREATEST UNKNOWN", "year": "2022.11.16", "note": "4th ALBUM",
+      "tracks": [
+        { "num": 1, "title": "MIRROR", "yt": "vbMg5nJm2w0" },
+        { "num": 2, "title": "CHAMELEON", "yt": "BOrdMrh4uKg" },
+        { "num": 3, "title": "DARE???", "yt": "4qB87lXKmh8" },
+        { "num": 4, "title": "Specialz", "yt": "fhzKLBZJC3w" },
+        { "num": 5, "title": "一途（ALBUM ver.）", "yt": "hm1na9R2uYA" },
+        { "num": 6, "title": "δ", "yt": "9Ei97y_bEfQ" },
+        { "num": 7, "title": "逆夢", "yt": "M6gcoDN9jBc" },
+        { "num": 8, "title": "IKAROS", "yt": "uo3K9PFsltw" },
+        { "num": 9, "title": "W●RKHOLIC", "yt": "WjaUxanuVJY" },
+        { "num": 10, "title": "):阿修羅:(", "yt": "Z4d5EgtzczI" },
+        { "num": 11, "title": "千両役者（ALBUM ver.）", "yt": "YOYeJn4mz8M" },
+        { "num": 12, "title": "硝子窓", "yt": "DAzN019hKhc" },
+        { "num": 13, "title": "泡（ALBUM ver.）", "yt": "jSf6S6ny6-A" },
+        { "num": 14, "title": "2 Μ Ο Я Ο", "yt": "31y39o5DgCk" },
+        { "num": 15, "title": "STARDOM（ALBUM ver.）", "yt": "k7rHDHJG1jA" },
+        { "num": 16, "title": "SUNNY SIDE UP", "yt": "Z7syJP0-QG8" },
+        { "num": 17, "title": "雨燦々", "yt": "C47K1TX9PAA" },
+        { "num": 18, "title": "BOY", "yt": "n0QNaym0jDI" },
+        { "num": 19, "title": "仝", "yt": "SDuKNUukdOo" },
+        { "num": 20, "title": "三文小説（ALBUM ver.）", "yt": "Y8HeOA95UzQ" },
+        { "num": 21, "title": "ЯOЯЯIM", "yt": "8puVNuzNAAQ" }
+      ]
+    },
+    {
+      "title": "CEREMONY", "year": "2020.01.15", "note": "3rd ALBUM",
+      "tracks": [
+        { "num": 1, "title": "開会式", "yt": "KG6a1-AVNvw" },
+        { "num": 2, "title": "どろん", "yt": "gc0_Acq8dV4" },
+        { "num": 3, "title": "Teenager Forever", "yt": "XPUN-w543bc" },
+        { "num": 4, "title": "ユーモア", "yt": "nggQBMDEwrQ" },
+        { "num": 5, "title": "白日", "yt": "ony539T074w" },
+        { "num": 6, "title": "幕間", "yt": "z_3qnhlBsqA" },
+        { "num": 7, "title": "飛行艇", "yt": "MSv7NbfbtU8" },
+        { "num": 8, "title": "小さな惑星", "yt": "Ttiff292-Gg" },
+        { "num": 9, "title": "Overflow", "yt": "EsflrwOsYoE" },
+        { "num": 10, "title": "傘", "yt": "g4_nRpHotMo" },
+        { "num": 11, "title": "壇上", "yt": "JX1WTsAzThA" },
+        { "num": 12, "title": "閉会式", "yt": "4Ji37x6p0Zs" }
+      ]
+    },
+    {
+      "title": "Sympa", "year": "2019.01.23", "note": "1st ALBUM",
+      "tracks": [
+        { "num": 1, "title": "Sympa Ⅰ", "yt": "MQzL6wzN_Cg" },
+        { "num": 2, "title": "Slumberland", "yt": "C66yySFa48A" },
+        { "num": 3, "title": "Flash!!!", "yt": "j_NHrPC3ij8" },
+        { "num": 4, "title": "Sorrows", "yt": "UbcFMUn_ldY" },
+        { "num": 5, "title": "Sympa Ⅱ", "yt": "B2_CWxW8STc" },
+        { "num": 6, "title": "Hitman", "yt": "ThMur0u7LNg" },
+        { "num": 7, "title": "Don't Stop the Clocks", "yt": "knf-Xj8gDfA" },
+        { "num": 8, "title": "It's a small world", "yt": "JBmzU_qn_G8" },
+        { "num": 9, "title": "Sympa Ⅲ", "yt": "uvOXnx5_g9w" },
+        { "num": 10, "title": "Prayer X", "yt": "L-Bzhpm8h0o" },
+        { "num": 11, "title": "Bedtown", "yt": "8T_T468KLrg" },
+        { "num": 12, "title": "The hole", "yt": "BjI0HIn46l0" },
+        { "num": 13, "title": "Sympa Ⅳ", "yt": "8qzGd2G_bOs" }
+      ]
+    },
+    {
+      "title": "Tokyo Rendez-Vous", "year": "2017", "note": "INDIE 1st ALBUM",
+      "tracks": [
+        { "num": 1, "title": "Tokyo Rendez-Vous", "yt": "XDiuwqJg8pU" },
+        { "num": 2, "title": "McDonald Romance", "yt": "YeBt1NhOJtA" },
+        { "num": 3, "title": "あなたは蜃気楼", "yt": "g3VNX7518UU" },
+        { "num": 4, "title": "Vinyl", "yt": "RLAw8Ct9k48" },
+        { "num": 5, "title": "破裂", "yt": "eszWI6FvEV4" },
+        { "num": 6, "title": "ロウラヴ", "yt": "M03_7FwCVhk" },
+        { "num": 7, "title": "NIGHT POOL", "yt": "UU35hs7jxXM" },
+        { "num": 8, "title": "サマーレイン・ダイバー", "yt": "ZeHRavwO9sI" }
+      ]
+    }
+  ]
+}
