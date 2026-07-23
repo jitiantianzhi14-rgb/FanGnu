@@ -1,82 +1,36 @@
 {
-  "eras": [
-    {
-      "era": "2025 — 2026",
-      "items": [
-        { "type": "SINGLE", "year": "2026.02.11", "title": "AIZO", "note": "呪術廻戦 死滅回游編 オープニングテーマ", "yt": "zz2a9Q2Wru0" },
-        { "type": "SINGLE", "year": "2025.09.05", "title": "SO BAD", "note": "USJハロウィンホラーナイト2025 公式テーマ", "yt": "d4st4aEjQ28" },
-        { "type": "SINGLE", "year": "2025.04.18", "title": "TWILIGHT!!!", "note": "劇場版名探偵コナン 隻眼の残像 エンディングテーマ", "yt": "qIcIpSyHcyM" }
-      ]
-    },
-    {
-      "era": "2023 — 2024",
-      "items": [
-        { "type": "SINGLE", "year": "2024.10.21", "title": "ねっこ", "note": "", "yt": "jz8O2t2r8Gs" },
-        { "type": "SINGLE", "year": "2024.10.04", "title": "MASCARA", "note": "", "yt": "Fm7Qu2YzlIM" },
-        { "type": "SINGLE", "year": "2023.09.06", "title": "SPECIALZ", "note": "呪術廻戦 渋谷事変 オープニングテーマ", "yt": "fhzKLBZJC3w" }
-      ]
-    },
-    {
-      "era": "2022",
-      "items": [
-        {
-          "type": "ALBUM", "year": "2022.11.16", "title": "THE GREATEST UNKNOWN", "note": "4thアルバム。オリコン週間1位獲得。",
-          "tracks": "飛行艇 / 硝子窓 / Zom 100 / 千両役者 / 傘 / 一途 / 逆夢 / 育ちすぎた朝顔 / BOY / The hole / 雨燦々 / 万葉集"
-        },
-        { "type": "SINGLE", "year": "2022.11", "title": "硝子窓", "note": "", "yt": "DAzN019hKhc" },
-        { "type": "SINGLE", "year": "2022.07.15", "title": "雨燦々", "note": "", "yt": "C47K1TX9PAA" },
-        { "type": "SINGLE", "year": "2022.03.16", "title": "カメレオン", "note": "", "yt": "BOrdMrh4uKg" },
-        { "type": "SINGLE", "year": "2021.12.29", "title": "逆夢", "note": "進撃の巨人 The Final Season Part2 ED", "yt": "M6gcoDN9jBc" }
-      ]
-    },
-    {
-      "era": "2020 — 2021",
-      "items": [
-        {
-          "type": "ALBUM", "year": "2020.01.15", "title": "CEREMONY", "note": "3rdアルバム。オリコン週間1位獲得。",
-          "tracks": "三文小説 / 傘 / 飛行艇 / 千両役者 / 白日 / to the moon and back / 壇上 / Teenager Forever / 小さな惑星 / 泡 / Slumberland / 整形前夜"
-        },
-        { "type": "SINGLE", "year": "2021.06.16", "title": "一途", "note": "映画「東京リベンジャーズ」主題歌", "yt": "hm1na9R2uYA" },
-        { "type": "SINGLE", "year": "2021", "title": "BOY", "note": "", "yt": "n0QNaym0jDI" },
-        { "type": "SINGLE", "year": "2021", "title": "F.O.O.L", "note": "", "yt": "cu7uQhDM1oY" },
-        { "type": "COVER", "year": "2021", "title": "飾りじゃないのよ涙は", "note": "井上陽水カバー", "yt": "cAVnxFszvKo" },
-        { "type": "SINGLE", "year": "2020.10.21", "title": "三文小説", "note": "ドラマ「この恋あたためますか」主題歌", "yt": "Y8HeOA95UzQ" },
-        { "type": "SINGLE", "year": "2020.10.21", "title": "Stardom", "note": "au CMソング", "yt": "k7rHDHJG1jA" },
-        { "type": "SINGLE", "year": "2020", "title": "泡", "note": "", "yt": "jSf6S6ny6-A" },
-        { "type": "SINGLE", "year": "2020", "title": "千両役者", "note": "", "yt": "YOYeJn4mz8M" }
-      ]
-    },
-    {
-      "era": "2018 — 2019",
-      "items": [
-        {
-          "type": "ALBUM", "year": "2019.01.23", "title": "Sympa", "note": "メジャー1stアルバム。「白日」「Prayer X」収録。",
-          "tracks": "Prayer X / 白日 / It's a small world / Teenager Forever / どろん / McDonald Romance / Slumberland / Flash!!! / を待ちわびて / The hole / 破裂 / Vinyl"
-        },
-        { "type": "SINGLE", "year": "2019.02.13", "title": "白日", "note": "ドラマ「イノセンス 冤罪弁護士」主題歌。ストリーミング累計10億回超", "yt": "ony539T074w" },
-        { "type": "SINGLE", "year": "2019", "title": "傘", "note": "", "yt": "g4_nRpHotMo" },
-        { "type": "SINGLE", "year": "2019", "title": "飛行艇", "note": "", "yt": "MSv7NbfbtU8" },
-        { "type": "SINGLE", "year": "2019", "title": "Teenager Forever", "note": "", "yt": "XPUN-w543bc" },
-        { "type": "SINGLE", "year": "2019", "title": "Slumberland", "note": "", "yt": "C66yySFa48A" },
-        { "type": "SINGLE", "year": "2018", "title": "Prayer X", "note": "", "yt": "L-Bzhpm8h0o" },
-        { "type": "SINGLE", "year": "2018", "title": "Flash!!!", "note": "", "yt": "j_NHrPC3ij8" },
-        { "type": "SINGLE", "year": "2018", "title": "Vinyl", "note": "", "yt": "RLAw8Ct9k48" },
-        { "type": "SINGLE", "year": "2018", "title": "McDonald Romance", "note": "", "yt": "YeBt1NhOJtA" }
-      ]
-    },
-    {
-      "era": "2017 / King Gnu インディーズ",
-      "items": [
-        { "type": "EP", "year": "2017", "title": "Tokyo Rendez-Vous", "note": "King Gnu名義初期作品", "yt": "XDiuwqJg8pU" }
-      ]
-    },
-    {
-      "era": "UNRELEASED",
-      "items": [
-        { "type": "UNRELEASED", "year": "—", "title": "VIVID RED", "note": "ライブで披露された未発表曲" },
-        { "type": "UNRELEASED", "year": "—", "title": "catch!!!", "note": "ライブで披露された未発表曲" }
-      ]
-    }
+  "items": [
+    { "type": "SINGLE", "year": "2026.07.29", "title": "GO GHOST", "note": "TVアニメ『攻殻機動隊 THE GHOST IN THE SHELL』オープニングテーマ", "yt": "", "spotify": "" },
+    { "type": "SINGLE", "year": "2026.01.09", "title": "AIZO", "note": "TVアニメ『呪術廻戦』「死滅回游 前編」オープニングテーマ", "yt": "zz2a9Q2Wru0", "spotify": "https://open.spotify.com/intl-ja/album/7BAFUXup2XFZpcnCmLjXmM" },
+    { "type": "SINGLE", "year": "2025.09.05", "title": "SO BAD", "note": "ユニバーサル・スタジオ・ジャパン『ゾンビ・デ・ダンス』テーマソング,ユニバーサル・スタジオ・ジャパン『【正気なんか、失え。】USJハロウィーン』TVCMソング,ユニバーサル・スタジオ・ジャパン「ハリウッド・ドリーム・ザ・ライド」搭載曲", "yt": "d4st4aEjQ28", "spotify": "https://open.spotify.com/intl-ja/album/4Qln8io3Qbczk1OSHVTTtG" },
+    { "type": "SINGLE", "year": "2025.04.18", "title": "TWILIGHT!!!", "note": "劇場版『名探偵コナン 隻眼の残像』主題歌", "yt": "qIcIpSyHcyM", "spotify": "https://open.spotify.com/intl-ja/album/3KbovyECUFkQQFfUVvwkD6" },
+    { "type": "SINGLE", "year": "2024.10.21", "title": "ねっこ", "note": "TBS系日曜劇場『海に眠るダイヤモンド』主題歌", "yt": "jz8O2t2r8Gs", "spotify": "https://open.spotify.com/intl-ja/album/4NA5TeCtuhkYhIZ75JGACR" },
+    { "type": "SINGLE", "year": "2024.10.04", "title": "MASCARA", "note": "SixTONESに楽曲提供", "yt": "Fm7Qu2YzlIM", "spotify": "https://open.spotify.com/intl-ja/album/25ljniOTN62coBIA6iD4iC" },
+    { "type": "SINGLE", "year": "2023.09.06", "title": "SPECIALZ", "note": "TVアニメ『呪術廻戦』「渋谷事変」オープニングテーマ,劇場版『呪術廻戦「渋谷事変 特別編集版」×「死滅回游 先行上映」』挿入歌", "yt": "fhzKLBZJC3w", "spotify": "https://open.spotify.com/intl-ja/album/16Wxo6FKPXPzU9IApZfdlc" },
+    { "type": "SINGLE", "year": "2022.11", "title": "硝子窓", "note": "映画『ミステリと言う勿れ』主題歌", "yt": "DAzN019hKhc", "spotify": "https://open.spotify.com/intl-ja/album/0RjjIsZlBkbjOZr6nuEdkG" },
+    { "type": "SINGLE", "year": "2022.07.15", "title": "雨燦々", "note": "日曜劇場「 オールドルーキー 」主題歌", "yt": "C47K1TX9PAA", "spotify": "https://open.spotify.com/intl-ja/album/2gv7KqKXqTEfXnNOUyu85q" },
+    { "type": "SINGLE", "year": "2022.03.16", "title": "カメレオン", "note": "フジテレビ1月期 月9ドラマ『ミステリと言う勿れ』主題歌", "yt": "BOrdMrh4uKg", "spotify": "https://open.spotify.com/intl-ja/album/2dZ3LDlFGj0D4dvb1iDx7z" },
+    { "type": "SINGLE", "year": "2021.12.29", "title": "逆夢", "note": "『劇場版 呪術廻戦 0』ED", "yt": "M6gcoDN9jBc", "spotify": "https://open.spotify.com/intl-ja/album/4ViuBpPF350uPP6bVoDmQ2" },
+    { "type": "SINGLE", "year": "2021.12.29", "title": "一途", "note": "『劇場版 呪術廻戦 0』主題歌", "yt": "hm1na9R2uYA", "spotify": "https://open.spotify.com/intl-ja/album/5sCVCfINkiQ40ozBngqGaY" },
+    { "type": "SINGLE", "year": "2021.12.01", "title": "BOY", "note": "（フジテレビ“ノイタミナ”TVアニメ「王様ランキング」オープニング・テーマ）", "yt": "n0QNaym0jDI", "spotify": "https://open.spotify.com/intl-ja/album/5eSF5iG7ICG4M6S5A948oX" },
+    { "type": "SINGLE", "year": "2021.12.01", "title": "F.O.O.L", "note": "(Red Bull Race Day テーマソング),Red Bull 「Red Bull Race Day 轟音東京」CMソング", "yt": "cu7uQhDM1oY", "spotify": "https://open.spotify.com/intl-ja/track/5C1BhnH2RjQfShN1DzqyKy" },
+    { "type": "COVER", "year": "2019.11.27", "title": "飾りじゃないのよ涙は", "note": "井上陽水カバー", "yt": "cAVnxFszvKo", "spotify": "https://open.spotify.com/intl-ja/album/1jlWB5Gr33OirM1wdlW1bE" },
+    { "type": "SINGLE", "year": "2020.12.02", "title": "三文小説", "note": "日本テレビ系 土曜ドラマ「35歳の少女」主題歌", "yt": "Y8HeOA95UzQ", "spotify": "https://open.spotify.com/intl-ja/album/4tQOjQXbqjuH41VeYuEPAu" },
+    { "type": "SINGLE", "year": "2022.11.30", "title": "Stardom", "note": "2022 NHKサッカーテーマ", "yt": "k7rHDHJG1jA", "spotify": "https://open.spotify.com/intl-ja/album/4NA5TeCtuhkYhIZ75JGACR" },
+    { "type": "SINGLE", "year": "2021.03.05", "title": "泡", "note": "WOWOW『連続ドラマW 太陽は動かない -THE ECLIPSE-』主題歌,映画『太陽は動かない』主題歌", "yt": "jSf6S6ny6-A", "spotify": "https://open.spotify.com/intl-ja/album/5DwlOneWR9PtdqGQ0FuUge" },
+    { "type": "SINGLE", "year": "2020.12.02", "title": "千両役者", "note": "ＮＴＴドコモ 5G「希望を加速しよう2nd篇」CMソング,NTTドコモ「docomo 5G 希望を加速しよう 3rd」篇CMソング", "yt": "YOYeJn4mz8M", "spotify": "https://open.spotify.com/intl-ja/album/0gtPCw3pUBxdvZw16ZIcH9" },
+    { "type": "SINGLE", "year": "2019.02.22", "title": "白日", "note": "日本テレビ系土曜ドラマ「イノセンス 冤罪弁護士」主題歌", "yt": "ony539T074w", "spotify": "https://open.spotify.com/intl-ja/album/0wbmGb0QV2XbioKkOfNycl" },
+    { "type": "SINGLE", "year": "2019.10.11", "title": "傘", "note": "ブルボン「アルフォート」CMソング,テレビ東京系『有吉ぃぃeeeee!そうだ!今からお前んチでゲームしない?』6月度勝手にEDテーマ", "yt": "g4_nRpHotMo", "spotify": "https://open.spotify.com/intl-ja/album/54Q4vGx16FGJzq2I63oEMs" },
+    { "type": "SINGLE", "year": "2019.08.09", "title": "飛行艇", "note": "ANA 国内版テレビCM『ひとには翼がある』篇CMソング,MBS・TBS系『日曜日の初耳学』「インタビュアー林修」テーマ曲,読売ジャイアンツ『GIANTS PRIDE 2025』使用楽曲,キリンビバレッジ「キリン ファイア ワンデイ」シリーズ『心燃やせ 常田大希篇』CMソング", "yt": "MSv7NbfbtU8", "spotify": "https://open.spotify.com/intl-ja/album/37arn09dKv9LylYaAvMsgY" },
+    { "type": "SINGLE", "year": "2019", "title": "Teenager Forever", "note": "ソニー 完全ワイヤレス型ノイズキャンセリングイヤホン『WF-1000XM3』、ハイレゾウォークマン『NW-A100シリーズ』CMソング", "yt": "XPUN-w543bc", "spotify": "https://open.spotify.com/intl-ja/album/12yrRccsHEv4kkN9IP8N1u" },
+    { "type": "SINGLE", "year": "2019", "title": "Slumberland", "note": "長崎国際テレビ『AIR』2月度オープニングテーマ", "yt": "C66yySFa48A", "spotify": "https://open.spotify.com/intl-ja/album/4oNjr7iJmnOwxbnpymxJiq" },
+    { "type": "SINGLE", "year": "2018.09.19", "title": "Prayer X", "note": "フジテレビ“ノイタミナ”アニメ「BANANA FISH」エンディング・テーマ", "yt": "L-Bzhpm8h0o", "spotify": "https://open.spotify.com/intl-ja/album/5oqxo7mNVyuFWsTgUAWy3H" },
+    { "type": "SINGLE", "year": "2018.07.13", "title": "Flash!!!", "note": "フジテレビ系『所JAPAN』テーマソング", "yt": "j_NHrPC3ij8", "spotify": "https://open.spotify.com/intl-ja/album/0RoQFt5BklyHfL1mfJq8xL" },
+    { "type": "SINGLE", "year": "2018", "title": "Vinyl", "note": "パーソルテンプスタッフ「HAKEN ROCK!!」CMソング", "yt": "RLAw8Ct9k48", "spotify": "https://open.spotify.com/intl-ja/album/5kqtCLrWBMBFB08Buf6eXN" },
+    { "type": "SINGLE", "year": "2018", "title": "McDonald Romance", "note": "", "yt": "YeBt1NhOJtA", "spotify": "https://open.spotify.com/intl-ja/album/3r6Y3VfDV0usORtuXUELq2" },
+    { "type": "EP", "year": "2017", "title": "Tokyo Rendez-Vous", "note": "King Gnu名義初期作品", "yt": "XDiuwqJg8pU", "spotify": "https://open.spotify.com/intl-ja/album/6lEz1aowxK9TMtI9jEsIpC" },
+    { "type": "UNRELEASED", "year": "—", "title": "VIVID RED", "note": "ライブで披露された未発表曲" },
+    { "type": "UNRELEASED", "year": "—", "title": "catch!!!", "note": "ライブで披露された未発表曲" }
   ],
   "albums": [
     {

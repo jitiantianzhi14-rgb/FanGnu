@@ -1,0 +1,163 @@
+{
+  "tours": [
+    {
+      "year": "2026",
+      "name": "King Gnu CEN+RAL Tour 2026",
+      "scale": "ARENA TOUR — JAPAN / ASIA",
+      "shows": [
+        { "date": "2026.02.21", "venue": "セキスイハイムスーパーアリーナ", "location": "宮城県宮城郡利府町菅谷館４０−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "Flash!!!（2回目）", "逆夢", "SUNNY SIDE UP", "雨燦々", "サマーレイン・ダイバー"] },
+        { "date": "2026.02.22", "venue": "セキスイハイムスーパーアリーナ", "location": "宮城県宮城郡利府町菅谷館４０−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "サマーレイン・ダイバー"] },
+        { "date": "2026.03.03", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "サマーレイン・ダイバー"] },
+        { "date": "2026.03.04", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "サマーレイン・ダイバー"] },
+        { "date": "2026.03.11", "venue": "あなぶきアリーナ香川", "location": "香川県高松市サンポート６−１１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "It's a small world", "サマーレイン・ダイバー"] },
+        { "date": "2026.03.12", "venue": "あなぶきアリーナ香川", "location": "香川県高松市サンポート６−１１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "McDonald Romance", "It's a small world", "サマーレイン・ダイバー"] },
+        { "date": "2026.03.18", "venue": "有明アリーナ", "location": "東京都江東区有明１丁目１１−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "サマーレイン・ダイバー", "AIZO（カウントダウンTV収録）"] },
+        { "date": "2026.03.19", "venue": "有明アリーナ", "location": "東京都江東区有明１丁目１１−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "Sorrows", "McDonald Romance", "サマーレイン・ダイバー"] },
+        { "date": "2026.03.28", "venue": "ポートメッセなごや 第1展示館", "location": "愛知県名古屋市港区金城ふ頭３丁目２−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "サマーレイン・ダイバー"] },
+        { "date": "2026.03.29", "venue": "ポートメッセなごや 第1展示館", "location": "愛知県名古屋市港区金城ふ頭３丁目２−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "MASCARA", "サマーレイン・ダイバー"] },
+        { "date": "2026.04.04", "venue": "広島グリーンアリーナ", "location": "広島県広島市中区基町４−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "MASCARA", "ロウラヴ", "サマーレイン・ダイバー"] },
+        { "date": "2026.04.05", "venue": "広島グリーンアリーナ", "location": "広島県広島市中区基町４−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "MASCARA", "ユーモア", "サマーレイン・ダイバー"] },
+        { "date": "2026.04.14", "venue": "LaLa arena TOKYO-BAY", "location": "千葉県船橋市浜町２丁目５−１５", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "McDonald Romance", "MASCARA", "ロウラヴ", "Sorrows", "サマーレイン・ダイバー"] },
+        { "date": "2026.04.15", "venue": "LaLa arena TOKYO-BAY", "location": "千葉県船橋市浜町２丁目５−１５", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "MASCARA", "サマーレイン・ダイバー"] },
+        { "date": "2026.04.21", "venue": "マリンメッセ福岡 A館", "location": "福岡県福岡市博多区沖浜町７−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "MASCARA", "ロウラヴ", "サマーレイン・ダイバー"] },
+        { "date": "2026.04.22", "venue": "マリンメッセ福岡 A館", "location": "福岡県福岡市博多区沖浜町７−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SPECIALZ", "SO BAD", "逆夢", "SUNNY SIDE UP", "雨燦々", "サマーレイン・ダイバー", "It's a small world", "McDonald Romance"] },
+        { "date": "2026.05.01", "venue": "真駒内セキスイハイムアイスアリーナ", "location": "北海道札幌市南区真駒内公園１−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "It's a small world", "MASCARA", "McDonald Romance", "サマーレイン・ダイバー"] },
+        { "date": "2026.05.02", "venue": "真駒内セキスイハイムアイスアリーナ", "location": "北海道札幌市南区真駒内公園１−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "ロウラヴ", "McDonald Romance", "サマーレイン・ダイバー"] },
+        { "date": "2026.05.09", "venue": "朱鷺メッセ・新潟コンベンションセンター", "location": "新潟県新潟市中央区万代島６−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "BOY", "Don't Stop the Clocks", "McDonald Romance", "MASCARA", "サマーレイン・ダイバー"] },
+        { "date": "2026.05.10", "venue": "朱鷺メッセ・新潟コンベンションセンター", "location": "新潟県新潟市中央区万代島６−１", "status": "", "setlist": ["AIZO", "飛行艇", "どろん", "Flash!!!", "Teenager Forever", "傘", "TWILIGHT!!!", "Prayer X", "Tokyo Rendez-Vous", "Vinyl", "Slumberland", "白日", "破裂", "NIGHT POOL", "CHAMELEON", "ねっこ", "The hole", "一途", "):阿修羅:(", "SO BAD", "SPECIALZ", "逆夢", "SUNNY SIDE UP", "雨燦々", "BOY", "Don't Stop the Clocks", "McDonald Romance", "MASCARA", "サマーレイン・ダイバー"] },
+        { "date": "2026.05.23", "venue": "One Bangkok Forum", "location": "One Bangkok, 197 Witthayu Rd, Lumphini, Pathum Wan, Bangkok 10330 タイ", "status": "", "setlist": ["AIZO", "Flash!!!", "どろん", "Teenager Forever", "Vinyl", "TWILIGHT!!!", "ねっこ", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "NIGHT POOL", "白日", "CHAMELEON", "The hole", "一途", "):阿修羅:(", "SPECIALZ", "SO BAD", "MASCARA", "逆夢", "SUNNY SIDE UP", "雨燦々", "飛行艇"] },
+        { "date": "2026.05.29", "venue": "AsiaWorld-Arena", "location": "1號 Airport Expo Blvd, Chek Lap Kok, 香港", "status": "", "setlist": ["AIZO", "Flash!!!", "どろん", "Teenager Forever", "Vinyl", "TWILIGHT!!!", "ねっこ", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "NIGHT POOL", "白日", "CHAMELEON", "The hole", "一途", "):阿修羅:(", "SPECIALZ", "SO BAD", "MASCARA", "逆夢", "SUNNY SIDE UP", "雨燦々", "飛行艇"] },
+        { "date": "2026.05.30", "venue": "AsiaWorld-Arena", "location": "1號 Airport Expo Blvd, Chek Lap Kok, 香港", "status": "", "setlist": ["AIZO", "Flash!!!", "どろん", "Teenager Forever", "Vinyl", "TWILIGHT!!!", "ねっこ", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "NIGHT POOL", "白日", "CHAMELEON", "The hole", "一途", "):阿修羅:(", "SPECIALZ", "SO BAD", "MASCARA", "逆夢", "SUNNY SIDE UP", "雨燦々", "飛行艇", "It's a small world"] },
+        { "date": "2026.06.06", "venue": "Taipei Arena", "location": " No. 2號, Section 4, Nanjing E Rd, Meiren Village, Songshan District, Taipei City, 台湾 105037", "status": "", "setlist": ["AIZO", "Flash!!!", "どろん", "Teenager Forever", "Vinyl", "TWILIGHT!!!", "ねっこ", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "NIGHT POOL", "白日", "破裂", "The hole", "一途", "):阿修羅:(", "SPECIALZ", "SO BAD", "MASCARA", "逆夢", "SUNNY SIDE UP", "雨燦々", "飛行艇"] },
+        { "date": "2026.06.07", "venue": "Taipei Arena", "location": " No. 2號, Section 4, Nanjing E Rd, Meiren Village, Songshan District, Taipei City, 台湾 105037", "status": "", "setlist": ["AIZO", "Flash!!!", "どろん", "Teenager Forever", "Vinyl", "TWILIGHT!!!", "ねっこ", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "NIGHT POOL", "白日", "破裂", "The hole", "一途", "):阿修羅:(", "SPECIALZ", "SO BAD", "MASCARA", "逆夢", "SUNNY SIDE UP", "雨燦々", "飛行艇"] },
+        { "date": "2026.06.13", "venue": "", "location": "上海", "status": "中止", "note": "やむを得ない諸事情により開催中止", "setlist": [] },
+        { "date": "2026.06.14", "venue": "", "location": "上海", "status": "中止", "note": "やむを得ない諸事情により開催中止", "setlist": [] },
+        { "date": "2026.06.20", "venue": "KSPO DOME", "location": "４２４ Olympic-ro, Songpa District, Seoul, 韓国", "status": "", "setlist": ["AIZO", "Flash!!!", "どろん", "Teenager Forever", "Vinyl", "TWILIGHT!!!", "ねっこ", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "NIGHT POOL", "白日", "破裂", "The hole", "一途", "):阿修羅:(", "SPECIALZ", "SO BAD", "Sorrows", "逆夢", "SUNNY SIDE UP", "雨燦々", "飛行艇"] },
+        { "date": "2026.06.21", "venue": "KSPO DOME", "location": "４２４ Olympic-ro, Songpa District, Seoul, 韓国", "status": "", "setlist": ["AIZO", "Flash!!!", "どろん", "Teenager Forever", "Vinyl", "TWILIGHT!!!", "ねっこ", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "NIGHT POOL", "白日", "破裂", "The hole", "一途", "):阿修羅:(", "SPECIALZ", "SO BAD", "McDonald Romance", "Don't Stop the Clocks", "MASCARA", "逆夢", "SUNNY SIDE UP", "雨燦々", "飛行艇"] },
+        { "date": "2026.07.14", "venue": "横浜アリーナ", "location": "神奈川県横浜市港北区新横浜３丁目１０", "status": "", "note": "追加公演", "setlist": ["AIZO", "Flash!!!", "どろん", "Teenager Forever", "Vinyl", "TWILIGHT!!!", "ねっこ", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "NIGHT POOL", "白日", "破裂", "カメレオン", "The hole", "一途", "):阿修羅:(", "SPECIALZ", "SO BAD", "BOY", "MASCARA", "Sorrows", "逆夢", "雨燦々", "飛行艇"] },
+        { "date": "2026.07.15", "venue": "横浜アリーナ", "location": "神奈川県横浜市港北区新横浜３丁目１０", "status": "", "note": "追加公演", "setlist": ["AIZO", "Flash!!!", "どろん", "Teenager Forever", "Vinyl", "TWILIGHT!!!", "ねっこ", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "NIGHT POOL", "白日", "破裂", "カメレオン", "The hole", "一途", "):阿修羅:(", "SPECIALZ", "BOY", "SO BAD", "Don't Stop the Clocks", "MASCARA", "Sorrows", "逆夢", "SUNNY SIDE UP", "雨燦々", "飛行艇"] }
+      ]
+    },
+    {
+      "year": "2025",
+      "name": "KING GNU LIVEHOUSE TOUR 2025 CLUB GNU EDITION",
+      "scale": "LIVEHOUSE TOUR",
+      "shows": [
+        { "date": "2025.02.12", "venue": "Zepp Osaka Bayside", "location": "大阪府大阪市此花区桜島１丁目１−６１", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "一途（ALBUM ver.）", "ねっこ ★初披露", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "MASCARA ★初披露", "It's a small world", "ロウラヴ", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.02.13", "venue": "Zepp Osaka Bayside", "location": "大阪府大阪市此花区桜島１丁目１−６１", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "一途（ALBUM ver.）", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "MASCARA", "It's a small world", "ロウラヴ", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.02.19", "venue": "Zepp Nagoya", "location": "愛知県名古屋市中村区平池町４丁目６０−７", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "一途（ALBUM ver.）", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "MASCARA", "It's a small world", "ロウラヴ", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.02.20", "venue": "Zepp Nagoya", "location": "愛知県名古屋市中村区平池町４丁目６０−７", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "一途（ALBUM ver.）", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "MASCARA", "It's a small world", "ロウラヴ", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.02.25", "venue": "Zepp Fukuoka", "location": "福岡県福岡市中央区地行浜２丁目２−１", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "一途（ALBUM ver.）", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "MASCARA", "It's a small world", "ロウラヴ", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.02.26", "venue": "Zepp Fukuoka", "location": "福岡県福岡市中央区地行浜２丁目２−１", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "一途（ALBUM ver.）", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "MASCARA", "It's a small world", "ロウラヴ", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.03.03", "venue": "Zepp Haneda（TOKYO）", "location": "東京都大田区羽田空港１丁目１−４", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "一途（ALBUM ver.）", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "MASCARA", "It's a small world", "ロウラヴ", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.03.04", "venue": "Zepp Haneda（TOKYO）", "location": "東京都大田区羽田空港１丁目１−４", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "一途", "ロウラヴ", "MASCARA", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.03.12", "venue": "Zepp Sapporo", "location": "北海道札幌市中央区南９条西４丁目４", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "一途", "ロウラヴ", "MASCARA", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.03.13", "venue": "Zepp Sapporo", "location": "北海道札幌市中央区南９条西４丁目４", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "一途", "ロウラヴ", "MASCARA", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.03.26", "venue": "東京ガーデンシアター", "location": "東京都江東区有明２丁目１−６", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "一途", "ロウラヴ", "MASCARA", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.03.27", "venue": "東京ガーデンシアター", "location": "東京都江東区有明２丁目１−６", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "一途", "ロウラヴ", "MASCARA", "It's a small world", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.04.08", "venue": "東京ガーデンシアター", "location": "東京都江東区有明２丁目１−６", "status": "", "note": "OPEN 18:00 / START 19:00,追加公演", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "一途", "ロウラヴ", "MASCARA", "SUNNY SIDE UP", "雨燦々"] },
+        { "date": "2025.04.09", "venue": "東京ガーデンシアター", "location": "東京都江東区有明２丁目１−６", "status": "", "note": "OPEN 18:00 / START 19:00,追加公演", "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "一途", "ロウラヴ", "MASCARA", "It's a small world", "SUNNY SIDE UP", "雨燦々"] }
+      ]
+    },
+    {
+      "year": "2024",
+      "name": "King Gnu Asia Tour「THE GREATEST UNKNOWN」",
+      "scale": "Asia TOUR",
+      "shows": [
+        { "date": "2024.04.06", "venue": "Taipei Music Center", "location": "TAIPEI", "status": "SOLD OUT", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE?? (Vivid Red アレンジ)", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Prayer X", "Teenager forever", "飛行艇"] },
+        { "date": "2024.04.07", "venue": "Taipei Music Center", "location": "TAIPEI", "status": "", "note": "追加公演 / Additional show", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE?? (Vivid Red アレンジ)", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Prayer X", "Teenager forever", "飛行艇"] },
+        { "date": "2024.04.10", "venue": "The Star Theatre", "location": "SINGAPORE", "status": "", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE?? (Vivid Red アレンジ)", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Prayer X", "Teenager forever", "飛行艇"] },
+        { "date": "2024.04.14", "venue": "Jing’an Sports Center", "location": "SHANGHAI", "status": "SOLD OUT", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE?? (Vivid Red アレンジ)", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Prayer X", "Teenager forever", "飛行艇"] },
+        { "date": "2024.04.15", "venue": "Jing’an Sports Center", "location": "SHANGHAI", "status": "", "note": "追加公演 / Additional show", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE?? (Vivid Red アレンジ)", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "Don't Stop the Clocks（特別披露）", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Prayer X", "Teenager forever", "飛行艇"] },
+        { "date": "2024.04.19", "venue": "Olympic Hall", "location": "SEOUL", "status": "", "note": "追加公演 / Additional show", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE?? (Vivid Red アレンジ)", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Prayer X", "Teenager forever", "飛行艇"] },
+        { "date": "2024.04.20", "venue": "Olympic Hall", "location": "SEOUL", "status": "SOLD OUT", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE?? (Vivid Red アレンジ)", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Tokyo Rendez-Vous（特別披露）", "Prayer X", "Teenager forever", "飛行艇"] }
+      ]
+    },
+    {
+      "year": "2024",
+      "name": "King Gnu Dome Tour「THE GREATEST UNKNOWN」",
+      "scale": "DOME TOUR",
+      "shows": [
+        { "date": "2024.01.13", "venue": "京セラドーム大阪", "location": "大阪府大阪市西区千代崎３丁目中２−中２−１", "status": "", "note": "OPEN 15:00 / START 17:00", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇"] },
+        { "date": "2024.01.14", "venue": "京セラドーム大阪", "location": "大阪府大阪市西区千代崎３丁目中２−中２−１", "status": "", "note": "OPEN 14:00 / START 16:00", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇"] },
+        { "date": "2024.01.20", "venue": "バンテリンドーム ナゴヤ", "location": "愛知県名古屋市東区大幸南１丁目１−１", "status": "", "note": "OPEN 15:00 / START 17:00", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇"] },
+        { "date": "2024.01.21", "venue": "バンテリンドーム ナゴヤ", "location": "愛知県名古屋市東区大幸南１丁目１−１", "status": "", "note": "OPEN 14:00 / START 16:00", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇"] },
+        { "date": "2024.01.27", "venue": "東京ドーム", "location": "東京都文京区後楽１丁目３−６１", "status": "", "note": "OPEN 16:00 / START 18:00", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "W●RK（MILLENNIUM PARADE cover / feat. 椎名林檎）", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇"] },
+        { "date": "2024.01.28", "venue": "東京ドーム", "location": "東京都文京区後楽１丁目３−６１", "status": "", "note": "OPEN 15:00 / START 17:00", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "W●RK（MILLENNIUM PARADE cover / feat. 椎名林檎）", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇"] },
+        { "date": "2024.02.03", "venue": "福岡 PayPayドーム", "location": "福岡県福岡市中央区地行浜２丁目２−２", "status": "", "note": "OPEN 15:00 / START 17:00", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇"] },
+        { "date": "2024.02.04", "venue": "福岡 PayPayドーム", "location": "福岡県福岡市中央区地行浜２丁目２−２", "status": "", "note": "OPEN 14:00 / START 16:00", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇"] },
+        { "date": "2024.03.23", "venue": "札幌ドーム", "location": "北海道札幌市豊平区羊ケ丘１", "status": "", "note": "OPEN 14:00 / START 16:00,ツアーファイナル", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "It's a small world（Acoustic）", "Prayer X", "Teenager Forever", "飛行艇"] }
+      ]
+    },
+    {
+      "year": "2023",
+      "name": "King Gnu Stadium Live Tour 2023 CLOSING CEREMONY",
+      "scale": "STADIUM TOUR",
+      "shows": [
+        { "date": "2023.05.20", "venue": "ヤンマースタジアム長居", "location": "大阪府大阪市東住吉区長居公園1-1", "status": "", "setlist": ["Don't Stop the Clocks", "Teenager forever", "Tokyo Rendez-Vous", "飛行艇", "BOY", "傘", "小さな惑星", "雨燦々", "ユーモア", "開会式", "カメレオン", "三文小説（戦場のメリークリスマス ピアノイントロ）", "泡", "幕間", "どろん", "Overflow（李明海カバー）", "Prayer X", "Slumberland", "Stardom", "一途", "逆夢", "壇上", "サマーレイン・ダイバー", "閉会式", "白日", "McDonald Romance", "Flash!!!"] },
+        { "date": "2023.05.21", "venue": "ヤンマースタジアム長居", "location": "大阪府大阪市東住吉区長居公園1-1", "status": "", "setlist": ["雨燦々", "飛行艇", "小さな惑星", "BOY", "Teenager forever", "開会式", "Tokyo Rendez-Vous", "傘", "ユーモア", "Don't Stop the Clocks", "カメレオン", "三文小説", "泡", "幕間", "どろん", "Overflow（李明海カバー）", "Prayer X", "Slumberland", "Stardom", "一途", "逆夢", "壇上", "サマーレイン・ダイバー", "閉会式", "白日", "McDonald Romance", "Flash!!!"] },
+        { "date": "2023.06.03", "venue": "日産スタジアム", "location": "神奈川県横浜市港北区小机町３３００", "status": "", "setlist": ["開会式", "飛行艇", "Tokyo Rendez-Vous", "Teenager Forever", "BOY", "雨燦々", "小さな惑星", "傘", "ユーモア", "Don't Stop the Clocks", "カメレオン", "三文小説", "泡", "幕間", "どろん", "Overflow（李明海カバー）", "Prayer X", "Slumberland", "Stardom", "一途", "逆夢", "壇上", "サマーレイン・ダイバー", "閉会式", "白日", "McDonald Romance", "Flash!!!"] },
+        { "date": "2023.06.04", "venue": "日産スタジアム", "location": "神奈川県横浜市港北区小机町３３００", "status": "", "note": "ツアーファイナル", "setlist": ["開会式", "飛行艇", "Tokyo Rendez-Vous", "Teenager Forever", "BOY", "雨燦々", "小さな惑星", "傘", "ユーモア", "Don't Stop the Clocks", "カメレオン", "戦場のメリークリスマス（坂本龍一カバー・ファイナルのみ）", "三文小説", "泡", "幕間", "どろん", "Overflow（李明海カバー）", "Prayer X", "Slumberland", "Stardom", "一途", "逆夢", "壇上", "サマーレイン・ダイバー", "閉会式", "白日", "McDonald Romance", "Flash!!!"] }
+      ]
+    },
+    {
+      "year": "2022",
+      "name": "King Gnu Live at TOKYO DOME",
+      "scale": "TOKYO DOME TOUR",
+      "shows": [
+        { "date": "2022.11.19", "venue": "東京ドーム", "location": "東京都文京区後楽１丁目３−６１", "status": "", "setlist": ["一途", "飛行艇", "Sorrows", "千両役者", "BOY", "カメレオン", "Hitman", "The hole", "NIGHT POOL", "It's a small world", "白日", "雨燦々", "Slumberland", "どろん", "破裂", "Prayer X", "Vinyl", "Flash!!!", "逆夢", "Stardom", "McDonald Romance", "Teenager Forever", "Tokyo Rendez-Vous", "サマーレイン・ダイバー"] },
+        { "date": "2022.11.20", "venue": "東京ドーム", "location": "東京都文京区後楽１丁目３−６１", "status": "", "setlist": ["一途", "飛行艇", "Sorrows", "千両役者", "BOY", "カメレオン", "Hitman", "The hole", "NIGHT POOL", "It's a small world", "白日", "雨燦々", "Slumberland", "どろん", "破裂", "Prayer X", "Vinyl", "Flash!!!", "逆夢", "Stardom", "McDonald Romance", "Teenager Forever", "Tokyo Rendez-Vous", "サマーレイン・ダイバー"] }
+      ]
+    },
+    {
+      "year": "2022",
+      "name": "King Gnu Live Tour 2022 CLUB GNU EDITION",
+      "scale": "FUN CLUB TOUR",
+      "shows": [
+        { "date": "2020.02.08", "venue": "名古屋ガイシホール", "location": "愛知県名古屋市", "status": "SOLD OUT", "setlist": [] },
+        { "date": "2020.02.15", "venue": "大阪城ホール", "location": "大阪府大阪市", "status": "SOLD OUT", "setlist": [] },
+        { "date": "2020.03.07", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市 ※無観客配信", "status": "配信", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2022",
+      "name": "King Gnu Live Tour 2022 CLUB GNU EDITION",
+      "scale": "FUN CLUB TOUR",
+      "shows": [
+        { "date": "2020.02.08", "venue": "名古屋ガイシホール", "location": "愛知県名古屋市", "status": "SOLD OUT", "setlist": [] },
+        { "date": "2020.02.15", "venue": "大阪城ホール", "location": "大阪府大阪市", "status": "SOLD OUT", "setlist": [] },
+        { "date": "2020.03.07", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市 ※無観客配信", "status": "配信", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2022",
+      "name": "King Gnu Live Tour 2022 CLUB GNU EDITION",
+      "scale": "FUN CLUB TOUR",
+      "shows": [
+        { "date": "2020.02.08", "venue": "名古屋ガイシホール", "location": "愛知県名古屋市", "status": "SOLD OUT", "setlist": [] },
+        { "date": "2020.02.15", "venue": "大阪城ホール", "location": "大阪府大阪市", "status": "SOLD OUT", "setlist": [] },
+        { "date": "2020.03.07", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市 ※無観客配信", "status": "配信", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2022",
+      "name": "King Gnu Live Tour 2022 CLUB GNU EDITION",
+      "scale": "FUN CLUB TOUR",
+      "shows": [
+        { "date": "2020.02.08", "venue": "名古屋ガイシホール", "location": "愛知県名古屋市", "status": "SOLD OUT", "setlist": [] },
+        { "date": "2020.02.15", "venue": "大阪城ホール", "location": "大阪府大阪市", "status": "SOLD OUT", "setlist": [] },
+        { "date": "2020.03.07", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市 ※無観客配信", "status": "配信", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2022",
+      "name": "King Gnu Live Tour 2022 CLUB GNU EDITION",
+      "scale": "FUN CLUB TOUR",
+      "shows": [
+        { "date": "2020.02.08", "venue": "名古屋ガイシホール", "location": "愛知県名古屋市", "status": "SOLD OUT", "setlist": [] },
+        { "date": "2020.02.15", "venue": "大阪城ホール", "location": "大阪府大阪市", "status": "SOLD OUT", "setlist": [] },
+        { "date": "2020.03.07", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市 ※無観客配信", "status": "配信", "setlist": [] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>公演詳細 — FanGNU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Antique&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --red: #e63329; --black: #111; --white: #fff; --gray: #888; --border: #ddd; --bg: #fbf2d9; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--black); line-height: 1.6; padding-bottom: 58px; }
+    a { color: inherit; text-decoration: none; }
+
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 52px; }
+    .nav-logo { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 700; }
+    .nav-logo .red { color: var(--red); }
+    .nav-links { display: flex; gap: 1.75rem; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; }
+    .nav-links a { color: var(--gray); transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--black); }
+    .nav-links a.active { border-bottom: 1px solid var(--black); }
+
+    .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: var(--white); border-top: 2px solid var(--black); z-index: 200; }
+    .bn-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 8px 4px 6px; font-size: 9px; font-weight: 700; letter-spacing: 0.02em; color: var(--gray); transition: color 0.15s; }
+    .bn-item:hover { color: var(--black); }
+    .bn-item.active { color: var(--red); }
+    .bn-icon { font-size: 18px; line-height: 1; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 6px; margin: 1.25rem 2rem 0; padding: 0; background: none; border: none; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: var(--gray); cursor: pointer; }
+    .back-link:hover { color: var(--black); }
+
+    .page-header { padding: 0.75rem 2rem 2.5rem; border-bottom: 2px solid var(--black); background: var(--white); }
+    .live-badge { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; padding: 2px 8px; background: var(--black); color: var(--white); white-space: nowrap; display: inline-block; margin-bottom: 1rem; }
+    .live-badge.sold { background: var(--red); }
+    .page-header-tour { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--gray); }
+    .page-header-title { font-family: 'Zen Antique', serif; font-size: 44px; line-height: 1.2; letter-spacing: -0.02em; margin-top: 0.5rem; }
+    .page-header-date { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gray); margin-top: 0.75rem; }
+
+    .content { max-width: 800px; margin: 0 auto; padding: 2.5rem 2rem; }
+    .detail-address { font-size: 13px; color: #555; }
+    .detail-note { font-size: 12px; color: var(--red); margin-top: 8px; }
+
+    .setlist-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 8px; }
+    .setlist-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--red); }
+    .setlist-list { background: var(--white); border: 1px solid var(--border); }
+    .setlist-item { display: flex; align-items: center; gap: 12px; padding: 0.7rem 1.25rem; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+    .setlist-item:last-child { border-bottom: none; }
+    .setlist-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); width: 22px; flex-shrink: 0; }
+    .no-setlist { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); padding: 2rem 0; text-align: center; border: 1px dashed var(--border); margin-top: 2rem; }
+
+    .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); margin-top: 2rem; }
+    .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
+    .footer-logo .red { color: var(--red); }
+    .footer-copy { font-size: 10px; color: var(--gray); letter-spacing: 0.05em; text-align: right; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header-title { font-size: 32px; }
+      .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">Fan<span class="red">GNU</span></a>
+    <div class="nav-links">
+      <a href="members/members.html">メンバー</a>
+      <a href="discography.html">ディスコグラフィー</a>
+      <a href="live.html" class="active">ライブ</a>
+    </div>
+  </nav>
+
+  <button type="button" class="back-link" id="backLink">← 戻る</button>
+
+  <div class="page-header">
+    <span class="live-badge" id="statusBadge" style="display:none;"></span>
+    <div class="page-header-tour" id="tourName"></div>
+    <h1 class="page-header-title" id="venueName">読み込み中…</h1>
+    <div class="page-header-date" id="showDate"></div>
+  </div>
+
+  <div class="content">
+    <div class="detail-address" id="address"></div>
+    <div class="detail-note" id="noteText" style="display:none;"></div>
+    <div id="setlistArea"></div>
+  </div>
+
+  <footer class="footer">
+    <a href="../index.html" class="footer-logo">Fan<span class="red">GNU</span></a>
+    <div class="footer-copy">
+      非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>
+      © FanGNU Unofficial
+    </div>
+  </footer>
+
+  <script>
+  function escH(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function renderSetlist(setlist) {
+    const area = document.getElementById('setlistArea');
+    if (!setlist || !setlist.length) {
+      area.innerHTML = `<div class="no-setlist">セットリスト情報はまだありません。</div>`;
+      return;
+    }
+    area.innerHTML = `
+      <div class="setlist-label">SETLIST</div>
+      <ol class="setlist-list">${setlist.map((s, i) =>
+        `<li class="setlist-item"><span class="setlist-num">${String(i + 1).padStart(2, '0')}</span>${escH(s)}</li>`
+      ).join('')}</ol>`;
+  }
+
+  function renderShow(tour, show) {
+    document.title = `${show.venue || show.location} — 公演詳細 — FanGNU`;
+
+    const badge = document.getElementById('statusBadge');
+    if (show.status) {
+      badge.textContent = show.status;
+      badge.style.display = 'inline-block';
+      if (show.status === 'SOLD OUT') badge.classList.add('sold');
+    }
+
+    document.getElementById('tourName').textContent = tour.name;
+    document.getElementById('venueName').textContent = show.venue || '会場未定';
+    document.getElementById('showDate').textContent = show.date;
+    document.getElementById('address').textContent = show.location;
+
+    if (show.note) {
+      const noteEl = document.getElementById('noteText');
+      noteEl.textContent = `※${show.note}`;
+      noteEl.style.display = 'block';
+    }
+
+    renderSetlist(show.setlist);
+  }
+
+  function renderNotFound() {
+    document.getElementById('venueName').textContent = '公演情報が見つかりませんでした';
+    renderSetlist([]);
+  }
+
+  async function findShow(date) {
+    const res = await fetch('data/live.json');
+    const data = await res.json();
+    for (const tour of data.tours) {
+      const show = (tour.shows || []).find(s => s.date === date);
+      if (show) return { tour, show };
+    }
+    return null;
+  }
+
+  const params = new URLSearchParams(location.search);
+  const date = params.get('date') || '';
+
+  findShow(date)
+    .then(result => result ? renderShow(result.tour, result.show) : renderNotFound())
+    .catch(err => {
+      console.error(err);
+      renderNotFound();
+    });
+
+  document.getElementById('backLink').addEventListener('click', () => {
+    if (document.referrer && document.referrer.includes(location.host)) {
+      history.back();
+    } else {
+      location.href = 'live.html';
+    }
+  });
+  </script>
+
+  <nav class="bottom-nav">
+    <a href="../index.html" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
+    <a href="discography.html" class="bn-item"><span class="bn-icon">💿</span>ディスコグラフィー</a>
+    <a href="members/members.html" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
+    <a href="gear.html" class="bn-item"><span class="bn-icon">🎸</span>機材</a>
+    <a href="live.html" class="bn-item active"><span class="bn-icon">🎤</span>ライブ</a>
+  </nav>
+
+</body>
+</html>

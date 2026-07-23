@@ -10,7 +10,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --red: #e63329; --black: #111; --white: #fff; --gray: #888; --border: #ddd; --bg: #fbf2d9; }
-    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--black); line-height: 1.6; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--black); line-height: 1.6; padding-bottom: 58px; }
     a { color: inherit; text-decoration: none; }
     .nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 52px; }
     .nav-logo { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 700; }
@@ -19,6 +19,12 @@
     .nav-links a { color: var(--gray); transition: color 0.15s; }
     .nav-links a:hover, .nav-links a.active { color: var(--black); }
     .nav-links a.active { border-bottom: 1px solid var(--black); }
+
+    .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: var(--white); border-top: 2px solid var(--black); z-index: 200; }
+    .bn-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 8px 4px 6px; font-size: 9px; font-weight: 700; letter-spacing: 0.02em; color: var(--gray); transition: color 0.15s; }
+    .bn-item:hover { color: var(--black); }
+    .bn-item.active { color: var(--red); }
+    .bn-icon { font-size: 18px; line-height: 1; }
     .page-header { padding: 3rem 2rem 2.5rem; border-bottom: 2px solid var(--black); background: var(--white); }
     .page-header-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
     .page-header-tag::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--red); }
@@ -233,5 +239,14 @@
     <a href="../index.html" class="footer-logo">Fan<span class="red">GNU</span></a>
     <div class="footer-copy">非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>© FanGNU Unofficial</div>
   </footer>
+
+  <nav class="bottom-nav">
+    <a href="../index.html" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
+    <a href="discography.html" class="bn-item"><span class="bn-icon">💿</span>ディスコグラフィー</a>
+    <a href="members/members.html" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
+    <a href="gear.html" class="bn-item active"><span class="bn-icon">🎸</span>機材</a>
+    <a href="live.html" class="bn-item"><span class="bn-icon">🎤</span>ライブ</a>
+  </nav>
+
 </body>
 </html>

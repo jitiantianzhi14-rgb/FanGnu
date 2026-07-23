@@ -10,7 +10,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --red: #e63329; --black: #111; --white: #fff; --gray: #888; --border: #ddd; --bg: #fbf2d9; }
-    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--black); line-height: 1.6; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--black); line-height: 1.6; padding-bottom: 58px; }
     a { color: inherit; text-decoration: none; }
 
     .nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 52px; }
@@ -20,6 +20,12 @@
     .nav-links a { color: var(--gray); transition: color 0.15s; }
     .nav-links a:hover, .nav-links a.active { color: var(--black); }
     .nav-links a.active { border-bottom: 1px solid var(--black); }
+
+    .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: var(--white); border-top: 2px solid var(--black); z-index: 200; }
+    .bn-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 8px 4px 6px; font-size: 9px; font-weight: 700; letter-spacing: 0.02em; color: var(--gray); transition: color 0.15s; }
+    .bn-item:hover { color: var(--black); }
+    .bn-item.active { color: var(--red); }
+    .bn-icon { font-size: 18px; line-height: 1; }
 
     .page-header { padding: 3rem 2rem 2.5rem; border-bottom: 2px solid var(--black); background: var(--white); }
     .page-header-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
@@ -40,31 +46,34 @@
     .sub-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
     .sub-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--red); }
 
-    .disc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .disc-card { background: var(--white); padding: 1.25rem; display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border); }
-    .disc-type-badge { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: var(--white); padding: 2px 8px; display: inline-block; width: fit-content; }
+    .disc-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .disc-card { background: var(--white); border: 1px solid var(--border); }
+    .disc-card-head { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; cursor: pointer; }
+    .disc-card-head:hover { background: var(--bg); }
+    .disc-type-badge { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: var(--white); padding: 2px 8px; display: inline-block; width: fit-content; flex-shrink: 0; }
     .badge-DEMO   { background: #7c3aed; }
     .badge-SINGLE { background: #444; }
-    .disc-title { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.3; }
+    .disc-title { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.3; flex: 1; }
 
-    .mv-thumb-wrap { margin-top: 10px; position: relative; cursor: pointer; }
-    .mv-thumb-wrap img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
-    .mv-thumb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); transition: background 0.15s; }
-    .mv-thumb-wrap:hover .mv-thumb-play { background: rgba(0,0,0,0.45); }
-    .mv-thumb-play-btn { width: 44px; height: 44px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .mv-thumb-play-btn::after { content: ''; border-style: solid; border-width: 9px 0 9px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
-    .mv-embed { display: none; }
-    .mv-embed.open { display: block; margin-top: 10px; }
-    .mv-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
+    .disc-toggle { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); flex-shrink: 0; transition: transform 0.15s; }
+    .disc-card.expanded .disc-toggle, .album-card.expanded .disc-toggle { transform: rotate(180deg); }
+
+    .disc-detail { display: none; padding: 0 1.25rem 1.25rem; }
+    .disc-card.expanded .disc-detail, .album-card.expanded .disc-detail { display: block; }
+    .disc-detail-link { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: var(--white); background: var(--black); padding: 6px 14px; margin-top: 10px; transition: background 0.15s; }
+    .disc-detail-link:hover { background: var(--red); }
+    .disc-embed { margin-top: 10px; }
+    .disc-detail > *:first-child { margin-top: 0; }
+    .disc-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
 
     .album-card { background: var(--white); border: 1px solid var(--border); margin-bottom: 16px; }
-    .album-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-    .album-title { font-size: 17px; font-weight: 700; }
-    .album-yt-thumb { padding: 1rem 1.5rem 0; }
-    .track-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
-    .track-row { display: flex; align-items: center; gap: 10px; padding: 9px 1.25rem; border-bottom: 1px solid #f0f0f0; border-right: 1px solid #f0f0f0; }
-    .track-row:nth-child(even) { border-right: none; }
-    .track-row:nth-last-child(-n+2) { border-bottom: none; }
+    .album-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .album-header.clickable { cursor: pointer; }
+    .album-header.clickable:hover { background: var(--bg); }
+    .album-title { font-size: 17px; font-weight: 700; flex: 1; }
+    .track-grid { display: grid; grid-template-columns: 1fr; }
+    .track-row { display: flex; align-items: center; gap: 10px; padding: 9px 1.25rem; border-bottom: 1px solid #f0f0f0; }
+    .track-row:last-child { border-bottom: none; }
     .track-num  { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #bbb; width: 22px; flex-shrink: 0; }
     .track-title { font-size: 12px; font-weight: 500; flex: 1; }
     .tbd { padding: 0.75rem 1.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); border-top: 1px solid var(--border); }
@@ -85,9 +94,7 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .page-header-title { font-size: 36px; }
-      .disc-grid { grid-template-columns: 1fr; gap: 12px; }
-      .track-grid { grid-template-columns: 1fr; }
-      .track-row { border-right: none; }
+      .disc-grid { gap: 12px; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
   </style>
@@ -127,28 +134,34 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
-  function thumbBlock(yt) {
-    return `<div class="mv-thumb-wrap" data-yt="${escH(yt)}">
-      <img src="https://img.youtube.com/vi/${escH(yt)}/mqdefault.jpg" alt="thumbnail" loading="lazy">
-      <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
-    </div>
-    <div class="mv-embed"></div>`;
+  function embedBlock(yt) {
+    return `<div class="disc-embed" data-yt="${escH(yt)}"></div>`;
+  }
+
+  function songHref(yt) {
+    return `song.html?src=srvvinci&yt=${encodeURIComponent(yt)}`;
   }
 
   function buildDiscCard(type, item) {
-    const mv = item.yt
-      ? `<div style="margin-top:8px">${thumbBlock(item.yt)}${item.yt2 ? thumbBlock(item.yt2) : ''}</div>`
+    const hasVideo = !!item.yt;
+    const detail = hasVideo
+      ? `<div class="disc-detail">
+           <a class="disc-detail-link" href="${songHref(item.yt)}">楽曲詳細 →</a>
+           ${embedBlock(item.yt)}${item.yt2 ? embedBlock(item.yt2) : ''}
+         </div>`
       : '';
     return `<div class="disc-card">
-      <span class="disc-type-badge badge-${escH(type)}">${escH(type)}</span>
-      <div class="disc-title">${escH(item.title)}</div>
-      ${mv}
+      <div class="disc-card-head">
+        <span class="disc-type-badge badge-${escH(type)}">${escH(type)}</span>
+        <span class="disc-title">${escH(item.title)}</span>
+        ${hasVideo ? `<span class="disc-toggle">▼</span>` : ''}
+      </div>
+      ${detail}
     </div>`;
   }
 
   function buildAlbumCard(album) {
-    const thumbPart = album.yt
-      ? `<div class="album-yt-thumb">${thumbBlock(album.yt)}</div>` : '';
+    const hasVideo = !!album.yt;
     const trackPart = album.tracks && album.tracks.length
       ? `<div class="track-grid">${album.tracks.map(t =>
           `<div class="track-row">
@@ -156,9 +169,18 @@
             <span class="track-title">${escH(t.title)}</span>
           </div>`).join('')}</div>`
       : `<div class="tbd">トラックリスト準備中</div>`;
+    const detail = hasVideo
+      ? `<div class="disc-detail">
+           <a class="disc-detail-link" href="${songHref(album.yt)}">楽曲詳細 →</a>
+           ${embedBlock(album.yt)}
+         </div>`
+      : '';
     return `<div class="album-card">
-      <div class="album-header"><span class="album-title">${escH(album.title)}</span></div>
-      ${thumbPart}
+      <div class="album-header${hasVideo ? ' clickable' : ''}">
+        <span class="album-title">${escH(album.title)}</span>
+        ${hasVideo ? `<span class="disc-toggle">▼</span>` : ''}
+      </div>
+      ${detail}
       ${trackPart}
     </div>`;
   }
@@ -189,14 +211,27 @@
     </div>`;
   }
 
-  function bindThumbs() {
-    document.querySelectorAll('.mv-thumb-wrap').forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        const embed = thumb.nextElementSibling;
-        thumb.style.display = 'none';
-        embed.classList.add('open');
-        embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${thumb.dataset.yt}?rel=0&autoplay=1" allowfullscreen allow="autoplay"></iframe>`;
-      });
+  function toggleDetail(card, detail) {
+    const isOpen = card.classList.toggle('expanded');
+    detail.querySelectorAll('.disc-embed').forEach(embed => {
+      embed.innerHTML = isOpen
+        ? `<iframe src="https://www.youtube.com/embed/${embed.dataset.yt}?rel=0&autoplay=1" allowfullscreen allow="autoplay"></iframe>`
+        : '';
+    });
+  }
+
+  function bindToggles() {
+    document.querySelectorAll('.disc-card').forEach(card => {
+      const head = card.querySelector('.disc-card-head');
+      const detail = card.querySelector('.disc-detail');
+      if (!detail) return;
+      head.addEventListener('click', () => toggleDetail(card, detail));
+    });
+    document.querySelectorAll('.album-card').forEach(card => {
+      const head = card.querySelector('.album-header.clickable');
+      const detail = card.querySelector('.disc-detail');
+      if (!head || !detail) return;
+      head.addEventListener('click', () => toggleDetail(card, detail));
     });
   }
 
@@ -204,13 +239,21 @@
     .then(res => res.json())
     .then(data => {
       document.getElementById('pageBody').innerHTML = data.groups.map(renderGroup).join('');
-      bindThumbs();
+      bindToggles();
     })
     .catch(err => {
       document.getElementById('pageBody').textContent = 'データの読み込みに失敗しました。';
       console.error(err);
     });
   </script>
+
+  <nav class="bottom-nav">
+    <a href="../index.html" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
+    <a href="discography.html" class="bn-item active"><span class="bn-icon">💿</span>ディスコグラフィー</a>
+    <a href="members/members.html" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
+    <a href="gear.html" class="bn-item"><span class="bn-icon">🎸</span>機材</a>
+    <a href="live.html" class="bn-item"><span class="bn-icon">🎤</span>ライブ</a>
+  </nav>
 
 </body>
 </html>
