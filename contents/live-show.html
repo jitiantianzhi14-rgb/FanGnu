@@ -40,6 +40,8 @@
     .content { max-width: 800px; margin: 0 auto; padding: 2.5rem 2rem; }
     .detail-address { font-size: 13px; color: #555; }
     .detail-note { font-size: 12px; color: var(--red); margin-top: 8px; }
+    .map-area { margin-top: 1.25rem; border: 1px solid var(--border); }
+    .map-area iframe { width: 100%; height: 260px; border: none; display: block; }
 
     .setlist-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 8px; }
     .setlist-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--red); }
@@ -87,6 +89,7 @@
   <div class="content">
     <div class="detail-address" id="address"></div>
     <div class="detail-note" id="noteText" style="display:none;"></div>
+    <div class="map-area" id="mapArea" style="display:none;"></div>
     <div id="setlistArea"></div>
   </div>
 
@@ -117,39 +120,53 @@
     return null;
   }
 
-  async function loadSongIndex() {
+  async function loadSongIndex(isSrvvinci) {
     const index = new Map();
     try {
-      const res = await fetch('data/discography.json');
-      const data = await res.json();
-      (data.items || []).forEach(item => { if (item.yt) index.set(item.title, item.yt); });
-      (data.albums || []).forEach(album => {
-        (album.tracks || []).forEach(t => { if (t.yt && !index.has(t.title)) index.set(t.title, t.yt); });
-      });
+      if (isSrvvinci) {
+        const res = await fetch('data/srvvinci-discography.json');
+        const data = await res.json();
+        (data.groups || []).forEach(group => {
+          (group.demos || []).forEach(d => { if (d.yt) index.set(d.title, d.yt); });
+          (group.singles || []).forEach(d => { if (d.yt) index.set(d.title, d.yt); });
+          (group.albums || []).forEach(album => {
+            if (album.yt && !index.has(album.title)) index.set(album.title, album.yt);
+            (album.tracks || []).forEach(t => { if (t.yt && !index.has(t.title)) index.set(t.title, t.yt); });
+          });
+        });
+      } else {
+        const res = await fetch('data/kinggnu-discography.json');
+        const data = await res.json();
+        (data.items || []).forEach(item => { if (item.yt) index.set(item.title, item.yt); });
+        (data.albums || []).forEach(album => {
+          (album.tracks || []).forEach(t => { if (t.yt && !index.has(t.title)) index.set(t.title, t.yt); });
+        });
+      }
     } catch (err) {
       console.error(err);
     }
     return index;
   }
 
-  function renderSetlist(setlist, songIndex) {
+  function renderSetlist(setlist, songIndex, isSrvvinci) {
     const area = document.getElementById('setlistArea');
     if (!setlist || !setlist.length) {
       area.innerHTML = `<div class="no-setlist">セットリスト情報はまだありません。</div>`;
       return;
     }
+    const srcParam = isSrvvinci ? '&src=srvvinci' : '';
     area.innerHTML = `
       <div class="setlist-label">SETLIST</div>
       <ol class="setlist-list">${setlist.map((s, i) => {
         const inner = `<span class="setlist-num">${String(i + 1).padStart(2, '0')}</span>${escH(s)}`;
         const yt = resolveSongYt(s, songIndex);
         return yt
-          ? `<li class="setlist-item"><a class="setlist-row" href="song.html?yt=${encodeURIComponent(yt)}">${inner}</a></li>`
+          ? `<li class="setlist-item"><a class="setlist-row" href="song.html?yt=${encodeURIComponent(yt)}${srcParam}">${inner}</a></li>`
           : `<li class="setlist-item"><span class="setlist-row">${inner}</span></li>`;
       }).join('')}</ol>`;
   }
 
-  function renderShow(tour, show, songIndex) {
+  function renderShow(tour, show, songIndex, isSrvvinci) {
     document.title = `${show.venue || show.location} — 公演詳細 — FanGNU`;
 
     const badge = document.getElementById('statusBadge');
@@ -170,7 +187,14 @@
       noteEl.style.display = 'block';
     }
 
-    renderSetlist(show.setlist, songIndex);
+    const mapQuery = show.location || show.venue;
+    if (mapQuery) {
+      const mapArea = document.getElementById('mapArea');
+      mapArea.innerHTML = `<iframe src="https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed" loading="lazy" allowfullscreen></iframe>`;
+      mapArea.style.display = 'block';
+    }
+
+    renderSetlist(show.setlist, songIndex, isSrvvinci);
   }
 
   function renderNotFound() {
@@ -178,8 +202,8 @@
     renderSetlist([], new Map());
   }
 
-  async function findShow(date) {
-    const res = await fetch('data/live.json');
+  async function findShow(date, isSrvvinci) {
+    const res = await fetch(isSrvvinci ? 'data/srvvinci-live.json' : 'data/kinggnu-live.json');
     const data = await res.json();
     for (const tour of data.tours) {
       const show = (tour.shows || []).find(s => s.date === date);
@@ -190,10 +214,12 @@
 
   const params = new URLSearchParams(location.search);
   const date = params.get('date') || '';
+  const isSrvvinci = params.get('src') === 'srvvinci';
+  const backHref = isSrvvinci ? 'srvvinci-live.html' : 'live.html';
 
-  Promise.all([findShow(date), loadSongIndex()])
+  Promise.all([findShow(date, isSrvvinci), loadSongIndex(isSrvvinci)])
     .then(([result, songIndex]) => {
-      if (result) renderShow(result.tour, result.show, songIndex);
+      if (result) renderShow(result.tour, result.show, songIndex, isSrvvinci);
       else renderNotFound();
     })
     .catch(err => {
@@ -205,7 +231,7 @@
     if (document.referrer && document.referrer.includes(location.host)) {
       history.back();
     } else {
-      location.href = 'live.html';
+      location.href = backHref;
     }
   });
   </script>

@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ライブ・ツアー — FanGNU</title>
+  <title>前身バンド ライブ — FanGNU</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Antique&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
     .page-header { padding: 3rem 2rem 2.5rem; border-bottom: 2px solid var(--black); background: var(--white); }
     .page-header-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
     .page-header-tag::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--red); }
-    .page-header-title { font-family: 'Zen Antique', serif; font-size: 64px; line-height: 1; letter-spacing: -0.02em; }
+    .page-header-title { font-family: 'Zen Antique', serif; font-size: 52px; line-height: 1; letter-spacing: -0.01em; }
     .page-header-title .red { color: var(--red); }
     .page-header-desc { font-size: 12px; color: var(--gray); margin-top: 1rem; letter-spacing: 0.05em; }
     .page-header-actions { display: flex; gap: 10px; margin-top: 1.25rem; }
@@ -55,13 +55,14 @@
     .live-badge { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; padding: 2px 8px; background: var(--black); color: var(--white); white-space: nowrap; }
     .live-badge.sold { background: var(--red); }
     .live-arrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); flex-shrink: 0; }
+    .no-live { padding: 2.5rem; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); background: var(--white); border: 1px dashed var(--border); }
     .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); margin-top: 2rem; }
     .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
     .footer-logo .red { color: var(--red); }
     .footer-copy { font-size: 10px; color: var(--gray); text-align: right; }
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .page-header-title { font-size: 44px; }
+      .page-header-title { font-size: 36px; }
       .live-item { grid-template-columns: 1fr auto; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
@@ -73,16 +74,16 @@
     <div class="nav-links">
       <a href="members/members.html">メンバー</a>
       <a href="discography.html">ディスコグラフィー</a>
-      <a href="live.html" class="active">ライブ</a>
+      <a href="live.html">ライブ</a>
     </div>
   </nav>
 
   <div class="page-header">
-    <div class="page-header-tag">LIVE / TOUR</div>
-    <h1 class="page-header-title">ライブ<span class="red">.</span></h1>
-    <p class="page-header-desc">歴代ツアー・ライブ公演の記録。</p>
+    <div class="page-header-tag">LIVE / TOUR / EARLY ERA</div>
+    <h1 class="page-header-title">前身バンド<span class="red">.</span></h1>
+    <p class="page-header-desc">King Gnu 結成以前のライブ活動記録。</p>
     <div class="page-header-actions">
-      <a href="srvvinci-live.html" class="header-btn">Srv.Vinci時代のライブ →</a>
+      <a href="live.html" class="header-btn">← King Gnu ライブ</a>
     </div>
   </div>
 
@@ -103,7 +104,7 @@
       ? `<span class="live-badge${show.status === 'SOLD OUT' ? ' sold' : ''}">${escH(show.status)}</span>`
       : `<span></span>`;
     return `
-      <a class="live-item" href="live-show.html?date=${encodeURIComponent(show.date)}">
+      <a class="live-item" href="live-show.html?src=srvvinci&date=${encodeURIComponent(show.date)}">
         <div class="live-date">${escH(show.date)}</div>
         <div class="live-venue">${escH(show.venue || '未定')}</div>
         ${badgeHtml}
@@ -132,10 +133,15 @@
     });
   }
 
-  fetch('data/kinggnu-live.json')
+  fetch('data/srvvinci-live.json')
     .then(res => res.json())
     .then(data => {
-      document.getElementById('liveContent').innerHTML = data.tours.map(buildTour).join('');
+      const content = document.getElementById('liveContent');
+      if (!data.tours || !data.tours.length) {
+        content.innerHTML = `<div class="no-live">ライブ情報はまだありません。</div>`;
+        return;
+      }
+      content.innerHTML = data.tours.map(buildTour).join('');
       bindToggles();
     })
     .catch(err => {

@@ -222,7 +222,7 @@
   }
 
   async function findInDiscography(yt) {
-    const res = await fetch('data/discography.json');
+    const res = await fetch('data/kinggnu-discography.json');
     const data = await res.json();
     const item = data.items.find(i => i.yt === yt);
     if (!item) return null;
@@ -237,7 +237,7 @@
   }
 
   async function findInSrvvinci(yt) {
-    const res = await fetch('data/srvvinci.json');
+    const res = await fetch('data/srvvinci-discography.json');
     const data = await res.json();
     for (const group of data.groups) {
       const pools = [

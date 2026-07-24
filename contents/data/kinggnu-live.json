@@ -805,6 +805,14 @@
     },
     {
       "year": "2018",
+      "name": "NIIGATA RAINBOW ROCK FESTIVAL",
+      "scale": "FESTIVAL",
+      "shows": [
+        { "date": "2018.05.04", "venue": "NEXS NIIGATA", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2018",
       "name": "VIVA LA ROCK 2018",
       "scale": "FESTIVAL",
       "shows": [
@@ -837,6 +845,14 @@
     },
     {
       "year": "2018",
+      "name": "Talking Rock! Presents「ニューロック計画！2018」",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2018.03.31", "venue": "umeda TRAD", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2018",
       "name": "King Gnu One-Man Live “Tokyo Rendez-Vous X”",
       "scale": "LIVE",
       "shows": [
@@ -853,10 +869,42 @@
     },
     {
       "year": "2018",
+      "name": "MbS×I♡RADIO 786「SANUKI ROCK COLOSSEUM～BUSTA CUP 9th round～」",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2018.03.17", "venue": "高松MONSTER", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2018",
       "name": "HOPE!",
       "scale": "LIVE",
       "shows": [
         { "date": "2018.03.16", "venue": "大阪BIGCAT", "location": "大阪府大阪市中央区西心斎橋１丁目６−１４ BIGSTEP 4F", "status": "", "setlist": ["Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "Catch!!!?", "あなたは蜃気楼", "Vinyl"] }
+      ]
+    },
+    {
+      "year": "2018",
+      "name": "odol LIVE 2018 “O/g”",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2018.03.14", "venue": "INSA", "location": "福岡", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2018",
+      "name": "HIROSHIMA MUSIC STADIUM -ハルバン’18-",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2018.03.11", "venue": "", "location": "広島", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2018",
+      "name": "Snow Light Festival",
+      "scale": "FESTIVAL",
+      "shows": [
+        { "date": "2018.03.10", "venue": "DIAMOND STAGE", "location": "苗場スキー場特設会場", "status": "", "setlist": [] }
       ]
     },
     {
@@ -873,6 +921,22 @@
       "scale": "LIVE",
       "shows": [
         { "date": "2018.03.03", "venue": "渋谷WWW", "location": "東京都渋谷区宇田川町１３−１７ シネマライズビル B1F", "status": "", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!?", "あなたは蜃気楼", "ロウラヴ", "Vinyl"] }
+      ]
+    },
+    {
+      "year": "2018",
+      "name": "DR.MARTENS PRESENTS STAND FOR SOMETHING LIVE STYLE OF TOKYO VOL.03",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2018.02.27", "venue": "表参道WALL&WALL", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2018",
+      "name": "Flying Flags Vol.3",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2018.02.24", "venue": "仙台darwin", "location": "", "status": "", "setlist": [] }
       ]
     },
     {
@@ -909,6 +973,14 @@
     },
     {
       "year": "2017",
+      "name": "not forget pleasure 7",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2017.12.07", "venue": "心斎橋CLAPPER", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
       "name": "“SPIN.DISCOVERY vol.05”",
       "scale": "LIVE",
       "shows": [
@@ -925,10 +997,114 @@
     },
     {
       "year": "2017",
+      "name": "odol TOUR 2017 “視線” <guest King Gnu>",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2017.11.10", "venue": "池下CLUB UPSET", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
       "name": "インストアライブ",
       "scale": "LIVE",
       "shows": [
         { "date": "2017.10.29", "venue": "タワーレコード横浜ビブレ店", "location": "神奈川県横浜市西区南幸２丁目１５−１３ 横浜ビブレ 7F", "status": "", "note": "台風により King Gnu『Tokyo Rendez-Vous』発売記念FREE LIVE（横浜VIVRE前特設ステージ）を中止し、インストアライブへ変更", "setlist": ["McDonald Romance", "あなたは蜃気楼", "破裂", "Vinyl", "サマーレイン・ダイバー"] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "Eggs presents FM802 MINAMI WHEEL 2017",
+      "scale": "FESTIVAL",
+      "shows": [
+        { "date": "2017.10.09", "venue": "MINAMI WHEEL", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "LIQUIDROOM&BOY presents Song For Future Generation",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2017.09.22", "venue": "恵比寿LIQUIDROOM", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "DALLJUB STEP CLUBリリースツアー",
+      "scale": "LIVE TOUR",
+      "shows": [
+        { "date": "2017.09.14", "venue": "F.A.D横浜", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "ROCKIN'COMMUNiCATION",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2017.09.11", "venue": "新宿LOFT", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "NEW CLASSIC",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2017.09.08", "venue": "渋谷LUSH", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "RISING SUN ROCK FES' 2017 in EZO",
+      "scale": "FESTIVAL",
+      "shows": [
+        { "date": "2017.08.12", "venue": "石狩湾新港樽川ふ頭横野外特設ステージ", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "FUJI ROCK FESTIVAL '17 “ROOKIE A GO-GO”",
+      "scale": "FESTIVAL",
+      "shows": [
+        { "date": "2017.07.30", "venue": "苗場スキー場", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "MAGICAL COLORS",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2017.07.19", "venue": "新宿LOFT", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "SUB:SHAMAN来日公演",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2017.06.08", "venue": "青山月見ル君想フ", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "ハイボルテージ vol.1",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2017.05.25", "venue": "京都GLOWLY", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "not forget pleasure 5",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2017.05.24", "venue": "心斎橋CLAPPER", "location": "", "status": "", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2017",
+      "name": "INDEEA presents SIRI PAILIN",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2017.05.12", "venue": "六本木Varit", "location": "", "status": "", "setlist": [] }
       ]
     }
   ]

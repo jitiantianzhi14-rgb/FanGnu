@@ -235,7 +235,7 @@
     });
   }
 
-  fetch('data/srvvinci.json')
+  fetch('data/srvvinci-discography.json')
     .then(res => res.json())
     .then(data => {
       document.getElementById('pageBody').innerHTML = data.groups.map(renderGroup).join('');
