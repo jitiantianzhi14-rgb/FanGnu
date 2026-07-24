@@ -67,6 +67,26 @@
     .song-info-value { font-size: 13px; color: var(--black); line-height: 1.7; }
     .song-info-value.empty { color: var(--gray); }
 
+    .live-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--black); border: 1px solid var(--black); }
+    .live-stat { padding: 1.25rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
+    .live-stat:last-child { border-right: none; }
+    .live-stat-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.12em; color: #999; margin-bottom: 8px; }
+    .live-stat-value { font-size: 13px; font-weight: 700; color: var(--white); line-height: 1.5; }
+    .live-stat-value a { color: var(--white); }
+    .live-stat-value a:hover { color: var(--red); }
+    .live-stat-value.empty { color: #666; font-weight: 400; }
+    .live-stat.count .live-stat-value { font-family: 'IBM Plex Mono', monospace; font-size: 34px; font-weight: 900; color: var(--red); line-height: 1; }
+    .live-stat.count .live-stat-unit { font-size: 11px; font-weight: 700; color: #999; margin-left: 2px; }
+
+    .live-history-list { background: var(--white); border: 1px solid var(--border); }
+    .live-history-item { border-bottom: 1px solid #f0f0f0; }
+    .live-history-item:last-child { border-bottom: none; }
+    .live-history-row { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 12px; padding: 0.75rem 1.25rem; font-size: 12px; transition: background 0.15s, color 0.15s; }
+    a.live-history-row:hover { background: var(--bg); color: var(--red); }
+    .lh-date { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); }
+    .lh-tour { font-weight: 500; color: var(--black); }
+    .lh-venue { font-size: 11px; color: var(--gray); white-space: nowrap; }
+
     .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); margin-top: 2rem; }
     .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
     .footer-logo .red { color: var(--red); }
@@ -76,6 +96,10 @@
       .nav-links { display: none; }
       .page-header-title { font-size: 34px; }
       .song-info-row { flex-direction: column; gap: 4px; }
+      .live-history-row { grid-template-columns: 1fr; gap: 2px; }
+      .lh-venue { white-space: normal; }
+      .live-stat { padding: 1rem 0.5rem; }
+      .live-stat.count .live-stat-value { font-size: 26px; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
   </style>
@@ -99,6 +123,8 @@
   </div>
 
   <div class="content">
+    <div id="liveStatsArea"></div>
+
     <div id="mediaArea"></div>
 
     <div id="spotifyArea"></div>
@@ -121,6 +147,8 @@
         <dd class="song-info-value" id="infoExtra">-</dd>
       </div>
     </dl>
+
+    <div id="liveHistoryArea"></div>
   </div>
 
   <footer class="footer">
@@ -192,6 +220,91 @@
       </div>`;
   }
 
+  function normalizeTitle(title) {
+    return title
+      .replace(/\s*★.*$/, '')
+      .replace(/[（(][^）)]*[）)]\s*$/, '')
+      .trim();
+  }
+
+  async function collectLiveHits(file, title, normTarget, source) {
+    try {
+      const res = await fetch(file);
+      const data = await res.json();
+      const results = [];
+      (data.tours || []).forEach(tour => {
+        (tour.shows || []).forEach(show => {
+          const hit = (show.setlist || []).some(s => s === title || normalizeTitle(s) === normTarget);
+          if (hit) results.push({ date: show.date, tourName: tour.name, venue: show.venue, source });
+        });
+      });
+      return results;
+    } catch (err) {
+      console.error(err);
+      return [];
+    }
+  }
+
+  async function findLiveHistory(title) {
+    if (!title) return [];
+    const normTarget = normalizeTitle(title);
+    const [kinggnuHits, srvvinciHits] = await Promise.all([
+      collectLiveHits('data/kinggnu-live.json', title, normTarget, 'kinggnu'),
+      collectLiveHits('data/srvvinci-live.json', title, normTarget, 'srvvinci'),
+    ]);
+    const results = [...kinggnuHits, ...srvvinciHits];
+    results.sort((a, b) => b.date.localeCompare(a.date));
+    return results;
+  }
+
+  function liveLinkHtml(entry) {
+    if (!entry) return `<span class="live-stat-value empty">-</span>`;
+    const srcParam = entry.source === 'srvvinci' ? '&src=srvvinci' : '';
+    return `<a href="live-show.html?date=${encodeURIComponent(entry.date)}${srcParam}">${escH(entry.date)}<br>${escH(entry.tourName)}</a>`;
+  }
+
+  function renderLiveStats(history) {
+    const area = document.getElementById('liveStatsArea');
+    const first = history.length ? history[history.length - 1] : null;
+    const last = history.length ? history[0] : null;
+    area.innerHTML = `
+      <div class="live-stats">
+        <div class="live-stat">
+          <div class="live-stat-label">初披露</div>
+          <div class="live-stat-value">${liveLinkHtml(first)}</div>
+        </div>
+        <div class="live-stat count">
+          <div class="live-stat-label">通算披露回数</div>
+          <div class="live-stat-value">${history.length}<span class="live-stat-unit">回</span></div>
+        </div>
+        <div class="live-stat">
+          <div class="live-stat-label">最終披露</div>
+          <div class="live-stat-value">${liveLinkHtml(last)}</div>
+        </div>
+      </div>`;
+  }
+
+  function renderLiveHistory(history) {
+    const area = document.getElementById('liveHistoryArea');
+    if (!history.length) {
+      area.innerHTML = '';
+      return;
+    }
+    area.innerHTML = `
+      <div class="section-label">LIVE HISTORY（${history.length}）</div>
+      <ol class="live-history-list">${history.map(h => {
+        const srcParam = h.source === 'srvvinci' ? '&src=srvvinci' : '';
+        return `
+        <li class="live-history-item">
+          <a class="live-history-row" href="live-show.html?date=${encodeURIComponent(h.date)}${srcParam}">
+            <span class="lh-date">${escH(h.date)}</span>
+            <span class="lh-tour">${escH(h.tourName)}</span>
+            <span class="lh-venue">${escH(h.venue || '')}</span>
+          </a>
+        </li>`;
+      }).join('')}</ol>`;
+  }
+
   function renderSong(song) {
     document.title = (song.title ? song.title + ' — ' : '') + '楽曲詳細 — FanGNU';
 
@@ -255,9 +368,19 @@
   const yt  = params.get('yt') || '';
   const src = params.get('src') === 'srvvinci' ? 'srvvinci' : 'discography';
 
-  const lookup = src === 'srvvinci' ? findInSrvvinci(yt) : findInDiscography(yt);
+  const isSrvvinci = src === 'srvvinci';
+  const lookup = isSrvvinci ? findInSrvvinci(yt) : findInDiscography(yt);
   lookup
-    .then(song => song ? renderSong(song) : renderNotFound())
+    .then(song => {
+      if (!song) { renderNotFound(); return null; }
+      renderSong(song);
+      return findLiveHistory(song.title);
+    })
+    .then(history => {
+      const list = history || [];
+      renderLiveStats(list);
+      renderLiveHistory(list);
+    })
     .catch(err => {
       console.error(err);
       renderNotFound();
