@@ -114,50 +114,141 @@
       "name": "King Gnu Live Tour 2022 CLUB GNU EDITION",
       "scale": "FUN CLUB TOUR",
       "shows": [
-        { "date": "2020.02.08", "venue": "名古屋ガイシホール", "location": "愛知県名古屋市", "status": "SOLD OUT", "setlist": [] },
-        { "date": "2020.02.15", "venue": "大阪城ホール", "location": "大阪府大阪市", "status": "SOLD OUT", "setlist": [] },
-        { "date": "2020.03.07", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市 ※無観客配信", "status": "配信", "setlist": [] }
+        { "date": "2022.05.31", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["カメレオン", "Hitman", "BOY", "Sorrows", "Vinyl", "F.O.O.L", "Flash!!!", "Don't Stop the Clocks（Acoustic / センターステージ）", "ロウラヴ（Acoustic / センターステージ）", "白日（Acoustic / センターステージ）", "傘（Acoustic / センターステージ）", "Slumberland", "飛行艇", "Prayer X", "泡", "三文小説", "Teenager Forever", "逆夢", "一途"] },
+        { "date": "2022.06.01", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["カメレオン", "Hitman", "BOY", "Sorrows", "F.O.O.L", "Flash!!!", "Vinyl", "Don't Stop the Clocks（Acoustic ver.）", "ロウラヴ（Acoustic ver.）", "白日（Acoustic ver.）", "傘（Acoustic ver.）", "Slumberland（Arrange）", "飛行艇", "Prayer X", "泡", "三文小説", "Teenager forever", "逆夢", "一途"] },
+        { "date": "2022.06.25", "venue": "幕張メッセ9・10・11ホール", "location": "千葉県千葉市美浜区中瀬２丁目２−１", "status": "", "note": "OPEN 15:30 / START 17:00", "setlist": ["カメレオン", "Hitman", "BOY", "Sorrows", "Vinyl", "F.O.O.L", "Flash!!!", "Don't Stop the Clocks（Acoustic / センターステージ）", "ロウラヴ（Acoustic / センターステージ）", "白日（Acoustic / センターステージ）", "傘（Acoustic / センターステージ）", "Slumberland", "飛行艇", "Prayer X", "泡", "三文小説", "Teenager Forever", "逆夢", "一途"] },
+        { "date": "2022.06.26", "venue": "幕張メッセ9・10・11ホール", "location": "千葉県千葉市美浜区中瀬２丁目２−１", "status": "", "note": "OPEN 15:30 / START 17:00,ツアーファイナル", "setlist": ["カメレオン", "Hitman", "BOY", "Sorrows", "Vinyl", "F.O.O.L", "Flash!!!", "Don't Stop the Clocks（Acoustic / センターステージ）", "ロウラヴ（Acoustic / センターステージ）", "白日（Acoustic / センターステージ）", "傘（Acoustic / センターステージ）", "Slumberland", "飛行艇", "Prayer X", "泡", "三文小説", "Teenager Forever", "逆夢", "一途"] }
       ]
     },
     {
-      "year": "2022",
-      "name": "King Gnu Live Tour 2022 CLUB GNU EDITION",
-      "scale": "FUN CLUB TOUR",
+      "year": "2021",
+      "name": "King Gnu Live Tour 2021 AW",
+      "scale": "LIVE TOUR",
       "shows": [
-        { "date": "2020.02.08", "venue": "名古屋ガイシホール", "location": "愛知県名古屋市", "status": "SOLD OUT", "setlist": [] },
-        { "date": "2020.02.15", "venue": "大阪城ホール", "location": "大阪府大阪市", "status": "SOLD OUT", "setlist": [] },
-        { "date": "2020.03.07", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市 ※無観客配信", "status": "配信", "setlist": [] }
+        { "date": "2021.10.29", "venue": "ゼビオアリーナ仙台", "location": "宮城県仙台市太白区あすと長町１丁目４−１０", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["泡", "Sorrows", "Vinyl", "千両役者", "ユーモア", "Prayer X", "破裂", "白日", "The hole", "飛行艇", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "マツケンサンバⅡ（新井和輝）", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.10.30", "venue": "ゼビオアリーナ仙台", "location": "宮城県仙台市太白区あすと長町１丁目４−１０", "status": "", "note": "OPEN 16:00 / START 17:00", "setlist": ["泡", "Sorrows", "Vinyl", "千両役者", "ユーモア", "Prayer X", "破裂", "白日", "The hole", "飛行艇", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.11.06", "venue": "マリンメッセ福岡A館", "location": "福岡県福岡市博多区沖浜町７−１", "status": "", "note": "OPEN 15:30 / START 17:00", "setlist": ["Sorrows", "Prayer X", "泡", "飛行艇（マイクトラブルにより一時中断）", "ユーモア", "白日", "破裂", "千両役者", "The hole", "Vinyl", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "McDonald Romance", "サマーレイン・ダイバー"] },
+        { "date": "2021.11.07", "venue": "マリンメッセ福岡A館", "location": "福岡県福岡市博多区沖浜町７−１", "status": "", "note": "OPEN 15:30 / START 17:00", "setlist": ["泡", "Sorrows", "Vinyl", "千両役者", "ユーモア", "Prayer X", "破裂", "白日", "The hole", "飛行艇", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.11.12", "venue": "真駒内セキスイハイムアイスアリーナ", "location": "北海道札幌市南区真駒内公園１−１", "status": "", "note": "OPEN 18:00 / START 19:00", "setlist": ["Sorrows", "Prayer X", "泡", "飛行艇", "ユーモア", "白日", "破裂", "千両役者", "The hole", "Vinyl", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.11.13", "venue": "真駒内セキスイハイムアイスアリーナ", "location": "北海道札幌市南区真駒内公園１−１", "status": "", "note": "OPEN 16:00 / START 17:00", "setlist": ["The hole", "千両役者", "ユーモア", "Sorrows", "Vinyl", "Prayer X", "破裂", "白日", "飛行艇", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.11.17", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "", "note": "OPEN 17:00 / START 18:30", "setlist": ["Prayer X", "千両役者", "ユーモア", "Sorrows", "Vinyl", "破裂", "Hitman", "白日", "飛行艇", "The hole", "泡", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.11.18", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "", "note": "OPEN 17:00 / START 18:30", "setlist": ["The hole", "千両役者", "白日", "Sorrows", "Vinyl", "Prayer X", "破裂", "ユーモア", "飛行艇", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.11.27", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市中央区新都心８", "status": "", "note": "OPEN 15:30 / START 17:00", "setlist": ["The hole", "千両役者", "ユーモア", "Sorrows", "Vinyl", "Prayer X", "破裂", "白日", "飛行艇", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘（直後に機材トラブル）", "McDonald Romance", "どろん", "Flash!!!", "Teenager forever", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.11.28", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市中央区新都心８", "status": "", "note": "OPEN 15:30 / START 17:00", "setlist": ["白日", "The hole", "Sorrows", "Vinyl", "ユーモア", "飛行艇", "破裂", "Prayer X", "千両役者", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.12.04", "venue": "Aichi Sky Expo", "location": "愛知県常滑市セントレア５丁目１０番１号", "status": "", "note": "OPEN 15:30 / START 17:00", "setlist": ["泡", "Sorrows", "Vinyl", "千両役者", "ユーモア", "Prayer X", "破裂", "白日", "The hole", "飛行艇", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.12.05", "venue": "Aichi Sky Expo", "location": "愛知県常滑市セントレア５丁目１０番１号", "status": "", "note": "OPEN 15:30 / START 17:00", "setlist": ["白日", "The hole", "Sorrows", "Vinyl", "ユーモア", "飛行艇", "破裂", "Prayer X", "千両役者", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "サマーレイン・ダイバー"] },
+        { "date": "2021.12.14", "venue": "国立代々木競技場第一体育館", "location": "東京都渋谷区神南２丁目１−１", "status": "", "note": "OPEN 17:00 / START 18:30", "setlist": ["The hole", "千両役者", "ユーモア", "Sorrows", "Vinyl", "Prayer X", "破裂", "白日", "飛行艇", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "一途", "サマーレイン・ダイバー"] },
+        { "date": "2021.12.15", "venue": "国立代々木競技場第一体育館", "location": "東京都渋谷区神南２丁目１−１", "status": "", "note": "OPEN 17:00 / START 18:30,ツアーファイナル", "setlist": ["白日", "The hole", "Sorrows", "Vinyl", "ユーモア", "飛行艇", "破裂", "Prayer X", "千両役者", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager forever", "BOY", "一途", "サマーレイン・ダイバー"] }
       ]
     },
     {
-      "year": "2022",
-      "name": "King Gnu Live Tour 2022 CLUB GNU EDITION",
-      "scale": "FUN CLUB TOUR",
+      "year": "2021",
+      "name": "King Gnu×RedBull「RedBull Secret GIG」",
+      "scale": "LIVE TOUR",
       "shows": [
-        { "date": "2020.02.08", "venue": "名古屋ガイシホール", "location": "愛知県名古屋市", "status": "SOLD OUT", "setlist": [] },
-        { "date": "2020.02.15", "venue": "大阪城ホール", "location": "大阪府大阪市", "status": "SOLD OUT", "setlist": [] },
-        { "date": "2020.03.07", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市 ※無観客配信", "status": "配信", "setlist": [] }
+        { "date": "2021.06.05", "venue": "第二海堡", "location": "千葉県富津市富津", "status": "SOLD OUT", "setlist": ["千両役者", "Sorrows", "傘", "McDonald Romance", "飛行艇", "Slumberland", "The hole", "Teenager Forever", "サマーレイン・ダイバー"] }
       ]
     },
     {
-      "year": "2022",
-      "name": "King Gnu Live Tour 2022 CLUB GNU EDITION",
-      "scale": "FUN CLUB TOUR",
+      "year": "2020",
+      "name": "King Gnu Live Tour 2020 AW CEREMONY",
+      "scale": "LIVE TOUR",
       "shows": [
-        { "date": "2020.02.08", "venue": "名古屋ガイシホール", "location": "愛知県名古屋市", "status": "SOLD OUT", "setlist": [] },
-        { "date": "2020.02.15", "venue": "大阪城ホール", "location": "大阪府大阪市", "status": "SOLD OUT", "setlist": [] },
-        { "date": "2020.03.07", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市 ※無観客配信", "status": "配信", "setlist": [] }
+        { "date": "2020.11.07", "venue": "東京ガーデンシアター", "location": "東京都江東区有明２丁目１−６", "status": "", "note": "OPEN 16:30 / START 18:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "Vivid Red", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
+        { "date": "2020.11.08", "venue": "東京ガーデンシアター", "location": "東京都江東区有明２丁目１−６", "status": "", "note": "OPEN 16:30 / START 18:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "Vivid Red", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
+        { "date": "2020.11.18", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "", "note": "OPEN 17:30 / START 19:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "Vivid Red", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
+        { "date": "2020.11.19", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "", "note": "OPEN 17:30 / START 19:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "Vivid Red", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
+        { "date": "2020.11.24", "venue": "日本武道館", "location": "東京都千代田区北の丸公園２−３", "status": "", "note": "OPEN 17:30 / START 19:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "Vivid Red", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
+        { "date": "2020.11.25", "venue": "日本武道館", "location": "東京都千代田区北の丸公園２−３", "status": "", "note": "OPEN 17:30 / START 19:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "Vivid Red", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
+        { "date": "2020.12.01", "venue": "日本ガイシホール", "location": "愛知県名古屋市南区東又兵ヱ町５丁目１−１６", "status": "", "note": "OPEN 17:30 / START 19:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "Vivid Red", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
+        { "date": "2020.12.02", "venue": "日本ガイシホール", "location": "愛知県名古屋市南区東又兵ヱ町５丁目１−１６", "status": "", "note": "OPEN 17:30 / START 19:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "Vivid Red", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
+        { "date": "2020.12.06", "venue": "幕張メッセ国際展示場4〜6ホール", "location": "千葉県千葉市美浜区中瀬２丁目１", "status": "", "note": "OPEN 16:00 / START 18:00,追加公演,ツアーファイナル", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "Vivid Red", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever", "千両役者（ライブ初披露・ファイナル限定Wアンコール）"] }
       ]
     },
     {
-      "year": "2022",
-      "name": "King Gnu Live Tour 2022 CLUB GNU EDITION",
-      "scale": "FUN CLUB TOUR",
+      "year": "2020",
+      "name": "King Gnu Streaming Live",
+      "scale": "STRESMING LIVE",
       "shows": [
-        { "date": "2020.02.08", "venue": "名古屋ガイシホール", "location": "愛知県名古屋市", "status": "SOLD OUT", "setlist": [] },
-        { "date": "2020.02.15", "venue": "大阪城ホール", "location": "大阪府大阪市", "status": "SOLD OUT", "setlist": [] },
-        { "date": "2020.03.07", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市 ※無観客配信", "status": "配信", "setlist": [] }
+        { "date": "2020.08.30", "venue": "streaming", "location": "ONLINE", "status": "", "setlist": ["Flash!!!", "Sorrows", "Vinyl", "傘", "It's a small world", "Overflow", "白日", "Prayer X", "Hitman", "The hole", "Slumberland", "飛行艇", "どろん", "Teenager Forever"] }
       ]
-    }
+    },
+    {
+      "year": "2020",
+      "name": "King Gnu Live Tour 2020 “CEREMONY”（中止または延期）",
+      "scale": "LIVE TOUR",
+      "shows": [
+        { "date": "2020.04.04", "venue": "仙台GIGS", "location": "宮城県仙台市若林区荒井東１丁目４−１", "status": "中止または延期", "note": "OPEN 17:00 / START 18:00", "setlist": [] },
+        { "date": "2020.04.05", "venue": "仙台GIGS", "location": "宮城県仙台市若林区荒井東１丁目４−１", "status": "中止または延期", "note": "OPEN 17:00 / START 18:00", "setlist": [] },
+        { "date": "2020.04.10", "venue": "KT Zepp Yokohama", "location": "神奈川県横浜市西区みなとみらい４丁目３−６", "status": "中止または延期", "note": "OPEN 18:00 / START 19:00", "setlist": [] },
+        { "date": "2020.04.11", "venue": "KT Zepp Yokohama", "location": "神奈川県横浜市西区みなとみらい４丁目３−６", "status": "中止または延期", "note": "OPEN 17:00 / START 18:00", "setlist": [] },
+        { "date": "2020.04.16", "venue": "Zepp Sapporo", "location": "北海道札幌市中央区南９条西４丁目４", "status": "中止または延期", "note": "OPEN 18:00 / START 19:00", "setlist": [] },
+        { "date": "2020.04.17", "venue": "Zepp Sapporo", "location": "北海道札幌市中央区南９条西４丁目４", "status": "中止または延期", "note": "OPEN 18:00 / START 19:00", "setlist": [] },
+        { "date": "2020.04.20", "venue": "Zepp Nagoya", "location": " 愛知県名古屋市中村区平池町４丁目６０−７", "status": "中止または延期", "note": "OPEN 18:00 / START 19:00", "setlist": [] },
+        { "date": "2020.04.21", "venue": "Zepp Nagoya", "location": " 愛知県名古屋市中村区平池町４丁目６０−７", "status": "中止または延期", "note": "OPEN 18:00 / START 19:00", "setlist": [] },
+        { "date": "2020.05.05", "venue": "マリンメッセ福岡", "location": "福岡県福岡市博多区沖浜町７−１", "status": "中止または延期", "note": "OPEN 17:00 / START 18:00,2/29(土)振替公演", "setlist": [] },
+        { "date": "2020.05.13", "venue": "東京ガーデンシアター", "location": "東京都江東区有明２丁目１−６", "status": "中止または延期", "note": "OPEN 18:00 / START 19:00,3/17(火)振替公演", "setlist": [] },
+        { "date": "2020.05.14", "venue": "東京ガーデンシアター", "location": "東京都江東区有明２丁目１−６", "status": "中止または延期", "note": "OPEN 18:00 / START 19:00,3/18(水)振替公演", "setlist": [] },
+        { "date": "2020.05.31", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "中止または延期", "note": "OPEN 17:00 / START 18:00,3/5(木)振替公演", "setlist": [] },
+        { "date": "2020.06.24", "venue": "ぴあアリーナMM", "location": "神奈川県横浜市西区みなとみらい３丁目２−２−２", "status": "中止または延期", "note": "OPEN 18:00 / START 19:00,3/17(火)・18(水)振替公演", "setlist": [] },
+        { "date": "2020.06.25", "venue": "ぴあアリーナMM", "location": "神奈川県横浜市西区みなとみらい３丁目２−２−２", "status": "中止または延期", "note": "OPEN 18:00 / START 19:00,3/17(火)・18(水)振替公演", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2020",
+      "name": "TOKYO METROPOLITAN ROCK FESTIVAL 2020",
+      "scale": "FESTIVAL",
+      "shows": [
+        { "date": "2020.05.24", "venue": "新木場・若洲公園", "location": "東京", "status": "中止または延期", "note": "OPEN 9:30 / START 11:30（予定）", "setlist": [] }
+      ]
+    },
+    {
+      "year": "2019",
+      "name": "King Gnu Live Tour 2019 AW",
+      "scale": "LIVE TOUR",
+      "shows": [
+        { "date": "2019.10.14", "venue": "仙台GIGS", "location": "宮城県仙台市若林区荒井東１丁目４−１", "status": "", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic）", "McDonald Romance（Acoustic）", "Bedtown（Acoustic）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.10.20", "venue": "京都KBS HALL", "location": "京都府京都市上京区上長者町６００−１", "status": "", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.10.22", "venue": "日比谷野外大音楽堂", "location": "東京都千代田区日比谷公園１−５", "status": "", "note": "WOWOW放送", "setlist": ["Vinyl", "白日", "ロウラヴ", "あなたは蜃気楼", "It's a small world", "飛行艇", "Overflow", "NIGHT POOL", "Sorrows", "Slumberland", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.10.27", "venue": "Zepp Sapporo", "location": "北海道札幌市中央区南９条西４丁目４", "status": "", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.10.31", "venue": "Zepp Nagoya", "location": "愛知県名古屋市中村区平池町４丁目６０−７", "status": "", "note": "メンバー誕生日サプライズあり", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Happy Birthday to You", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.11.01", "venue": "Zepp Fukuoka", "location": "福岡県福岡市中央区地行浜２丁目２−１", "status": "", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.11.03", "venue": "BLUE LIVE HIROSHIMA", "location": "広島県広島市南区宇品海岸３丁目１２−６９", "status": "", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic）", "McDonald Romance（Acoustic）", "Bedtown（Acoustic）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.11.04", "venue": "高松festhalle", "location": "香川県高松市常磐町１丁目３−２", "status": "", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic）", "McDonald Romance（Acoustic）", "Bedtown（Acoustic）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.11.06", "venue": "Zepp Osaka Bayside", "location": "大阪府大阪市此花区桜島１丁目１−６１", "status": "", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.11.07", "venue": "Zepp Osaka Bayside", "location": "大阪府大阪市此花区桜島１丁目１−６１", "status": "", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic）", "McDonald Romance（Acoustic）", "Bedtown（Acoustic）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.11.16", "venue": "Zepp DiverCity TOKYO", "location": "東京都江東区青海１丁目１−１０", "status": "", "setlist": ["Vinyl", "白日", "ロウラヴ", "あなたは蜃気楼", "It's a small world", "飛行艇", "Overflow", "NIGHT POOL", "Sorrows", "Slumberland", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.11.17", "venue": "Zepp DiverCity TOKYO", "location": "東京都江東区青海１丁目１−１０", "status": "", "setlist": ["Vinyl", "Sorrows", "Overflow", "It's a small world", "ロウラヴ", "飛行艇", "あなたは蜃気楼", "NIGHT POOL", "白日", "Slumberland", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
+        { "date": "2019.11.26", "venue": "Zepp Tokyo", "location": "東京都江東区青海1-3-11", "status": "", "note": "ツアーファイナル,WOWOW放送,ライブ終了後にアルバム『CEREMONY』リリース&同名ツアー開催を発表", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "Vivid Red", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] }
+      ]
+    },
+    {
+      "year": "2019",
+      "name": "King Gnu One-Man Live Tour 2019 ”Sympa”",
+      "scale": "LIVE TOUR",
+      "shows": [
+        { "date": "2019.03.03", "venue": "STUDIO COAST", "location": "東京", "status": "", "note": "OPEN 17:00 / START 18:00,ツアー初日", "setlist": ["Vivid Red", "McDonald Romance", "Vinyl", "Sorrows", "ロウラヴ", "白日", "NIGHT POOL", "Bedtown", "Hitman", "Slumberland", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.03.07", "venue": "DIAMOND HALL", "location": "名古屋", "status": "", "note": "OPEN 19:00 / START 20:00", "setlist": ["McDonald Romance", "白日", "Vivid Red", "Slumberland", "ロウラヴ", "Bedtown", "NIGHT POOL", "Sorrows", "Hitman", "Vinyl", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.03.09", "venue": "DRUM LOGOS", "location": "福岡", "status": "", "note": "OPEN 17:00 / START 18:00", "setlist": ["Hitman", "Sorrows", "ロウラヴ", "McDonald Romance", "Vinyl", "白日", "NIGHT POOL", "Bedtown", "Slumberland", "Vivid Red", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.03.17", "venue": "BIGCAT", "location": "大阪", "status": "", "note": "OPEN 17:00 / START 18:00", "setlist": ["McDonald Romance", "白日", "Vivid Red", "Slumberland", "ロウラヴ", "Bedtown", "NIGHT POOL", "Sorrows", "Hitman", "Vinyl", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.03.18", "venue": "BIGCAT", "location": "大阪", "status": "", "note": "OPEN 19:00 / START 20:00", "setlist": ["Vivid Red", "McDonald Romance", "Vinyl", "Sorrows", "ロウラヴ", "白日", "NIGHT POOL", "Bedtown", "Hitman", "Slumberland", "Flash!!!", "Don't Stop the Clocks（アコースティック）", "It's a small world（アコースティック）", "破裂（アコースティック）", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.03.21", "venue": "MONSTER", "location": "高松", "status": "", "note": "OPEN 17:00 / START 18:00", "setlist": ["Bedtown", "Sorrows", "NIGHT POOL", "ロウラヴ", "McDonald Romance", "Slumberland", "Vinyl", "白日", "Hitman", "Vivid Red", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.03.22", "venue": "HIROSHIMA CLUB QUATTRO", "location": "広島", "status": "", "note": "OPEN 19:00 / START 20:00", "setlist": ["McDonald Romance", "白日", "Vivid Red", "Slumberland", "ロウラヴ", "Bedtown", "NIGHT POOL", "Sorrows", "Hitman", "Vinyl", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.03.30", "venue": "cube garden", "location": "札幌", "status": "", "note": "OPEN 17:00 / START 18:00", "setlist": ["McDonald Romance", "白日", "Vivid Red", "Slumberland", "ロウラヴ", "Bedtown", "NIGHT POOL", "Sorrows", "Hitman", "Vinyl", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.03.31", "venue": "cube garden", "location": "札幌", "status": "", "note": "OPEN 17:00 / START 18:00", "setlist": ["Bedtown", "Hitman", "McDonald Romance", "Vinyl", "ロウラヴ", "Slumberland", "NIGHT POOL", "白日", "Sorrows", "Vivid Red", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.04.05", "venue": "Rensa", "location": "仙台", "status": "", "note": "OPEN 19:00 / START 20:00", "setlist": ["Hitman", "Sorrows", "ロウラヴ", "McDonald Romance", "Vinyl", "白日", "NIGHT POOL", "Bedtown", "Slumberland", "Vivid Red", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.04.12", "venue": "STUDIO COAST", "location": "東京", "status": "", "note": "OPEN 17:30 / START 18:30", "setlist": ["Hitman", "Sorrows", "ロウラヴ", "McDonald Romance", "Vinyl", "白日", "NIGHT POOL", "Bedtown", "Slumberland", "Vivid Red", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "Prayer X", "あなたは蜃気楼", "Teenager forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.04.15", "venue": "なんばHatch", "location": "大阪", "status": "", "note": "追加公演", "setlist": ["Bedtown", "Hitman", "McDonald Romance", "Vinyl", "ロウラヴ", "Slumberland", "NIGHT POOL", "白日", "Sorrows", "Vivid Red", "Flash!!!", "Don't Stop the Clocks（アコースティック）", "It's a small world（アコースティック）", "破裂（アコースティック）", "Prayer X", "あなたは蜃気楼", "Teenager forever", "The hole", "サマーレイン・ダイバー", "Tokyo Rendez-Vous"] },
+        { "date": "2019.04.21", "venue": "Zepp DiverCity", "location": "東京", "status": "", "note": "追加公演,ツアー最終公演", "setlist": ["Hitman", "Sorrows", "ロウラヴ", "McDonald Romance", "Vinyl", "白日", "NIGHT POOL", "Bedtown", "Slumberland", "Vivid Red", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Prayer X", "あなたは蜃気楼", "Teenager forever", "The hole", "サマーレイン・ダイバー", "Tokyo Rendez-Vous"] }
+      ]
+    },
+    { "year": "", "name": "", "scale": "", "shows": [] },
+    { "year": "", "name": "", "scale": "", "shows": [] },
+    { "year": "", "name": "", "scale": "", "shows": [] },
+    { "year": "", "name": "", "scale": "", "shows": [] },
+    { "year": "", "name": "", "scale": "", "shows": [] },
+    { "year": "", "name": "", "scale": "", "shows": [] },
+    { "year": "", "name": "", "scale": "", "shows": [] },
+    { "year": "", "name": "", "scale": "", "shows": [] }
   ]
 }

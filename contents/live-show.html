@@ -44,8 +44,11 @@
     .setlist-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 8px; }
     .setlist-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--red); }
     .setlist-list { background: var(--white); border: 1px solid var(--border); }
-    .setlist-item { display: flex; align-items: center; gap: 12px; padding: 0.7rem 1.25rem; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+    .setlist-item { border-bottom: 1px solid #f0f0f0; font-size: 13px; }
     .setlist-item:last-child { border-bottom: none; }
+    .setlist-row { display: flex; align-items: center; gap: 12px; padding: 0.7rem 1.25rem; }
+    a.setlist-row { cursor: pointer; transition: background 0.15s, color 0.15s; }
+    a.setlist-row:hover { background: var(--bg); color: var(--red); }
     .setlist-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); width: 22px; flex-shrink: 0; }
     .no-setlist { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); padding: 2rem 0; text-align: center; border: 1px dashed var(--border); margin-top: 2rem; }
 
@@ -100,7 +103,36 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
-  function renderSetlist(setlist) {
+  function normalizeTitle(title) {
+    return title
+      .replace(/\s*★.*$/, '')
+      .replace(/[（(][^）)]*[）)]\s*$/, '')
+      .trim();
+  }
+
+  function resolveSongYt(title, songIndex) {
+    if (songIndex.has(title)) return songIndex.get(title);
+    const norm = normalizeTitle(title);
+    if (norm !== title && songIndex.has(norm)) return songIndex.get(norm);
+    return null;
+  }
+
+  async function loadSongIndex() {
+    const index = new Map();
+    try {
+      const res = await fetch('data/discography.json');
+      const data = await res.json();
+      (data.items || []).forEach(item => { if (item.yt) index.set(item.title, item.yt); });
+      (data.albums || []).forEach(album => {
+        (album.tracks || []).forEach(t => { if (t.yt && !index.has(t.title)) index.set(t.title, t.yt); });
+      });
+    } catch (err) {
+      console.error(err);
+    }
+    return index;
+  }
+
+  function renderSetlist(setlist, songIndex) {
     const area = document.getElementById('setlistArea');
     if (!setlist || !setlist.length) {
       area.innerHTML = `<div class="no-setlist">セットリスト情報はまだありません。</div>`;
@@ -108,12 +140,16 @@
     }
     area.innerHTML = `
       <div class="setlist-label">SETLIST</div>
-      <ol class="setlist-list">${setlist.map((s, i) =>
-        `<li class="setlist-item"><span class="setlist-num">${String(i + 1).padStart(2, '0')}</span>${escH(s)}</li>`
-      ).join('')}</ol>`;
+      <ol class="setlist-list">${setlist.map((s, i) => {
+        const inner = `<span class="setlist-num">${String(i + 1).padStart(2, '0')}</span>${escH(s)}`;
+        const yt = resolveSongYt(s, songIndex);
+        return yt
+          ? `<li class="setlist-item"><a class="setlist-row" href="song.html?yt=${encodeURIComponent(yt)}">${inner}</a></li>`
+          : `<li class="setlist-item"><span class="setlist-row">${inner}</span></li>`;
+      }).join('')}</ol>`;
   }
 
-  function renderShow(tour, show) {
+  function renderShow(tour, show, songIndex) {
     document.title = `${show.venue || show.location} — 公演詳細 — FanGNU`;
 
     const badge = document.getElementById('statusBadge');
@@ -134,12 +170,12 @@
       noteEl.style.display = 'block';
     }
 
-    renderSetlist(show.setlist);
+    renderSetlist(show.setlist, songIndex);
   }
 
   function renderNotFound() {
     document.getElementById('venueName').textContent = '公演情報が見つかりませんでした';
-    renderSetlist([]);
+    renderSetlist([], new Map());
   }
 
   async function findShow(date) {
@@ -155,8 +191,11 @@
   const params = new URLSearchParams(location.search);
   const date = params.get('date') || '';
 
-  findShow(date)
-    .then(result => result ? renderShow(result.tour, result.show) : renderNotFound())
+  Promise.all([findShow(date), loadSongIndex()])
+    .then(([result, songIndex]) => {
+      if (result) renderShow(result.tour, result.show, songIndex);
+      else renderNotFound();
+    })
     .catch(err => {
       console.error(err);
       renderNotFound();
