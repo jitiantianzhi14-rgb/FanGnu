@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>楽曲詳細 — FanGNU</title>
+  <meta name="description" content="King Gnu・Srv.Vinci時代の楽曲詳細ページ。MV・タイアップ情報・ライブ披露履歴などをまとめて掲載。">
+  <meta property="og:type" content="music.song">
+  <meta property="og:site_name" content="FanGNU">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="楽曲詳細 — FanGNU">
+  <meta property="og:description" content="King Gnu・Srv.Vinci時代の楽曲詳細ページ。MV・タイアップ情報・ライブ披露履歴などをまとめて掲載。">
+  <meta property="og:url" content="https://jitiantianzhi14-rgb.github.io/FanGnu/contents/song.html">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Antique&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -43,7 +51,10 @@
     .disc-type-badge.DEMO       { background: #7c3aed; }
     .disc-type-badge.ミニアルバム { background: #e6942e; }
 
+    .page-header-title-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .page-header-title { font-family: 'Zen Antique', serif; font-size: 48px; line-height: 1.2; letter-spacing: -0.02em; }
+    .lyrics-btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; background: var(--black); color: var(--white); border: none; padding: 7px 16px; white-space: nowrap; text-decoration: none; transition: background 0.15s; }
+    .lyrics-btn:hover { background: var(--red); }
 
     .content { max-width: 800px; margin: 0 auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2rem; }
 
@@ -131,7 +142,10 @@
 
   <div class="page-header">
     <span class="disc-type-badge" id="typeBadge"></span>
-    <h1 class="page-header-title" id="songTitle">読み込み中…</h1>
+    <div class="page-header-title-row">
+      <h1 class="page-header-title" id="songTitle">読み込み中…</h1>
+      <a href="#" id="lyricsLink" class="lyrics-btn" target="_blank" rel="noopener" style="display:none;">歌詞を見る ↗</a>
+    </div>
   </div>
 
   <div class="content">
@@ -203,9 +217,23 @@
       const numText = song.album.num ? `（${String(song.album.num).padStart(2,'0')}）` : '';
       el.innerHTML = `<a href="${target}?album=${encodeURIComponent(song.album.title)}">${escH(song.album.title)}${numText}</a>`;
       el.classList.remove('empty');
+    } else if (song.albumText) {
+      el.textContent = song.albumText;
+      el.classList.remove('empty');
     } else {
       el.textContent = '-';
       el.classList.add('empty');
+    }
+  }
+
+  function setLyrics(url) {
+    const link = document.getElementById('lyricsLink');
+    if (url) {
+      link.href = url;
+      link.style.display = '';
+    } else {
+      link.removeAttribute('href');
+      link.style.display = 'none';
     }
   }
 
@@ -407,8 +435,20 @@
       }).join('')}</ol>`;
   }
 
+  function setMetaContent(selector, content) {
+    const el = document.querySelector(selector);
+    if (el) el.setAttribute('content', content);
+  }
+
   function renderSong(song) {
-    document.title = (song.title ? song.title + ' — ' : '') + '楽曲詳細 — FanGNU';
+    const pageTitle = (song.title ? song.title + ' — ' : '') + '楽曲詳細 — FanGNU';
+    document.title = pageTitle;
+    if (song.title) {
+      const desc = `King Gnu${isSrvvinci ? '（前身バンド時代）' : ''}「${song.title}」の楽曲詳細ページ。${song.note ? song.note.split(',')[0] + '。' : ''}MV・タイアップ情報・ライブ披露履歴などをまとめて掲載。`;
+      setMetaContent('meta[name="description"]', desc);
+      setMetaContent('meta[property="og:title"]', pageTitle);
+      setMetaContent('meta[property="og:description"]', desc);
+    }
 
     const typeBadge = document.getElementById('typeBadge');
     if (song.type) {
@@ -424,6 +464,7 @@
     setInfo('infoYear', song.year);
     setNote('infoNote', song.note);
     setInfo('infoExtra', song.extra);
+    setLyrics(song.lyrics);
 
     renderMedia(song.yt, song.title, song.appleMusic, song.tweet);
     renderAppleMusic(song.appleMusic);
@@ -434,6 +475,7 @@
   function renderNotFound() {
     document.getElementById('songTitle').textContent = '曲が見つかりませんでした';
     document.getElementById('typeBadge').style.display = 'none';
+    setLyrics('');
     renderMedia('', '');
     renderAppleMusic('');
     renderTweet('');
@@ -453,17 +495,17 @@
     }
 
     if (item) {
-      return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, spotify: item.spotify, album };
+      return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, spotify: item.spotify, lyrics: item.lyrics || '', album, albumText: item.albumText || '' };
     }
 
     if (couplingParent) {
       const c = couplingParent.coupling;
-      return { type: couplingParent.type, title: c.title, year: couplingParent.year, note: c.note, extra: '', yt: c.yt, spotify: c.spotify, album };
+      return { type: couplingParent.type, title: c.title, year: couplingParent.year, note: c.note, extra: '', yt: c.yt, spotify: c.spotify, lyrics: c.lyrics || '', album };
     }
 
     if (album) {
       const t = album.track;
-      return { type: 'ALBUM', title: t.title, year: album.year, note: t.note, extra: '', yt: t.yt, spotify: t.spotify, album: { title: album.title, num: album.num } };
+      return { type: 'ALBUM', title: t.title, year: album.year, note: t.note, extra: '', yt: t.yt, spotify: t.spotify, lyrics: t.lyrics || '', album: { title: album.title, num: album.num } };
     }
 
     return null;
@@ -483,7 +525,7 @@
       for (const coll of collections) {
         const track = (coll.tracks || []).find(t => (yt && t.yt === yt) || (am && appleMusicId(t.appleMusic) === am));
         if (track) {
-          return { type: coll.type, title: track.title, year: coll.year || '', note: track.note || '', extra: '', yt: track.yt || '', spotify: track.spotify || '', appleMusic: track.appleMusic || '', album: { title: coll.title, num: track.num } };
+          return { type: coll.type, title: track.title, year: coll.year || '', note: track.note || '', extra: '', yt: track.yt || '', spotify: track.spotify || '', appleMusic: track.appleMusic || '', lyrics: track.lyrics || '', album: { title: coll.title, num: track.num } };
         }
       }
 
@@ -492,11 +534,11 @@
         ...(group.singles || []).filter(d => !d.tracks).map(d => ({ ...d, type: d.type || 'SINGLE' })),
       ];
       const item = flatPools.find(i => (yt && i.yt === yt) || (tweet && tweetId(i.url) === tweet));
-      if (item) return { type: item.type, title: item.title, year: item.year || '', note: item.note || '', extra: item.extra, yt: item.yt, spotify: item.spotify || '', appleMusic: '', tweet: item.url || '', album: null };
+      if (item) return { type: item.type, title: item.title, year: item.year || '', note: item.note || '', extra: item.extra, yt: item.yt, spotify: item.spotify || '', appleMusic: '', tweet: item.url || '', lyrics: item.lyrics || '', album: null };
 
       for (const coll of collections) {
         if (yt && coll.yt === yt) {
-          return { type: coll.type, title: coll.title, year: coll.year || '', note: coll.note || '', extra: '', yt: coll.yt, spotify: '', appleMusic: '', album: null };
+          return { type: coll.type, title: coll.title, year: coll.year || '', note: coll.note || '', extra: '', yt: coll.yt, spotify: '', appleMusic: '', lyrics: coll.lyrics || '', album: null };
         }
       }
     }

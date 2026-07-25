@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>前身バンド ディスコグラフィー — FanGNU</title>
+  <meta name="description" content="King Gnu結成以前、Srv.Vinci・Mrs.Vinci時代の楽曲・音源をまとめたディスコグラフィー。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FanGNU">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="前身バンド ディスコグラフィー — FanGNU">
+  <meta property="og:description" content="King Gnu結成以前、Srv.Vinci・Mrs.Vinci時代の楽曲・音源をまとめたディスコグラフィー。">
+  <meta property="og:url" content="https://jitiantianzhi14-rgb.github.io/FanGnu/contents/srvvinci.html">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Antique&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -43,7 +51,6 @@
     .group-section:last-child { margin-bottom: 0; }
     .group-header { padding-bottom: 1.25rem; margin-bottom: 1rem; border-bottom: 2px solid var(--black); }
     .group-name { font-family: 'Zen Antique', serif; font-size: 28px; letter-spacing: -0.01em; }
-    .group-desc { font-size: 12px; color: var(--gray); margin-top: 0.4rem; letter-spacing: 0.03em; }
 
     .disc-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
     .disc-card { background: var(--white); border: 1px solid var(--border); }
@@ -64,7 +71,7 @@
     .disc-detail { display: none; padding: 0 1.25rem 1.25rem; }
     .disc-card.expanded .disc-detail { display: block; }
     .disc-embed { margin-top: 20px; }
-    .disc-embed:first-child { margin-top: 0; }
+    .disc-embed:first-child { margin-top: 14px; }
     .disc-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
 
     .disc-song-list { background: var(--white); border: 1px solid var(--border); margin-top: 10px; }
@@ -116,7 +123,7 @@
 
   <div class="page-header">
     <div class="page-header-tag">DISCOGRAPHY / EARLY ERA</div>
-    <h1 class="page-header-title">前身バンド<span class="red">.</span></h1>
+    <h1 class="page-header-title">Discography<span class="red">.</span></h1>
     <p class="page-header-desc">King Gnu 結成以前の活動記録。</p>
     <div class="page-header-actions">
       <a href="discography.html" class="header-btn">← King Gnu ディスコグラフィー</a>
@@ -239,7 +246,6 @@
       <section class="group-section">
         <div class="group-header">
           <h2 class="group-name">${escH(group.name)}</h2>
-          ${group.desc ? `<p class="group-desc">${escH(group.desc)}</p>` : ''}
         </div>
         <div class="disc-grid">${group.items.map(buildCard).join('')}</div>
       </section>`;

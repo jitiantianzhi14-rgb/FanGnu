@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>公演詳細 — FanGNU</title>
+  <meta name="description" content="King Gnu・Srv.Vinci時代のライブ公演詳細ページ。会場・セットリストなどをまとめて掲載。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FanGNU">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="公演詳細 — FanGNU">
+  <meta property="og:description" content="King Gnu・Srv.Vinci時代のライブ公演詳細ページ。会場・セットリストなどをまとめて掲載。">
+  <meta property="og:url" content="https://jitiantianzhi14-rgb.github.io/FanGnu/contents/live-show.html">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Antique&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -38,6 +46,21 @@
     .page-header-date { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gray); margin-top: 0.75rem; }
 
     .content { max-width: 800px; margin: 0 auto; padding: 2.5rem 2rem; }
+
+    .mv-thumb-wrap { position: relative; cursor: pointer; margin-bottom: 1.5rem; }
+    .mv-thumb-wrap img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+    .mv-thumb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); transition: background 0.15s; }
+    .mv-thumb-wrap:hover .mv-thumb-play { background: rgba(0,0,0,0.45); }
+    .mv-thumb-play-btn { width: 56px; height: 56px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .mv-thumb-play-btn::after { content: ''; border-style: solid; border-width: 11px 0 11px 22px; border-color: transparent transparent transparent #fff; margin-left: 5px; }
+    .mv-embed { display: none; margin-bottom: 1.5rem; }
+    .mv-embed.open { display: block; }
+    .mv-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
+
+    .video-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; color: var(--gray); margin-bottom: 6px; }
+    .video-more-btn { display: block; width: 100%; margin-bottom: 1.5rem; padding: 0.7rem; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: var(--white); color: var(--black); border: 1px solid var(--black); cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .video-more-btn:hover { background: var(--black); color: var(--white); }
+
     .detail-address { font-size: 13px; color: #555; }
     .detail-note { font-size: 12px; color: var(--red); margin-top: 8px; }
     .map-area { margin-top: 1.25rem; border: 1px solid var(--border); }
@@ -97,6 +120,8 @@
   </div>
 
   <div class="content">
+    <div id="mediaArea"></div>
+
     <div class="detail-address" id="address"></div>
     <div class="detail-note" id="noteText" style="display:none;"></div>
     <div class="map-area" id="mapArea" style="display:none;"></div>
@@ -166,6 +191,64 @@
     return index;
   }
 
+  const VIDEO_INITIAL_COUNT = 4;
+
+  function buildVideoItem(video, title) {
+    return `
+      <div class="video-item">
+        ${video.songs ? `<div class="video-label">${escH(video.songs)}</div>` : ''}
+        <div class="mv-thumb-wrap" data-yt="${escH(video.yt)}">
+          <img src="https://img.youtube.com/vi/${escH(video.yt)}/maxresdefault.jpg" alt="${escH(title)} ライブ映像" loading="lazy">
+          <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
+        </div>
+        <div class="mv-embed"></div>
+      </div>`;
+  }
+
+  function wireVideoItem(item) {
+    const yt = item.querySelector('.mv-thumb-wrap').dataset.yt;
+    const thumbImg = item.querySelector('.mv-thumb-wrap img');
+    thumbImg.addEventListener('load', () => {
+      if (thumbImg.naturalWidth === 120) thumbImg.src = `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
+    });
+    thumbImg.addEventListener('error', () => {
+      thumbImg.src = `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
+    });
+    item.querySelector('.mv-thumb-wrap').addEventListener('click', () => {
+      const thumb = item.querySelector('.mv-thumb-wrap');
+      const embed = item.querySelector('.mv-embed');
+      thumb.style.display = 'none';
+      embed.classList.add('open');
+      embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${yt}?rel=0&autoplay=1&playsinline=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>`;
+    });
+  }
+
+  function renderMedia(videos, title) {
+    const mediaArea = document.getElementById('mediaArea');
+    if (!videos || !videos.length) {
+      mediaArea.innerHTML = '';
+      return;
+    }
+    const initial = videos.slice(0, VIDEO_INITIAL_COUNT);
+    const rest = videos.slice(VIDEO_INITIAL_COUNT);
+
+    mediaArea.innerHTML = initial.map(v => buildVideoItem(v, title)).join('');
+    mediaArea.querySelectorAll('.video-item').forEach(wireVideoItem);
+
+    if (rest.length) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'video-more-btn';
+      btn.textContent = `もっと表示（他${rest.length}件）`;
+      btn.addEventListener('click', () => {
+        btn.insertAdjacentHTML('beforebegin', rest.map(v => buildVideoItem(v, title)).join(''));
+        Array.from(mediaArea.querySelectorAll('.video-item')).slice(initial.length).forEach(wireVideoItem);
+        btn.remove();
+      });
+      mediaArea.appendChild(btn);
+    }
+  }
+
   function renderSetlist(setlist, songIndex, isSrvvinci) {
     const area = document.getElementById('setlistArea');
     if (!setlist || !setlist.length) {
@@ -184,8 +267,18 @@
       }).join('')}</ol>`;
   }
 
+  function setMetaContent(selector, content) {
+    const el = document.querySelector(selector);
+    if (el) el.setAttribute('content', content);
+  }
+
   function renderShow(tour, show, songIndex, isSrvvinci) {
-    document.title = `${show.venue || show.location} — 公演詳細 — FanGNU`;
+    const pageTitle = `${show.venue || show.location} — 公演詳細 — FanGNU`;
+    document.title = pageTitle;
+    const desc = `${show.date} ${tour.name}（${show.venue || show.location}）の公演詳細。セットリストなどをまとめて掲載。`;
+    setMetaContent('meta[name="description"]', desc);
+    setMetaContent('meta[property="og:title"]', pageTitle);
+    setMetaContent('meta[property="og:description"]', desc);
 
     const badge = document.getElementById('statusBadge');
     if (show.status) {
@@ -198,6 +291,8 @@
     document.getElementById('venueName').textContent = show.venue || '会場未定';
     document.getElementById('showDate').textContent = show.date;
     document.getElementById('address').textContent = show.location;
+
+    renderMedia(show.videos, show.venue || tour.name);
 
     if (show.note) {
       const noteEl = document.getElementById('noteText');
@@ -217,6 +312,7 @@
 
   function renderNotFound() {
     document.getElementById('venueName').textContent = '公演情報が見つかりませんでした';
+    renderMedia([], '');
     renderSetlist([], new Map());
   }
 
