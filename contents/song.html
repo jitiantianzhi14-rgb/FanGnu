@@ -34,11 +34,14 @@
     .disc-type-badge { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: var(--white); padding: 2px 8px; display: inline-block; width: fit-content; margin-bottom: 1rem; }
     .disc-type-badge.ALBUM  { background: var(--red); }
     .disc-type-badge.SINGLE { background: #444; }
+    .disc-type-badge.CDSG   { background: #444; }
+    .disc-type-badge.配信SG { background: #0a84c4; }
     .disc-type-badge.EP     { background: #2255cc; }
     .disc-type-badge.COVER  { background: #119944; }
     .disc-type-badge.INDIE      { background: #888; }
     .disc-type-badge.UNRELEASED { background: #7c3aed; }
     .disc-type-badge.DEMO       { background: #7c3aed; }
+    .disc-type-badge.ミニアルバム { background: #e6942e; }
 
     .page-header-title { font-family: 'Zen Antique', serif; font-size: 48px; line-height: 1.2; letter-spacing: -0.02em; }
 
@@ -59,6 +62,7 @@
     .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
     .section-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--red); }
     .spotify-embed iframe { width: 100%; border: none; border-radius: 12px; display: block; }
+    .apple-embed iframe { width: 100%; border: none; border-radius: 12px; display: block; }
 
     .song-info { background: var(--white); border: 1px solid var(--border); }
     .song-info-row { display: flex; gap: 16px; padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--border); }
@@ -66,6 +70,8 @@
     .song-info-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--gray); width: 110px; flex-shrink: 0; padding-top: 2px; }
     .song-info-value { font-size: 13px; color: var(--black); line-height: 1.7; }
     .song-info-value.empty { color: var(--gray); }
+    .song-info-value a { text-decoration: underline; text-underline-offset: 2px; transition: color 0.12s; }
+    .song-info-value a:hover { color: var(--red); }
 
     .live-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--black); border: 1px solid var(--black); }
     .live-stat { padding: 1.25rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
@@ -78,7 +84,7 @@
     .live-stat.count .live-stat-value { font-family: 'IBM Plex Mono', monospace; font-size: 34px; font-weight: 900; color: var(--red); line-height: 1; }
     .live-stat.count .live-stat-unit { font-size: 11px; font-weight: 700; color: #999; margin-left: 2px; }
 
-    .live-history-list { background: var(--white); border: 1px solid var(--border); }
+    .live-history-list { list-style: none; background: var(--white); border: 1px solid var(--border); }
     .live-history-item { border-bottom: 1px solid #f0f0f0; }
     .live-history-item:last-child { border-bottom: none; }
     .live-history-row { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 12px; padding: 0.75rem 1.25rem; font-size: 12px; transition: background 0.15s, color 0.15s; }
@@ -86,6 +92,12 @@
     .lh-date { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); }
     .lh-tour { font-weight: 500; color: var(--black); }
     .lh-venue { font-size: 11px; color: var(--gray); white-space: nowrap; }
+
+    .action-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .action-btn { flex: 1 1 0; min-width: 200px; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; border: 1px solid var(--black); padding: 1.5rem 1.5rem; background: var(--black); color: var(--white); transition: background 0.15s; }
+    .action-btn:hover { background: var(--red); border-color: var(--red); }
+    .action-btn.outline { background: var(--white); color: var(--black); }
+    .action-btn.outline:hover { background: var(--black); color: var(--white); }
 
     .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); margin-top: 2rem; }
     .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
@@ -127,6 +139,10 @@
 
     <div id="mediaArea"></div>
 
+    <div id="appleMusicArea"></div>
+
+    <div id="tweetArea"></div>
+
     <div id="spotifyArea"></div>
 
     <dl class="song-info">
@@ -149,6 +165,11 @@
     </dl>
 
     <div id="liveHistoryArea"></div>
+
+    <div class="action-buttons">
+      <a href="#" id="discographyLink" class="action-btn outline">← ディスコグラフィーに戻る</a>
+      <a href="#" id="liveListLink" class="action-btn">ライブ一覧を見る →</a>
+    </div>
   </div>
 
   <footer class="footer">
@@ -175,24 +196,105 @@
     }
   }
 
-  function renderMedia(yt, title) {
+  function setAlbumInfo(id, song) {
+    const el = document.getElementById(id);
+    if (song.album && song.album.title) {
+      const target = isSrvvinci ? 'srvvinci.html' : 'discography.html';
+      const numText = song.album.num ? `（${String(song.album.num).padStart(2,'0')}）` : '';
+      el.innerHTML = `<a href="${target}?album=${encodeURIComponent(song.album.title)}">${escH(song.album.title)}${numText}</a>`;
+      el.classList.remove('empty');
+    } else {
+      el.textContent = '-';
+      el.classList.add('empty');
+    }
+  }
+
+  function setNote(id, value) {
+    const el = document.getElementById(id);
+    if (value) {
+      el.innerHTML = value.split(',').map(s => escH(s.trim())).join('<br>');
+      el.classList.remove('empty');
+    } else {
+      el.textContent = '-';
+      el.classList.add('empty');
+    }
+  }
+
+  function appleMusicId(url) {
+    if (!url) return '';
+    const m = url.match(/(\d+)(?:\?.*)?$/);
+    return m ? m[1] : '';
+  }
+
+  function renderAppleMusic(appleMusic) {
+    const area = document.getElementById('appleMusicArea');
+    if (!appleMusic) {
+      area.innerHTML = '';
+      return;
+    }
+    const embedUrl = appleMusic.replace('https://music.apple.com/', 'https://embed.music.apple.com/');
+    area.innerHTML = `
+      <div class="section-label">APPLE MUSIC</div>
+      <div class="apple-embed">
+        <iframe src="${escH(embedUrl)}" height="175" loading="lazy"
+          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+          allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"></iframe>
+      </div>`;
+  }
+
+  function tweetId(url) {
+    if (!url) return '';
+    const m = url.match(/status\/(\d+)/);
+    return m ? m[1] : '';
+  }
+
+  function renderTweet(url) {
+    const area = document.getElementById('tweetArea');
+    if (!url) {
+      area.innerHTML = '';
+      return;
+    }
+    area.innerHTML = `
+      <div class="section-label">映像</div>
+      <blockquote class="twitter-tweet" data-dnt="true"><a href="${escH(url)}"></a></blockquote>`;
+    if (window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load(area);
+    } else if (!document.getElementById('twitterWidgetsScript')) {
+      const script = document.createElement('script');
+      script.id = 'twitterWidgetsScript';
+      script.src = 'https://platform.twitter.com/widgets.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }
+
+  function renderMedia(yt, title, appleMusic, tweet) {
     const mediaArea = document.getElementById('mediaArea');
     if (!yt) {
-      mediaArea.innerHTML = `<div class="no-video">この曲の動画は見つかりませんでした。</div>`;
+      mediaArea.innerHTML = (appleMusic || tweet) ? '' : `<div class="no-video">この曲の動画は見つかりませんでした。</div>`;
       return;
     }
     mediaArea.innerHTML = `
       <div class="mv-thumb-wrap" data-yt="${escH(yt)}">
-        <img src="https://img.youtube.com/vi/${escH(yt)}/hqdefault.jpg" alt="${escH(title)} MV" loading="lazy">
+        <img src="https://img.youtube.com/vi/${escH(yt)}/maxresdefault.jpg" alt="${escH(title)} MV" loading="lazy">
         <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
       </div>
       <div class="mv-embed"></div>`;
+
+    const thumbImg = mediaArea.querySelector('.mv-thumb-wrap img');
+    thumbImg.addEventListener('load', () => {
+      if (thumbImg.naturalWidth === 120) thumbImg.src = `https://img.youtube.com/vi/${escH(yt)}/hqdefault.jpg`;
+    });
+    thumbImg.addEventListener('error', () => {
+      thumbImg.src = `https://img.youtube.com/vi/${escH(yt)}/hqdefault.jpg`;
+    });
+
     mediaArea.querySelector('.mv-thumb-wrap').addEventListener('click', () => {
       const thumb = mediaArea.querySelector('.mv-thumb-wrap');
       const embed = mediaArea.querySelector('.mv-embed');
       thumb.style.display = 'none';
       embed.classList.add('open');
-      embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${yt}?rel=0&autoplay=1" allowfullscreen allow="autoplay"></iframe>`;
+      embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${yt}?rel=0&autoplay=1&playsinline=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>`;
     });
   }
 
@@ -291,7 +393,7 @@
       return;
     }
     area.innerHTML = `
-      <div class="section-label">LIVE HISTORY（${history.length}）</div>
+      <div class="section-label">LIVE HISTORY</div>
       <ol class="live-history-list">${history.map(h => {
         const srcParam = h.source === 'srvvinci' ? '&src=srvvinci' : '';
         return `
@@ -318,12 +420,14 @@
 
     document.getElementById('songTitle').textContent = song.title || '（タイトル不明）';
 
-    setInfo('infoAlbum', song.album ? `${song.album.title}${song.album.num ? `（${String(song.album.num).padStart(2,'0')}）` : ''}` : '');
+    setAlbumInfo('infoAlbum', song);
     setInfo('infoYear', song.year);
-    setInfo('infoNote', song.note);
+    setNote('infoNote', song.note);
     setInfo('infoExtra', song.extra);
 
-    renderMedia(song.yt, song.title);
+    renderMedia(song.yt, song.title, song.appleMusic, song.tweet);
+    renderAppleMusic(song.appleMusic);
+    renderTweet(song.tweet);
     renderSpotify(song.spotify);
   }
 
@@ -331,6 +435,8 @@
     document.getElementById('songTitle').textContent = '曲が見つかりませんでした';
     document.getElementById('typeBadge').style.display = 'none';
     renderMedia('', '');
+    renderAppleMusic('');
+    renderTweet('');
     renderSpotify('');
   }
 
@@ -338,38 +444,76 @@
     const res = await fetch('data/kinggnu-discography.json');
     const data = await res.json();
     const item = data.items.find(i => i.yt === yt);
-    if (!item) return null;
+    const couplingParent = data.items.find(i => i.coupling && i.coupling.yt === yt);
 
     let album = null;
     for (const a of data.albums) {
       const track = (a.tracks || []).find(t => t.yt === yt);
-      if (track) { album = { title: a.title, num: track.num }; break; }
+      if (track) { album = { title: a.title, num: track.num, year: a.year, track }; break; }
     }
 
-    return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, spotify: item.spotify, album };
+    if (item) {
+      return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, spotify: item.spotify, album };
+    }
+
+    if (couplingParent) {
+      const c = couplingParent.coupling;
+      return { type: couplingParent.type, title: c.title, year: couplingParent.year, note: c.note, extra: '', yt: c.yt, spotify: c.spotify, album };
+    }
+
+    if (album) {
+      const t = album.track;
+      return { type: 'ALBUM', title: t.title, year: album.year, note: t.note, extra: '', yt: t.yt, spotify: t.spotify, album: { title: album.title, num: album.num } };
+    }
+
+    return null;
   }
 
-  async function findInSrvvinci(yt) {
+  async function findInSrvvinci(yt, am, tweet) {
     const res = await fetch('data/srvvinci-discography.json');
     const data = await res.json();
     for (const group of data.groups) {
-      const pools = [
-        ...(group.demos || []).map(d => ({ ...d, type: 'DEMO' })),
-        ...(group.singles || []).map(d => ({ ...d, type: 'SINGLE' })),
-        ...(group.albums || []).map(d => ({ ...d, type: 'ALBUM' })),
+      const collections = [
+        ...(group.demos || []).filter(d => d.tracks).map(d => ({ ...d, type: d.type || 'DEMO' })),
+        ...(group.singles || []).filter(d => d.tracks).map(d => ({ ...d, type: d.type || 'SINGLE' })),
+        ...(group.albums || []).map(a => ({ ...a, type: a.type || 'ALBUM' })),
       ];
-      const item = pools.find(i => i.yt === yt);
-      if (item) return { type: item.type, title: item.title, year: '', note: '', extra: item.extra, yt: item.yt, spotify: item.spotify, album: null };
+
+      // トラック単位の一致を最優先（同じ動画IDが単体シングルとしても登録されている場合、収録アルバム情報を優先して表示するため）
+      for (const coll of collections) {
+        const track = (coll.tracks || []).find(t => (yt && t.yt === yt) || (am && appleMusicId(t.appleMusic) === am));
+        if (track) {
+          return { type: coll.type, title: track.title, year: coll.year || '', note: track.note || '', extra: '', yt: track.yt || '', spotify: track.spotify || '', appleMusic: track.appleMusic || '', album: { title: coll.title, num: track.num } };
+        }
+      }
+
+      const flatPools = [
+        ...(group.demos || []).filter(d => !d.tracks).map(d => ({ ...d, type: d.type || 'DEMO' })),
+        ...(group.singles || []).filter(d => !d.tracks).map(d => ({ ...d, type: d.type || 'SINGLE' })),
+      ];
+      const item = flatPools.find(i => (yt && i.yt === yt) || (tweet && tweetId(i.url) === tweet));
+      if (item) return { type: item.type, title: item.title, year: item.year || '', note: item.note || '', extra: item.extra, yt: item.yt, spotify: item.spotify || '', appleMusic: '', tweet: item.url || '', album: null };
+
+      for (const coll of collections) {
+        if (yt && coll.yt === yt) {
+          return { type: coll.type, title: coll.title, year: coll.year || '', note: coll.note || '', extra: '', yt: coll.yt, spotify: '', appleMusic: '', album: null };
+        }
+      }
     }
     return null;
   }
 
   const params = new URLSearchParams(location.search);
-  const yt  = params.get('yt') || '';
+  const yt    = params.get('yt') || '';
+  const am    = params.get('am') || '';
+  const tweet = params.get('tweet') || '';
   const src = params.get('src') === 'srvvinci' ? 'srvvinci' : 'discography';
 
   const isSrvvinci = src === 'srvvinci';
-  const lookup = isSrvvinci ? findInSrvvinci(yt) : findInDiscography(yt);
+  document.getElementById('discographyLink').href = isSrvvinci ? 'srvvinci.html' : 'discography.html';
+  document.getElementById('liveListLink').href = isSrvvinci ? 'srvvinci-live.html' : 'live.html';
+
+  const lookup = isSrvvinci ? findInSrvvinci(yt, am, tweet) : findInDiscography(yt);
   lookup
     .then(song => {
       if (!song) { renderNotFound(); return null; }

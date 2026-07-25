@@ -4,44 +4,47 @@
       "name": "Srv.Vinci",
       "desc": "常田大希を中心とした前身バンド（〜2017年）",
       "demos": [
-        { "title": "Stem", "yt": "YiQTjl71ipM" },
-        { "title": "ABUKU", "yt": "6QQoZW0SOnI" },
-        { "title": "Cheap Transistor", "yt": null },
-        { "title": "もっと静かに狂わせて", "yt": null }
+        {
+          "title": "1st demo", "year": "2015.04.01", "note": "",
+          "tracks": [
+            { "num": 1, "title": "Stem", "yt": "YiQTjl71ipM", "note": "", "spotify": "" },
+            { "num": 2, "title": "ABUKU", "yt": "6QQoZW0SOnI", "note": "", "spotify": "" },
+            { "num": 3, "title": "Cheap Transistor", "yt": "dlS18oUHw4o", "note": "", "spotify": "" },
+            { "num": 4, "title": "もっと静かに狂わせて", "yt": "Vr65t6nt_0U", "note": "", "spotify": "" }
+          ]
+        },
+        { "title": "NUMÉRO × THE ROOTS OF BLOOD", "yt": null },
+        { "title": "Re:", "yt": null }
       ],
       "singles": [
-        { "title": "都", "yt": null }
+        { "title": "都", "yt": "mIdXhe-p-ow", "year": "2016.05.05", "type": "配信SG" },
+        { "title": "ロウラヴ", "yt": "nhH03chZJMQ", "year": "2016.04.01", "type": "配信SG" }
       ],
       "albums": [
         {
-          "title": "トーキョー・カオティック",
-          "yt": "91ClD6WZB20",
+          "title": "トーキョー・カオティック", "year": "2016.09.14", "note": "", "yt": "91ClD6WZB20", "type": "ミニアルバム",
           "tracks": [
-            { "num": 1, "title": "ロウラヴ" },
-            { "num": 2, "title": "サマーレイン・ダイバー" },
-            { "num": 3, "title": "Vinyl" },
-            { "num": 4, "title": "破裂" }
+            { "num": 1, "title": "ロウラヴ", "yt": "nhH03chZJMQ", "note": "", "spotify": "" },
+            { "num": 2, "title": "サマーレイン・ダイバー", "yt": "", "note": "", "spotify": "" },
+            { "num": 3, "title": "Vinyl", "yt": "1ElFcjEt_eM", "note": "", "spotify": "" },
+            { "num": 4, "title": "破裂", "yt": "", "note": "", "spotify": "" }
           ]
         },
         {
-          "title": "Mad me more softly",
-          "yt": "pooEvhVCiyE",
+          "title": "Mad me more softly", "year": "2015.09.16", "note": "", "yt": "pooEvhVCiyE",
           "tracks": [
-            { "num": 1, "title": "Devil's MC" },
-            { "num": 2, "title": "PPL" },
-            { "num": 3, "title": "Heroine" },
-            { "num": 4, "title": "Those Sunny Smiles" },
-            { "num": 5, "title": "Mommy's Tummy" },
-            { "num": 6, "title": "Zero Gravity Toilet" },
-            { "num": 7, "title": "Diving To You" },
-            { "num": 8, "title": "Abnormal Pressure" },
-            { "num": 9, "title": "Plastic Rain" },
-            { "num": 10, "title": "\"I'm outta here.\"" }
+            { "num": 1, "title": "Devil's MC", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/devils-mc/1040415179" },
+            { "num": 2, "title": "PPL", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/ppl/1040415180" },
+            { "num": 3, "title": "Heroine", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/heroine/1040415181" },
+            { "num": 4, "title": "Those Sunny Smiles", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/those-sunny-smiles/1040415182" },
+            { "num": 5, "title": "Mommy's Tummy", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/mommys-tummy/1040415183" },
+            { "num": 6, "title": "Zero Gravity Toilet", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/zero-gravity-toilet/1040415184" },
+            { "num": 7, "title": "Diving To You", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/diving-to-you/1040415545" },
+            { "num": 8, "title": "Abnormal Pressure", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/abnormal-pressure/1040415546" },
+            { "num": 9, "title": "Plastic Rain", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/plastic-rain/1040415547" },
+            { "num": 10, "title": "\"I'm outta here.\"", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/im-outta-here/1040415548" }
           ]
-        },
-        { "title": "謎", "yt": null, "tracks": [] },
-        { "title": "NUMÉRO × THE ROOTS OF BLOOD", "yt": null, "tracks": [] },
-        { "title": "Re:?", "yt": null, "tracks": [] }
+        }
       ]
     },
     {
@@ -49,27 +52,35 @@
       "desc": "常田大希の別名義プロジェクト",
       "singles": [
         { "title": "In Tokyo", "yt": "GXk_ANNlXEU" },
-        { "title": "In Rose", "yt": "YZLNZ7lfd_s", "yt2": "nwotP3Wbcbs" }
+        { "title": "In Rose", "yt": "YZLNZ7lfd_s", "yt2": "nwotP3Wbcbs" },
+        { "title": "SOUND CLOUD", "year": "2013.08.31", "url": "https://x.com/vinyl_king0218/status/2076630789740261688" }
       ]
     },
     {
       "name": "Diddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室",
-      "desc": "Hello From Underground シリーズ各バージョン",
-      "compilations": [
+      "desc": "同一人物による複数の別名義。Hello From Underground シリーズ各バージョン",
+      "albums": [
         {
-          "title": "Hello From Underground（Diddi's Asianground Jam 版）",
-          "url": "https://www.audioleaf.com/didis_jam/",
-          "tracks": ["前触?"]
+          "title": "Hello From Underground（Diddi's Asianground Jam 版）", "year": "", "note": "",
+          "tracks": [
+            { "num": 1, "title": "前触?", "yt": "", "note": "", "spotify": "" }
+          ]
         },
         {
-          "title": "Hello from underground（Diddy's Underground Jam 版）",
-          "url": "https://www.audioleaf.com/diddy-s/",
-          "tracks": ["チープなメディア", "アンダーグラウンド?", "新宿メトロライン"]
+          "title": "Hello from underground（Diddy's Underground Jam 版）", "year": "", "note": "",
+          "tracks": [
+            { "num": 1, "title": "チープなメディア", "yt": "", "note": "", "spotify": "" },
+            { "num": 2, "title": "アンダーグラウンド?", "yt": "", "note": "", "spotify": "" },
+            { "num": 3, "title": "新宿メトロライン", "yt": "", "note": "", "spotify": "" }
+          ]
         },
         {
-          "title": "hello from underground（ディディーの地下室 版）",
-          "url": "https://www.audioleaf.com/diddys_underground/",
-          "tracks": ["新宿メトロライン", "東京", "コルトレーンズ・ゲリラ"]
+          "title": "hello from underground（ディディーの地下室 版）", "year": "", "note": "",
+          "tracks": [
+            { "num": 1, "title": "新宿メトロライン", "yt": "", "note": "", "spotify": "" },
+            { "num": 2, "title": "東京", "yt": "", "note": "", "spotify": "" },
+            { "num": 3, "title": "コルトレーンズ・ゲリラ", "yt": "", "note": "", "spotify": "" }
+          ]
         }
       ]
     }

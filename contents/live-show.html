@@ -45,7 +45,7 @@
 
     .setlist-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 8px; }
     .setlist-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--red); }
-    .setlist-list { background: var(--white); border: 1px solid var(--border); }
+    .setlist-list { list-style: none; background: var(--white); border: 1px solid var(--border); }
     .setlist-item { border-bottom: 1px solid #f0f0f0; font-size: 13px; }
     .setlist-item:last-child { border-bottom: none; }
     .setlist-row { display: flex; align-items: center; gap: 12px; padding: 0.7rem 1.25rem; }
@@ -53,6 +53,16 @@
     a.setlist-row:hover { background: var(--bg); color: var(--red); }
     .setlist-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); width: 22px; flex-shrink: 0; }
     .no-setlist { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); padding: 2rem 0; text-align: center; border: 1px dashed var(--border); margin-top: 2rem; }
+
+    .action-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .header-btn { flex: 1 1 0; min-width: 200px; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; border: 1px solid var(--black); padding: 1.5rem 1.5rem; background: var(--black); color: var(--white); transition: background 0.15s; }
+    .header-btn:hover { background: var(--red); border-color: var(--red); }
+    .header-btn.outline { background: var(--white); color: var(--black); }
+    .header-btn.outline:hover { background: var(--black); color: var(--white); }
+
+    @media (max-width: 600px) {
+      .header-btn { flex: 1 1 100%; }
+    }
 
     .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); margin-top: 2rem; }
     .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
@@ -91,6 +101,11 @@
     <div class="detail-note" id="noteText" style="display:none;"></div>
     <div class="map-area" id="mapArea" style="display:none;"></div>
     <div id="setlistArea"></div>
+
+    <div class="action-buttons">
+      <a href="#" id="archiveLink" class="header-btn outline">← ライブアーカイブに戻る</a>
+      <a href="discography.html" class="header-btn">ディスコグラフィーを見る →</a>
+    </div>
   </div>
 
   <footer class="footer">
@@ -137,7 +152,10 @@
       } else {
         const res = await fetch('data/kinggnu-discography.json');
         const data = await res.json();
-        (data.items || []).forEach(item => { if (item.yt) index.set(item.title, item.yt); });
+        (data.items || []).forEach(item => {
+          if (item.yt) index.set(item.title, item.yt);
+          if (item.coupling && item.coupling.yt) index.set(item.coupling.title, item.coupling.yt);
+        });
         (data.albums || []).forEach(album => {
           (album.tracks || []).forEach(t => { if (t.yt && !index.has(t.title)) index.set(t.title, t.yt); });
         });
@@ -216,6 +234,7 @@
   const date = params.get('date') || '';
   const isSrvvinci = params.get('src') === 'srvvinci';
   const backHref = isSrvvinci ? 'srvvinci-live.html' : 'live.html';
+  document.getElementById('archiveLink').href = backHref;
 
   Promise.all([findShow(date, isSrvvinci), loadSongIndex(isSrvvinci)])
     .then(([result, songIndex]) => {

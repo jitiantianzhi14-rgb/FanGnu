@@ -37,54 +37,58 @@
     .header-btn { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; border: 1px solid var(--black); padding: 8px 18px; background: var(--black); color: var(--white); transition: background 0.15s; }
     .header-btn:hover { background: var(--red); border-color: var(--red); }
 
-    .group-section { border-bottom: 3px solid var(--black); }
-    .group-header { background: var(--black); color: var(--white); padding: 1.25rem 2rem; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-    .group-name { font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 700; letter-spacing: 0.04em; }
-    .group-desc { font-size: 11px; color: #aaa; }
-    .group-body { padding: 2rem; display: flex; flex-direction: column; gap: 2rem; max-width: 1100px; margin: 0 auto; }
+    .content { max-width: 1100px; margin: 0 auto; padding: 2rem; }
 
-    .sub-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
-    .sub-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--red); }
+    .group-section { margin-bottom: 2.5rem; }
+    .group-section:last-child { margin-bottom: 0; }
+    .group-header { padding-bottom: 1.25rem; margin-bottom: 1rem; border-bottom: 2px solid var(--black); }
+    .group-name { font-family: 'Zen Antique', serif; font-size: 28px; letter-spacing: -0.01em; }
+    .group-desc { font-size: 12px; color: var(--gray); margin-top: 0.4rem; letter-spacing: 0.03em; }
 
     .disc-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
     .disc-card { background: var(--white); border: 1px solid var(--border); }
     .disc-card-head { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; cursor: pointer; }
     .disc-card-head:hover { background: var(--bg); }
     .disc-type-badge { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: var(--white); padding: 2px 8px; display: inline-block; width: fit-content; flex-shrink: 0; }
-    .badge-DEMO   { background: #7c3aed; }
-    .badge-SINGLE { background: #444; }
+    .disc-type-badge.ALBUM  { background: var(--red); }
+    .disc-type-badge.ミニアルバム { background: #e6942e; }
+    .disc-type-badge.DEMO   { background: #7c3aed; }
+    .disc-type-badge.SINGLE { background: #444; }
+    .disc-type-badge.配信SG { background: #0a84c4; }
+    .disc-year { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); flex-shrink: 0; }
     .disc-title { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.3; flex: 1; }
 
     .disc-toggle { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); flex-shrink: 0; transition: transform 0.15s; }
-    .disc-card.expanded .disc-toggle, .album-card.expanded .disc-toggle { transform: rotate(180deg); }
+    .disc-card.expanded .disc-toggle { transform: rotate(180deg); }
 
     .disc-detail { display: none; padding: 0 1.25rem 1.25rem; }
-    .disc-card.expanded .disc-detail, .album-card.expanded .disc-detail { display: block; }
-    .disc-detail-link { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: var(--white); background: var(--black); padding: 6px 14px; margin-top: 10px; transition: background 0.15s; }
-    .disc-detail-link:hover { background: var(--red); }
-    .disc-embed { margin-top: 10px; }
-    .disc-detail > *:first-child { margin-top: 0; }
+    .disc-card.expanded .disc-detail { display: block; }
+    .disc-embed { margin-top: 20px; }
+    .disc-embed:first-child { margin-top: 0; }
     .disc-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
 
-    .album-card { background: var(--white); border: 1px solid var(--border); margin-bottom: 16px; }
-    .album-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .album-header.clickable { cursor: pointer; }
-    .album-header.clickable:hover { background: var(--bg); }
-    .album-title { font-size: 17px; font-weight: 700; flex: 1; }
-    .track-grid { display: grid; grid-template-columns: 1fr; }
+    .disc-song-list { background: var(--white); border: 1px solid var(--border); margin-top: 10px; }
+    .disc-song-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #f0f0f0; transition: background 0.12s, color 0.12s; }
+    .disc-song-row:last-child { border-bottom: none; }
+    a.disc-song-row { cursor: pointer; }
+    a.disc-song-row:hover { background: var(--bg); color: var(--red); }
+    .disc-song-title { font-size: 14px; font-weight: 700; color: inherit; flex: 1; }
+    .disc-song-arrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: var(--gray); flex-shrink: 0; }
+    a.disc-song-row:hover .disc-song-arrow { color: var(--red); }
+
+    .disc-note { font-size: 11px; color: #555; line-height: 1.6; }
+
+    .track-grid { display: grid; grid-template-columns: 1fr; margin-top: 20px; border: 1px solid var(--border); }
     .track-row { display: flex; align-items: center; gap: 10px; padding: 9px 1.25rem; border-bottom: 1px solid #f0f0f0; }
     .track-row:last-child { border-bottom: none; }
+    .track-link { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+    a.track-link:hover .track-title { color: var(--red); }
     .track-num  { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #bbb; width: 22px; flex-shrink: 0; }
-    .track-title { font-size: 12px; font-weight: 500; flex: 1; }
-    .tbd { padding: 0.75rem 1.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); border-top: 1px solid var(--border); }
-
-    .comp-card { background: var(--white); border: 1px solid var(--border); padding: 1.25rem 1.5rem; margin-bottom: 12px; display: flex; flex-direction: column; gap: 10px; }
-    .comp-header { display: flex; align-items: flex-start; gap: 10px; }
-    .comp-title { font-size: 14px; font-weight: 700; flex: 1; }
-    .comp-link-btn { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; background: var(--black); color: var(--white); border: none; padding: 5px 12px; white-space: nowrap; flex-shrink: 0; text-decoration: none; transition: background 0.15s; display: inline-block; }
-    .comp-link-btn:hover { background: var(--red); }
-    .comp-tracks { display: flex; flex-wrap: wrap; gap: 6px; }
-    .comp-track { font-size: 11px; background: var(--bg); padding: 3px 10px; border: 1px solid #e5ddc8; color: #444; }
+    .track-title { font-size: 12px; font-weight: 500; flex: 1; transition: color 0.12s; }
+    .track-detail-btn { width: 24px; height: 24px; background: var(--red); border: none; border-radius: 50%; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; transition: background 0.12s; }
+    .track-detail-btn:hover { background: #c0251b; }
+    .track-detail-btn.open { background: #444; }
+    .tbd { margin-top: 20px; padding: 0.75rem 1.25rem; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); border: 1px dashed var(--border); }
 
     .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); }
     .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
@@ -119,7 +123,7 @@
     </div>
   </div>
 
-  <div id="pageBody"></div>
+  <div class="content" id="discContent"></div>
 
   <footer class="footer">
     <a href="../index.html" class="footer-logo">Fan<span class="red">GNU</span></a>
@@ -130,119 +134,166 @@
   </footer>
 
   <script>
+  let GROUPS = [];
+
   function escH(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
-  function embedBlock(yt) {
-    return `<div class="disc-embed" data-yt="${escH(yt)}"></div>`;
+  function appleMusicId(url) {
+    if (!url) return '';
+    const m = url.match(/(\d+)(?:\?.*)?$/);
+    return m ? m[1] : '';
   }
 
-  function songHref(yt) {
-    return `song.html?src=srvvinci&yt=${encodeURIComponent(yt)}`;
+  function tweetId(url) {
+    if (!url) return '';
+    const m = url.match(/status\/(\d+)/);
+    return m ? m[1] : '';
   }
 
-  function buildDiscCard(type, item) {
-    const hasVideo = !!item.yt;
-    const detail = hasVideo
-      ? `<div class="disc-detail">
-           <a class="disc-detail-link" href="${songHref(item.yt)}">楽曲詳細 →</a>
-           ${embedBlock(item.yt)}${item.yt2 ? embedBlock(item.yt2) : ''}
-         </div>`
+  function songHref(yt, am, tweet) {
+    const params = new URLSearchParams({ src: 'srvvinci' });
+    if (yt) params.set('yt', yt);
+    if (am) params.set('am', am);
+    if (tweet) params.set('tweet', tweet);
+    return `song.html?${params.toString()}`;
+  }
+
+  function buildTrackGrid(tracks) {
+    if (!tracks || !tracks.length) return `<div class="tbd">トラックリスト準備中</div>`;
+    return `<div class="track-grid">${tracks.map(t => {
+      const numTitle = `
+          <span class="track-num">${String(t.num).padStart(2,'0')}</span>
+          <span class="track-title">${escH(t.title)}</span>`;
+      const href = t.yt ? songHref(t.yt) : (t.appleMusic ? songHref(null, appleMusicId(t.appleMusic)) : null);
+      if (href) {
+        return `
+          <div class="track-row">
+            <a class="track-link" href="${href}">${numTitle}</a>
+            <a class="track-detail-btn" href="${href}" aria-label="楽曲詳細へ">→</a>
+          </div>`;
+      }
+      return `
+        <div class="track-row">
+          <span class="track-link">${numTitle}</span>
+        </div>`;
+    }).join('')}</div>`;
+  }
+
+  function songRow(title, href) {
+    const inner = `<span class="disc-song-title">${escH(title)}</span>${href ? `<span class="disc-song-arrow">楽曲詳細 →</span>` : ''}`;
+    return href
+      ? `<a class="disc-song-row" href="${href}">${inner}</a>`
+      : `<div class="disc-song-row">${inner}</div>`;
+  }
+
+  function buildCard(item) {
+    const hasTracks = !!(item.tracks && item.tracks.length);
+    const embedsHtml = [
+      item.yt ? `<div class="disc-embed" data-yt="${escH(item.yt)}"></div>` : '',
+      item.yt2 ? `<div class="disc-embed" data-yt="${escH(item.yt2)}"></div>` : '',
+    ].join('');
+
+    if (hasTracks) {
+      const hasDetail = true;
+      const previewYt = item.type !== 'DEMO' ? (item.yt || ((item.tracks || []).find(t => t.yt) || {}).yt) : null;
+      const previewEmbedHtml = previewYt ? `<div class="disc-embed" data-yt="${escH(previewYt)}"></div>` : '';
+      const detailHtml = `<div class="disc-detail">
+             ${item.note ? `<div class="disc-note">${escH(item.note)}</div>` : ''}
+             ${previewEmbedHtml}
+             ${buildTrackGrid(item.tracks)}
+           </div>`;
+      return `
+        <div class="disc-card">
+          <div class="disc-card-head">
+            <span class="disc-type-badge ${escH(item.type)}">${escH(item.type)}</span>
+            ${item.year ? `<span class="disc-year">${escH(item.year)}</span>` : ''}
+            <span class="disc-title">${escH(item.title)}</span>
+            ${hasDetail ? `<span class="disc-toggle">▼</span>` : ''}
+          </div>
+          ${detailHtml}
+        </div>`;
+    }
+
+    const rowHref = item.yt ? songHref(item.yt) : (item.url ? songHref(null, null, tweetId(item.url)) : null);
+    const hasDetail = !!rowHref;
+    const songListHtml = rowHref ? `<div class="disc-song-list">${songRow(item.title, rowHref)}</div>` : '';
+    const detailHtml = hasDetail
+      ? `<div class="disc-detail">${songListHtml}${embedsHtml}</div>`
       : '';
-    return `<div class="disc-card">
-      <div class="disc-card-head">
-        <span class="disc-type-badge badge-${escH(type)}">${escH(type)}</span>
-        <span class="disc-title">${escH(item.title)}</span>
-        ${hasVideo ? `<span class="disc-toggle">▼</span>` : ''}
-      </div>
-      ${detail}
-    </div>`;
+    return `
+      <div class="disc-card">
+        <div class="disc-card-head">
+          <span class="disc-type-badge ${escH(item.type)}">${escH(item.type)}</span>
+          ${item.year ? `<span class="disc-year">${escH(item.year)}</span>` : ''}
+          <span class="disc-title">${escH(item.title)}</span>
+          ${hasDetail ? `<span class="disc-toggle">▼</span>` : ''}
+        </div>
+        ${detailHtml}
+      </div>`;
   }
 
-  function buildAlbumCard(album) {
-    const hasVideo = !!album.yt;
-    const trackPart = album.tracks && album.tracks.length
-      ? `<div class="track-grid">${album.tracks.map(t =>
-          `<div class="track-row">
-            <span class="track-num">${String(t.num).padStart(2,'0')}</span>
-            <span class="track-title">${escH(t.title)}</span>
-          </div>`).join('')}</div>`
-      : `<div class="tbd">トラックリスト準備中</div>`;
-    const detail = hasVideo
-      ? `<div class="disc-detail">
-           <a class="disc-detail-link" href="${songHref(album.yt)}">楽曲詳細 →</a>
-           ${embedBlock(album.yt)}
-         </div>`
-      : '';
-    return `<div class="album-card">
-      <div class="album-header${hasVideo ? ' clickable' : ''}">
-        <span class="album-title">${escH(album.title)}</span>
-        ${hasVideo ? `<span class="disc-toggle">▼</span>` : ''}
-      </div>
-      ${detail}
-      ${trackPart}
-    </div>`;
+  function buildGroupSection(group) {
+    return `
+      <section class="group-section">
+        <div class="group-header">
+          <h2 class="group-name">${escH(group.name)}</h2>
+          ${group.desc ? `<p class="group-desc">${escH(group.desc)}</p>` : ''}
+        </div>
+        <div class="disc-grid">${group.items.map(buildCard).join('')}</div>
+      </section>`;
   }
 
-  function buildCompCard(comp) {
-    const tracks = comp.tracks.map(t => `<span class="comp-track">${escH(t)}</span>`).join('');
-    return `<div class="comp-card">
-      <div class="comp-header">
-        <span class="comp-title">${escH(comp.title)}</span>
-        <a href="${escH(comp.url)}" target="_blank" rel="noopener" class="comp-link-btn">audioleaf ↗</a>
-      </div>
-      <div class="comp-tracks">${tracks}</div>
-    </div>`;
-  }
+  function render() {
+    const content = document.getElementById('discContent');
+    content.innerHTML = GROUPS.map(buildGroupSection).join('');
 
-  function renderGroup(group) {
-    let parts = '';
-    if (group.demos) parts += `<div><div class="sub-label">DEMO</div><div class="disc-grid">${group.demos.map(d => buildDiscCard('DEMO', d)).join('')}</div></div>`;
-    if (group.singles) parts += `<div><div class="sub-label">SINGLE</div><div class="disc-grid">${group.singles.map(d => buildDiscCard('SINGLE', d)).join('')}</div></div>`;
-    if (group.albums) parts += `<div><div class="sub-label">ALBUM</div>${group.albums.map(buildAlbumCard).join('')}</div>`;
-    if (group.compilations) parts += `<div><div class="sub-label">COMPILATION</div>${group.compilations.map(buildCompCard).join('')}</div>`;
-    return `<div class="group-section">
-      <div class="group-header">
-        <span class="group-name">${escH(group.name)}</span>
-        <span class="group-desc">${escH(group.desc)}</span>
-      </div>
-      <div class="group-body">${parts}</div>
-    </div>`;
-  }
-
-  function toggleDetail(card, detail) {
-    const isOpen = card.classList.toggle('expanded');
-    detail.querySelectorAll('.disc-embed').forEach(embed => {
-      embed.innerHTML = isOpen
-        ? `<iframe src="https://www.youtube.com/embed/${embed.dataset.yt}?rel=0&autoplay=1" allowfullscreen allow="autoplay"></iframe>`
-        : '';
-    });
-  }
-
-  function bindToggles() {
-    document.querySelectorAll('.disc-card').forEach(card => {
+    content.querySelectorAll('.disc-card').forEach(card => {
       const head = card.querySelector('.disc-card-head');
-      const detail = card.querySelector('.disc-detail');
-      if (!detail) return;
-      head.addEventListener('click', () => toggleDetail(card, detail));
+      const embeds = card.querySelectorAll('.disc-embed');
+      head.addEventListener('click', () => {
+        if (!card.querySelector('.disc-detail')) return;
+        const isOpen = card.classList.toggle('expanded');
+        embeds.forEach(embed => {
+          embed.innerHTML = isOpen
+            ? `<iframe src="https://www.youtube.com/embed/${embed.dataset.yt}?rel=0&playsinline=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>`
+            : '';
+        });
+      });
     });
-    document.querySelectorAll('.album-card').forEach(card => {
-      const head = card.querySelector('.album-header.clickable');
-      const detail = card.querySelector('.disc-detail');
-      if (!head || !detail) return;
-      head.addEventListener('click', () => toggleDetail(card, detail));
-    });
+  }
+
+  function sortKey(year) {
+    if (!year || year === '—') return '0000.00.00';
+    const parts = String(year).split('.');
+    const y = (parts[0] || '0000').padStart(4, '0');
+    const m = (parts[1] || '06').padStart(2, '0');
+    const d = (parts[2] || '15').padStart(2, '0');
+    return `${y}.${m}.${d}`;
+  }
+
+  function buildGroups(groups) {
+    return groups
+      .filter(group => (group.demos || []).length || (group.singles || []).length || (group.albums || []).length)
+      .map(group => {
+        const items = [
+          ...(group.demos || []).map(d => ({ ...d, type: d.type || 'DEMO', group: group.name })),
+          ...(group.singles || []).map(d => ({ ...d, type: d.type || 'SINGLE', group: group.name })),
+          ...(group.albums || []).map(a => ({ ...a, type: a.type || 'ALBUM', group: group.name })),
+        ].sort((a, b) => sortKey(b.year).localeCompare(sortKey(a.year)));
+        return { name: group.name, desc: group.desc, items };
+      });
   }
 
   fetch('data/srvvinci-discography.json')
     .then(res => res.json())
     .then(data => {
-      document.getElementById('pageBody').innerHTML = data.groups.map(renderGroup).join('');
-      bindToggles();
+      GROUPS = buildGroups(data.groups || []);
+      render();
     })
     .catch(err => {
-      document.getElementById('pageBody').textContent = 'データの読み込みに失敗しました。';
+      document.getElementById('discContent').textContent = 'データの読み込みに失敗しました。';
       console.error(err);
     });
   </script>

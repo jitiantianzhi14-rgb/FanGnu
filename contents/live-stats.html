@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ライブ統計 — FanGNU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Antique&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --red: #e63329; --black: #111; --white: #fff; --gray: #888; --border: #ddd; --bg: #fbf2d9; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--black); line-height: 1.6; padding-bottom: 58px; }
+    a { color: inherit; text-decoration: none; }
+
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 52px; }
+    .nav-logo { font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 700; }
+    .nav-logo .red { color: var(--red); }
+    .nav-links { display: flex; gap: 1.75rem; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; }
+    .nav-links a { color: var(--gray); transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--black); }
+    .nav-links a.active { border-bottom: 1px solid var(--black); }
+
+    .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: var(--white); border-top: 2px solid var(--black); z-index: 200; }
+    .bn-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 8px 4px 6px; font-size: 9px; font-weight: 700; letter-spacing: 0.02em; color: var(--gray); transition: color 0.15s; }
+    .bn-item:hover { color: var(--black); }
+    .bn-item.active { color: var(--red); }
+    .bn-icon { font-size: 18px; line-height: 1; }
+
+    .page-header { padding: 3rem 2rem 2.5rem; border-bottom: 2px solid var(--black); background: var(--white); }
+    .page-header-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+    .page-header-tag::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--red); }
+    .page-header-title { font-family: 'Zen Antique', serif; font-size: 56px; line-height: 1; letter-spacing: -0.02em; }
+    .page-header-title .red { color: var(--red); }
+    .page-header-desc { font-size: 12px; color: var(--gray); margin-top: 1rem; letter-spacing: 0.05em; }
+
+    .content { max-width: 900px; margin: 0 auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2.5rem; }
+
+    .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+    .section-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--red); }
+
+    .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--black); border: 1px solid var(--black); }
+    .summary-card { padding: 1.5rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
+    .summary-card:last-child { border-right: none; }
+    .summary-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: #999; margin-bottom: 8px; }
+    .summary-value { font-family: 'IBM Plex Mono', monospace; font-size: 28px; font-weight: 900; color: var(--red); line-height: 1; }
+    .summary-value.small { font-size: 13px; font-weight: 700; color: var(--white); line-height: 1.5; }
+    .summary-value.small a { color: var(--white); }
+    .summary-value.small a:hover { color: var(--red); }
+    .summary-unit { font-size: 10px; font-weight: 700; color: #999; margin-left: 2px; }
+
+    .rank-list { background: var(--white); border: 1px solid var(--border); }
+    .rank-item { display: flex; align-items: center; gap: 14px; padding: 0.8rem 1.25rem; border-bottom: 1px solid #f0f0f0; }
+    .rank-item:last-child { border-bottom: none; }
+    a.rank-item { transition: background 0.15s, color 0.15s; }
+    a.rank-item:hover { background: var(--bg); color: var(--red); }
+    .rank-num { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 900; color: var(--gray); width: 28px; flex-shrink: 0; text-align: right; }
+    .rank-item:nth-child(1) .rank-num { color: var(--red); }
+    .rank-title { font-size: 14px; font-weight: 700; flex: 1; }
+    .rank-count { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gray); flex-shrink: 0; }
+    .rank-count b { color: var(--black); font-size: 14px; }
+
+    .show-more-btn { display: block; width: 100%; margin-top: 10px; padding: 0.7rem; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: var(--white); color: var(--black); border: 1px solid var(--black); cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .show-more-btn:hover { background: var(--black); color: var(--white); }
+
+    .loading { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); padding: 2rem; text-align: center; }
+
+    .map-section { display: flex; gap: 2rem; align-items: flex-start; }
+    .map-rank-col { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .map-visual-col { flex: 1; min-width: 0; }
+    .map-rank-col .section-label:not(:first-child) { margin-top: 1.25rem; }
+    .rank-tag { font-family: 'IBM Plex Mono', monospace; font-size: 8px; font-weight: 700; letter-spacing: 0.05em; color: var(--white); background: var(--gray); padding: 1px 6px; margin-left: 8px; flex-shrink: 0; }
+    .jp-map-wrap { display: flex; justify-content: center; background: var(--white); border: 1px solid var(--border); padding: 1.5rem; }
+    .jp-map { width: 100%; max-width: 460px; height: auto; display: block; }
+    .jp-map .jp-paths path { fill: #e5ddc8; transition: fill 0.15s; }
+    .jp-map g[name].visited path { fill: var(--red); cursor: pointer; }
+    .jp-map g[name].visited:hover path { fill: var(--black); }
+    .map-note { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--gray); text-align: right; margin-top: 6px; }
+    .map-note a { color: var(--gray); text-decoration: underline; }
+
+    .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); margin-top: 2rem; }
+    .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
+    .footer-logo .red { color: var(--red); }
+    .footer-copy { font-size: 10px; color: var(--gray); letter-spacing: 0.05em; text-align: right; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header-title { font-size: 38px; }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .summary-card { border-bottom: 1px solid rgba(255,255,255,0.15); }
+      .map-section { flex-direction: column; }
+      .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">Fan<span class="red">GNU</span></a>
+    <div class="nav-links">
+      <a href="members/members.html">メンバー</a>
+      <a href="discography.html">ディスコグラフィー</a>
+      <a href="live.html" class="active">ライブ</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-tag">LIVE / STATS</div>
+    <h1 class="page-header-title">ライブ統計<span class="red">.</span></h1>
+    <p class="page-header-desc">King Gnu・Srv.Vinci時代を通算した公演記録の集計。</p>
+  </div>
+
+  <div class="content">
+    <div>
+      <div class="section-label">SUMMARY</div>
+      <div class="summary-grid" id="summaryGrid"><div class="loading">集計中…</div></div>
+    </div>
+
+    <div>
+      <div class="section-label" id="rankLabel">SONG RANKING</div>
+      <div class="rank-list" id="rankList"><div class="loading">集計中…</div></div>
+      <button type="button" class="show-more-btn" id="rankShowMore" style="display:none;">もっと表示</button>
+    </div>
+
+    <div class="map-section">
+      <div class="map-rank-col">
+        <div class="section-label" id="domesticRankLabel">国内 TOP5</div>
+        <div class="rank-list" id="domesticRankList"><div class="loading">集計中…</div></div>
+        <div class="section-label" id="overseasRankLabel">海外 TOP5</div>
+        <div class="rank-list" id="overseasRankList"><div class="loading">集計中…</div></div>
+      </div>
+      <div class="map-visual-col">
+      <div class="section-label" id="prefLabel">MAP</div>
+      <div class="jp-map-wrap">
+        <svg class="jp-map" id="jpMap" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+      <g class="jp-paths" stroke="#fff" stroke-width="1.2" stroke-linejoin="round">
+	<g id="R1" name="hokkaido region">
+	  <g id="1" name="hokkaido">
+            <path d="M591 250l-1 6h-3v-9l6 -2zM620 271l-1 -11 -4 -7 -5 -1 -2 -5 -4 -1 -2 -5 4 -8 -1 -11 2 -3 8 -2 6 -9 3 4 2 -1 4 -9 6 -5 -9 -13v-7l7 -3 14 11 10 -3v3l7 2 6 -2 5 -10 -5 -24 2 -5 8 -4 4 -5 -1 -23 4 -8 1 -11 -3 -17 -8 -19 3 -10 -1 -6 2 3h5l6 -8 26 28 8 13 16 17 29 18 28 6 1 4 6 5h19l22 -27 2 5 -11 24v9l4 6 9 3 -2 2 2 -3h-6l4 13 6 6 5 1 6 -8 8 -1 -11 8 -1 7 -17 3 -2 6 -5 5h-5l-2 -2 1 -2 -2 -1 -4 6 3 2 -15 1 -8 -3 -15 8 -14 16 -8 14 -3 8v16l-2 8 -14 -12 -23 -8 -28 -18 -13 -2 4 -2 -16 8 -15 15 -4 -2 4 -1 -5 -1 -2 -6 -8 -7h-10l-6 8 -3 9 1 5 12 8 10 -1 10 12 8 4 2 3 -6 5 -4 1 -9 -4 -3 3v-5h-3l-2 5 -7 4v9l-8 3 -3 6 -8 -3 -2 -7 1 -9zM659 58l2 -2 4 1 2 5 -4 4 -4 -4zM653 45v-1l2 2 -1 9 -4 -10zM957 29l-2 -5h-2l-2 4 2 7 -1 3 -5 1 -2 8 -7 -2 1 7 -10 10 -1 4 -5 -1v3l4 1v4l-4 4 -4 -1 1 5 -3 -4 1 5 -3 7 4 1 4 -9 6 -1 4 -9 10 -9 3 -10 5 2 6 -1 15 -18 13 -9 9 -1 1 -4 -2 -3 2 -4 -5 -2 -6 2 -12 17 -11 3zM878 110l5 -6 8 -2 5 -6 3 1 3 -7 -11 3 -7 -5 -4 2 -3 11 -10 14v3l-13 15 2 7 5 -1v5l1 -14 8 -4 1 -6h3v-7zM910 136l11 -9 -4 -3 -4 3 1 2 -7 1v4l2 -1zM888 154l3 -5 -6 1zM878 157l2 -2h-4z"/>
+	  </g>
+	</g>
+	<g id="R2" name="tohoku region">
+	  <g id="2" name="aomori">
+            <path d="M613 358v-7l-4 -4 7 -8h5l7 -4 2 -16 -3 -5 3 -1 1 -7 6 5 4 -3 4 2 2 15 3 7 6 -3 -1 -4 2 -4 11 8 3 -2 4 -16 -4 -7 -6 6 -14 3 6 -26 17 12 9 -5 -3 31 3 14 4 11 4 -1 5 5 -6 7 -5 -1 -4 2 -2 -2 -14 10 -3 -2 1 -11 -5 1v-6l-11 7 -3 -2 -2 2 -7 -5 -3 3 -13 -1 -2 3z" />
+	  </g>
+	  <g id="3" name="iwate">
+            <path d="M698 447l-7 -1 -2 13 -7 -2 -3 5 -7 -5 2 -3h-7l-11 -5 2 -6 -3 -5 2 -3 -8 -13 4 -11 4 -5 -2 -5 3 -4 -3 -5h4l-1 -19 4 -5 3 2 14 -10 2 2 4 -2 5 1 6 -7 7 12 -1 4 4 3 -2 5 7 5 2 14 -2 11 4 -5v5l2 2 -5 5 1 2 4 -3 -1 4h-3l-1 4 -2 1 4 -1 -5 3 2 3 -2 1h4l-6 7 4 2h-5l3 3h-3l2 2 -6 1v-3l1 4h-2v4l-1 -4z" />
+	  </g>
+	  <g id="4" name="miyagi">
+            <path d="M666 515l-4 1 1 5h-5l1 2 -5 -1 -1 -6h-9l-4 -5h-6l-1 -5 7 -1 3 -7v-5l7 -12 -5 -11 3 -1 2 -8 -5 -7h5l6 -5 11 5h7l-2 3 7 5 3 -5 7 2 2 -13 7 1 2 7 -5 -3 2 5 -4 4 2 5 -2 -2 -4 3 5 2 -4 6h4v3l-3 -2 2 5h-3l1 3h4l-3 1 3 3 -1 4 -4 -3 1 -2h-2l2 -1 -2 -2 -17 2 -2 4 3 1 -4 2h2l-5 10zM676 487l1 1h-2z" />
+	  </g>
+	  <g id="5" name="akita">
+            <path d="M656 449l-6 5h-5l-4 -2 -2 -4 -13 -4 -5 -5 -9 1 2 -9 5 -9 1 -23 -7 -7 -8 2 -3 -8 6 2 6 -8 4 -8v-8l-5 -6 4 1 2 -3 13 1 3 -3 7 5 2 -2 3 2 11 -7v6l5 -1 -1 11 -4 5 1 19h-4l3 5 -3 4 2 5 -4 5 -4 11 8 13 -2 3 3 5z" />
+	  </g>
+	  <g id="5" name="yamagata">
+            <path d="M612 440l9 -1 5 5 13 4 2 4 4 2 5 7 -2 8 -3 1 5 11 -7 12v5l-3 7 -7 1 1 5 -1 9 2 2 -3 4 -6 1 -3 -3 -3 1 -3 -4 -6 2 -7 -3 -2 -4 3 -9 -1 -7 9 -4 2 -4 -10 -6 1 -7 -9 -3 13 -22z" />
+	  </g>
+	  <g id="6" name="fukushima">
+            <path d="M661 580l-10 -5v5l-6 5 -10 -8 -1 -6 -6 -5 -12 -3 -25 16 -8 -2 1 -14 -5 -4 4 -7 -2 -4 1 -3h9l1 -4h8l-2 -8 9 -11 -3 -2 7 3 6 -2 3 4 3 -1 3 3 6 -1 3 -4 -2 -2 1 -9h6l4 5h9l1 6 5 1 -1 -2h5l-1 -5 4 -1 6 15v26l-2 17z" />
+	  </g>
+	</g>
+	<g id="R3" name="kanto region">
+	  <g id="8" name="ibaraki">
+            <path d="M611 630v0h-2l-2 -7 6 -3 2 -4 3 1 3 -5 11 -2 3 -7 -2 -11 3 -2 -2 -3 1 -10 10 8 6 -5v-5l10 5 -8 24 1 7 -3 6 2 11 5 8 -2 3 2 3 1 -5 7 13 -17 -13 -1 3 -17 5 -11 -6z" />
+	  </g>
+	  <g id="9" name="tochigi">
+            <path d="M607 623h-1l-2 -4h-9l-5 -7 6 -13 -8 -2 1 -9 3 -4 -3 -1 2 -4 25 -16 12 3 6 5 1 6 -1 10 2 3 -3 2 2 11 -3 7 -11 2 -3 5 -3 -1 -2 4z" />
+	  </g>
+	  <g id="10" name="gunma">
+            <path d="M606 623l-11 1 -5 -4 -11 -2 -5 10 -16 9 -4 -2v-6l-3 -3h3l-2 -7 3 -2 -1 -6h-9l-3 -5 1 -7 5 -4 -1 -2 9 -3 12 -6v-3l3 -1 -1 -5 4 -1 2 -4 7 7 8 2 -2 4 3 1 -3 4 -1 9 8 2 -6 13 5 7h9z" />
+	  </g>
+	  <g id="11" name="saitama">
+            <path d="M606 623h1l2 7h2v0l7 13v6l-7 -2 -1 2 -4 -1 -6 3v-3l-8 3 -4 -5 -15 -3 -4 2 -10 -3 -1 -5 16 -9 5 -10 11 2 5 4z" />
+	  </g>
+	  <g id="12" name="chiba">
+            <path d="M617 658l2 -4 -1 -5v-6l-7 -13 9 9 11 6 17 -5 1 -3 17 13 1 3 -10 1 -11 10 -3 22 -13 4 -11 14 -7 -4 5 -2 -3 -2 2 -3 -1 -6 2 -4 -4 -5 3 -4 3 1v-4l6 -2 5 -7 -7 -7 -5 4z" />
+	  </g>
+	  <g id="13" name="tokyo">
+            <path d="M756 1183l2 4h-2zM618 815v5l-5 -6zM603 756l-2 2 -3 -2 3 -3zM581 746l2 2 -3 1zM588 740l-2 -2 2 -4zM592 717v-6l4 2v5zM618 649l1 5 -2 4 -6 -1 2 5h-4h4v3l-14 -7 -4 2 3 2h-1l-1 5 -3 -5 -14 -5 -5 -3 -5 -9 4 -2 15 3 4 5 8 -3v3l6 -3 4 1 1 -2z" />
+	  </g>
+	  <g id="14" name="kanagawa">
+            <path d="M579 657l14 5 3 5 1 -5h1l-3 -2 4 -2 14 7 -4 4h-4l3 4 -3 -1v8l6 2 -5 5 2 2h-4l1 -4 -3 -5 -7 -2 -12 3 -3 3 1 6h-2l-7 -4 1 -12h-5l10 -9z" />
+	  </g>
+	</g>
+	<g id="R4" name="hokuriku region">
+	  <g id="15" name="neigata">
+            <path d="M510 589l-3 -11 -4 -3 14 -5 9 -7h7l15 -12 10 -15 5 -13 19 -13 1 3 -1 -2 7 -6 8 -29 9 3 -1 7 10 6 -2 4 -9 4 1 7 -3 9 2 4 3 2 -9 11 2 8h-8l-1 4h-9l-1 3 2 4 -4 7 5 4 -1 14 -7 -7 -2 4 -4 1 1 5 -3 1v3l-12 6v-7l-5 -4v-4l-3 -3 -7 2 -5 6v4l-4 -2 -8 5 -2 -2v-5l-7 -1v3zM539 522l-8 1 7 -9 -2 -3 -3 2v-5l4 -9 10 -8 -4 15 7 1 -4 9z" />
+	  </g>
+	  <g id="16" name="toyama">
+            <path d="M501 612l-10 -4 -4 2v-2l-5 2 -3 -2 -9 11 -1 -4 -4 -2 -4 5 -1 -9 2 -7 -2 -4 3 -4 -2 -3 3 -2 2 -10 8 -3 -3 7 12 7 8 -4 2 -8 10 -3 4 3 3 11 -1 11 -3 1 1 3z" />
+	  </g>
+	  <g id="17" name="ishikawa">
+            <path d="M470 567l-3 -3h7zM461 618l3 3 -5 10 -5 1 -5 -5 -10 -1 -6 -9 14 -14 12 -18 1 -11 -2 -4v-5l-3 -1 5 -13 25 -10 4 1 1 4 -6 1 -1 9 -4 -1 -7 7 -2 -3 -3 1 -2 9 6 2 3 -4v9l-8 3 -2 10 -3 2 2 3 -3 4 2 4 -2 7z" />
+	  </g>
+	  <g id="18" name="fukui">
+            <path d="M433 617l6 9 10 1 5 5 5 -1 -2 6 5 8 -2 4h-13l-1 3 -7 -3 -5 8 -6 -2 1 8 -3 -1 -1 3 -5 3 -3 -2 -3 7 -4 -1 -2 4 -12 -2 -4 -6 2 -5 2 4 7 -3 -4 3 6 1 3 -3h-2l-1 -3 6 3 -1 -3 3 -1 -2 -3 8 1 -1 -6 3 -3v6l3 1 1 -7 -7 -13 9 -13v-4z" />
+	  </g>
+	</g>
+	<g id="R5" name="chubu region">
+	  <g id="19" name="yamanasi">
+            <path d="M533 659l-2 -5 3 -2 -3 -3 9 -11 6 5 6 -2 4 4 3 -3 10 3 5 9 5 3 -1 8 -10 9 -12 3 -5 -6 -3 8 1 7 -5 2 -4 -9 -6 -1 1 -11z" />
+	  </g>
+	  <g id="20" name="nagano">
+            <path d="M556 590l-9 3 1 2 -5 4 -1 7 3 5h9l1 6 -3 2 2 7h-3l3 3v6l4 2 1 5 -3 3 -4 -4 -6 2 -6 -5 -9 11 3 3 -3 2 2 5 -4 5v12l-16 10 -8 -2 -5 3 -1 -6 2 -3 -1 -4h3l-2 -3 2 -4 -6 -6 2 -3 -5 -7 -7 -3 3 -5h5l6 -7 1 -4 -3 -4 5 -10 -3 -6 6 -8 -1 -3 3 -1 1 -11 5 -7v-3l7 1v5l2 2 8 -5 4 2v-4l5 -6 7 -2 3 3v4l5 4z" />
+	  </g>
+	  <g id="21" name="gifu">
+            <path d="M501 612l3 6 -5 10 3 4 -1 4 -6 7h-5l-3 5 7 3 5 7 -2 3 6 6 -2 4 2 3h-3l1 4 -2 3 -6 4 -7 -4 -6 2 -5 -2 -6 -8 -10 3 -5 8v6l-7 -7 -6 2 -2 -2 3 -9v-3l-3 -7h-3l-2 -7 5 -8 7 3 1 -3h13l2 -4 -5 -8 2 -6 5 -10 -3 -3 4 -5 4 2 1 4 9 -11 3 2 5 -2v2l4 -2z" />
+	  </g>
+	  <g id="22" name="shizuoka">
+            <path d="M568 674h5l-1 12 7 4 -3 5 5 6 -1 4 -7 10v5l-8 4 -5 -6 2 -14 -1 -3 1 -4 6 -1 -11 -6 -7 3 -3 4 1 3 -8 4 -3 9 -5 7 1 4 -13 -4 -25 -1v-8l8 -5 10 -20 16 -10v-12l4 -5 2 8 -1 11 6 1 4 9 5 -2 -1 -7 3 -8 5 6z" />
+	  </g>
+	  <g id="23" name="aichi">
+            <path d="M495 719l-24 6 3 -5 2 2 9 -6 1 3 3 -3 -1 -3 -6 -3 -2 4 -8 -1 -4 -3 2 -8 -4 11 3 4h-2l-5 -3 2 -5 -3 -3v-5l4 -7 -6 3 -5 -7v-6l5 -8 10 -3 6 8 5 2 6 -2 7 4 6 -4 1 6 5 -3 8 2 -10 20 -8 5z" />
+	  </g>
+	  <g id="24" name="mie">
+            <path d="M418 778l-5 -3 -2 -7 1 1v-3h1l6 -3 -1 -3 6 -1v-3l-1 -7 2 -4 -2 -3 2 -1 -3 -5 9 -6 -10 -6 2 -3 -2 -2h2l-1 -4 -2 -4 4 -1 1 -6 7 3 6 -3 4 -10 -1 -9 6 -2 7 7 5 7 -6 2v4l-7 12v8l16 7 2 5 2 -2v5h-5h5l-1 6h-3l1 -1 -3 -2v2h-6l2 -3h-3l-3 5 -1 -2 -2 2 -2 -1v3l-2 -2 -8 3 -2 3 1 4h-3l1 -2 -3 3 4 3 -2 1 1 3 -3 -2 1 3 -7 4z" />
+	  </g>
+	</g>
+	<g id="R6" name="kinki region">
+	  <g id="25" name="shiga">
+            <path d="M434 657l2 7h3l3 7v3l-3 9 2 2 1 9 -4 10 -6 3 -7 -3 -1 6 -4 1 -4 -6h-4l-2 -10 2 -15 -4 -4 2 -4 4 1 3 -7 3 2 5 -3 1 -3 3 1 -1 -8z" />
+	  </g>
+	  <g id="26" name="kyoto">
+            <path d="M405 712l-2 -8 -4 -2v-2l-3 3 -9 -8 1 -6 -9 -2 -2 -6 -5 1 -7 -5v-6l6 1v-7v-2l-6 2 -3 -5 1 -4 2 3 -1 -3 17 -7 4 7 -8 6 2 2 3 -4 -1 4 5 1 -1 4 2 -2 2 1 -3 -5 7 -3 1 3 -2 5 4 6 12 2 4 4 -2 15 2 10h4l4 6 2 4 -2 1 -5 -3 -4 3z" />
+	  </g>
+	  <g id="27" name="osaka">
+            <path d="M387 695l9 8 3 -3v2l4 2 2 8 -4 10 2 10 -2 4 -26 6 -3 -2 6 -2 7 -6 3 -10 3 3 -3 -9 3 -2 -2 -11 3 -1 -6 -2 -1 -5z" />
+	  </g>
+	  <g id="28" name="hyogo">
+            <path d="M360 744l-7 3 -1 -4 -3 1v-4l19 -19 1 3 -7 9 2 9zM333 713l1 -3 -4 -5 2 -3 -2 -7 8 -9v-5l6 -2v-5l-7 -17 9 -3 17 2 -1 4 3 5 6 -2v2v7l-6 -1v6l7 5 5 -1 2 6 9 2 -1 6h-2l1 5 6 2 -3 1 2 11 -3 2 -5 -1 -13 5 -15 -9h-14l-1 -3 -2 5 -3 -2z" />
+	  </g>
+	  <g id="29" name="nara">
+            <path d="M418 760l-4 2 -1 4h-1v3l-1 -1 -14 -2 2 -5 -4 -7 5 -7 4 -1 -3 -10 2 -4 -2 -10 4 -10 6 4 4 -3 5 3 2 -1 1 4h-2l2 2 -2 3 10 6 -9 6 3 5 -2 1 2 3 -2 4 1 7v3z" />
+	  </g>
+	  <g id="30" name="wakayama">
+            <path d="M411 768l2 7 5 3 -4 5 2 4 -9 5 -1 3h-1v-2l-16 -5 -6 -8 4 -3 -9 -4 -5 -6h-4l3 -5 -2 -1 5 -3 -4 -3 3 -2 -1 -2 5 -1 -8 -7 2 -3 3 2 26 -6 3 10 -4 1 -5 7 4 7 -2 5zM418 760l1 3 -6 3 1 -4z" />
+	  </g>
+	</g>
+	<g id="R7" name="chugoku region">
+	  <g id="31" name="tottori">
+            <path d="M280 690l-7 -2 3 -5 -2 -4 8 -2 1 -9 -6 -8 3 -1 2 4 6 2 8 -4 11 2 21 -1 9 -5 7 17v5l-6 2 -12 4 -1 -7 -7 -2 1 -3 -10 6 -4 -4 -8 -2 -2 6 -3 1 1 3 -6 -1v4l-6 1z" />
+	  </g>
+	  <g id="32" name="shimane">
+            <path d="M269 624l5 -2 -3 5 -3 -2 1 3 -3 -3zM275 626l-3 2v-4l3 -1 2 3zM279 615l5 -6 5 5 -1 4 -3 1 2 2h-5zM198 709l8 -2 14 -14 11 -6 6 -8 11 -5 2 -6 -2 -3 18 -5 6 -5 3 3h8l-3 1 -3 1 6 8 -1 9 -8 2 2 4 -3 5 -13 -2 -7 9 -6 3 3 4 -8 2 -6 -2 -2 3 -8 -2 -6 5 2 2 -2 6 -5 5 1 2 -3 2v4l-3 4 -2 -2 -5 2 -3 -4 2 -5h-5l-1 -4 3 -5z" />
+	  </g>
+	  <g id="33" name="okayama">
+            <path d="M338 681v5l-8 9 2 7 -2 3 4 5 -1 3 -7 -1 3 2 -7 7 -9 -1 5 2 -2 4 -2 -1 -2 4 -5 -2 -2 3 -3 -6v4l-3 -5 -4 4 -6 -3 2 4 -4 -2 -4 -16 2 -4 -4 -6 1 -7 -2 -3 1 -3 6 -1v-4l6 1 -1 -3 3 -1 2 -6 8 2 4 4 10 -6 -1 3 7 2 1 7z" />
+	  </g>
+	  <g id="34" name="hiroshima">
+            <path d="M287 726v2l-3 -2 3 3h-2l-2 4 -6 -2v-3l-9 2 -2 5h-13l-2 4 -6 3 -2 -2 -3 2 1 -3 -3 -6 1 -2h-8l-7 6 1 3 -6 -2v-6l-3 -2v-7l-1 -2 5 -5 2 -6 -2 -2 6 -5 8 2 2 -3 6 2 8 -2 -3 -4 6 -3 7 -9 13 2 7 2 2 3 -1 7 4 6 -2 4zM260 740l-3 2 -2 -2 5 -3zM236 740l-1 -4 3 1 -1 8h-3l1 -3 -4 -5zM229 734l1 2 -4 3zM249 744l-2 -2h4zM239 744h2l-2 3h3l-2 2 -5 -1 3 -6h2zM273 735l1 3 -3 -3zM271 736l-4 3 1 -3zM275 730l1 1 -3 2z" />
+	  </g>
+	  <g id="35" name="yamaguchi">
+            <path d="M198 709l1 6 -3 5 1 4h5l-2 5 3 4 5 -2 2 2 3 -4v-4l3 -2v7l3 2v6l6 2 -1 5h-2v8l-5 3 1 7 -4 -6h-5l-5 -6 -4 2 2 -3 -4 -3 -10 4 -4 -3 -2 3v-2l-2 2v-4l-2 5 -5 2 -2 -2 -2 2 -2 -5 -5 -4 -7 7v-7l-2 -4 4 -6 -3 -5 2 -4h7l-5 -2 2 -3 8 2 1 3h8l6 -2 -1 -3 11 -11 3 1zM217 763l-5 2 2 -4zM228 759l7 -2 -5 2v3l-4 -3 -5 3 -1 -5 2 -2zM171 724l-1 -2 5 1zM204 755h-3l3 -3z" />
+	  </g>
+	</g>
+	<g id="R8" name="shikoku region">
+	  <g id="36" name="tokushima">
+            <path d="M346 745l2 -1 -1 3zM338 745l7 -1v2l3 1 -4 9 7 7 -4 5 6 1 -19 11 -5 6 -5 -1 -3 -4 2 -3 -6 -1 -1 -9 -6 2 -13 -6 1 -8 10 -5 6 2 10 -6 12 2z" />
+	  </g>
+	  <g id="37" name="kagawa">
+            <path d="M298 756l-4 -2 3 -9 -5 -5 6 3 14 -10 7 3 4 -3 1 4 2 -2 3 2v3l9 5 -2 4 -12 -2 -10 6 -6 -2zM319 728l-1 -1h3zM333 723h2l-2 8 -3 -1 1 -2 -4 4 1 -4 -4 -2z" />
+	  </g>
+	  <g id="38" name="ehime">
+            <path d="M243 757l-2 -1 4 -3zM264 742h-4l4 -6 3 3zM269 741l2 1 -2 1 -3 -1zM267 746l-3 2 1 -5 4 1zM242 821l-8 -2 1 3h-3l1 -5 4 1 -6 -5 2 -1 -2 -4h4l-4 -1 2 -2 -3 -2 4 3 4 -4 -1 -3h-3l2 -3h-8l3 -2 -2 -2 2 -5 -6 -1 -8 6 -7 1 34 -20 7 -18 8 -4 -1 -4 2 -1 9 14 10 -4 10 2 5 -4 4 2 -1 8 -25 4 -6 9 -4 10 -11 1 5 9 -6 3 -5 8 -4 -3 3 13z" />
+	  </g>
+	  <g id="39" name="kochi">
+            <path d="M297 764l13 6 6 -2 1 9 6 1 -2 3 3 4 5 1 -7 19 -12 -16 -10 -3 -9 2 -1 -3 1 3 -12 4h6l-6 1 -1 3 -2 -3 -3 5 1 4 -2 6h-3l-4 8 -5 1v8l-3 3 3 7 -4 -5 -7 3 -5 -4 -4 2 2 -6 3 -1v-3h-3l2 -3 -3 -13 4 3 5 -8 6 -3 -5 -9 11 -1 4 -10 6 -9zM237 833l-2 2v-4z" />
+	  </g>
+	</g>
+	<g id="R9" name="kyushu region">
+	  <g id="40" name="fukuoka">
+            <path d="M148 804l-8 -5 -2 4 -4 -1 -4 4v3l-5 -1v-5l-2 -3 1 -7 9 -5v-6l-6 2 -7 -6h-12l6 -4 -3 -3 6 -5 3 6 7 -1 2 -5 -4 2 -3 -3 5 1 4 -3 1 -8 10 -1 1 -3 6 1 -3 3 3 1 1 -3 4 2 7 -4 -4 8 2 2 -1 1 5 10 5 1 -1 7 -8 -1 -7 4 -4 6 2 5 -2 1 3 4z" />
+	  </g>
+	  <g id="41" name="saga">
+            <path d="M108 778h12l7 6 6 -2v6l-9 5 -1 7 -6 -5 -5 5 2 10 -7 -2 -7 -7 1 -5 -6 -2 -3 -6 2 -3 4 4 -2 -4 3 -4 -5 -3 2 -2 2 2v-6l1 2h5v4z" />
+	  </g>
+	  <g id="42" name="nagasaki">
+            <path d="M81 700l3 -2 2 3 -4 3 2 4 -6 6 -1 4 3 -2 -3 4 3 -1 -3 4v-5l-2 3v-4l-2 3 -3 -1 3 -1v-4l2 -1 -2 -1 4 -3 -2 -3 2 -5 4 1zM75 727l-3 6 -6 1 3 -14 1 3 3 1 -1 -3 2 3 2 -1zM95 758l1 2 -4 2 -3 -5 2 1 -2 -3 3 -3 4 1 -2 3 3 1zM56 809l-3 5 2 -6 -4 -2 3 -1v-4h2l2 -9 -2 11 5 1 -2 3 -2 -2zM52 810h-3v-2l2 1 -1 -3zM47 812l1 -3v5l-4 -4zM35 817l3 -2 1 2 2 -3 3 10 -6 -1v4l-9 -3 1 -2 1 3 1 -2h-1l2 -2 -1 -7zM94 778l-3 2 2 -4zM96 781l2 2 -3 1zM58 786l2 -2 1 2zM83 775h-3l3 -2zM94 785l-2 3 3 6 6 2 -1 5 7 7 7 2 -7 6 13 1 2 5 -2 6 -10 5 -1 -6 4 -4 -1 -3h-5l-7 1 -3 6 -9 5 4 -5 -1 -2h3l2 -3 -3 1 -2 -6 -4 -1 -3 -6 3 -11 4 4 -1 3 1 -2 3 3 -2 7 11 3 -3 -6 1 -5 -4 -4 -3 2v-7l-4 1v-3l-3 4 2 -2 -4 -2 1 -4 -1 2 -4 -2 4 -5 -3 -1 1 -4 5 -1 1 3h5zM78 786l-1 5 -6 1 4 -2 -1 -2 2 -6 5 1 1 -4 1 4zM43 814l1 -3 2 3 -3 2zM92 799v4l-2 -4 2 -2z" />
+	  </g>
+	  <g id="43" name="kumamoto">
+            <path d="M108 836h4v11l-8 9 -4 1v-6l4 -1 -5 -2 5 -9 -2 -3zM119 846h-6l-1 -4 6 -4h8l-4 8zM123 832l3 1 -1 4 -2 -1zM137 866l-5 -6 -9 4 -4 -4 12 -16 -2 -5 2 1 -1 -2 6 -6 -10 1 8 -6 1 -5 -9 -8 -1 -6 5 1v-3l4 -4 4 1 2 -4 8 5 7 5 2 -4 -1 -6 6 1 7 13v6l3 3 -3 1 -9 14 -5 2 -1 7 5 7 -4 5 3 5z" />
+	  </g>
+	  <g id="44" name="oita">
+            <path d="M148 804l3 -5 -3 -4 2 -1 -2 -5 4 -6 7 -4 8 1 1 -7 12 4 5 -7 9 4 2 6 -2 8 -4 -1 1 3 -8 2v4l4 2 17 -1 -6 9h5l-3 2 3 2 5 -2 1 3h-5l-2 4 10 4h-6l2 2 -4 3 4 1 -7 1v4h-2l1 -5 -5 -1 -3 4h-8l-4 -5 -6 1 -2 -2 -3 -3v-6l-7 -13 -6 -1 1 6 -2 4z" />
+	  </g>
+	  <g id="45" name="miyazaki">
+            <path d="M172 822l2 2 6 -1 4 5h8l3 -4 5 1 -1 5h2l-11 10 -1 4 3 1 -4 1 -1 2 2 1 -5 8 -6 17 -3 23 -5 5 -2 12 -5 -2 -5 -5 2 -3v-7l-7 -1 -3 -9 -5 -2 2 -5 -6 -5 -5 -7 1 -2 21 -3 -3 -5 4 -5 -5 -7 1 -7 5 -2 9 -14z" />
+	  </g>
+	  <g id="46" name="kagoshima">
+            <path d="M4 1148l-4 2v-5l9 -1zM21 1126v-8l4 -1v5l3 3 -1 3 -5 3 -2 -4zM82 1097l-2 2 -1 -3 6 -3zM64 1089l-13 9 3 2 -4 4 -3 -2 1 4 -5 -5 1 -2 -8 -3h7l2 -1 -5 -2 14 -5 2 2 3 -5h4l-2 3 2 -2 2 2 2 -6 1 6zM43 1107l-1 -2 -3 2 -1 -7 5 2 -2 3 6 1 -2 3v-2zM103 965l3 2h-3zM113 976l-1 -6 7 -4 9 6 -1 5 -6 4 -6 -1zM144 969v5l-6 1v-8l3 -3 2 -9 7 -10 1 9zM119 860l4 4 9 -4 5 6 -1 2 5 7 6 5 -2 5 5 2 3 9 7 1v7l-2 3 -3 -1 -5 6 5 3 -2 3h3l-6 3 -4 5 -16 8v-5l5 -3 4 -13 -5 -8v-6l-6 -2 5 -2 1 4h3l4 -6 -7 -5 -4 2 -6 13 2 11 5 3 -2 5 -6 1 -3 -6 -13 -1 1 -3 -3 -2 2 -1 -5 -5 9 1 4 -11 -3 -8 -5 -5 3 -7 -2 -11 4 -2 3 2zM112 853l2 -1 -1 2zM107 863l-2 -5 4 -3 2 5zM85 884l2 -3 1 2 -6 8 -2 -1zM93 880l-4 -3h6zM75 1012l-3 4v-3zM81 1001l2 -2 2 4z" />
+	  </g>
+	  <g id="47" name="okinawa" transform="translate(384,-1024)">
+            <path d="M-321 1283l3 1 -2 1 -5 -1zM-276 1295l6 3 -4 6 -11 -5 2 -2 3 2 1 -7zM-198 1281l-1 -4 3 2zM-192 1287l-3 -2h2l-1 -3 2 -2 -1 -5 3 8 7 6zM-100 1198v5l-5 -5 3 -2zM143 1255l-1 -3h2zM-45 1183v-2l3 2zM-31 1187v2l-2 -2zM-252 1292l5 -6 1 2 -6 6v7h-6l-2 -2 2 -2 -3 -3 8 1zM-37 1195l3 -3 -5 -2v-6l6 1 1 4 6 -1 -1 -2 10 -10 3 4 -1 5 -5 6 -5 -1 -1 5 -5 -1 1 2 -7 5 -6 -1 4 9 -4 -2 -5 7 4 3 -10 4 -1 -8 7 -6 -2 -8 5 1z" />
+	  </g>
+	</g>
+      </g>
+        </svg>
+      </div>
+      <div class="map-note">出典: <a href="https://commons.wikimedia.org/wiki/File:Blank_map_of_Japan_new.svg" target="_blank" rel="noopener">Wikimedia Commons</a>（CC BY-SA 3.0）／沖縄県は位置調整のうえ表示</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <a href="../index.html" class="footer-logo">Fan<span class="red">GNU</span></a>
+    <div class="footer-copy">
+      非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>
+      © FanGNU Unofficial
+    </div>
+  </footer>
+
+  <script>
+  document.getElementById('rankShowMore').addEventListener('click', () => renderRankPage());
+
+  function escH(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function normalizeTitle(title) {
+    return title
+      .replace(/\s*★.*$/, '')
+      .replace(/[（(][^）)]*[）)]\s*$/, '')
+      .trim();
+  }
+
+  const PREF_MAP = {
+    hokkaido: '北海道', aomori: '青森県', iwate: '岩手県', miyagi: '宮城県', akita: '秋田県', yamagata: '山形県', fukushima: '福島県',
+    ibaraki: '茨城県', tochigi: '栃木県', gunma: '群馬県', saitama: '埼玉県', chiba: '千葉県', tokyo: '東京都', kanagawa: '神奈川県',
+    neigata: '新潟県', toyama: '富山県', ishikawa: '石川県', fukui: '福井県',
+    yamanasi: '山梨県', nagano: '長野県', gifu: '岐阜県', shizuoka: '静岡県', aichi: '愛知県', mie: '三重県',
+    shiga: '滋賀県', kyoto: '京都府', osaka: '大阪府', hyogo: '兵庫県', nara: '奈良県', wakayama: '和歌山県',
+    tottori: '鳥取県', shimane: '島根県', okayama: '岡山県', hiroshima: '広島県', yamaguchi: '山口県',
+    tokushima: '徳島県', kagawa: '香川県', ehime: '愛媛県', kochi: '高知県',
+    fukuoka: '福岡県', saga: '佐賀県', nagasaki: '長崎県', kumamoto: '熊本県', oita: '大分県', miyazaki: '宮崎県', kagoshima: '鹿児島県', okinawa: '沖縄県',
+  };
+
+  const COUNTRY_KEYWORDS = [
+    ['台湾', '台湾'],
+    ['シンガポール', 'シンガポール'],
+    ['韓国', '韓国'],
+    ['上海', '中国'],
+    ['USA', 'アメリカ'],
+  ];
+
+  async function loadJson(path) {
+    const res = await fetch(path);
+    return res.json();
+  }
+
+  function buildSongIndex(kgDisco, svDisco) {
+    const index = new Map();
+    (kgDisco.items || []).forEach(item => {
+      if (!item.title) return;
+      index.set(normalizeTitle(item.title), { title: item.title, yt: item.yt || '', src: 'discography' });
+      if (item.coupling && item.coupling.title) {
+        index.set(normalizeTitle(item.coupling.title), { title: item.coupling.title, yt: item.coupling.yt || '', src: 'discography' });
+      }
+    });
+    (kgDisco.albums || []).forEach(album => {
+      (album.tracks || []).forEach(t => {
+        const key = normalizeTitle(t.title);
+        if (!index.has(key)) index.set(key, { title: t.title, yt: t.yt || '', src: 'discography' });
+      });
+    });
+    (svDisco.groups || []).forEach(group => {
+      (group.demos || []).forEach(d => {
+        const key = normalizeTitle(d.title);
+        if (!index.has(key)) index.set(key, { title: d.title, yt: d.yt || '', src: 'srvvinci' });
+      });
+      (group.singles || []).forEach(d => {
+        const key = normalizeTitle(d.title);
+        if (!index.has(key)) index.set(key, { title: d.title, yt: d.yt || '', src: 'srvvinci' });
+      });
+      (group.albums || []).forEach(album => {
+        const albKey = normalizeTitle(album.title);
+        if (!index.has(albKey)) index.set(albKey, { title: album.title, yt: album.yt || '', src: 'srvvinci' });
+        (album.tracks || []).forEach(t => {
+          const key = normalizeTitle(t.title);
+          if (!index.has(key)) index.set(key, { title: t.title, yt: t.yt || '', src: 'srvvinci' });
+        });
+      });
+    });
+    return index;
+  }
+
+  function findPrefecture(location) {
+    if (!location) return null;
+    for (const pref of Object.values(PREF_MAP)) {
+      if (location.includes(pref)) return pref;
+    }
+    return null;
+  }
+
+  function findCountry(location, venue) {
+    const text = `${location || ''} ${venue || ''}`;
+    for (const [keyword, country] of COUNTRY_KEYWORDS) {
+      if (text.includes(keyword)) return country;
+    }
+    return null;
+  }
+
+  function collectStats(kgLive, svLive) {
+    const allTours = [...(kgLive.tours || []), ...(svLive.tours || [])];
+    let showCount = 0;
+    let last = null;
+    const songCounts = new Map();
+    const prefCounts = new Map();
+    const countryCounts = new Map();
+
+    allTours.forEach(tour => {
+      (tour.shows || []).forEach(show => {
+        showCount++;
+        const info = { date: show.date, tourName: tour.name, venue: show.venue, isSrvvinci: (svLive.tours || []).includes(tour) };
+        if (!last || show.date > last.date) last = info;
+
+        const uniqueKeys = new Set();
+        (show.setlist || []).forEach(s => uniqueKeys.add(normalizeTitle(s)));
+        uniqueKeys.forEach(key => {
+          songCounts.set(key, (songCounts.get(key) || 0) + 1);
+        });
+
+        const pref = findPrefecture(show.location);
+        if (pref) {
+          prefCounts.set(pref, (prefCounts.get(pref) || 0) + 1);
+        } else {
+          const country = findCountry(show.location, show.venue);
+          if (country) countryCounts.set(country, (countryCounts.get(country) || 0) + 1);
+        }
+      });
+    });
+
+    return { tourCount: allTours.length, showCount, last, songCounts, prefCounts, countryCounts };
+  }
+
+  function renderSummary(stats) {
+    const grid = document.getElementById('summaryGrid');
+    const lastLink = stats.last
+      ? `<a href="live-show.html?date=${encodeURIComponent(stats.last.date)}${stats.last.isSrvvinci ? '&src=srvvinci' : ''}">${escH(stats.last.date)}<br>${escH(stats.last.tourName)}</a>`
+      : '-';
+    const overseasShows = [...stats.countryCounts.values()].reduce((a, b) => a + b, 0);
+    grid.innerHTML = `
+      <div class="summary-card">
+        <div class="summary-label">総公演数</div>
+        <div class="summary-value">${stats.showCount}<span class="summary-unit">回</span></div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">総ツアー/イベント数</div>
+        <div class="summary-value">${stats.tourCount}<span class="summary-unit">件</span></div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">海外公演数</div>
+        <div class="summary-value">${overseasShows}<span class="summary-unit">回</span></div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">最新公演</div>
+        <div class="summary-value small">${lastLink}</div>
+      </div>`;
+  }
+
+  const RANK_PAGE_SIZE = 10;
+  let rankedSongs = [];
+  let rankShown = 0;
+
+  function renderRankPage() {
+    const list = document.getElementById('rankList');
+    const moreBtn = document.getElementById('rankShowMore');
+    const nextShown = Math.min(rankShown + RANK_PAGE_SIZE, rankedSongs.length);
+    const page = rankedSongs.slice(rankShown, nextShown);
+
+    list.insertAdjacentHTML('beforeend', page.map(([key, count, info], i) => {
+      const title = info ? info.title : key;
+      const inner = `
+        <span class="rank-num">${rankShown + i + 1}</span>
+        <span class="rank-title">${escH(title)}</span>
+        <span class="rank-count"><b>${count}</b>回</span>`;
+      if (info && info.yt) {
+        const srcParam = info.src === 'srvvinci' ? '&src=srvvinci' : '';
+        return `<a class="rank-item" href="song.html?yt=${encodeURIComponent(info.yt)}${srcParam}">${inner}</a>`;
+      }
+      return `<div class="rank-item">${inner}</div>`;
+    }).join(''));
+
+    rankShown = nextShown;
+    moreBtn.style.display = rankShown < rankedSongs.length ? 'block' : 'none';
+  }
+
+  function renderRanking(songCounts, songIndex) {
+    const rankLabel = document.getElementById('rankLabel');
+    const list = document.getElementById('rankList');
+
+    rankedSongs = [...songCounts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([key, count]) => [key, count, songIndex.get(key)]);
+    rankShown = 0;
+
+    rankLabel.textContent = `SONG RANKING（全${rankedSongs.length}曲）`;
+    list.innerHTML = '';
+    renderRankPage();
+  }
+
+  function renderMap(prefCounts) {
+    const prefLabel = document.getElementById('prefLabel');
+    prefLabel.textContent = `MAP（訪問${prefCounts.size} / 47都道府県）`;
+
+    document.querySelectorAll('#jpMap g[name]').forEach(g => {
+      const romaji = g.getAttribute('name');
+      const prefName = PREF_MAP[romaji];
+      if (!prefName) return;
+      const count = prefCounts.get(prefName) || 0;
+      const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+      title.textContent = count > 0 ? `${prefName}：${count}回` : `${prefName}：未訪問`;
+      g.insertBefore(title, g.firstChild);
+      if (count > 0) g.classList.add('visited');
+    });
+  }
+
+  const TOP_N = 5;
+
+  function renderTopList(labelId, listId, labelText, entries, totalCount) {
+    const label = document.getElementById(labelId);
+    const list = document.getElementById(listId);
+    const ranked = [...entries].sort((a, b) => b[1] - a[1]).slice(0, TOP_N);
+
+    label.textContent = `${labelText}（${totalCount}）`;
+
+    if (!ranked.length) {
+      list.innerHTML = `<div class="loading">記録はまだありません。</div>`;
+      return;
+    }
+    list.innerHTML = ranked.map(([name, count], i) => `
+      <div class="rank-item">
+        <span class="rank-num">${i + 1}</span>
+        <span class="rank-title">${escH(name)}</span>
+        <span class="rank-count"><b>${count}</b>回</span>
+      </div>`).join('');
+  }
+
+  function renderLocationRanking(prefCounts, countryCounts) {
+    renderTopList('domesticRankLabel', 'domesticRankList', '国内 TOP5', prefCounts.entries(), `${prefCounts.size} / 47都道府県`);
+    renderTopList('overseasRankLabel', 'overseasRankList', '海外 TOP5', countryCounts.entries(), `${countryCounts.size}ヶ国`);
+  }
+
+  Promise.all([
+    loadJson('data/kinggnu-live.json'),
+    loadJson('data/srvvinci-live.json'),
+    loadJson('data/kinggnu-discography.json'),
+    loadJson('data/srvvinci-discography.json'),
+  ]).then(([kgLive, svLive, kgDisco, svDisco]) => {
+    const stats = collectStats(kgLive, svLive);
+    const songIndex = buildSongIndex(kgDisco, svDisco);
+    renderSummary(stats);
+    renderRanking(stats.songCounts, songIndex);
+    renderMap(stats.prefCounts);
+    renderLocationRanking(stats.prefCounts, stats.countryCounts);
+  }).catch(err => {
+    console.error(err);
+    document.getElementById('summaryGrid').innerHTML = `<div class="loading">データの読み込みに失敗しました。</div>`;
+    document.getElementById('rankList').innerHTML = '';
+    document.getElementById('domesticRankList').innerHTML = '';
+    document.getElementById('overseasRankList').innerHTML = '';
+  });
+  </script>
+
+  <nav class="bottom-nav">
+    <a href="../index.html" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
+    <a href="discography.html" class="bn-item"><span class="bn-icon">💿</span>ディスコグラフィー</a>
+    <a href="members/members.html" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
+    <a href="gear.html" class="bn-item"><span class="bn-icon">🎸</span>機材</a>
+    <a href="live.html" class="bn-item active"><span class="bn-icon">🎤</span>ライブ</a>
+  </nav>
+
+</body>
+</html>
