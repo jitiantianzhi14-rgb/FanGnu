@@ -284,16 +284,7 @@
     }
     area.innerHTML = `
       <div class="section-label">映像</div>
-      <blockquote class="twitter-tweet" data-dnt="true"><a href="${escH(url)}"></a></blockquote>`;
-    if (window.twttr && window.twttr.widgets) {
-      window.twttr.widgets.load(area);
-    } else if (!document.getElementById('twitterWidgetsScript')) {
-      const script = document.createElement('script');
-      script.id = 'twitterWidgetsScript';
-      script.src = 'https://platform.twitter.com/widgets.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
+      <a href="${escH(url)}" target="_blank" rel="noopener" class="lyrics-btn">投稿を見る（X） ↗</a>`;
   }
 
   function renderMedia(yt, title, appleMusic, tweet) {
