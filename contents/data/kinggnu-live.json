@@ -59,7 +59,7 @@
       "name": "CDTV LIVE!LIVE! King Gnu プラチナライブ",
       "scale": "LIVE",
       "shows": [
-        { "date": "2025.04.28", "venue": "CDTV LIVE!LIVE!", "location": "ONLINE", "status": "", "setlist": ["):阿修羅:(", "SPECIALZ", "一途", "Teenager Forever", "TWILIGHT!!!", "白日", "Prayer X", "Tokyo Rendez-Vous", "Flash!!!", "SUNNY SIDE UP", "雨燦々", "飛行艇"] }
+        { "date": "2025.04.28", "venue": "CDTV LIVE!LIVE!", "location": "ONLINE", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4VpOyQkjY1fNHyYTmaJmzB", "setlist": ["):阿修羅:(", "SPECIALZ", "一途", "Teenager Forever", "TWILIGHT!!!", "白日", "Prayer X", "Tokyo Rendez-Vous", "Flash!!!", "SUNNY SIDE UP", "雨燦々", "飛行艇"] }
       ]
     },
     {
@@ -118,7 +118,7 @@
       "name": "CDTV LIVE!LIVE! King Gnu Fes.",
       "scale": "LIVE",
       "shows": [
-        { "date": "2023.12.04", "venue": "CDTV LIVE!LIVE!", "location": "ONLINE", "status": "", "setlist": ["MIRROR", "カメレオン", "DARE??", "SPECIALZ", "一途", "BOY", "It's a small world", "泡", "逆夢", "硝子窓", "W●RKAHOLIC", "):阿修羅:("] }
+        { "date": "2023.12.04", "venue": "CDTV LIVE!LIVE!", "location": "ONLINE", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4vpxsvFE5GnPWChXduDJR1", "setlist": ["MIRROR", "カメレオン", "DARE??", "SPECIALZ", "一途", "BOY", "It's a small world", "泡", "逆夢", "硝子窓", "W●RKAHOLIC", "):阿修羅:("] }
       ]
     },
     {
