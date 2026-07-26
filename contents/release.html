@@ -58,6 +58,8 @@
     .release-info-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--gray); width: 110px; flex-shrink: 0; padding-top: 2px; }
     .release-info-value { font-size: 13px; color: var(--black); line-height: 1.7; }
     .release-info-value.empty { color: var(--gray); }
+    .release-info-value a { text-decoration: underline; text-underline-offset: 2px; transition: color 0.12s; }
+    .release-info-value a:hover { color: var(--red); }
 
     .disc-block { background: var(--white); border: 1px solid var(--border); }
     .disc-block-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 0.75rem 1.25rem; border-bottom: 1px solid var(--border); background: var(--bg); }
@@ -112,8 +114,8 @@
         <dd class="release-info-value" id="infoYear">-</dd>
       </div>
       <div class="release-info-row">
-        <dt class="release-info-label">タイアップ情報</dt>
-        <dd class="release-info-value" id="infoNote">-</dd>
+        <dt class="release-info-label">その他</dt>
+        <dd class="release-info-value" id="infoExtra">-</dd>
       </div>
     </dl>
 
@@ -148,6 +150,21 @@
     }
   }
 
+  function setExtra(id, value) {
+    const el = document.getElementById(id);
+    if (!value) {
+      el.textContent = '-';
+      el.classList.add('empty');
+      return;
+    }
+    const parts = value.split(/(\[[^\]]+\]\([^)]+\))/g);
+    el.innerHTML = parts.map(part => {
+      const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      return m ? `<a href="${escH(m[2])}">${escH(m[1])}</a>` : escH(part);
+    }).join('');
+    el.classList.remove('empty');
+  }
+
   function renderDiscs(discs) {
     const area = document.getElementById('discsArea');
     if (!discs || !discs.length) {
@@ -178,7 +195,7 @@
 
     document.getElementById('releaseTitle').textContent = release.title || '（タイトル不明）';
     setInfo('infoYear', release.year);
-    setInfo('infoNote', release.note);
+    setExtra('infoExtra', release.extra);
     renderDiscs(release.discs);
 
     const purchaseLink = document.getElementById('purchaseLink');
@@ -194,7 +211,7 @@
     document.getElementById('releaseTitle').textContent = 'リリースが見つかりませんでした';
     document.getElementById('typeBadge').style.display = 'none';
     setInfo('infoYear', '');
-    setInfo('infoNote', '');
+    setExtra('infoExtra', '');
     renderDiscs([]);
   }
 
