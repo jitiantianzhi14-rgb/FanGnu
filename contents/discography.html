@@ -212,17 +212,17 @@
   function buildCard(item) {
     const isAlbum = item.type === 'ALBUM';
 
-    if (item.productUrl) {
-      const noteHtml = item.note ? `<div class="disc-note disc-note-product">${escH(item.note)}</div>` : '';
+    if (item.discs) {
+      const href = `release.html?title=${encodeURIComponent(item.title)}`;
       return `
-        <a class="disc-card" data-type="${escH(item.type)}" data-year="${escH(item.yearKey)}" href="${escH(item.productUrl)}" target="_blank" rel="noopener">
+        <a class="disc-card" data-type="${escH(item.type)}" data-year="${escH(item.yearKey)}" href="${href}">
           <div class="disc-card-head">
             <span class="disc-type-badge ${escH(item.type)}">${escH(item.type)}</span>
             <span class="disc-year">${escH(item.year)}</span>
             <span class="disc-title">${escH(item.title)}</span>
-            <span class="disc-card-external">↗</span>
+            <span class="disc-card-external">→</span>
           </div>
-          ${noteHtml}
+          ${item.note ? `<div class="disc-note disc-note-product">${escH(item.note)}</div>` : ''}
         </a>`;
     }
 

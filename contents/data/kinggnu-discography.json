@@ -1,6 +1,9 @@
 {
   "items": [
-    { "type": "Blu-ray", "year": "2024.09.25", "title": "King Gnu Dome Tour「THE GREATEST UNKNOWN」at TOKYO DOME", "note": "Disc1: Blu-ray（本編+DOCUMENTARY MOVIE）／Disc2: CD", "productUrl": "" },
+    { "type": "Blu-ray", "year": "2024.09.25", "title": "King Gnu Dome Tour「THE GREATEST UNKNOWN」at TOKYO DOME", "note": "", "purchaseUrl": "", "discs": [
+      { "label": "Disc1 / Blu-ray", "tracks": ["SPECIALZ", "一途", "千両役者", "STARDOM", "MIRROR", "CHAMELEON", "DARE??", "Vivid Red", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "W●RK", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇", "DOCUMENTARY MOVIE"] },
+      { "label": "Disc2 / CD", "tracks": ["マスカラ"] }
+    ] },
     { "type": "配信SG", "year": "2026.07.29", "title": "GO GHOST", "note": "TVアニメ『攻殻機動隊 THE GHOST IN THE SHELL』オープニングテーマ", "yt": "", "spotify": "", "lyrics": "" },
     { "type": "CDSG", "year": "2026.01.09", "title": "AIZO", "note": "TVアニメ『呪術廻戦』「死滅回游 前編」オープニングテーマ", "yt": "zz2a9Q2Wru0", "spotify": "https://open.spotify.com/intl-ja/album/7BAFUXup2XFZpcnCmLjXmM", "lyrics": "https://www.uta-net.com/song/386031/" },
     { "type": "配信SG", "year": "2025.09.05", "title": "SO BAD", "note": "ユニバーサル・スタジオ・ジャパン『ゾンビ・デ・ダンス』テーマソング,ユニバーサル・スタジオ・ジャパン『【正気なんか、失え。】USJハロウィーン』TVCMソング,ユニバーサル・スタジオ・ジャパン「ハリウッド・ドリーム・ザ・ライド」搭載曲", "yt": "d4st4aEjQ28", "spotify": "https://open.spotify.com/intl-ja/album/4Qln8io3Qbczk1OSHVTTtG", "lyrics": "https://www.uta-net.com/song/379461/" },
