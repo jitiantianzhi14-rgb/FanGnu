@@ -220,7 +220,7 @@
     const parts = value.split(/(\[[^\]]+\]\([^)]+\))/g);
     el.innerHTML = parts.map(part => {
       const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-      return m ? `<a href="${escH(m[2])}">${escH(m[1])}</a>` : escH(part);
+      return m ? `<a href="${escH(m[2])}">${escH(m[1])}</a>` : escH(part).replace(/\n/g, '<br>');
     }).join('');
     el.classList.remove('empty');
   }
