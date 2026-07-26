@@ -153,36 +153,68 @@
       .trim();
   }
 
-  function resolveSongYt(title, songIndex) {
+  function resolveSongInfo(title, songIndex) {
     if (songIndex.has(title)) return songIndex.get(title);
     const norm = normalizeTitle(title);
     if (norm !== title && songIndex.has(norm)) return songIndex.get(norm);
     return null;
   }
 
+  function appleMusicId(url) {
+    if (!url) return '';
+    const m = url.match(/(\d+)(?:\?.*)?$/);
+    return m ? m[1] : '';
+  }
+
+  function tweetId(url) {
+    if (!url) return '';
+    const m = url.match(/status\/(\d+)/);
+    return m ? m[1] : '';
+  }
+
+  function songHref(info, isSrvvinci) {
+    const params = new URLSearchParams();
+    if (isSrvvinci) params.set('src', 'srvvinci');
+    if (info.yt) params.set('yt', info.yt);
+    else if (info.appleMusic) params.set('am', appleMusicId(info.appleMusic));
+    else if (info.tweet) params.set('tweet', tweetId(info.tweet));
+    else return null;
+    return `song.html?${params.toString()}`;
+  }
+
   async function loadSongIndex(isSrvvinci) {
     const index = new Map();
+    const addSong = (title, entry) => { if (!index.has(title)) index.set(title, entry); };
     try {
       if (isSrvvinci) {
         const res = await fetch('data/srvvinci-discography.json');
         const data = await res.json();
         (data.groups || []).forEach(group => {
-          (group.demos || []).forEach(d => { if (d.yt) index.set(d.title, d.yt); });
-          (group.singles || []).forEach(d => { if (d.yt) index.set(d.title, d.yt); });
-          (group.albums || []).forEach(album => {
-            if (album.yt && !index.has(album.title)) index.set(album.title, album.yt);
-            (album.tracks || []).forEach(t => { if (t.yt && !index.has(t.title)) index.set(t.title, t.yt); });
+          const flatItems = [
+            ...(group.demos || []).filter(d => !d.tracks),
+            ...(group.singles || []).filter(d => !d.tracks),
+          ];
+          flatItems.forEach(d => addSong(d.title, { yt: d.yt || '', appleMusic: d.appleMusic || '', tweet: d.url || '' }));
+
+          const collections = [
+            ...(group.demos || []).filter(d => d.tracks),
+            ...(group.singles || []).filter(d => d.tracks),
+            ...(group.albums || []),
+          ];
+          collections.forEach(coll => {
+            if (coll.yt) addSong(coll.title, { yt: coll.yt });
+            (coll.tracks || []).forEach(t => addSong(t.title, { yt: t.yt || '', appleMusic: t.appleMusic || '' }));
           });
         });
       } else {
         const res = await fetch('data/kinggnu-discography.json');
         const data = await res.json();
         (data.items || []).forEach(item => {
-          if (item.yt) index.set(item.title, item.yt);
-          if (item.coupling && item.coupling.yt) index.set(item.coupling.title, item.coupling.yt);
+          addSong(item.title, { yt: item.yt || '' });
+          if (item.coupling && item.coupling.title) addSong(item.coupling.title, { yt: item.coupling.yt || '' });
         });
         (data.albums || []).forEach(album => {
-          (album.tracks || []).forEach(t => { if (t.yt && !index.has(t.title)) index.set(t.title, t.yt); });
+          (album.tracks || []).forEach(t => addSong(t.title, { yt: t.yt || '' }));
         });
       }
     } catch (err) {
@@ -255,14 +287,14 @@
       area.innerHTML = `<div class="no-setlist">セットリスト情報はまだありません。</div>`;
       return;
     }
-    const srcParam = isSrvvinci ? '&src=srvvinci' : '';
     area.innerHTML = `
       <div class="setlist-label">SETLIST</div>
       <ol class="setlist-list">${setlist.map((s, i) => {
         const inner = `<span class="setlist-num">${String(i + 1).padStart(2, '0')}</span>${escH(s)}`;
-        const yt = resolveSongYt(s, songIndex);
-        return yt
-          ? `<li class="setlist-item"><a class="setlist-row" href="song.html?yt=${encodeURIComponent(yt)}${srcParam}">${inner}</a></li>`
+        const info = resolveSongInfo(s, songIndex);
+        const href = info ? songHref(info, isSrvvinci) : null;
+        return href
+          ? `<li class="setlist-item"><a class="setlist-row" href="${href}">${inner}</a></li>`
           : `<li class="setlist-item"><span class="setlist-row">${inner}</span></li>`;
       }).join('')}</ol>`;
   }

@@ -331,6 +331,28 @@
       .trim();
   }
 
+  function appleMusicId(url) {
+    if (!url) return '';
+    const m = url.match(/(\d+)(?:\?.*)?$/);
+    return m ? m[1] : '';
+  }
+
+  function tweetId(url) {
+    if (!url) return '';
+    const m = url.match(/status\/(\d+)/);
+    return m ? m[1] : '';
+  }
+
+  function songHref(info) {
+    const params = new URLSearchParams();
+    if (info.src === 'srvvinci') params.set('src', 'srvvinci');
+    if (info.yt) params.set('yt', info.yt);
+    else if (info.appleMusic) params.set('am', appleMusicId(info.appleMusic));
+    else if (info.tweet) params.set('tweet', tweetId(info.tweet));
+    else return null;
+    return `song.html?${params.toString()}`;
+  }
+
   const PREF_MAP = {
     hokkaido: '北海道', aomori: '青森県', iwate: '岩手県', miyagi: '宮城県', akita: '秋田県', yamagata: '山形県', fukushima: '福島県',
     ibaraki: '茨城県', tochigi: '栃木県', gunma: '群馬県', saitama: '埼玉県', chiba: '千葉県', tokyo: '東京都', kanagawa: '神奈川県',
@@ -357,34 +379,42 @@
 
   function buildSongIndex(kgDisco, svDisco) {
     const index = new Map();
+    const addSong = (title, entry) => {
+      const key = normalizeTitle(title);
+      if (!index.has(key)) index.set(key, entry);
+    };
+
     (kgDisco.items || []).forEach(item => {
       if (!item.title) return;
-      index.set(normalizeTitle(item.title), { title: item.title, yt: item.yt || '', src: 'discography' });
+      addSong(item.title, { title: item.title, yt: item.yt || '', src: 'discography' });
       if (item.coupling && item.coupling.title) {
-        index.set(normalizeTitle(item.coupling.title), { title: item.coupling.title, yt: item.coupling.yt || '', src: 'discography' });
+        addSong(item.coupling.title, { title: item.coupling.title, yt: item.coupling.yt || '', src: 'discography' });
       }
     });
     (kgDisco.albums || []).forEach(album => {
       (album.tracks || []).forEach(t => {
-        const key = normalizeTitle(t.title);
-        if (!index.has(key)) index.set(key, { title: t.title, yt: t.yt || '', src: 'discography' });
+        addSong(t.title, { title: t.title, yt: t.yt || '', src: 'discography' });
       });
     });
+
     (svDisco.groups || []).forEach(group => {
-      (group.demos || []).forEach(d => {
-        const key = normalizeTitle(d.title);
-        if (!index.has(key)) index.set(key, { title: d.title, yt: d.yt || '', src: 'srvvinci' });
+      const flatItems = [
+        ...(group.demos || []).filter(d => !d.tracks),
+        ...(group.singles || []).filter(d => !d.tracks),
+      ];
+      flatItems.forEach(d => {
+        addSong(d.title, { title: d.title, yt: d.yt || '', appleMusic: d.appleMusic || '', tweet: d.url || '', src: 'srvvinci' });
       });
-      (group.singles || []).forEach(d => {
-        const key = normalizeTitle(d.title);
-        if (!index.has(key)) index.set(key, { title: d.title, yt: d.yt || '', src: 'srvvinci' });
-      });
-      (group.albums || []).forEach(album => {
-        const albKey = normalizeTitle(album.title);
-        if (!index.has(albKey)) index.set(albKey, { title: album.title, yt: album.yt || '', src: 'srvvinci' });
-        (album.tracks || []).forEach(t => {
-          const key = normalizeTitle(t.title);
-          if (!index.has(key)) index.set(key, { title: t.title, yt: t.yt || '', src: 'srvvinci' });
+
+      const collections = [
+        ...(group.demos || []).filter(d => d.tracks),
+        ...(group.singles || []).filter(d => d.tracks),
+        ...(group.albums || []),
+      ];
+      collections.forEach(coll => {
+        addSong(coll.title, { title: coll.title, yt: coll.yt || '', src: 'srvvinci' });
+        (coll.tracks || []).forEach(t => {
+          addSong(t.title, { title: t.title, yt: t.yt || '', appleMusic: t.appleMusic || '', src: 'srvvinci' });
         });
       });
     });
@@ -481,9 +511,9 @@
         <span class="rank-num">${rankShown + i + 1}</span>
         <span class="rank-title">${escH(title)}</span>
         <span class="rank-count"><b>${count}</b>回</span>`;
-      if (info && info.yt) {
-        const srcParam = info.src === 'srvvinci' ? '&src=srvvinci' : '';
-        return `<a class="rank-item" href="song.html?yt=${encodeURIComponent(info.yt)}${srcParam}">${inner}</a>`;
+      const href = info ? songHref(info) : null;
+      if (href) {
+        return `<a class="rank-item" href="${href}">${inner}</a>`;
       }
       return `<div class="rank-item">${inner}</div>`;
     }).join(''));
