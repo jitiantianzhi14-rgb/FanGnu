@@ -15,19 +15,26 @@ FanGNU: 公演のセットリスト順にSpotifyプレイリストを自動作�
        $env:SPOTIPY_REDIRECT_URI = "http://127.0.0.1:8888/callback"
 
 使い方:
-  python scripts/make_setlist_playlist.py 2026.02.21
-  python scripts/make_setlist_playlist.py 2016.09.02 --srvvinci
-  python scripts/make_setlist_playlist.py 2026.02.21 --public
+  py scripts/make_setlist_playlist.py 2026.02.21
+  py scripts/make_setlist_playlist.py 2016.09.02 --srvvinci
+  py scripts/make_setlist_playlist.py 2026.02.21 --public
+  py scripts/make_setlist_playlist.py --all
+  py scripts/make_setlist_playlist.py --all --srvvinci
 
-初回実行時にブラウザでSpotifyのログイン・認可画面が開きます。
-実行結果としてプレイリストのURLが表示されるので、それを教えてもらえれば
-live-show.htmlに埋め込むための "spotifyPlaylist" フィールドを追加します。
+--all を付けると、そのファイル（kinggnu-live.json または --srvvinci指定で
+srvvinci-live.json）の全公演のうち、セットリストがあって
+まだ spotifyPlaylist が登録されていない公演をまとめて処理します。
+
+作成したプレイリストのURLは、その場でライブJSONファイルに
+"spotifyPlaylist" として書き込みます（元のファイルの整形はできるだけ
+崩さないよう、行単位のテキスト差し替えで追記します）。
 """
 
 import argparse
 import json
 import re
 import sys
+import time
 from pathlib import Path
 
 try:
@@ -108,31 +115,143 @@ def resolve_track_id(sp, ref, album_cache):
     return track_id
 
 
-def find_show(date, live_data):
-    for tour in live_data.get("tours", []):
-        for show in tour.get("shows", []):
-            if show.get("date") == date:
-                return tour, show
-    return None, None
-
-
 def load_json(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def insert_spotify_playlist_field(raw_text, date, venue, url):
+    """live.jsonの生テキストに対し、該当公演の "status": "..." の直後に
+    "spotifyPlaylist" フィールドを差し込む。整形を壊さないための力技。
+    見つからなければ (raw_text, False) を返す。
+    """
+    anchor = f'"date": "{date}", "venue": "{venue}"'
+    idx = raw_text.find(anchor)
+    if idx == -1:
+        return raw_text, False
+    status_match = re.search(r'"status":\s*"[^"]*"', raw_text[idx:idx + 2000])
+    if not status_match:
+        return raw_text, False
+    insert_pos = idx + status_match.end()
+    escaped_url = url.replace('"', '\\"')
+    insertion = f', "spotifyPlaylist": "{escaped_url}"'
+    return raw_text[:insert_pos] + insertion + raw_text[insert_pos:], True
+
+
+def create_playlist(sp, tour_name, date, venue, setlist, song_index, album_cache, public):
+    refs = []
+    missing = []
+    for song in setlist:
+        ref = song_index.get(normalize_title(song))
+        if ref:
+            refs.append(ref)
+        else:
+            missing.append(song)
+
+    track_ids = []
+    for ref in refs:
+        track_id = resolve_track_id(sp, ref, album_cache)
+        if track_id:
+            track_ids.append(track_id)
+        else:
+            missing.append("(album resolve failed)")
+
+    if not track_ids:
+        return None, len(setlist), 0, missing
+
+    playlist_name = f"{tour_name} {date} {venue}".strip()
+    playlist = sp._post(
+        "me/playlists",
+        payload={
+            "name": playlist_name,
+            "public": public,
+            "description": f"FanGNU setlist playlist - {date} {venue}",
+        },
+    )
+    uris = [f"spotify:track:{tid}" for tid in track_ids]
+    for i in range(0, len(uris), 100):
+        sp.playlist_add_items(playlist["id"], uris[i:i + 100])
+
+    return playlist["external_urls"]["spotify"], len(setlist), len(track_ids), missing
+
+
 def main():
     parser = argparse.ArgumentParser(description="公演のセットリストからSpotifyプレイリストを作成します。")
-    parser.add_argument("date", help="公演日（例: 2026.02.21）")
+    parser.add_argument("date", nargs="?", help="公演日（例: 2026.02.21）。--all指定時は不要")
     parser.add_argument("--srvvinci", action="store_true", help="srvvinci-live.json から探す（指定なしはkinggnu-live.json）")
     parser.add_argument("--public", action="store_true", help="プレイリストを公開設定にする（デフォルトは非公開）")
+    parser.add_argument("--all", action="store_true", help="spotifyPlaylist未登録の全公演をまとめて処理する")
     args = parser.parse_args()
+
+    if not args.all and not args.date:
+        parser.error("date を指定するか、--all を付けてください。")
 
     live_path = DATA_DIR / ("srvvinci-live.json" if args.srvvinci else "kinggnu-live.json")
     kg_disco = load_json(DATA_DIR / "kinggnu-discography.json")
     sv_disco = load_json(DATA_DIR / "srvvinci-discography.json")
     live_data = load_json(live_path)
+    song_index = build_song_index(kg_disco, sv_disco)
 
-    tour, show = find_show(args.date, live_data)
+    auth_manager = SpotifyOAuth(scope=SCOPE)
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+    sp.current_user()  # 初回ログインを済ませておく
+    album_cache = {}
+
+    if args.all:
+        raw_text = live_path.read_text(encoding="utf-8")
+        created = 0
+        skipped_existing = 0
+        skipped_no_setlist = 0
+        failed = 0
+
+        for tour in live_data.get("tours", []):
+            for show in tour.get("shows", []):
+                date = show.get("date")
+                venue = show.get("venue", "")
+                if show.get("spotifyPlaylist"):
+                    skipped_existing += 1
+                    continue
+                setlist = show.get("setlist") or []
+                if not setlist:
+                    skipped_no_setlist += 1
+                    continue
+
+                print(f"[{date}] {venue}（{tour.get('name', '')}）...", end=" ")
+                try:
+                    url, total, matched, missing = create_playlist(
+                        sp, tour.get("name", ""), date, venue, setlist, song_index, album_cache, args.public
+                    )
+                except Exception as e:
+                    print(f"エラー: {e}")
+                    failed += 1
+                    continue
+
+                if not url:
+                    print(f"曲が見つからずスキップ ({matched}/{total})")
+                    continue
+
+                print(f"{matched}/{total}曲 -> {url}")
+                raw_text, ok = insert_spotify_playlist_field(raw_text, date, venue, url)
+                if ok:
+                    live_path.write_text(raw_text, encoding="utf-8")
+                    created += 1
+                else:
+                    print(f"  [警告] JSONへの書き込み位置が見つかりませんでした（{date} {venue}）。手動で追加してください。")
+
+                time.sleep(0.3)
+
+        print()
+        print(f"作成: {created}件 / 既存スキップ: {skipped_existing}件 / セトリなしスキップ: {skipped_no_setlist}件 / 失敗: {failed}件")
+        return
+
+    tour, show = None, None
+    for t in live_data.get("tours", []):
+        for s in t.get("shows", []):
+            if s.get("date") == args.date:
+                tour, show = t, s
+                break
+        if show:
+            break
+
     if not show:
         print(f"{live_path.name} に日付 {args.date} の公演が見つかりませんでした。")
         sys.exit(1)
@@ -142,70 +261,32 @@ def main():
         print("この公演にはセットリスト情報がありません。")
         sys.exit(1)
 
-    song_index = build_song_index(kg_disco, sv_disco)
-
-    refs = []
-    missing = []
-    for song in setlist:
-        ref = song_index.get(normalize_title(song))
-        if ref:
-            refs.append((song, ref))
-        else:
-            missing.append(song)
-
-    if not refs:
-        print(f"公演: {args.date} {show.get('venue', '')}（{tour.get('name', '')}）")
-        print("Spotifyで見つかった曲が1曲もないため、プレイリストは作成しません。")
-        if missing:
-            print("見つからなかった曲:")
-            for m in missing:
-                print(f"  - {m}")
-        sys.exit(1)
-
-    auth_manager = SpotifyOAuth(scope=SCOPE)
-    sp = spotipy.Spotify(auth_manager=auth_manager)
-    me = sp.current_user()
-
-    album_cache = {}
-    track_ids = []
-    for song, ref in refs:
-        track_id = resolve_track_id(sp, ref, album_cache)
-        if track_id:
-            track_ids.append(track_id)
-        else:
-            missing.append(song)
+    url, total, matched, missing = create_playlist(
+        sp, tour.get("name", ""), args.date, show.get("venue", ""), setlist, song_index, album_cache, args.public
+    )
 
     print(f"公演: {args.date} {show.get('venue', '')}（{tour.get('name', '')}）")
-    print(f"セットリスト {len(setlist)}曲中 {len(track_ids)}曲がSpotifyで見つかりました。")
+    print(f"セットリスト {total}曲中 {matched}曲がSpotifyで見つかりました。")
     if missing:
         print("見つからなかった曲:")
         for m in missing:
             print(f"  - {m}")
 
-    if not track_ids:
+    if not url:
         print("Spotifyで見つかった曲が1曲もないため、プレイリストは作成しません。")
         sys.exit(1)
 
-    playlist_name = f"{tour.get('name', '')} {args.date} {show.get('venue', '')}".strip()
-    # Spotifyの2026年2月API移行で /v1/users/{user_id}/playlists がDevelopment Modeアプリで
-    # 廃止されたため、spotipyのuser_playlist_create()（旧エンドポイントを叩く）は使わず、
-    # 新しい /v1/me/playlists を直接呼び出す。
-    playlist = sp._post(
-        "me/playlists",
-        payload={
-            "name": playlist_name,
-            "public": args.public,
-            "description": f"FanGNU setlist playlist - {args.date} {show.get('venue', '')}",
-        },
-    )
-
-    uris = [f"spotify:track:{tid}" for tid in track_ids]
-    for i in range(0, len(uris), 100):
-        sp.playlist_add_items(playlist["id"], uris[i:i + 100])
-
     print()
     print("プレイリストを作成しました:")
-    print(playlist["external_urls"]["spotify"])
+    print(url)
+
+    raw_text = live_path.read_text(encoding="utf-8")
+    raw_text, ok = insert_spotify_playlist_field(raw_text, args.date, show.get("venue", ""), url)
+    if ok:
+        live_path.write_text(raw_text, encoding="utf-8")
+        print(f"{live_path.name} に spotifyPlaylist を登録しました。")
+    else:
+        print(f"[警告] {live_path.name} への自動書き込みに失敗しました。手動で追加してください。")
 
 
 if __name__ == "__main__":
