@@ -88,7 +88,15 @@ def build_song_index(kg_disco, sv_disco):
         coupling = item.get("coupling")
         if coupling:
             add(coupling.get("title"), spotify_ref(coupling.get("spotify")))
-    for album in kg_disco.get("albums", []):
+
+    # 通常のスタジオ盤/シングルを優先し、ライブアルバムは音源が
+    # 存在しない曲（未発表曲など）を補うためのフォールバックとして最後に回す。
+    studio_albums = [a for a in kg_disco.get("albums", []) if a.get("note") != "ライブアルバム"]
+    live_albums = [a for a in kg_disco.get("albums", []) if a.get("note") == "ライブアルバム"]
+    for album in studio_albums:
+        for t in album.get("tracks", []):
+            add(t.get("title"), spotify_ref(t.get("spotify")))
+    for album in live_albums:
         for t in album.get("tracks", []):
             add(t.get("title"), spotify_ref(t.get("spotify")))
 

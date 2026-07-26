@@ -386,7 +386,11 @@
         addSong(item.coupling.title, { title: item.coupling.title, yt: item.coupling.yt || '', externalVideo: item.coupling.externalVideo || '', spotify: item.coupling.spotify || '', src: 'discography' });
       }
     });
-    (kgDisco.albums || []).forEach(album => {
+    // 通常盤を優先し、ライブアルバムは音源がない曲を補うフォールバックとして最後に処理する
+    const kgAlbums = kgDisco.albums || [];
+    const studioAlbums = kgAlbums.filter(a => a.note !== 'ライブアルバム');
+    const liveAlbums = kgAlbums.filter(a => a.note === 'ライブアルバム');
+    [...studioAlbums, ...liveAlbums].forEach(album => {
       (album.tracks || []).forEach(t => {
         addSong(t.title, { title: t.title, yt: t.yt || '', src: 'discography' });
       });
