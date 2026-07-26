@@ -210,6 +210,21 @@
     }
   }
 
+  function setExtra(id, value) {
+    const el = document.getElementById(id);
+    if (!value) {
+      el.textContent = '-';
+      el.classList.add('empty');
+      return;
+    }
+    const parts = value.split(/(\[[^\]]+\]\([^)]+\))/g);
+    el.innerHTML = parts.map(part => {
+      const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      return m ? `<a href="${escH(m[2])}">${escH(m[1])}</a>` : escH(part);
+    }).join('');
+    el.classList.remove('empty');
+  }
+
   function setAlbumInfo(id, song) {
     const el = document.getElementById(id);
     if (song.album && song.album.title) {
@@ -454,7 +469,7 @@
     setAlbumInfo('infoAlbum', song);
     setInfo('infoYear', song.year);
     setNote('infoNote', song.note);
-    setInfo('infoExtra', song.extra);
+    setExtra('infoExtra', song.extra);
     setLyrics(song.lyrics);
 
     renderMedia(song.yt, song.title, song.appleMusic, song.externalVideo, song.spotify);
@@ -497,7 +512,7 @@
 
     if (album) {
       const t = album.track;
-      return { type: 'ALBUM', title: t.title, year: album.year, note: t.note, extra: '', yt: t.yt, spotify: t.spotify, externalVideo: t.externalVideo || '', lyrics: t.lyrics || '', album: { title: album.title, num: album.num } };
+      return { type: 'ALBUM', title: t.title, year: album.year, note: t.note, extra: t.extra || '', yt: t.yt, spotify: t.spotify, externalVideo: t.externalVideo || '', lyrics: t.lyrics || '', album: { title: album.title, num: album.num } };
     }
 
     return null;
