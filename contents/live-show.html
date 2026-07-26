@@ -370,8 +370,9 @@
       noteEl.style.display = 'block';
     }
 
-    const mapQuery = show.location || show.venue;
-    if (mapQuery) {
+    const mapQuery = [show.venue, show.location].filter(Boolean).join(' ').trim();
+    const isOnline = (show.location || '').trim().toUpperCase() === 'ONLINE';
+    if (mapQuery && !isOnline) {
       const mapArea = document.getElementById('mapArea');
       mapArea.innerHTML = `<iframe src="https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed" loading="lazy" allowfullscreen></iframe>`;
       mapArea.style.display = 'block';
