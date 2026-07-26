@@ -172,9 +172,9 @@
     return m ? m[1] : '';
   }
 
-  function songHref(info, isSrvvinci) {
+  function songHref(info) {
     const params = new URLSearchParams();
-    if (isSrvvinci) params.set('src', 'srvvinci');
+    if (info.src === 'srvvinci') params.set('src', 'srvvinci');
     if (info.yt) params.set('yt', info.yt);
     else if (info.appleMusic) params.set('am', appleMusicId(info.appleMusic));
     else if (info.tweet) params.set('tweet', tweetId(info.tweet));
@@ -182,41 +182,55 @@
     return `song.html?${params.toString()}`;
   }
 
+  function buildKgEntries(data) {
+    const entries = [];
+    (data.items || []).forEach(item => {
+      entries.push([item.title, { yt: item.yt || '', src: 'discography' }]);
+      if (item.coupling && item.coupling.title) entries.push([item.coupling.title, { yt: item.coupling.yt || '', src: 'discography' }]);
+    });
+    (data.albums || []).forEach(album => {
+      (album.tracks || []).forEach(t => entries.push([t.title, { yt: t.yt || '', src: 'discography' }]));
+    });
+    return entries;
+  }
+
+  function buildSvEntries(data) {
+    const entries = [];
+    (data.groups || []).forEach(group => {
+      const flatItems = [
+        ...(group.demos || []).filter(d => !d.tracks),
+        ...(group.singles || []).filter(d => !d.tracks),
+      ];
+      flatItems.forEach(d => entries.push([d.title, { yt: d.yt || '', appleMusic: d.appleMusic || '', tweet: d.url || '', src: 'srvvinci' }]));
+
+      const collections = [
+        ...(group.demos || []).filter(d => d.tracks),
+        ...(group.singles || []).filter(d => d.tracks),
+        ...(group.albums || []),
+      ];
+      collections.forEach(coll => {
+        if (coll.yt) entries.push([coll.title, { yt: coll.yt, src: 'srvvinci' }]);
+        (coll.tracks || []).forEach(t => entries.push([t.title, { yt: t.yt || '', appleMusic: t.appleMusic || '', src: 'srvvinci' }]));
+      });
+    });
+    return entries;
+  }
+
+  // 曲名インデックスは常に King Gnu / Srv.Vinci 両方のディスコグラフィーを合成する
+  // （King Gnu名義のライブでもSrv.Vinci時代の楽曲が演奏されているケースがあるため）。
+  // isSrvvinciはどちらのカタログを優先して名前を解決するかの判定にのみ使う。
   async function loadSongIndex(isSrvvinci) {
     const index = new Map();
     const addSong = (title, entry) => { if (!index.has(title)) index.set(title, entry); };
     try {
-      if (isSrvvinci) {
-        const res = await fetch('data/srvvinci-discography.json');
-        const data = await res.json();
-        (data.groups || []).forEach(group => {
-          const flatItems = [
-            ...(group.demos || []).filter(d => !d.tracks),
-            ...(group.singles || []).filter(d => !d.tracks),
-          ];
-          flatItems.forEach(d => addSong(d.title, { yt: d.yt || '', appleMusic: d.appleMusic || '', tweet: d.url || '' }));
-
-          const collections = [
-            ...(group.demos || []).filter(d => d.tracks),
-            ...(group.singles || []).filter(d => d.tracks),
-            ...(group.albums || []),
-          ];
-          collections.forEach(coll => {
-            if (coll.yt) addSong(coll.title, { yt: coll.yt });
-            (coll.tracks || []).forEach(t => addSong(t.title, { yt: t.yt || '', appleMusic: t.appleMusic || '' }));
-          });
-        });
-      } else {
-        const res = await fetch('data/kinggnu-discography.json');
-        const data = await res.json();
-        (data.items || []).forEach(item => {
-          addSong(item.title, { yt: item.yt || '' });
-          if (item.coupling && item.coupling.title) addSong(item.coupling.title, { yt: item.coupling.yt || '' });
-        });
-        (data.albums || []).forEach(album => {
-          (album.tracks || []).forEach(t => addSong(t.title, { yt: t.yt || '' }));
-        });
-      }
+      const [kgRes, svRes] = await Promise.all([
+        fetch('data/kinggnu-discography.json'),
+        fetch('data/srvvinci-discography.json'),
+      ]);
+      const kgEntries = buildKgEntries(await kgRes.json());
+      const svEntries = buildSvEntries(await svRes.json());
+      const ordered = isSrvvinci ? [...svEntries, ...kgEntries] : [...kgEntries, ...svEntries];
+      ordered.forEach(([title, entry]) => addSong(title, entry));
     } catch (err) {
       console.error(err);
     }
@@ -281,7 +295,7 @@
     }
   }
 
-  function renderSetlist(setlist, songIndex, isSrvvinci) {
+  function renderSetlist(setlist, songIndex) {
     const area = document.getElementById('setlistArea');
     if (!setlist || !setlist.length) {
       area.innerHTML = `<div class="no-setlist">セットリスト情報はまだありません。</div>`;
@@ -292,7 +306,7 @@
       <ol class="setlist-list">${setlist.map((s, i) => {
         const inner = `<span class="setlist-num">${String(i + 1).padStart(2, '0')}</span>${escH(s)}`;
         const info = resolveSongInfo(s, songIndex);
-        const href = info ? songHref(info, isSrvvinci) : null;
+        const href = info ? songHref(info) : null;
         return href
           ? `<li class="setlist-item"><a class="setlist-row" href="${href}">${inner}</a></li>`
           : `<li class="setlist-item"><span class="setlist-row">${inner}</span></li>`;
@@ -304,7 +318,7 @@
     if (el) el.setAttribute('content', content);
   }
 
-  function renderShow(tour, show, songIndex, isSrvvinci) {
+  function renderShow(tour, show, songIndex) {
     const pageTitle = `${show.venue || show.location} — 公演詳細 — FanGNU`;
     document.title = pageTitle;
     const desc = `${show.date} ${tour.name}（${show.venue || show.location}）の公演詳細。セットリストなどをまとめて掲載。`;
@@ -339,7 +353,7 @@
       mapArea.style.display = 'block';
     }
 
-    renderSetlist(show.setlist, songIndex, isSrvvinci);
+    renderSetlist(show.setlist, songIndex);
   }
 
   function renderNotFound() {
@@ -366,7 +380,7 @@
 
   Promise.all([findShow(date, isSrvvinci), loadSongIndex(isSrvvinci)])
     .then(([result, songIndex]) => {
-      if (result) renderShow(result.tour, result.show, songIndex, isSrvvinci);
+      if (result) renderShow(result.tour, result.show, songIndex);
       else renderNotFound();
     })
     .catch(err => {
