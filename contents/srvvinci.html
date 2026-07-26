@@ -212,7 +212,7 @@
              ${buildTrackGrid(item.tracks)}
            </div>`;
       return `
-        <div class="disc-card">
+        <div class="disc-card" data-title="${escH(item.title)}">
           <div class="disc-card-head">
             <span class="disc-type-badge ${escH(item.type)}">${escH(item.type)}</span>
             ${item.year ? `<span class="disc-year">${escH(item.year)}</span>` : ''}
@@ -230,7 +230,7 @@
       ? `<div class="disc-detail">${songListHtml}${embedsHtml}</div>`
       : '';
     return `
-      <div class="disc-card">
+      <div class="disc-card" data-title="${escH(item.title)}">
         <div class="disc-card-head">
           <span class="disc-type-badge ${escH(item.type)}">${escH(item.type)}</span>
           ${item.year ? `<span class="disc-year">${escH(item.year)}</span>` : ''}
@@ -292,11 +292,22 @@
       });
   }
 
+  function focusAlbumFromQuery() {
+    const albumTitle = new URLSearchParams(location.search).get('album');
+    if (!albumTitle) return;
+    const card = [...document.querySelectorAll('.disc-card')]
+      .find(c => c.dataset.title === albumTitle);
+    if (!card) return;
+    card.classList.add('expanded');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
   fetch('data/srvvinci-discography.json')
     .then(res => res.json())
     .then(data => {
       GROUPS = buildGroups(data.groups || []);
       render();
+      focusAlbumFromQuery();
     })
     .catch(err => {
       document.getElementById('discContent').textContent = 'データの読み込みに失敗しました。';
