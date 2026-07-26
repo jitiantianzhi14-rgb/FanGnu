@@ -56,6 +56,14 @@
     },
     {
       "year": "2025",
+      "name": "CDTV LIVE!LIVE! King Gnu プラチナライブ",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2025.04.28", "venue": "CDTV LIVE!LIVE!", "location": "ONLINE", "status": "", "setlist": ["):阿修羅:(", "SPECIALZ", "一途", "Teenager Forever", "TWILIGHT!!!", "白日", "Prayer X", "Tokyo Rendez-Vous", "Flash!!!", "SUNNY SIDE UP", "雨燦々", "飛行艇"] }
+      ]
+    },
+    {
+      "year": "2025",
       "name": "KING GNU LIVEHOUSE TOUR 2025 CLUB GNU EDITION",
       "scale": "LIVE",
       "shows": [
@@ -103,6 +111,14 @@
         { "date": "2024.02.03", "venue": "福岡 PayPayドーム", "location": "福岡県福岡市中央区地行浜２丁目２−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5h2IU5ypxhjMnZP6bXTfF2", "note": "OPEN 15:00 / START 17:00", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "VIVID RED", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇"] },
         { "date": "2024.02.04", "venue": "福岡 PayPayドーム", "location": "福岡県福岡市中央区地行浜２丁目２−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/21VcG0DlowCI3Ss9EUSZsh", "note": "OPEN 14:00 / START 16:00", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "VIVID RED", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "Teenager Forever", "飛行艇"] },
         { "date": "2024.03.23", "venue": "札幌ドーム", "location": "北海道札幌市豊平区羊ケ丘１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4fCd6VwVafb07tMo8D1XVq", "note": "OPEN 14:00 / START 16:00,ツアーファイナル", "setlist": ["SPECIALZ", "一途", "千両役者", "Stardom", "MIRROR", "カメレオン", "DARE??", "VIVID RED", "白日", "硝子窓", "泡", "2ΜΟЯΟ", "Vinyl", "W●RKAHOLIC", "):阿修羅:(", "δ", "逆夢", "IKAROS", "Slumberland", "Sorrows", "Flash!!!", "BOY", "SUNNY SIDE UP", "雨燦々", "仝", "三文小説", "ЯOЯЯIM", "It's a small world（Acoustic ver.）", "Prayer X", "Teenager Forever", "飛行艇"] }
+      ]
+    },
+    {
+      "year": "2023",
+      "name": "CDTV LIVE!LIVE! King Gnu Fes.",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2023.12.04", "venue": "CDTV LIVE!LIVE!", "location": "ONLINE", "status": "", "setlist": ["MIRROR", "カメレオン", "DARE??", "SPECIALZ", "一途", "BOY", "It's a small world", "泡", "逆夢", "硝子窓", "W●RKAHOLIC", "):阿修羅:("] }
       ]
     },
     {
