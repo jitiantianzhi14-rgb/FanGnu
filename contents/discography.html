@@ -340,7 +340,7 @@
   fetch('data/kinggnu-discography.json')
     .then(res => res.json())
     .then(data => {
-      const items = (data.items || []).map(i => ({ ...i }));
+      const items = (data.items || []).filter(i => i.type !== 'UNRELEASED').map(i => ({ ...i }));
       const albums = (data.albums || []).map(a => ({ ...a, type: 'ALBUM' }));
       DISCS = [...items, ...albums].sort((a, b) => sortKey(b.year).localeCompare(sortKey(a.year)));
       DISCS.forEach(item => {
