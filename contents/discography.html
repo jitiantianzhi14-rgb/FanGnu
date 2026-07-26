@@ -193,7 +193,7 @@
     return `<div class="track-grid">${tracks.map(t => {
       const numTitle = `
           <span class="track-num">${String(t.num).padStart(2,'0')}</span>
-          <span class="track-title">${escH(t.title)}</span>`;
+          <span class="track-title">${escH(t.displayTitle || t.title)}</span>`;
       const href = songHref(t.yt, t.externalVideo, t.spotify);
       const link = href
         ? `<a class="track-link" href="${href}">${numTitle}</a>`
