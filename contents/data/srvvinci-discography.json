@@ -17,7 +17,7 @@
         { "title": "Re:", "yt": null, "lyrics": "" }
       ],
       "singles": [
-        { "title": "都", "yt": "mIdXhe-p-ow", "year": "2016.05.05", "type": "配信SG", "lyrics": "https://gethighwithme.memo.wiki/d/%C5%D4" },
+        { "title": "都", "externalVideo": "https://www.youtube.com/watch?v=mIdXhe-p-ow", "year": "2016.05.05", "type": "配信SG", "lyrics": "https://gethighwithme.memo.wiki/d/%C5%D4" },
         { "title": "ロウラヴ", "yt": "nhH03chZJMQ", "year": "2016.04.01", "type": "配信SG", "lyrics": "https://petitlyrics.com/lyrics/2863592" }
       ],
       "albums": [
@@ -53,7 +53,7 @@
       "singles": [
         { "title": "In Tokyo", "yt": "GXk_ANNlXEU", "lyrics": "" },
         { "title": "In Rose", "yt": "YZLNZ7lfd_s", "yt2": "nwotP3Wbcbs", "lyrics": "" },
-        { "title": "SOUND CLOUD", "year": "2013.08.31", "url": "https://x.com/vinyl_king0218/status/2076630789740261688", "lyrics": "" }
+        { "title": "SOUND CLOUD", "year": "2013.08.31", "externalVideo": "https://x.com/vinyl_king0218/status/2076630789740261688", "lyrics": "" }
       ]
     },
     {

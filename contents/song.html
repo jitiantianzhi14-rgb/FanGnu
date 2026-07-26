@@ -270,13 +270,13 @@
       </div>`;
   }
 
-  function tweetId(url) {
-    if (!url) return '';
-    const m = url.match(/status\/(\d+)/);
-    return m ? m[1] : '';
+  function externalVideoLabel(url) {
+    if (/(?:^|\.)(?:twitter|x)\.com/.test(url)) return '投稿を見る（X） ↗';
+    if (/(?:^|\.)(?:youtube\.com|youtu\.be)/.test(url)) return '動画を見る（YouTube） ↗';
+    return '動画を見る ↗';
   }
 
-  function renderTweet(url) {
+  function renderExternalVideo(url) {
     const area = document.getElementById('tweetArea');
     if (!url) {
       area.innerHTML = '';
@@ -284,13 +284,13 @@
     }
     area.innerHTML = `
       <div class="section-label">映像</div>
-      <a href="${escH(url)}" target="_blank" rel="noopener" class="lyrics-btn">投稿を見る（X） ↗</a>`;
+      <a href="${escH(url)}" target="_blank" rel="noopener" class="lyrics-btn">${externalVideoLabel(url)}</a>`;
   }
 
-  function renderMedia(yt, title, appleMusic, tweet) {
+  function renderMedia(yt, title, appleMusic, externalVideo) {
     const mediaArea = document.getElementById('mediaArea');
     if (!yt) {
-      mediaArea.innerHTML = (appleMusic || tweet) ? '' : `<div class="no-video">この曲の動画は見つかりませんでした。</div>`;
+      mediaArea.innerHTML = (appleMusic || externalVideo) ? '' : `<div class="no-video">この曲の動画は見つかりませんでした。</div>`;
       return;
     }
     mediaArea.innerHTML = `
@@ -457,9 +457,9 @@
     setInfo('infoExtra', song.extra);
     setLyrics(song.lyrics);
 
-    renderMedia(song.yt, song.title, song.appleMusic, song.tweet);
+    renderMedia(song.yt, song.title, song.appleMusic, song.externalVideo);
     renderAppleMusic(song.appleMusic);
-    renderTweet(song.tweet);
+    renderExternalVideo(song.externalVideo);
     renderSpotify(song.spotify);
   }
 
@@ -469,7 +469,7 @@
     setLyrics('');
     renderMedia('', '');
     renderAppleMusic('');
-    renderTweet('');
+    renderExternalVideo('');
     renderSpotify('');
   }
 
@@ -502,7 +502,7 @@
     return null;
   }
 
-  async function findInSrvvinci(yt, am, tweet) {
+  async function findInSrvvinci(yt, am, ext) {
     const res = await fetch('data/srvvinci-discography.json');
     const data = await res.json();
     for (const group of data.groups) {
@@ -524,8 +524,8 @@
         ...(group.demos || []).filter(d => !d.tracks).map(d => ({ ...d, type: d.type || 'DEMO' })),
         ...(group.singles || []).filter(d => !d.tracks).map(d => ({ ...d, type: d.type || 'SINGLE' })),
       ];
-      const item = flatPools.find(i => (yt && i.yt === yt) || (tweet && tweetId(i.url) === tweet));
-      if (item) return { type: item.type, title: item.title, year: item.year || '', note: item.note || '', extra: item.extra, yt: item.yt, spotify: item.spotify || '', appleMusic: '', tweet: item.url || '', lyrics: item.lyrics || '', album: null };
+      const item = flatPools.find(i => (yt && i.yt === yt) || (ext && i.externalVideo === ext));
+      if (item) return { type: item.type, title: item.title, year: item.year || '', note: item.note || '', extra: item.extra, yt: item.yt, spotify: item.spotify || '', appleMusic: '', externalVideo: item.externalVideo || '', lyrics: item.lyrics || '', album: null };
 
       for (const coll of collections) {
         if (yt && coll.yt === yt) {
@@ -537,16 +537,16 @@
   }
 
   const params = new URLSearchParams(location.search);
-  const yt    = params.get('yt') || '';
-  const am    = params.get('am') || '';
-  const tweet = params.get('tweet') || '';
+  const yt  = params.get('yt') || '';
+  const am  = params.get('am') || '';
+  const ext = params.get('ext') || '';
   const src = params.get('src') === 'srvvinci' ? 'srvvinci' : 'discography';
 
   const isSrvvinci = src === 'srvvinci';
   document.getElementById('discographyLink').href = isSrvvinci ? 'srvvinci.html' : 'discography.html';
   document.getElementById('liveListLink').href = isSrvvinci ? 'srvvinci-live.html' : 'live.html';
 
-  const lookup = isSrvvinci ? findInSrvvinci(yt, am, tweet) : findInDiscography(yt);
+  const lookup = isSrvvinci ? findInSrvvinci(yt, am, ext) : findInDiscography(yt);
   lookup
     .then(song => {
       if (!song) { renderNotFound(); return null; }

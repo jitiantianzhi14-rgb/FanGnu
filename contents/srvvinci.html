@@ -153,17 +153,11 @@
     return m ? m[1] : '';
   }
 
-  function tweetId(url) {
-    if (!url) return '';
-    const m = url.match(/status\/(\d+)/);
-    return m ? m[1] : '';
-  }
-
-  function songHref(yt, am, tweet) {
+  function songHref(yt, am, ext) {
     const params = new URLSearchParams({ src: 'srvvinci' });
     if (yt) params.set('yt', yt);
     if (am) params.set('am', am);
-    if (tweet) params.set('tweet', tweet);
+    if (ext) params.set('ext', ext);
     return `song.html?${params.toString()}`;
   }
 
@@ -223,7 +217,7 @@
         </div>`;
     }
 
-    const rowHref = item.yt ? songHref(item.yt) : (item.url ? songHref(null, null, tweetId(item.url)) : null);
+    const rowHref = item.yt ? songHref(item.yt) : (item.externalVideo ? songHref(null, null, item.externalVideo) : null);
     const hasDetail = !!rowHref;
     const songListHtml = rowHref ? `<div class="disc-song-list">${songRow(item.title, rowHref)}</div>` : '';
     const detailHtml = hasDetail
