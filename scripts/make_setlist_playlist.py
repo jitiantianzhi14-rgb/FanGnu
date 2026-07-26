@@ -47,48 +47,65 @@ def normalize_title(title):
     return title.strip()
 
 
-def spotify_track_id(value):
+def spotify_ref(value):
+    """discography.jsonの"spotify"欄からSpotifyの参照を取り出す。
+    トラック直リンクなら("track", id)、シングルなどアルバム単位のリンクなら
+    ("album", id)を返す。曲IDだけが入っている場合はトラック扱いにする。
+    """
     if not value:
         return None
-    m = re.search(r"open\.spotify\.com/(?:intl-[a-z]{2}/)?track/([a-zA-Z0-9]+)", value)
+    m = re.search(r"open\.spotify\.com/(?:intl-[a-z]{2}/)?(track|album)/([a-zA-Z0-9]+)", value)
     if m:
-        return m.group(1)
+        return (m.group(1), m.group(2))
     if re.fullmatch(r"[a-zA-Z0-9]+", value):
-        return value
+        return ("track", value)
     return None
 
 
 def build_song_index(kg_disco, sv_disco):
     index = {}
 
-    def add(title, track_id):
+    def add(title, ref):
         key = normalize_title(title or "")
-        if key and track_id and key not in index:
-            index[key] = track_id
+        if key and ref and key not in index:
+            index[key] = ref
 
     for item in kg_disco.get("items", []):
-        add(item.get("title"), spotify_track_id(item.get("spotify")))
+        add(item.get("title"), spotify_ref(item.get("spotify")))
         coupling = item.get("coupling")
         if coupling:
-            add(coupling.get("title"), spotify_track_id(coupling.get("spotify")))
+            add(coupling.get("title"), spotify_ref(coupling.get("spotify")))
     for album in kg_disco.get("albums", []):
         for t in album.get("tracks", []):
-            add(t.get("title"), spotify_track_id(t.get("spotify")))
+            add(t.get("title"), spotify_ref(t.get("spotify")))
 
     for group in sv_disco.get("groups", []):
         flat_items = [d for d in group.get("demos", []) if not d.get("tracks")] + \
                      [d for d in group.get("singles", []) if not d.get("tracks")]
         for d in flat_items:
-            add(d.get("title"), spotify_track_id(d.get("spotify")))
+            add(d.get("title"), spotify_ref(d.get("spotify")))
 
         collections = [d for d in group.get("demos", []) if d.get("tracks")] + \
                       [d for d in group.get("singles", []) if d.get("tracks")] + \
                       group.get("albums", [])
         for coll in collections:
             for t in coll.get("tracks", []):
-                add(t.get("title"), spotify_track_id(t.get("spotify")))
+                add(t.get("title"), spotify_ref(t.get("spotify")))
 
     return index
+
+
+def resolve_track_id(sp, ref, album_cache):
+    """("track", id) はそのまま、("album", id) はアルバムの1曲目のトラックIDに解決する。"""
+    kind, ref_id = ref
+    if kind == "track":
+        return ref_id
+    if ref_id in album_cache:
+        return album_cache[ref_id]
+    tracks = sp.album_tracks(ref_id, limit=1).get("items") or []
+    track_id = tracks[0]["id"] if tracks else None
+    album_cache[ref_id] = track_id
+    return track_id
 
 
 def find_show(date, live_data):
@@ -127,10 +144,32 @@ def main():
 
     song_index = build_song_index(kg_disco, sv_disco)
 
-    track_ids = []
+    refs = []
     missing = []
     for song in setlist:
-        track_id = song_index.get(normalize_title(song))
+        ref = song_index.get(normalize_title(song))
+        if ref:
+            refs.append((song, ref))
+        else:
+            missing.append(song)
+
+    if not refs:
+        print(f"公演: {args.date} {show.get('venue', '')}（{tour.get('name', '')}）")
+        print("Spotifyで見つかった曲が1曲もないため、プレイリストは作成しません。")
+        if missing:
+            print("見つからなかった曲:")
+            for m in missing:
+                print(f"  - {m}")
+        sys.exit(1)
+
+    auth_manager = SpotifyOAuth(scope=SCOPE)
+    sp = spotipy.Spotify(auth_manager=auth_manager)
+    me = sp.current_user()
+
+    album_cache = {}
+    track_ids = []
+    for song, ref in refs:
+        track_id = resolve_track_id(sp, ref, album_cache)
         if track_id:
             track_ids.append(track_id)
         else:
@@ -147,15 +186,17 @@ def main():
         print("Spotifyで見つかった曲が1曲もないため、プレイリストは作成しません。")
         sys.exit(1)
 
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=SCOPE))
-    me = sp.current_user()
-
     playlist_name = f"{tour.get('name', '')} {args.date} {show.get('venue', '')}".strip()
-    playlist = sp.user_playlist_create(
-        me["id"],
-        playlist_name,
-        public=args.public,
-        description=f"FanGNU setlist playlist - {args.date} {show.get('venue', '')}",
+    # Spotifyの2026年2月API移行で /v1/users/{user_id}/playlists がDevelopment Modeアプリで
+    # 廃止されたため、spotipyのuser_playlist_create()（旧エンドポイントを叩く）は使わず、
+    # 新しい /v1/me/playlists を直接呼び出す。
+    playlist = sp._post(
+        "me/playlists",
+        payload={
+            "name": playlist_name,
+            "public": args.public,
+            "description": f"FanGNU setlist playlist - {args.date} {show.get('venue', '')}",
+        },
     )
 
     uris = [f"spotify:track:{tid}" for tid in track_ids]
