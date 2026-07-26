@@ -20,7 +20,6 @@
     { "type": "配信SG", "year": "2019.08.09", "title": "飛行艇", "note": "ANA 国内版テレビCM『ひとには翼がある』篇CMソング,MBS・TBS系『日曜日の初耳学』「インタビュアー林修」テーマ曲,読売ジャイアンツ『GIANTS PRIDE 2025』使用楽曲,キリンビバレッジ「キリン ファイア ワンデイ」シリーズ『心燃やせ 常田大希篇』CMソング", "yt": "MSv7NbfbtU8", "spotify": "https://open.spotify.com/intl-ja/album/37arn09dKv9LylYaAvMsgY", "lyrics": "https://www.uta-net.com/song/272239/" },
     { "type": "CDSG", "year": "2018.09.19", "title": "Prayer X", "note": "フジテレビ“ノイタミナ”アニメ「BANANA FISH」エンディング・テーマ", "yt": "L-Bzhpm8h0o", "spotify": "https://open.spotify.com/intl-ja/album/5oqxo7mNVyuFWsTgUAWy3H", "lyrics": "https://www.uta-net.com/song/255819/" },
     { "type": "配信SG", "year": "2018.07.13", "title": "Flash!!!", "note": "フジテレビ系『所JAPAN』テーマソング,NTTドコモ「5G」CMソング", "yt": "j_NHrPC3ij8", "spotify": "https://open.spotify.com/intl-ja/album/0RoQFt5BklyHfL1mfJq8xL", "lyrics": "https://www.uta-net.com/song/262414/" },
-    { "type": "UNRELEASED", "year": "—", "title": "VIVID RED", "note": "ライブで披露された未発表曲", "yt": "", "externalVideo": "https://www.youtube.com/watch?v=I9tOcKefEjs", "spotify": "https://open.spotify.com/intl-ja/track/6Y2jiKa9ENLQHABRwn27j4", "lyrics": "" },
     { "type": "UNRELEASED", "year": "—", "title": "Catch!!!", "note": "ライブで披露された未発表曲", "yt": "", "externalVideo": "https://www.youtube.com/watch?v=c_cLnvshSIQ", "spotify": "", "lyrics": "" }
   ],
   "albums": [
@@ -34,7 +33,7 @@
         { "num": 5, "title": "MIRROR", "yt": "xA0NJBMGOHk", "note": "", "spotify": "", "lyrics": "" },
         { "num": 6, "title": "CHAMELEON", "yt": "MBubVeysyaU", "note": "", "spotify": "", "lyrics": "" },
         { "num": 7, "title": "DARE??", "yt": "wPWEnKe7BAY", "note": "", "spotify": "", "lyrics": "" },
-        { "num": 8, "title": "VIVID RED", "yt": "TxTS50H8QSg", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 8, "title": "VIVID RED", "yt": "TxTS50H8QSg", "note": "", "externalVideo": "https://www.youtube.com/watch?v=I9tOcKefEjs", "spotify": "https://open.spotify.com/intl-ja/track/6Y2jiKa9ENLQHABRwn27j4", "lyrics": "" },
         { "num": 9, "title": "白日", "yt": "LqAnRSPq2zk", "note": "", "spotify": "", "lyrics": "" },
         { "num": 10, "title": "硝子窓", "yt": "YNqnMhS4Grs", "note": "", "spotify": "", "lyrics": "" },
         { "num": 11, "title": "泡", "yt": "5YnC5UcOL9o", "note": "", "spotify": "", "lyrics": "" },
@@ -44,7 +43,7 @@
         { "num": 15, "title": "W●RK", "yt": "OCQhAtsKe4E", "note": "", "spotify": "", "lyrics": "" },
         { "num": 16, "title": "):阿修羅:(", "yt": "2BLWFR7Fww8", "note": "", "spotify": "", "lyrics": "" },
         { "num": 17, "title": "δ", "yt": "UnoBPfDDjVM", "note": "", "spotify": "", "lyrics": "" },
-        { "num": 18, "title": "逆夢", "yt": "", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 18, "title": "逆夢", "yt": "6raatAsbKQ0", "note": "", "spotify": "", "lyrics": "" },
         { "num": 19, "title": "IKAROS", "yt": "-dcEHUgjPTc", "note": "", "spotify": "", "lyrics": "" },
         { "num": 20, "title": "Slumberland", "yt": "eg-i2OkXjH0", "note": "", "spotify": "", "lyrics": "" },
         { "num": 21, "title": "Sorrows", "yt": "lttgrwuD4vU", "note": "", "spotify": "", "lyrics": "" },

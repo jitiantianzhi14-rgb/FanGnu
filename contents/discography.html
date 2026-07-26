@@ -194,13 +194,14 @@
       const numTitle = `
           <span class="track-num">${String(t.num).padStart(2,'0')}</span>
           <span class="track-title">${escH(t.title)}</span>`;
-      const link = t.yt
-        ? `<a class="track-link" href="song.html?yt=${encodeURIComponent(t.yt)}">${numTitle}</a>`
+      const href = songHref(t.yt, t.externalVideo, t.spotify);
+      const link = href
+        ? `<a class="track-link" href="${href}">${numTitle}</a>`
         : `<span class="track-link">${numTitle}</span>`;
       return `
         <div class="track-row">
           ${link}
-          ${t.yt ? `<a class="track-detail-btn" href="song.html?yt=${encodeURIComponent(t.yt)}" aria-label="楽曲詳細へ">→</a>` : ''}
+          ${href ? `<a class="track-detail-btn" href="${href}" aria-label="楽曲詳細へ">→</a>` : ''}
         </div>`;
     }).join('')}</div>`;
   }

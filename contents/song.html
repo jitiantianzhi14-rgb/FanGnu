@@ -482,7 +482,7 @@
 
     let album = null;
     for (const a of data.albums) {
-      const track = (a.tracks || []).find(t => t.yt === yt);
+      const track = (a.tracks || []).find(t => (yt && t.yt === yt) || (ext && t.externalVideo === ext) || (sp && t.spotify === sp));
       if (track) { album = { title: a.title, num: track.num, year: a.year, track }; break; }
     }
 
@@ -497,7 +497,7 @@
 
     if (album) {
       const t = album.track;
-      return { type: 'ALBUM', title: t.title, year: album.year, note: t.note, extra: '', yt: t.yt, spotify: t.spotify, lyrics: t.lyrics || '', album: { title: album.title, num: album.num } };
+      return { type: 'ALBUM', title: t.title, year: album.year, note: t.note, extra: '', yt: t.yt, spotify: t.spotify, externalVideo: t.externalVideo || '', lyrics: t.lyrics || '', album: { title: album.title, num: album.num } };
     }
 
     return null;
