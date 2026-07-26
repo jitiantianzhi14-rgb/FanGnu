@@ -173,6 +173,10 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
+  function formatNote(value) {
+    return escH(value).replace(/\n/g, '<br>');
+  }
+
   function songHref(yt, ext, sp) {
     const params = new URLSearchParams();
     if (yt) params.set('yt', yt);
@@ -226,7 +230,7 @@
 
     if (isAlbum) {
       const detailHtml = `<div class="disc-detail">
-          ${item.note ? `<div class="disc-note">${escH(item.note)}</div>` : ''}
+          ${item.note ? `<div class="disc-note">${formatNote(item.note)}</div>` : ''}
           ${buildTrackGrid(item.tracks || [])}
         </div>`;
       return `
@@ -256,7 +260,7 @@
     const songListHtml = songRowsHtml ? `<div class="disc-song-list">${songRowsHtml}</div>` : '';
     const detailHtml = hasDetail
       ? `<div class="disc-detail">
-           ${item.note ? `<div class="disc-note">${escH(item.note)}</div>` : ''}
+           ${item.note ? `<div class="disc-note">${formatNote(item.note)}</div>` : ''}
            ${songListHtml}
            ${item.yt ? `<div class="disc-embed" data-yt="${escH(item.yt)}"></div>` : ''}
            ${item.coupling && item.coupling.yt ? `<div class="disc-embed" data-yt="${escH(item.coupling.yt)}"></div>` : ''}
