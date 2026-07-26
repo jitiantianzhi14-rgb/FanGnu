@@ -20,10 +20,16 @@ FanGNU: 公演のセットリスト順にSpotifyプレイリストを自動作�
   py scripts/make_setlist_playlist.py 2026.02.21 --public
   py scripts/make_setlist_playlist.py --all
   py scripts/make_setlist_playlist.py --all --srvvinci
+  py scripts/make_setlist_playlist.py --refresh --dates 2024.01.13,2024.01.14
 
 --all を付けると、そのファイル（kinggnu-live.json または --srvvinci指定で
 srvvinci-live.json）の全公演のうち、セットリストがあって
 まだ spotifyPlaylist が登録されていない公演をまとめて処理します。
+
+--refresh を付けると、新規作成の代わりに既存の spotifyPlaylist の中身を
+最新のセットリストで置き換えます（セットリスト修正後の同期用）。
+--dates でカンマ区切りの複数公演日をまとめて指定できます（省略時は
+date引数の1件のみ）。
 
 作成したプレイリストのURLは、その場でライブJSONファイルに
 "spotifyPlaylist" として書き込みます（元のファイルの整形はできるだけ
@@ -137,7 +143,7 @@ def insert_spotify_playlist_field(raw_text, date, venue, url):
     return raw_text[:insert_pos] + insertion + raw_text[insert_pos:], True
 
 
-def create_playlist(sp, tour_name, date, venue, setlist, song_index, album_cache, public):
+def resolve_setlist_tracks(sp, setlist, song_index, album_cache):
     refs = []
     missing = []
     for song in setlist:
@@ -154,6 +160,12 @@ def create_playlist(sp, tour_name, date, venue, setlist, song_index, album_cache
             track_ids.append(track_id)
         else:
             missing.append("(album resolve failed)")
+
+    return track_ids, missing
+
+
+def create_playlist(sp, tour_name, date, venue, setlist, song_index, album_cache, public):
+    track_ids, missing = resolve_setlist_tracks(sp, setlist, song_index, album_cache)
 
     if not track_ids:
         return None, len(setlist), 0, missing
@@ -180,10 +192,12 @@ def main():
     parser.add_argument("--srvvinci", action="store_true", help="srvvinci-live.json から探す（指定なしはkinggnu-live.json）")
     parser.add_argument("--public", action="store_true", help="プレイリストを公開設定にする（デフォルトは非公開）")
     parser.add_argument("--all", action="store_true", help="spotifyPlaylist未登録の全公演をまとめて処理する")
+    parser.add_argument("--refresh", action="store_true", help="既存のプレイリストを新規作成せず、最新のセットリストで曲を置き換える")
+    parser.add_argument("--dates", help="カンマ区切りの複数公演日（--refreshと併用。例: 2024.01.13,2024.01.14）")
     args = parser.parse_args()
 
-    if not args.all and not args.date:
-        parser.error("date を指定するか、--all を付けてください。")
+    if not args.all and not args.date and not args.dates:
+        parser.error("date を指定するか、--all か --dates を付けてください。")
 
     live_path = DATA_DIR / ("srvvinci-live.json" if args.srvvinci else "kinggnu-live.json")
     kg_disco = load_json(DATA_DIR / "kinggnu-discography.json")
@@ -195,6 +209,55 @@ def main():
     sp = spotipy.Spotify(auth_manager=auth_manager)
     sp.current_user()  # 初回ログインを済ませておく
     album_cache = {}
+
+    if args.refresh:
+        dates = [d.strip() for d in args.dates.split(",")] if args.dates else [args.date]
+        refreshed = 0
+        failed = 0
+        for d in dates:
+            tour, show = None, None
+            for t in live_data.get("tours", []):
+                for s in t.get("shows", []):
+                    if s.get("date") == d:
+                        tour, show = t, s
+                        break
+                if show:
+                    break
+
+            if not show:
+                print(f"[{d}] 公演が見つかりません")
+                failed += 1
+                continue
+
+            playlist_url = show.get("spotifyPlaylist")
+            m = re.search(r"playlist/([a-zA-Z0-9]+)", playlist_url or "")
+            if not m:
+                print(f"[{d}] spotifyPlaylistが未登録、またはURLが不正です")
+                failed += 1
+                continue
+            playlist_id = m.group(1)
+
+            setlist = show.get("setlist") or []
+            track_ids, missing = resolve_setlist_tracks(sp, setlist, song_index, album_cache)
+            if not track_ids:
+                print(f"[{d}] 曲が見つかりませんでした")
+                failed += 1
+                continue
+
+            uris = [f"spotify:track:{tid}" for tid in track_ids]
+            sp.playlist_replace_items(playlist_id, uris[:100])
+            for i in range(100, len(uris), 100):
+                sp.playlist_add_items(playlist_id, uris[i:i + 100])
+
+            print(f"[{d}] {show.get('venue', '')}: {len(track_ids)}/{len(setlist)}曲で更新しました -> {playlist_url}")
+            if missing:
+                print(f"  見つからなかった曲: {', '.join(missing)}")
+            refreshed += 1
+            time.sleep(0.3)
+
+        print()
+        print(f"更新: {refreshed}件 / 失敗: {failed}件")
+        return
 
     if args.all:
         raw_text = live_path.read_text(encoding="utf-8")

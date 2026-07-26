@@ -1,3 +1,4 @@
 .claude/
 .cache
 .cache-*
+__pycache__/
