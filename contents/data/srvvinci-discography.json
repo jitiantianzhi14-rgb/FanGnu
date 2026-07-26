@@ -26,7 +26,7 @@
           "tracks": [
             { "num": 1, "title": "ロウラヴ", "yt": "nhH03chZJMQ", "note": "", "spotify": "", "lyrics": "https://petitlyrics.com/lyrics/2863592" },
             { "num": 2, "title": "サマーレイン・ダイバー", "yt": "", "note": "", "spotify": "", "lyrics": "" },
-            { "num": 3, "title": "Vinyl", "yt": "1ElFcjEt_eM", "note": "", "spotify": "", "lyrics": "https://petitlyrics.com/lyrics/2846224" },
+            { "num": 3, "title": "Vinyl", "externalVideo": "https://www.youtube.com/watch?v=1ElFcjEt_eM", "note": "", "spotify": "", "lyrics": "https://petitlyrics.com/lyrics/2846224" },
             { "num": 4, "title": "破裂", "yt": "", "note": "", "spotify": "", "lyrics": "" }
           ]
         },
