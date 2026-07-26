@@ -25,6 +25,41 @@
   ],
   "albums": [
     {
+      "title": "King Gnu Dome Tour「THE GREATEST UNKNOWN」at TOKYO DOME", "year": "2024.10.04", "note": "ライブアルバム",
+      "tracks": [
+        { "num": 1, "title": "SPECIALZ", "yt": "5MZo9otAWAw", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 2, "title": "一途", "yt": "JTD5aRTyk3I", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 3, "title": "千両役者", "yt": "E1X7pJd5z-4", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 4, "title": "STARDOM", "yt": "q6utw2NuzDw", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 5, "title": "MIRROR", "yt": "xA0NJBMGOHk", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 6, "title": "CHAMELEON", "yt": "MBubVeysyaU", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 7, "title": "DARE??", "yt": "wPWEnKe7BAY", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 8, "title": "VIVID RED", "yt": "TxTS50H8QSg", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 9, "title": "白日", "yt": "LqAnRSPq2zk", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 10, "title": "硝子窓", "yt": "YNqnMhS4Grs", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 11, "title": "泡", "yt": "5YnC5UcOL9o", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 12, "title": "2ΜΟЯΟ", "yt": "y83lSi0-fJ4", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 13, "title": "Vinyl", "yt": "RZIluN8ka9A", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 14, "title": "W●RKAHOLIC", "yt": "FQ9PMaoH0DU", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 15, "title": "W●RK", "yt": "OCQhAtsKe4E", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 16, "title": "):阿修羅:(", "yt": "2BLWFR7Fww8", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 17, "title": "δ", "yt": "UnoBPfDDjVM", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 18, "title": "逆夢", "yt": "", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 19, "title": "IKAROS", "yt": "-dcEHUgjPTc", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 20, "title": "Slumberland", "yt": "eg-i2OkXjH0", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 21, "title": "Sorrows", "yt": "lttgrwuD4vU", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 22, "title": "Flash!!!", "yt": "grYQEAylxXo", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 23, "title": "BOY", "yt": "pBAxTWyUwcE", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 24, "title": "SUNNY SIDE UP", "yt": "feXwldjzYEo", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 25, "title": "雨燦々", "yt": "G5S2UsKbTMA", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 26, "title": "仝", "yt": "y4qq5bdjxY8", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 27, "title": "三文小説", "yt": "0yjp9kQUlxA", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 28, "title": "ЯOЯЯIM", "yt": "tYqKKtbxoig", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 29, "title": "Teenager Forever", "yt": "UUs42LY39-c", "note": "", "spotify": "", "lyrics": "" },
+        { "num": 30, "title": "飛行艇", "yt": "8xDBVHFnY7g", "note": "", "spotify": "", "lyrics": "" }
+      ]
+    },
+    {
       "title": "THE GREATEST UNKNOWN", "year": "2022.11.16", "note": "4th ALBUM",
       "tracks": [
         { "num": 1, "title": "MIRROR", "yt": "vbMg5nJm2w0", "note": "メルセデス・ベンツ 新型Eクラス TVCM曲", "spotify": "https://open.spotify.com/intl-ja/track/7o5Mjx1XHg7WBARjn9MVJu", "lyrics": "" },
