@@ -110,7 +110,7 @@
       "name": "第34回 金曲奨",
       "scale": "LIVE",
       "shows": [
-        { "date": "2023.07.01", "venue": "Taipei Arena", "location": "No. 2號, Section 4, Nanjing E Rd, Meiren Village, Songshan District, Taipei City, 台湾 105037", "status": "", "setlist": ["カメレオン", "一途"] }
+        { "date": "2023.07.01", "venue": "Taipei Arena", "location": "No. 2號, Section 4, Nanjing E Rd, Meiren Village, Songshan District, Taipei City, 台湾 105037", "status": "", "videos": [ { "yt": "HHwui8KV0XA" } ], "setlist": ["カメレオン", "一途"] }
       ]
     },
     {
@@ -203,7 +203,7 @@
         { "date": "2021.12.04", "venue": "Aichi Sky Expo", "location": "愛知県常滑市セントレア５丁目１０番１号", "status": "", "note": "OPEN 15:30 / START 17:00", "setlist": ["泡", "Sorrows", "Vinyl", "千両役者", "ユーモア", "Prayer X", "破裂", "白日", "The hole", "飛行艇", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager Forever", "BOY", "サマーレイン・ダイバー"] },
         { "date": "2021.12.05", "venue": "Aichi Sky Expo", "location": "愛知県常滑市セントレア５丁目１０番１号", "status": "", "note": "OPEN 15:30 / START 17:00", "setlist": ["白日", "The hole", "Sorrows", "Vinyl", "ユーモア", "飛行艇", "破裂", "Prayer X", "千両役者", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager Forever", "BOY", "サマーレイン・ダイバー"] },
         { "date": "2021.12.14", "venue": "国立代々木競技場第一体育館", "location": "東京都渋谷区神南２丁目１−１", "status": "", "note": "OPEN 17:00 / START 18:30", "setlist": ["The hole", "千両役者", "ユーモア", "Sorrows", "Vinyl", "Prayer X", "破裂", "白日", "飛行艇", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager Forever", "BOY", "一途", "サマーレイン・ダイバー"] },
-        { "date": "2021.12.15", "venue": "国立代々木競技場第一体育館", "location": "東京都渋谷区神南２丁目１−１", "status": "", "note": "OPEN 17:00 / START 18:30,ツアーファイナル", "setlist": ["白日", "The hole", "Sorrows", "Vinyl", "ユーモア", "飛行艇", "破裂", "Prayer X", "千両役者", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager Forever", "BOY", "一途", "サマーレイン・ダイバー"] }
+        { "date": "2021.12.15", "venue": "国立代々木競技場第一体育館", "location": "東京都渋谷区神南２丁目１−１", "status": "", "note": "OPEN 17:00 / START 18:30,ツアーファイナル", "videos": [ { "songs": "The hole", "yt": "b2loI23h3bo" }, { "songs": "一途", "yt": "g2GMVhVXdZs" }, { "songs": "白日", "yt": "ctQ5mSWV10E" } ], "setlist": ["白日", "The hole", "Sorrows", "Vinyl", "ユーモア", "飛行艇", "破裂", "Prayer X", "千両役者", "泡", "Hitman", "三文小説", "Slumberland", "Tokyo Rendez-Vous", "傘", "どろん", "Flash!!!", "Teenager Forever", "BOY", "一途", "サマーレイン・ダイバー"] }
       ]
     },
     {
@@ -251,7 +251,7 @@
         { "date": "2020.11.25", "venue": "日本武道館", "location": "東京都千代田区北の丸公園２−３", "status": "", "note": "OPEN 17:30 / START 19:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "VIVID RED", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
         { "date": "2020.12.01", "venue": "日本ガイシホール", "location": "愛知県名古屋市南区東又兵ヱ町５丁目１−１６", "status": "", "note": "OPEN 17:30 / START 19:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "VIVID RED", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
         { "date": "2020.12.02", "venue": "日本ガイシホール", "location": "愛知県名古屋市南区東又兵ヱ町５丁目１−１６", "status": "", "note": "OPEN 17:30 / START 19:00", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "VIVID RED", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever"] },
-        { "date": "2020.12.06", "venue": "幕張メッセ国際展示場4〜6ホール", "location": "千葉県千葉市美浜区中瀬２丁目１", "status": "", "note": "OPEN 16:00 / START 18:00,追加公演,ツアーファイナル", "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "VIVID RED", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever", "千両役者（ライブ初披露・ファイナル限定Wアンコール）"] }
+        { "date": "2020.12.06", "venue": "幕張メッセ国際展示場4〜6ホール", "location": "千葉県千葉市美浜区中瀬２丁目１", "status": "", "note": "OPEN 16:00 / START 18:00,追加公演,ツアーファイナル", "videos": [ { "songs": "三文小説", "yt": "iJo5MTPt8_k" } ], "setlist": ["開会式（Opening SE）", "どろん", "Sorrows", "Vinyl", "It's a small world", "白日", "飛行艇", "Overflow", "Slumberland", "VIVID RED", "Hitman", "The hole", "ユーモア", "傘", "Tokyo Rendez-Vous", "破裂", "Prayer X", "ロウラヴ", "Flash!!!", "閉会式（Closing SE）", "三文小説", "Teenager Forever", "千両役者（ライブ初披露・ファイナル限定Wアンコール）"] }
       ]
     },
     {
@@ -259,7 +259,7 @@
       "name": "King Gnu Streaming Live",
       "scale": "LIVE",
       "shows": [
-        { "date": "2020.08.30", "venue": "streaming", "location": "ONLINE", "status": "", "setlist": ["Flash!!!", "Sorrows", "Vinyl", "傘", "It's a small world", "Overflow", "白日", "Prayer X", "Hitman", "The hole", "Slumberland", "飛行艇", "どろん", "Teenager Forever"] }
+        { "date": "2020.08.30", "venue": "streaming", "location": "ONLINE", "status": "", "videos": [ { "songs": "飛行艇", "yt": "IPzOxKW3fSA" } ], "setlist": ["Flash!!!", "Sorrows", "Vinyl", "傘", "It's a small world", "Overflow", "白日", "Prayer X", "Hitman", "The hole", "Slumberland", "飛行艇", "どろん", "Teenager Forever"] }
       ]
     },
     {
