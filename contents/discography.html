@@ -171,6 +171,15 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
+  function songHref(yt, ext, sp) {
+    const params = new URLSearchParams();
+    if (yt) params.set('yt', yt);
+    else if (ext) params.set('ext', ext);
+    else if (sp) params.set('sp', sp);
+    else return null;
+    return `song.html?${params.toString()}`;
+  }
+
   function sortKey(year) {
     if (!year || year === '—') return '0000.00.00';
     const parts = String(year).split('.');
@@ -216,16 +225,17 @@
         </div>`;
     }
 
-    const hasDetail = !!(item.note || item.yt || item.coupling);
-    const songRow = (title, yt) => {
-      const inner = `<span class="disc-song-title">${escH(title)}</span>${yt ? `<span class="disc-song-arrow">楽曲詳細 →</span>` : ''}`;
-      return yt
-        ? `<a class="disc-song-row" href="song.html?yt=${encodeURIComponent(yt)}">${inner}</a>`
+    const hasDetail = !!(item.note || item.yt || item.externalVideo || item.spotify || item.coupling);
+    const songRow = (title, yt, ext, sp) => {
+      const href = songHref(yt, ext, sp);
+      const inner = `<span class="disc-song-title">${escH(title)}</span>${href ? `<span class="disc-song-arrow">楽曲詳細 →</span>` : ''}`;
+      return href
+        ? `<a class="disc-song-row" href="${href}">${inner}</a>`
         : `<div class="disc-song-row">${inner}</div>`;
     };
     const songRowsHtml = [
-      item.yt ? songRow(item.title, item.yt) : '',
-      item.coupling ? songRow(item.coupling.title, item.coupling.yt) : '',
+      (item.yt || item.externalVideo || item.spotify) ? songRow(item.title, item.yt, item.externalVideo, item.spotify) : '',
+      item.coupling ? songRow(item.coupling.title, item.coupling.yt, item.coupling.externalVideo, item.coupling.spotify) : '',
     ].join('');
     const songListHtml = songRowsHtml ? `<div class="disc-song-list">${songRowsHtml}</div>` : '';
     const detailHtml = hasDetail

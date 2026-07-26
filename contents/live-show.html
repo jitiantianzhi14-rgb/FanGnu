@@ -168,18 +168,13 @@
     return m ? m[1] : '';
   }
 
-  function tweetId(url) {
-    if (!url) return '';
-    const m = url.match(/status\/(\d+)/);
-    return m ? m[1] : '';
-  }
-
   function songHref(info) {
     const params = new URLSearchParams();
     if (info.src === 'srvvinci') params.set('src', 'srvvinci');
     if (info.yt) params.set('yt', info.yt);
     else if (info.appleMusic) params.set('am', appleMusicId(info.appleMusic));
-    else if (info.tweet) params.set('tweet', tweetId(info.tweet));
+    else if (info.externalVideo) params.set('ext', info.externalVideo);
+    else if (info.spotify) params.set('sp', info.spotify);
     else return null;
     return `song.html?${params.toString()}`;
   }
@@ -187,8 +182,8 @@
   function buildKgEntries(data) {
     const entries = [];
     (data.items || []).forEach(item => {
-      entries.push([item.title, { yt: item.yt || '', src: 'discography' }]);
-      if (item.coupling && item.coupling.title) entries.push([item.coupling.title, { yt: item.coupling.yt || '', src: 'discography' }]);
+      entries.push([item.title, { yt: item.yt || '', externalVideo: item.externalVideo || '', spotify: item.spotify || '', src: 'discography' }]);
+      if (item.coupling && item.coupling.title) entries.push([item.coupling.title, { yt: item.coupling.yt || '', externalVideo: item.coupling.externalVideo || '', spotify: item.coupling.spotify || '', src: 'discography' }]);
     });
     (data.albums || []).forEach(album => {
       (album.tracks || []).forEach(t => entries.push([t.title, { yt: t.yt || '', src: 'discography' }]));
@@ -203,7 +198,7 @@
         ...(group.demos || []).filter(d => !d.tracks),
         ...(group.singles || []).filter(d => !d.tracks),
       ];
-      flatItems.forEach(d => entries.push([d.title, { yt: d.yt || '', appleMusic: d.appleMusic || '', tweet: d.url || '', src: 'srvvinci' }]));
+      flatItems.forEach(d => entries.push([d.title, { yt: d.yt || '', appleMusic: d.appleMusic || '', externalVideo: d.externalVideo || '', spotify: d.spotify || '', src: 'srvvinci' }]));
 
       const collections = [
         ...(group.demos || []).filter(d => d.tracks),
@@ -212,7 +207,7 @@
       ];
       collections.forEach(coll => {
         if (coll.yt) entries.push([coll.title, { yt: coll.yt, src: 'srvvinci' }]);
-        (coll.tracks || []).forEach(t => entries.push([t.title, { yt: t.yt || '', appleMusic: t.appleMusic || '', src: 'srvvinci' }]));
+        (coll.tracks || []).forEach(t => entries.push([t.title, { yt: t.yt || '', appleMusic: t.appleMusic || '', externalVideo: t.externalVideo || '', spotify: t.spotify || '', src: 'srvvinci' }]));
       });
     });
     return entries;

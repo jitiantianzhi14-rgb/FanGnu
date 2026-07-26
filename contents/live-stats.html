@@ -337,18 +337,13 @@
     return m ? m[1] : '';
   }
 
-  function tweetId(url) {
-    if (!url) return '';
-    const m = url.match(/status\/(\d+)/);
-    return m ? m[1] : '';
-  }
-
   function songHref(info) {
     const params = new URLSearchParams();
     if (info.src === 'srvvinci') params.set('src', 'srvvinci');
     if (info.yt) params.set('yt', info.yt);
     else if (info.appleMusic) params.set('am', appleMusicId(info.appleMusic));
-    else if (info.tweet) params.set('tweet', tweetId(info.tweet));
+    else if (info.externalVideo) params.set('ext', info.externalVideo);
+    else if (info.spotify) params.set('sp', info.spotify);
     else return null;
     return `song.html?${params.toString()}`;
   }
@@ -386,9 +381,9 @@
 
     (kgDisco.items || []).forEach(item => {
       if (!item.title) return;
-      addSong(item.title, { title: item.title, yt: item.yt || '', src: 'discography' });
+      addSong(item.title, { title: item.title, yt: item.yt || '', externalVideo: item.externalVideo || '', spotify: item.spotify || '', src: 'discography' });
       if (item.coupling && item.coupling.title) {
-        addSong(item.coupling.title, { title: item.coupling.title, yt: item.coupling.yt || '', src: 'discography' });
+        addSong(item.coupling.title, { title: item.coupling.title, yt: item.coupling.yt || '', externalVideo: item.coupling.externalVideo || '', spotify: item.coupling.spotify || '', src: 'discography' });
       }
     });
     (kgDisco.albums || []).forEach(album => {
@@ -403,7 +398,7 @@
         ...(group.singles || []).filter(d => !d.tracks),
       ];
       flatItems.forEach(d => {
-        addSong(d.title, { title: d.title, yt: d.yt || '', appleMusic: d.appleMusic || '', tweet: d.url || '', src: 'srvvinci' });
+        addSong(d.title, { title: d.title, yt: d.yt || '', appleMusic: d.appleMusic || '', externalVideo: d.externalVideo || '', spotify: d.spotify || '', src: 'srvvinci' });
       });
 
       const collections = [
@@ -414,7 +409,7 @@
       collections.forEach(coll => {
         addSong(coll.title, { title: coll.title, yt: coll.yt || '', src: 'srvvinci' });
         (coll.tracks || []).forEach(t => {
-          addSong(t.title, { title: t.title, yt: t.yt || '', appleMusic: t.appleMusic || '', src: 'srvvinci' });
+          addSong(t.title, { title: t.title, yt: t.yt || '', appleMusic: t.appleMusic || '', externalVideo: t.externalVideo || '', spotify: t.spotify || '', src: 'srvvinci' });
         });
       });
     });

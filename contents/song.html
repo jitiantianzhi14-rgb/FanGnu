@@ -287,10 +287,10 @@
       <a href="${escH(url)}" target="_blank" rel="noopener" class="lyrics-btn">${externalVideoLabel(url)}</a>`;
   }
 
-  function renderMedia(yt, title, appleMusic, externalVideo) {
+  function renderMedia(yt, title, appleMusic, externalVideo, spotify) {
     const mediaArea = document.getElementById('mediaArea');
     if (!yt) {
-      mediaArea.innerHTML = (appleMusic || externalVideo) ? '' : `<div class="no-video">この曲の動画は見つかりませんでした。</div>`;
+      mediaArea.innerHTML = (appleMusic || externalVideo || spotify) ? '' : `<div class="no-video">この曲の動画は見つかりませんでした。</div>`;
       return;
     }
     mediaArea.innerHTML = `
@@ -457,7 +457,7 @@
     setInfo('infoExtra', song.extra);
     setLyrics(song.lyrics);
 
-    renderMedia(song.yt, song.title, song.appleMusic, song.externalVideo);
+    renderMedia(song.yt, song.title, song.appleMusic, song.externalVideo, song.spotify);
     renderAppleMusic(song.appleMusic);
     renderExternalVideo(song.externalVideo);
     renderSpotify(song.spotify);
@@ -473,11 +473,12 @@
     renderSpotify('');
   }
 
-  async function findInDiscography(yt) {
+  async function findInDiscography(yt, ext, sp) {
     const res = await fetch('data/kinggnu-discography.json');
     const data = await res.json();
-    const item = data.items.find(i => i.yt === yt);
-    const couplingParent = data.items.find(i => i.coupling && i.coupling.yt === yt);
+    const matches = (i) => (yt && i.yt === yt) || (ext && i.externalVideo === ext) || (sp && i.spotify === sp);
+    const item = data.items.find(matches);
+    const couplingParent = data.items.find(i => i.coupling && matches(i.coupling));
 
     let album = null;
     for (const a of data.albums) {
@@ -486,12 +487,12 @@
     }
 
     if (item) {
-      return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, spotify: item.spotify, lyrics: item.lyrics || '', album, albumText: item.albumText || '' };
+      return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, spotify: item.spotify, externalVideo: item.externalVideo || '', lyrics: item.lyrics || '', album, albumText: item.albumText || '' };
     }
 
     if (couplingParent) {
       const c = couplingParent.coupling;
-      return { type: couplingParent.type, title: c.title, year: couplingParent.year, note: c.note, extra: '', yt: c.yt, spotify: c.spotify, lyrics: c.lyrics || '', album };
+      return { type: couplingParent.type, title: c.title, year: couplingParent.year, note: c.note, extra: '', yt: c.yt, spotify: c.spotify, externalVideo: c.externalVideo || '', lyrics: c.lyrics || '', album };
     }
 
     if (album) {
@@ -540,13 +541,14 @@
   const yt  = params.get('yt') || '';
   const am  = params.get('am') || '';
   const ext = params.get('ext') || '';
+  const sp  = params.get('sp') || '';
   const src = params.get('src') === 'srvvinci' ? 'srvvinci' : 'discography';
 
   const isSrvvinci = src === 'srvvinci';
   document.getElementById('discographyLink').href = isSrvvinci ? 'srvvinci.html' : 'discography.html';
   document.getElementById('liveListLink').href = isSrvvinci ? 'srvvinci-live.html' : 'live.html';
 
-  const lookup = isSrvvinci ? findInSrvvinci(yt, am, ext) : findInDiscography(yt);
+  const lookup = isSrvvinci ? findInSrvvinci(yt, am, ext) : findInDiscography(yt, ext, sp);
   lookup
     .then(song => {
       if (!song) { renderNotFound(); return null; }
