@@ -75,6 +75,9 @@
     .disc-type-badge.COVER  { background: #119944; }
     .disc-type-badge.INDIE      { background: #888; }
     .disc-type-badge.UNRELEASED { background: #7c3aed; }
+    .disc-type-badge.Blu-ray { background: #b8860b; }
+    .disc-card-external { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gray); flex-shrink: 0; }
+    .disc-note-product { padding: 0 1.25rem 1rem; }
 
     .disc-year  { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); flex-shrink: 0; }
     .disc-title { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.3; flex: 1; }
@@ -208,6 +211,20 @@
 
   function buildCard(item) {
     const isAlbum = item.type === 'ALBUM';
+
+    if (item.productUrl) {
+      const noteHtml = item.note ? `<div class="disc-note disc-note-product">${escH(item.note)}</div>` : '';
+      return `
+        <a class="disc-card" data-type="${escH(item.type)}" data-year="${escH(item.yearKey)}" href="${escH(item.productUrl)}" target="_blank" rel="noopener">
+          <div class="disc-card-head">
+            <span class="disc-type-badge ${escH(item.type)}">${escH(item.type)}</span>
+            <span class="disc-year">${escH(item.year)}</span>
+            <span class="disc-title">${escH(item.title)}</span>
+            <span class="disc-card-external">↗</span>
+          </div>
+          ${noteHtml}
+        </a>`;
+    }
 
     if (isAlbum) {
       const detailHtml = `<div class="disc-detail">
