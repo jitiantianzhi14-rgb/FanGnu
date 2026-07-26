@@ -514,9 +514,9 @@
 
       // トラック単位の一致を最優先（同じ動画IDが単体シングルとしても登録されている場合、収録アルバム情報を優先して表示するため）
       for (const coll of collections) {
-        const track = (coll.tracks || []).find(t => (yt && t.yt === yt) || (am && appleMusicId(t.appleMusic) === am));
+        const track = (coll.tracks || []).find(t => (yt && t.yt === yt) || (am && appleMusicId(t.appleMusic) === am) || (ext && t.externalVideo === ext));
         if (track) {
-          return { type: coll.type, title: track.title, year: coll.year || '', note: track.note || '', extra: '', yt: track.yt || '', spotify: track.spotify || '', appleMusic: track.appleMusic || '', lyrics: track.lyrics || '', album: { title: coll.title, num: track.num } };
+          return { type: coll.type, title: track.title, year: coll.year || '', note: track.note || '', extra: '', yt: track.yt || '', spotify: track.spotify || '', appleMusic: track.appleMusic || '', externalVideo: track.externalVideo || '', lyrics: track.lyrics || '', album: { title: coll.title, num: track.num } };
         }
       }
 

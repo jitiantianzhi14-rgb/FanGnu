@@ -167,7 +167,7 @@
       const numTitle = `
           <span class="track-num">${String(t.num).padStart(2,'0')}</span>
           <span class="track-title">${escH(t.title)}</span>`;
-      const href = t.yt ? songHref(t.yt) : (t.appleMusic ? songHref(null, appleMusicId(t.appleMusic)) : null);
+      const href = t.yt ? songHref(t.yt) : (t.appleMusic ? songHref(null, appleMusicId(t.appleMusic)) : (t.externalVideo ? songHref(null, null, t.externalVideo) : null));
       if (href) {
         return `
           <div class="track-row">

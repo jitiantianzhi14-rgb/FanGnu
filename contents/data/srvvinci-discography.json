@@ -9,8 +9,8 @@
           "tracks": [
             { "num": 1, "title": "Stem", "yt": "YiQTjl71ipM", "note": "", "spotify": "", "lyrics": "https://www.utatime.com/lyrics/srv-vinci/stem/" },
             { "num": 2, "title": "ABUKU", "yt": "6QQoZW0SOnI", "note": "", "spotify": "", "lyrics": "https://www.utatime.com/lyrics/srv-vinci/abuku/" },
-            { "num": 3, "title": "Cheap Transistor", "yt": "dlS18oUHw4o", "note": "", "spotify": "", "lyrics": "" },
-            { "num": 4, "title": "もっと静かに狂わせて", "yt": "Vr65t6nt_0U", "note": "", "spotify": "", "lyrics": "" }
+            { "num": 3, "title": "Cheap Transistor", "externalVideo": "https://www.youtube.com/watch?v=dlS18oUHw4o", "note": "", "spotify": "", "lyrics": "" },
+            { "num": 4, "title": "もっと静かに狂わせて", "externalVideo": "https://www.youtube.com/watch?v=Vr65t6nt_0U", "note": "", "spotify": "", "lyrics": "" }
           ]
         },
         { "title": "NUMÉRO × THE ROOTS OF BLOOD", "yt": null, "lyrics": "" },
