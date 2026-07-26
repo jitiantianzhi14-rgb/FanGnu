@@ -255,7 +255,7 @@
   function setNote(id, value) {
     const el = document.getElementById(id);
     if (value) {
-      el.innerHTML = value.split(',').map(s => escH(s.trim())).join('<br>');
+      el.innerHTML = value.split(',').map(s => escH(s.trim()).replace(/\n/g, '<br>')).join('<br>');
       el.classList.remove('empty');
     } else {
       el.textContent = '-';
