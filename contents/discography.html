@@ -325,8 +325,17 @@
     });
   }
 
+  const TYPE_ORDER = ['ALBUM', '配信SG', 'CDSG', 'COVER', 'Blu-ray'];
+
   function initFilters() {
-    const types = [...new Set(DISCS.map(i => i.type))].sort();
+    const types = [...new Set(DISCS.map(i => i.type))].sort((a, b) => {
+      const ai = TYPE_ORDER.indexOf(a);
+      const bi = TYPE_ORDER.indexOf(b);
+      if (ai === -1 && bi === -1) return a.localeCompare(b);
+      if (ai === -1) return 1;
+      if (bi === -1) return -1;
+      return ai - bi;
+    });
     const years = [...new Set(DISCS.map(i => i.yearKey).filter(Boolean))].sort((a, b) => b.localeCompare(a));
     selectedTypes = new Set();
     selectedYears = new Set();
