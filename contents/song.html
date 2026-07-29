@@ -507,7 +507,7 @@
 
     if (couplingParent) {
       const c = couplingParent.coupling;
-      return { type: couplingParent.type, title: c.title, year: couplingParent.year, note: c.note, extra: '', yt: c.yt, spotify: c.spotify, externalVideo: c.externalVideo || '', lyrics: c.lyrics || '', album };
+      return { type: couplingParent.type, title: c.title, year: couplingParent.year, note: c.note, extra: c.extra || '', yt: c.yt, spotify: c.spotify, externalVideo: c.externalVideo || '', lyrics: c.lyrics || '', album };
     }
 
     if (album) {
