@@ -63,7 +63,7 @@
     a.track-row { cursor: pointer; transition: background 0.15s, color 0.15s; }
     a.track-row:hover { background: var(--bg); color: var(--red); }
     .track-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); width: 22px; flex-shrink: 0; }
-    .track-note { font-size: 10px; color: var(--gray); margin-left: auto; padding-left: 12px; text-align: right; }
+    .track-title { flex: 1; min-width: 0; }
     .no-tracks { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); padding: 2rem 0; text-align: center; border: 1px dashed var(--border); }
 
     .action-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -81,7 +81,6 @@
       .nav-links { display: none; }
       .page-header-title { font-size: 28px; }
       .album-info-row { flex-direction: column; gap: 4px; }
-      .track-note { display: none; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
   </style>
@@ -188,8 +187,7 @@
       <ol class="track-list">${tracks.map(t => {
         const inner = `
           <span class="track-num">${String(t.num).padStart(2, '0')}</span>
-          <span class="track-title">${escH(t.displayTitle || t.title)}</span>
-          ${t.note ? `<span class="track-note">${escH(t.note)}</span>` : ''}`;
+          <span class="track-title">${escH(t.displayTitle || t.title)}</span>`;
         const href = songHref(t);
         return href
           ? `<li class="track-item"><a class="track-row" href="${href}">${inner}</a></li>`
