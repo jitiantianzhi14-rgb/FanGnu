@@ -97,6 +97,12 @@
     .live-years { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
     .live-years-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; color: var(--gray); margin-right: 4px; }
     .live-year-tag { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; padding: 3px 8px; background: var(--white); border: 1px solid var(--border); color: var(--black); }
+
+    .hbar-row { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+    .hbar-label { width: 56px; flex-shrink: 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; }
+    .hbar-track-wrap { flex: 1; min-width: 0; }
+    .hbar-fill { height: 14px; max-height: 14px; border-radius: 0 4px 4px 0; }
+    .hbar-value { width: 42px; flex-shrink: 0; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); }
     .live-stat.count .live-stat-unit { font-size: 11px; font-weight: 700; color: #999; margin-left: 2px; }
 
     .live-history-list { list-style: none; background: var(--white); border: 1px solid var(--border); }
@@ -155,6 +161,7 @@
   <div class="content">
     <div id="liveStatsArea"></div>
     <div id="liveYearsArea"></div>
+    <div id="liveAreasArea"></div>
 
     <div id="mediaArea"></div>
 
@@ -368,6 +375,42 @@
       .trim();
   }
 
+  const PREF_MAP = {
+    hokkaido: '北海道', aomori: '青森県', iwate: '岩手県', miyagi: '宮城県', akita: '秋田県', yamagata: '山形県', fukushima: '福島県',
+    ibaraki: '茨城県', tochigi: '栃木県', gunma: '群馬県', saitama: '埼玉県', chiba: '千葉県', tokyo: '東京都', kanagawa: '神奈川県',
+    neigata: '新潟県', toyama: '富山県', ishikawa: '石川県', fukui: '福井県',
+    yamanasi: '山梨県', nagano: '長野県', gifu: '岐阜県', shizuoka: '静岡県', aichi: '愛知県', mie: '三重県',
+    shiga: '滋賀県', kyoto: '京都府', osaka: '大阪府', hyogo: '兵庫県', nara: '奈良県', wakayama: '和歌山県',
+    tottori: '鳥取県', shimane: '島根県', okayama: '岡山県', hiroshima: '広島県', yamaguchi: '山口県',
+    tokushima: '徳島県', kagawa: '香川県', ehime: '愛媛県', kochi: '高知県',
+    fukuoka: '福岡県', saga: '佐賀県', nagasaki: '長崎県', kumamoto: '熊本県', oita: '大分県', miyazaki: '宮崎県', kagoshima: '鹿児島県', okinawa: '沖縄県',
+  };
+  const COUNTRY_KEYWORDS = [
+    ['台湾', '台湾'],
+    ['シンガポール', 'シンガポール'],
+    ['韓国', '韓国'],
+    ['上海', '中国'],
+    ['USA', 'アメリカ'],
+    ['香港', '香港'],
+    ['タイ', 'タイ'],
+  ];
+
+  function findPrefecture(location) {
+    if (!location) return null;
+    for (const pref of Object.values(PREF_MAP)) {
+      if (location.includes(pref)) return pref;
+    }
+    return null;
+  }
+
+  function findCountry(location, venue) {
+    const text = `${location || ''} ${venue || ''}`;
+    for (const [keyword, country] of COUNTRY_KEYWORDS) {
+      if (text.includes(keyword)) return country;
+    }
+    return null;
+  }
+
   async function collectLiveHits(file, title, normTarget, source) {
     try {
       const res = await fetch(file);
@@ -376,7 +419,7 @@
       (data.tours || []).forEach(tour => {
         (tour.shows || []).forEach(show => {
           const hit = (show.setlist || []).some(s => s === title || normalizeTitle(s) === normTarget);
-          if (hit) results.push({ date: show.date, tourName: tour.name, venue: show.venue, source });
+          if (hit) results.push({ date: show.date, tourName: tour.name, venue: show.venue, location: show.location, source });
         });
       });
       return results;
@@ -431,11 +474,48 @@
       area.innerHTML = '';
       return;
     }
-    const years = [...new Set(history.map(h => (h.date || '').slice(0, 4)))].filter(Boolean).sort();
+    const counts = new Map();
+    history.forEach(h => {
+      const y = (h.date || '').slice(0, 4);
+      if (!y) return;
+      counts.set(y, (counts.get(y) || 0) + 1);
+    });
+    const years = [...counts.keys()].sort();
+    const max = Math.max(...counts.values());
+    area.innerHTML = `
+      <div class="section-label">披露年別回数</div>
+      ${years.map(y => {
+        const c = counts.get(y);
+        const pct = (c / max) * 100;
+        return `
+          <div class="hbar-row">
+            <div class="hbar-label">${escH(y)}年</div>
+            <div class="hbar-track-wrap"><div class="hbar-fill" style="width:${pct}%;background:var(--red)"></div></div>
+            <div class="hbar-value">${c}回</div>
+          </div>`;
+      }).join('')}`;
+  }
+
+  function renderLiveAreas(history) {
+    const area = document.getElementById('liveAreasArea');
+    if (!history.length) {
+      area.innerHTML = '';
+      return;
+    }
+    const counts = new Map();
+    history.forEach(h => {
+      const label = findPrefecture(h.location) || findCountry(h.location, h.venue);
+      if (label) counts.set(label, (counts.get(label) || 0) + 1);
+    });
+    if (!counts.size) {
+      area.innerHTML = '';
+      return;
+    }
+    const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
     area.innerHTML = `
       <div class="live-years">
-        <span class="live-years-label">披露年</span>
-        ${years.map(y => `<span class="live-year-tag">${escH(y)}</span>`).join('')}
+        <span class="live-years-label">披露エリア</span>
+        ${sorted.map(([label, c]) => `<span class="live-year-tag">${escH(label)}（${c}）</span>`).join('')}
       </div>`;
   }
 
@@ -593,6 +673,7 @@
       const list = history || [];
       renderLiveStats(list);
       renderLiveYears(list);
+      renderLiveAreas(list);
       renderLiveHistory(list);
     })
     .catch(err => {
