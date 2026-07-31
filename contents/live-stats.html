@@ -115,11 +115,11 @@
     .filter-chip.active { background: var(--black); color: var(--white); border-color: var(--black); }
     .filter-chip.active:hover { background: var(--red); border-color: var(--red); }
 
-    .tab-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    .tab-btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; padding: 1rem; text-align: center; border: 1px solid var(--black); background: var(--white); color: var(--black); cursor: pointer; transition: all 0.15s; }
-    .tab-btn:hover { background: var(--bg); }
-    .tab-btn.active { background: var(--black); color: var(--white); }
-    .tab-btn.active:hover { background: var(--red); }
+    .tabs-wrap { display: flex; flex-direction: column; gap: 1.25rem; }
+    .tab-bar { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 2px solid var(--border); }
+    .tab-btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; padding: 1rem; text-align: center; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; background: none; color: var(--gray); cursor: pointer; transition: all 0.15s; }
+    .tab-btn:hover { color: var(--black); }
+    .tab-btn.active { color: var(--black); border-bottom-color: var(--red); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
@@ -164,6 +164,7 @@
       <div class="summary-grid" id="summaryGrid"><div class="loading">集計中…</div></div>
     </div>
 
+    <div class="tabs-wrap">
     <div class="tab-bar" id="statsTabs">
       <button type="button" class="tab-btn active" data-tab="ranking">楽曲ランキング</button>
       <button type="button" class="tab-btn" data-tab="yearly">年別演奏回数</button>
@@ -377,6 +378,7 @@
         <div id="albumRatioChart"><div class="loading">集計中…</div></div>
         <div class="chart-legend" id="albumRatioLegend"></div>
       </div>
+    </div>
     </div>
   </div>
 
