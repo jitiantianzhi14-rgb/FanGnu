@@ -160,7 +160,11 @@
     const parts = value.split(/(\[[^\]]+\]\([^)]+\))/g);
     el.innerHTML = parts.map(part => {
       const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-      return m ? `<a href="${escH(m[2])}" target="_blank" rel="noopener">${escH(m[1])}</a>` : escH(part).replace(/\n/g, '<br>');
+      if (!m) return escH(part).replace(/\n/g, '<br>');
+      const isExternal = /^https?:\/\//.test(m[2]);
+      return isExternal
+        ? `<a href="${escH(m[2])}" target="_blank" rel="noopener">${escH(m[1])}</a>`
+        : `<a href="${escH(m[2])}">${escH(m[1])}</a>`;
     }).join('');
     el.classList.remove('empty');
   }
