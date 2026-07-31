@@ -753,10 +753,8 @@
     return [...yearMap.values()].reduce((a, b) => a + b, 0);
   }
 
-  const SONG_YEAR_PAGE_SIZE = 20;
-  let songYearAllEntries = [];
+  const SONG_YEAR_INITIAL_COUNT = 20;
   let songYearAllYears = [];
-  let songYearShown = 0;
   let songYearSongIndex = null;
   let songYearCountsRef = null;
   let songAlbumRef = null;
@@ -768,44 +766,34 @@
     return YEAR_RAMP[pos];
   }
 
-  function renderSongYearPage() {
-    const container = document.getElementById('songYearChart');
-    const moreBtn = document.getElementById('songYearShowMore');
-    const nextShown = Math.min(songYearShown + SONG_YEAR_PAGE_SIZE, songYearAllEntries.length);
-    const page = songYearAllEntries.slice(songYearShown, nextShown);
-    const maxTotal = songYearAllEntries[0].total;
-
-    container.insertAdjacentHTML('beforeend', page.map(({ key, yearMap, total }) => {
-      const info = songYearSongIndex.get(key);
-      const title = info ? info.title : key;
-      const href = info ? songHref(info) : null;
-      const barWidthPct = (total / maxTotal) * 100;
-      const segs = songYearAllYears
-        .filter(y => yearMap.has(y))
-        .map(y => {
-          const c = yearMap.get(y);
-          const pct = (c / total) * 100;
-          return `<div class="stack-seg" style="width:${pct}%;background:${songYearColor(y)}" data-tt-value="${c}回" data-tt-label="${escH(title)}（${y}年）"></div>`;
-        }).join('');
-      const labelInner = href ? `<a href="${href}">${escH(title)}</a>` : escH(title);
-      return `
-        <div class="stack-row">
-          <div class="stack-label">${labelInner}</div>
-          <div class="stack-track-wrap"><div class="stack-track" style="width:${barWidthPct}%">${segs}</div></div>
-          <div class="stack-value">${total}回</div>
-        </div>`;
-    }).join(''));
-
-    songYearShown = nextShown;
-    moreBtn.style.display = songYearShown < songYearAllEntries.length ? 'block' : 'none';
+  function songYearRowHtml({ key, yearMap, total }, maxTotal) {
+    const info = songYearSongIndex.get(key);
+    const title = info ? info.title : key;
+    const href = info ? songHref(info) : null;
+    const barWidthPct = (total / maxTotal) * 100;
+    const segs = songYearAllYears
+      .filter(y => yearMap.has(y))
+      .map(y => {
+        const c = yearMap.get(y);
+        const pct = (c / total) * 100;
+        return `<div class="stack-seg" style="width:${pct}%;background:${songYearColor(y)}" data-tt-value="${c}回" data-tt-label="${escH(title)}（${y}年）"></div>`;
+      }).join('');
+    const labelInner = href ? `<a href="${href}">${escH(title)}</a>` : escH(title);
+    return `
+      <div class="stack-row">
+        <div class="stack-label">${labelInner}</div>
+        <div class="stack-track-wrap"><div class="stack-track" style="width:${barWidthPct}%">${segs}</div></div>
+        <div class="stack-value">${total}回</div>
+      </div>`;
   }
 
   function renderSongYearChart(songYearCounts, songIndex, songAlbum, filterAlbum) {
     const container = document.getElementById('songYearChart');
     const legendEl = document.getElementById('songYearLegend');
+    const moreBtn = document.getElementById('songYearShowMore');
     songYearSongIndex = songIndex;
 
-    songYearAllEntries = [...songYearCounts.entries()]
+    const allEntries = [...songYearCounts.entries()]
       .filter(([key]) => {
         if (!filterAlbum || filterAlbum === 'すべて') return true;
         const label = songAlbum.get(key) || 'その他/不明';
@@ -814,17 +802,30 @@
       .map(([key, yearMap]) => ({ key, yearMap, total: songTotal(yearMap) }))
       .sort((a, b) => b.total - a.total);
 
-    if (!songYearAllEntries.length) {
+    if (!allEntries.length) {
       container.innerHTML = '<div class="loading">データがありません。</div>';
       legendEl.innerHTML = '';
-      document.getElementById('songYearShowMore').style.display = 'none';
+      moreBtn.style.display = 'none';
       return;
     }
 
-    songYearAllYears = [...new Set(songYearAllEntries.flatMap(e => [...e.yearMap.keys()]))].sort();
-    container.innerHTML = '';
-    songYearShown = 0;
-    renderSongYearPage();
+    songYearAllYears = [...new Set(allEntries.flatMap(e => [...e.yearMap.keys()]))].sort();
+    const maxTotal = allEntries[0].total;
+    const initial = allEntries.slice(0, SONG_YEAR_INITIAL_COUNT);
+    const rest = allEntries.slice(SONG_YEAR_INITIAL_COUNT);
+
+    container.innerHTML = initial.map(e => songYearRowHtml(e, maxTotal)).join('');
+
+    if (rest.length) {
+      moreBtn.textContent = `もっと表示（他${rest.length}曲）`;
+      moreBtn.style.display = 'block';
+      moreBtn.onclick = () => {
+        container.insertAdjacentHTML('beforeend', rest.map(e => songYearRowHtml(e, maxTotal)).join(''));
+        moreBtn.style.display = 'none';
+      };
+    } else {
+      moreBtn.style.display = 'none';
+    }
 
     legendEl.innerHTML = songYearAllYears.map(y => `
       <div class="legend-item"><span class="legend-swatch" style="background:${songYearColor(y)}"></span>${escH(y)}年</div>`).join('');
@@ -849,7 +850,6 @@
       });
     });
 
-    document.getElementById('songYearShowMore').addEventListener('click', () => renderSongYearPage());
     renderSongYearChart(songYearCounts, songIndex, songAlbum, 'すべて');
   }
 
