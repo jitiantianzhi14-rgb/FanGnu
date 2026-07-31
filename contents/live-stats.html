@@ -675,13 +675,22 @@
     const songAlbum = new Map();
     const albumTracks = new Map();
 
+    // アルバム収録曲側の表記（Specialz/CHAMELEON等）がシングル表記（SPECIALZ/カメレオン等）と
+    // 異なるケースがあるため、ytが一致するシングルがあればそちらの正式表記をキーに使う
+    const itemTitleByYt = new Map();
+    (kgDisco.items || []).forEach(item => {
+      if (item.yt) itemTitleByYt.set(item.yt, item.title);
+      if (item.coupling && item.coupling.yt) itemTitleByYt.set(item.coupling.yt, item.coupling.title);
+    });
+
     const studioAlbums = (kgDisco.albums || []).filter(a => a.note !== 'ライブアルバム');
     studioAlbums.forEach(album => {
       const tracks = [];
       (album.tracks || []).forEach(t => {
-        const key = normalizeTitle(t.title);
+        const canonicalTitle = (t.yt && itemTitleByYt.get(t.yt)) || t.title;
+        const key = normalizeTitle(canonicalTitle);
         if (!songAlbum.has(key)) songAlbum.set(key, album.title);
-        tracks.push({ title: t.title, key });
+        tracks.push({ title: canonicalTitle, key });
       });
       albumTracks.set(album.title, tracks);
     });
@@ -767,7 +776,11 @@
     songYearSongIndex = songIndex;
 
     songYearAllEntries = [...songYearCounts.entries()]
-      .filter(([key]) => !filterAlbum || filterAlbum === 'すべて' || songAlbum.get(key) === filterAlbum)
+      .filter(([key]) => {
+        if (!filterAlbum || filterAlbum === 'すべて') return true;
+        const label = songAlbum.get(key) || 'その他/不明';
+        return label === filterAlbum;
+      })
       .map(([key, yearMap]) => ({ key, yearMap, total: songTotal(yearMap) }))
       .sort((a, b) => b.total - a.total);
 
@@ -791,7 +804,7 @@
     songYearCountsRef = songYearCounts;
     songAlbumRef = songAlbum;
     const chipsEl = document.getElementById('songYearAlbumChips');
-    const options = ['すべて', ...albumTracks.keys(), 'シングル（アルバム未収録）', 'Srv.Vinci期'];
+    const options = ['すべて', ...albumTracks.keys(), 'シングル（アルバム未収録）', 'Srv.Vinci期', 'その他/不明'];
     const extra = [...new Set(songAlbum.values())].filter(l => !options.includes(l));
     options.push(...extra);
 
