@@ -230,6 +230,7 @@
 
     if (isAlbum) {
       const detailHtml = `<div class="disc-detail">
+          ${item.teaserYt ? `<div class="disc-embed" data-yt="${escH(item.teaserYt)}"></div>` : ''}
           ${item.note ? `<div class="disc-note">${formatNote(item.note)}</div>` : ''}
           ${buildTrackGrid(item.tracks || [])}
         </div>`;
