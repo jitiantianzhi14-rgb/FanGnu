@@ -360,7 +360,7 @@
     <div>
       <div class="section-label">ALBUM RATIO</div>
       <div class="chart-card">
-        <div class="chart-sub">全公演の演奏曲が、どのリリースに収録された曲かの内訳</div>
+        <div class="chart-sub">演奏曲がどのリリースに収録された曲かの内訳（全期間＋年別）</div>
         <div id="albumRatioChart"><div class="loading">集計中…</div></div>
         <div class="chart-legend" id="albumRatioLegend"></div>
       </div>
@@ -841,13 +841,18 @@
     const container = document.getElementById('albumRatioChart');
     const legendEl = document.getElementById('albumRatioLegend');
     const albumTotals = new Map();
+    const albumYearTotals = new Map(); // year -> Map(album -> count)
     let grandTotal = 0;
 
     songYearCounts.forEach((yearMap, key) => {
-      const total = songTotal(yearMap);
       const label = songAlbum.get(key) || 'その他/不明';
-      albumTotals.set(label, (albumTotals.get(label) || 0) + total);
-      grandTotal += total;
+      yearMap.forEach((count, year) => {
+        albumTotals.set(label, (albumTotals.get(label) || 0) + count);
+        grandTotal += count;
+        if (!albumYearTotals.has(year)) albumYearTotals.set(year, new Map());
+        const yMap = albumYearTotals.get(year);
+        yMap.set(label, (yMap.get(label) || 0) + count);
+      });
     });
 
     if (!grandTotal) {
@@ -855,19 +860,42 @@
       return;
     }
 
+    // 全期間の比率順を固定の色順・並び順として、年別バーもこれに揃える
     const sorted = [...albumTotals.entries()].sort((a, b) => b[1] - a[1]);
+    const albumColor = (label) => {
+      const idx = sorted.findIndex(([l]) => l === label);
+      return ALBUM_PALETTE[idx % ALBUM_PALETTE.length];
+    };
+    const buildBar = (dataMap, total) => sorted
+      .filter(([label]) => dataMap.has(label))
+      .map(([label]) => {
+        const count = dataMap.get(label);
+        const pct = (count / total) * 100;
+        return `<div class="stack-seg" style="width:${pct}%;background:${albumColor(label)}" title="${escH(label)}: ${count}回（${pct.toFixed(1)}%）"></div>`;
+      }).join('');
+
+    const years = [...albumYearTotals.keys()].sort();
 
     container.innerHTML = `
-      <div class="stack-track" style="width:100%;height:24px;max-height:24px;">
-        ${sorted.map(([label, count], i) => {
-          const pct = (count / grandTotal) * 100;
-          return `<div class="stack-seg" style="width:${pct}%;height:24px;background:${ALBUM_PALETTE[i % ALBUM_PALETTE.length]}" title="${escH(label)}: ${count}回（${pct.toFixed(1)}%）"></div>`;
-        }).join('')}
+      <div class="stack-row">
+        <div class="stack-label">全期間</div>
+        <div class="stack-track-wrap"><div class="stack-track" style="width:100%">${buildBar(albumTotals, grandTotal)}</div></div>
+        <div class="stack-value">${grandTotal}回</div>
+      </div>
+      ${years.map(y => {
+        const yMap = albumYearTotals.get(y);
+        const yTotal = [...yMap.values()].reduce((a, b) => a + b, 0);
+        return `
+      <div class="stack-row">
+        <div class="stack-label">${escH(y)}年</div>
+        <div class="stack-track-wrap"><div class="stack-track" style="width:100%">${buildBar(yMap, yTotal)}</div></div>
+        <div class="stack-value">${yTotal}回</div>
       </div>`;
+      }).join('')}`;
 
-    legendEl.innerHTML = sorted.map(([label, count], i) => {
+    legendEl.innerHTML = sorted.map(([label, count]) => {
       const pct = (count / grandTotal) * 100;
-      return `<div class="legend-item"><span class="legend-swatch" style="background:${ALBUM_PALETTE[i % ALBUM_PALETTE.length]}"></span>${escH(label)}（${pct.toFixed(1)}%）</div>`;
+      return `<div class="legend-item"><span class="legend-swatch" style="background:${albumColor(label)}"></span>${escH(label)}（${pct.toFixed(1)}%）</div>`;
     }).join('');
   }
 
