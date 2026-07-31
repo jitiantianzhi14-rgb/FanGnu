@@ -111,6 +111,8 @@
     .lh-date { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); }
     .lh-tour { font-weight: 500; color: var(--black); }
     .lh-venue { font-size: 11px; color: var(--gray); white-space: nowrap; }
+    .show-more-btn { display: block; width: 100%; margin-top: 10px; padding: 0.7rem; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: var(--white); color: var(--black); border: 1px solid var(--black); cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .show-more-btn:hover { background: var(--black); color: var(--white); }
 
     .action-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
     .action-btn { flex: 1 1 0; min-width: 200px; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; border: 1px solid var(--black); padding: 1.5rem 1.5rem; background: var(--black); color: var(--white); transition: background 0.15s; }
@@ -459,25 +461,46 @@
       </div>`;
   }
 
+  const LIVE_HISTORY_PAGE_SIZE = 10;
+  let liveHistoryAll = [];
+  let liveHistoryShown = 0;
+
+  function liveHistoryItemHtml(h) {
+    const srcParam = h.source === 'srvvinci' ? '&src=srvvinci' : '';
+    return `
+      <li class="live-history-item">
+        <a class="live-history-row" href="live-show.html?date=${encodeURIComponent(h.date)}${srcParam}">
+          <span class="lh-date">${escH(h.date)}</span>
+          <span class="lh-tour">${escH(h.tourName)}</span>
+          <span class="lh-venue">${escH(h.venue || '')}</span>
+        </a>
+      </li>`;
+  }
+
+  function renderLiveHistoryPage() {
+    const list = document.getElementById('liveHistoryList');
+    const moreBtn = document.getElementById('liveHistoryShowMore');
+    const nextShown = Math.min(liveHistoryShown + LIVE_HISTORY_PAGE_SIZE, liveHistoryAll.length);
+    const page = liveHistoryAll.slice(liveHistoryShown, nextShown);
+    list.insertAdjacentHTML('beforeend', page.map(liveHistoryItemHtml).join(''));
+    liveHistoryShown = nextShown;
+    moreBtn.style.display = liveHistoryShown < liveHistoryAll.length ? 'block' : 'none';
+  }
+
   function renderLiveHistory(history) {
     const area = document.getElementById('liveHistoryArea');
     if (!history.length) {
       area.innerHTML = '';
       return;
     }
+    liveHistoryAll = history;
+    liveHistoryShown = 0;
     area.innerHTML = `
-      <div class="section-label">LIVE HISTORY</div>
-      <ol class="live-history-list">${history.map(h => {
-        const srcParam = h.source === 'srvvinci' ? '&src=srvvinci' : '';
-        return `
-        <li class="live-history-item">
-          <a class="live-history-row" href="live-show.html?date=${encodeURIComponent(h.date)}${srcParam}">
-            <span class="lh-date">${escH(h.date)}</span>
-            <span class="lh-tour">${escH(h.tourName)}</span>
-            <span class="lh-venue">${escH(h.venue || '')}</span>
-          </a>
-        </li>`;
-      }).join('')}</ol>`;
+      <div class="section-label">LIVE HISTORY（全${history.length}回）</div>
+      <ol class="live-history-list" id="liveHistoryList"></ol>
+      <button type="button" class="show-more-btn" id="liveHistoryShowMore" style="display:none;">もっと表示</button>`;
+    document.getElementById('liveHistoryShowMore').addEventListener('click', () => renderLiveHistoryPage());
+    renderLiveHistoryPage();
   }
 
   function setMetaContent(selector, content) {
