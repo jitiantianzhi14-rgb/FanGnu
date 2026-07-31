@@ -438,7 +438,7 @@
     });
     container.addEventListener('pointerleave', hideTooltip);
   }
-  ['songYearChart', 'yearTotalChart', 'albumRatioChart'].forEach(id => bindTooltips(document.getElementById(id)));
+  ['songYearChart', 'yearTotalChart', 'albumRatioChart', 'jpMap'].forEach(id => bindTooltips(document.getElementById(id)));
 
   function escH(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -485,6 +485,8 @@
     ['韓国', '韓国'],
     ['上海', '中国'],
     ['USA', 'アメリカ'],
+    ['香港', '香港'],
+    ['タイ', 'タイ'],
   ];
 
   async function loadJson(path) {
@@ -623,9 +625,8 @@
       const prefName = PREF_MAP[romaji];
       if (!prefName) return;
       const count = prefCounts.get(prefName) || 0;
-      const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-      title.textContent = count > 0 ? `${prefName}：${count}回` : `${prefName}：未訪問`;
-      g.insertBefore(title, g.firstChild);
+      g.setAttribute('data-tt-value', count > 0 ? `${count}回` : '未訪問');
+      g.setAttribute('data-tt-label', prefName);
       if (count > 0) g.classList.add('visited');
     });
   }
