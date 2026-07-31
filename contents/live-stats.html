@@ -365,14 +365,6 @@
         <div class="chart-legend" id="albumRatioLegend"></div>
       </div>
     </div>
-
-    <div>
-      <div class="section-label">SONGS IN ALBUM</div>
-      <div class="chart-card">
-        <div class="filter-chips" id="albumChips"></div>
-        <div id="albumSongsChart"><div class="loading">集計中…</div></div>
-      </div>
-    </div>
   </div>
 
   <footer class="footer">
@@ -879,57 +871,6 @@
     }).join('');
   }
 
-  let albumTracksData = new Map();
-  let songYearCountsData = new Map();
-  let songIndexData = new Map();
-
-  function renderAlbumSongsChart(albumLabel) {
-    const container = document.getElementById('albumSongsChart');
-    const tracks = albumTracksData.get(albumLabel) || [];
-    const rows = tracks
-      .map(t => {
-        const yearMap = songYearCountsData.get(t.key);
-        return { title: t.title, total: yearMap ? songTotal(yearMap) : 0, key: t.key };
-      })
-      .sort((a, b) => b.total - a.total);
-
-    if (!rows.length) {
-      container.innerHTML = '<div class="loading">データがありません。</div>';
-      return;
-    }
-    const max = Math.max(...rows.map(r => r.total), 1);
-
-    container.innerHTML = rows.map(r => {
-      const info = songIndexData.get(r.key);
-      const href = info ? songHref(info) : null;
-      const pct = (r.total / max) * 100;
-      const labelInner = href ? `<a href="${href}">${escH(r.title)}</a>` : escH(r.title);
-      return `
-        <div class="hbar-row">
-          <div class="hbar-label">${labelInner}</div>
-          <div class="hbar-track-wrap"><div class="hbar-fill" style="width:${pct}%;background:var(--red)" title="${escH(r.title)}: ${r.total}回"></div></div>
-          <div class="hbar-value">${r.total}回</div>
-        </div>`;
-    }).join('');
-  }
-
-  function initAlbumSelect(albumTracks) {
-    const chipsEl = document.getElementById('albumChips');
-    const labels = [...albumTracks.keys()];
-    if (!labels.length) return;
-    chipsEl.innerHTML = labels.map((l, i) =>
-      `<button type="button" class="filter-chip${i === 0 ? ' active' : ''}" data-value="${escH(l)}">${escH(l)}</button>`
-    ).join('');
-    chipsEl.querySelectorAll('.filter-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        chipsEl.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        renderAlbumSongsChart(chip.dataset.value);
-      });
-    });
-    renderAlbumSongsChart(labels[0]);
-  }
-
   Promise.all([
     loadJson('data/kinggnu-live.json'),
     loadJson('data/srvvinci-live.json'),
@@ -945,14 +886,10 @@
 
     const { songYearCounts, yearTotals } = collectYearlyStats(kgLive, svLive);
     const { songAlbum, albumTracks } = buildAlbumMap(kgDisco, svDisco);
-    songYearCountsData = songYearCounts;
-    songIndexData = songIndex;
-    albumTracksData = albumTracks;
 
     initSongYearFilter(songYearCounts, songIndex, songAlbum, albumTracks);
     renderYearTotalChart(yearTotals);
     renderAlbumRatioChart(songYearCounts, songAlbum);
-    initAlbumSelect(albumTracks);
   }).catch(err => {
     console.error(err);
     document.getElementById('summaryGrid').innerHTML = `<div class="loading">データの読み込みに失敗しました。</div>`;
@@ -962,7 +899,6 @@
     document.getElementById('songYearChart').innerHTML = '';
     document.getElementById('yearTotalChart').innerHTML = '';
     document.getElementById('albumRatioChart').innerHTML = '';
-    document.getElementById('albumSongsChart').innerHTML = '';
   });
   </script>
 
