@@ -169,16 +169,24 @@
     el.classList.remove('empty');
   }
 
-  function songHref(t) {
+  function appleMusicId(url) {
+    if (!url) return '';
+    const m = url.match(/(\d+)(?:\?.*)?$/);
+    return m ? m[1] : '';
+  }
+
+  function songHref(t, isSrvvinci) {
     const params = new URLSearchParams();
+    if (isSrvvinci) params.set('src', 'srvvinci');
     if (t.yt) params.set('yt', t.yt);
+    else if (t.appleMusic) params.set('am', appleMusicId(t.appleMusic));
     else if (t.externalVideo) params.set('ext', t.externalVideo);
     else if (t.spotify) params.set('sp', t.spotify);
     else return null;
     return `song.html?${params.toString()}`;
   }
 
-  function renderTracks(tracks) {
+  function renderTracks(tracks, isSrvvinci) {
     const area = document.getElementById('tracksArea');
     if (!tracks || !tracks.length) {
       area.innerHTML = `<div class="no-tracks">収録曲情報はまだありません。</div>`;
@@ -186,7 +194,7 @@
     }
     area.innerHTML = `
       <ol class="track-list">${tracks.map(t => {
-        const href = songHref(t);
+        const href = songHref(t, isSrvvinci);
         const inner = `
           <span class="track-num">${String(t.num).padStart(2, '0')}</span>
           <span class="track-title">${escH(t.displayTitle || t.title)}</span>
@@ -197,43 +205,55 @@
       }).join('')}</ol>`;
   }
 
-  function renderAlbum(album) {
+  function renderAlbum(album, isSrvvinci) {
     document.title = `${album.title} — アルバム概要 — FanGNU`;
     document.getElementById('albumTitle').textContent = album.title;
     setInfo('infoYear', album.year);
     setExtra('infoExtra', album.extra);
-    renderTracks(album.tracks);
-    document.getElementById('discographyLink').href = `discography.html?album=${encodeURIComponent(album.title)}`;
+    renderTracks(album.tracks, isSrvvinci);
+    const backHref = isSrvvinci ? 'srvvinci.html' : 'discography.html';
+    document.getElementById('discographyLink').href = `${backHref}?album=${encodeURIComponent(album.title)}`;
   }
 
-  function renderNotFound() {
+  function renderNotFound(isSrvvinci) {
     document.getElementById('albumTitle').textContent = 'アルバムが見つかりませんでした';
     setInfo('infoYear', '');
     setExtra('infoExtra', '');
     renderTracks([]);
-    document.getElementById('discographyLink').href = 'discography.html';
+    document.getElementById('discographyLink').href = isSrvvinci ? 'srvvinci.html' : 'discography.html';
   }
 
   const params = new URLSearchParams(location.search);
   const albumTitle = params.get('album') || '';
+  const isSrvvinci = params.get('src') === 'srvvinci';
 
-  fetch('data/kinggnu-discography.json')
+  const dataUrl = isSrvvinci ? 'data/srvvinci-discography.json' : 'data/kinggnu-discography.json';
+
+  fetch(dataUrl)
     .then(res => res.json())
     .then(data => {
-      const album = (data.albums || []).find(a => a.title === albumTitle);
-      if (!album) { renderNotFound(); return; }
-      renderAlbum(album);
+      let album;
+      if (isSrvvinci) {
+        for (const group of (data.groups || [])) {
+          album = [...(group.demos || []), ...(group.albums || [])].find(a => a.title === albumTitle);
+          if (album) break;
+        }
+      } else {
+        album = (data.albums || []).find(a => a.title === albumTitle);
+      }
+      if (!album) { renderNotFound(isSrvvinci); return; }
+      renderAlbum(album, isSrvvinci);
     })
     .catch(err => {
       console.error(err);
-      renderNotFound();
+      renderNotFound(isSrvvinci);
     });
 
   document.getElementById('backLink').addEventListener('click', () => {
     if (document.referrer && document.referrer.includes(location.host)) {
       history.back();
     } else {
-      location.href = 'discography.html';
+      location.href = isSrvvinci ? 'srvvinci.html' : 'discography.html';
     }
   });
   </script>

@@ -201,6 +201,12 @@
       const previewYt = item.type !== 'DEMO' ? (item.yt || ((item.tracks || []).find(t => t.yt) || {}).yt) : null;
       const previewEmbedHtml = previewYt ? `<div class="disc-embed" data-yt="${escH(previewYt)}"></div>` : '';
       const detailHtml = `<div class="disc-detail">
+             <div class="disc-song-list">
+               <a class="disc-song-row" href="album.html?src=srvvinci&album=${encodeURIComponent(item.title)}">
+                 <span class="disc-song-title">${escH(item.title)}</span>
+                 <span class="disc-song-arrow">→アルバム詳細へ</span>
+               </a>
+             </div>
              ${item.note ? `<div class="disc-note">${escH(item.note)}</div>` : ''}
              ${previewEmbedHtml}
              ${buildTrackGrid(item.tracks)}
