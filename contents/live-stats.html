@@ -107,6 +107,11 @@
 
     .chart-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
     .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--black); }
+
+    .chart-tooltip { position: fixed; z-index: 500; pointer-events: none; background: var(--black); color: var(--white); padding: 6px 10px; border-radius: 4px; white-space: nowrap; opacity: 0; transition: opacity 0.06s linear; }
+    .chart-tooltip.visible { opacity: 1; }
+    .chart-tooltip .tt-value { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; line-height: 1.3; }
+    .chart-tooltip .tt-label { font-size: 10px; color: #ccc; line-height: 1.3; }
     .legend-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
 
     .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
@@ -402,6 +407,38 @@
     });
   }
   initTabs();
+
+  // ---- カスタムツールチップ（ネイティブtitle属性は表示が遅く見た目も揃わないため独自実装） ----
+  const tooltipEl = document.createElement('div');
+  tooltipEl.className = 'chart-tooltip';
+  tooltipEl.innerHTML = '<div class="tt-value"></div><div class="tt-label"></div>';
+  document.body.appendChild(tooltipEl);
+  const tooltipValueEl = tooltipEl.querySelector('.tt-value');
+  const tooltipLabelEl = tooltipEl.querySelector('.tt-label');
+
+  function showTooltip(x, y, value, label) {
+    tooltipValueEl.textContent = value;
+    tooltipLabelEl.textContent = label;
+    const spaceRight = window.innerWidth - x;
+    const offsetX = spaceRight < 160 ? -12 - tooltipEl.offsetWidth : 12;
+    tooltipEl.style.left = `${x + offsetX}px`;
+    tooltipEl.style.top = `${y + 16}px`;
+    tooltipEl.classList.add('visible');
+  }
+
+  function hideTooltip() {
+    tooltipEl.classList.remove('visible');
+  }
+
+  function bindTooltips(container) {
+    container.addEventListener('pointermove', (e) => {
+      const mark = e.target.closest('[data-tt-value]');
+      if (!mark) { hideTooltip(); return; }
+      showTooltip(e.clientX, e.clientY, mark.dataset.ttValue, mark.dataset.ttLabel);
+    });
+    container.addEventListener('pointerleave', hideTooltip);
+  }
+  ['songYearChart', 'yearTotalChart', 'albumRatioChart'].forEach(id => bindTooltips(document.getElementById(id)));
 
   function escH(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -733,7 +770,7 @@
         .map(y => {
           const c = yearMap.get(y);
           const pct = (c / total) * 100;
-          return `<div class="stack-seg" style="width:${pct}%;background:${songYearColor(y)}" title="${escH(title)}（${y}年）: ${c}回"></div>`;
+          return `<div class="stack-seg" style="width:${pct}%;background:${songYearColor(y)}" data-tt-value="${c}回" data-tt-label="${escH(title)}（${y}年）"></div>`;
         }).join('');
       const labelInner = href ? `<a href="${href}">${escH(title)}</a>` : escH(title);
       return `
@@ -815,7 +852,7 @@
       return `
         <div class="hbar-row">
           <div class="hbar-label">${escH(y)}年</div>
-          <div class="hbar-track-wrap"><div class="hbar-fill" style="width:${pct}%;background:var(--red)" title="${escH(y)}年: ${c}回"></div></div>
+          <div class="hbar-track-wrap"><div class="hbar-fill" style="width:${pct}%;background:var(--red)" data-tt-value="${c}回" data-tt-label="${escH(y)}年"></div></div>
           <div class="hbar-value">${c}回</div>
         </div>`;
     }).join('');
@@ -855,7 +892,7 @@
       .map(([label]) => {
         const count = dataMap.get(label);
         const pct = (count / total) * 100;
-        return `<div class="stack-seg" style="width:${pct}%;background:${albumColor(label)}" title="${escH(label)}: ${count}回（${pct.toFixed(1)}%）"></div>`;
+        return `<div class="stack-seg" style="width:${pct}%;background:${albumColor(label)}" data-tt-value="${count}回（${pct.toFixed(1)}%）" data-tt-label="${escH(label)}"></div>`;
       }).join('');
 
     const years = [...albumYearTotals.keys()].sort();
