@@ -72,6 +72,7 @@
     .shorts-nav-btn { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--black); background: var(--white); color: var(--black); cursor: pointer; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: background 0.15s, color 0.15s; }
     .shorts-nav-btn:hover { background: var(--black); color: var(--white); }
     .shorts-grid { flex: 1; min-width: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .shorts-grid.single { grid-template-columns: minmax(120px, 240px); justify-content: center; }
     .shorts-thumb { position: relative; cursor: pointer; }
     .shorts-thumb img { width: 100%; aspect-ratio: 9/16; object-fit: cover; display: block; background: #000; }
     .shorts-thumb:hover .mv-thumb-play { background: rgba(0,0,0,0.45); }
@@ -415,7 +416,7 @@
       <div class="section-label">BEHIND THE SCENES</div>
       <div class="shorts-wrap">
         ${hasMultiple ? `<button type="button" class="shorts-nav-btn" id="shortsPrev" aria-label="前へ">←</button>` : ''}
-        <div class="shorts-grid" id="shortsGrid"></div>
+        <div class="shorts-grid${hasMultiple ? '' : ' single'}" id="shortsGrid"></div>
         ${hasMultiple ? `<button type="button" class="shorts-nav-btn" id="shortsNext" aria-label="次へ">→</button>` : ''}
       </div>
       ${hasMultiple ? `<div class="shorts-page-info" id="shortsPageInfo"></div>` : ''}`;
