@@ -230,7 +230,12 @@
 
     if (isAlbum) {
       const detailHtml = `<div class="disc-detail">
-          <a class="disc-detail-link" href="album.html?album=${encodeURIComponent(item.title)}">アルバム概要を見る →</a>
+          <div class="disc-song-list">
+            <a class="disc-song-row" href="album.html?album=${encodeURIComponent(item.title)}">
+              <span class="disc-song-title">${escH(item.title)}</span>
+              <span class="disc-song-arrow">→アルバム詳細へ</span>
+            </a>
+          </div>
           ${item.teaserYt ? `<div class="disc-embed" data-yt="${escH(item.teaserYt)}"></div>` : ''}
           ${item.note ? `<div class="disc-note">${formatNote(item.note)}</div>` : ''}
           ${buildTrackGrid(item.tracks || [])}
