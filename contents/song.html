@@ -382,11 +382,21 @@
 
     grid.innerHTML = items.map(yt => `
       <div class="shorts-thumb" data-yt="${escH(yt)}">
-        <img src="https://img.youtube.com/vi/${escH(yt)}/hqdefault.jpg" alt="behind the scenes" loading="lazy">
+        <img src="https://img.youtube.com/vi/${escH(yt)}/maxresdefault.jpg" alt="behind the scenes" loading="lazy">
         <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
       </div>
       <div class="shorts-embed"></div>`).join('');
-    grid.querySelectorAll('.shorts-thumb').forEach(wireShortsThumb);
+    grid.querySelectorAll('.shorts-thumb').forEach(thumb => {
+      wireShortsThumb(thumb);
+      const yt = thumb.dataset.yt;
+      const img = thumb.querySelector('img');
+      img.addEventListener('load', () => {
+        if (img.naturalWidth === 120) img.src = `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
+      });
+      img.addEventListener('error', () => {
+        img.src = `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
+      });
+    });
 
     if (pageInfo) pageInfo.textContent = `${shortsIndex + 1} / ${len}`;
   }
