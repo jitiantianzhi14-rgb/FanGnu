@@ -708,6 +708,8 @@
     });
 
     (kgDisco.items || []).forEach(item => {
+      // UNRELEASED（Catch!!!等）はリリースされた楽曲ではないため「シングル」に含めない
+      if (item.type === 'UNRELEASED') return;
       const key = normalizeTitle(item.title);
       if (!songAlbum.has(key)) songAlbum.set(key, 'シングル（アルバム未収録）');
       if (item.coupling) {
