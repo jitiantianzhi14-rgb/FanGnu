@@ -68,6 +68,21 @@
     .mv-embed.open { display: block; }
     .mv-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
 
+    .shorts-wrap { display: flex; align-items: center; gap: 10px; }
+    .shorts-nav-btn { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--black); background: var(--white); color: var(--black); cursor: pointer; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: background 0.15s, color 0.15s; }
+    .shorts-nav-btn:hover { background: var(--black); color: var(--white); }
+    .shorts-nav-btn:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
+    .shorts-grid { flex: 1; min-width: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .shorts-thumb { position: relative; cursor: pointer; }
+    .shorts-thumb img { width: 100%; aspect-ratio: 9/16; object-fit: cover; display: block; background: #000; }
+    .shorts-thumb:hover .mv-thumb-play { background: rgba(0,0,0,0.45); }
+    .shorts-thumb .mv-thumb-play-btn { width: 40px; height: 40px; }
+    .shorts-thumb .mv-thumb-play-btn::after { border-width: 8px 0 8px 16px; margin-left: 3px; }
+    .shorts-embed { display: none; }
+    .shorts-embed.open { display: block; }
+    .shorts-embed iframe { width: 100%; aspect-ratio: 9/16; border: none; display: block; }
+    .shorts-page-info { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); text-align: center; margin-top: 8px; }
+
     .no-video { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); padding: 3rem 0; text-align: center; border: 1px dashed var(--border); }
 
     .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
@@ -162,6 +177,8 @@
     <div id="liveStatsArea"></div>
 
     <div id="mediaArea"></div>
+
+    <div id="shortsArea"></div>
 
     <div id="appleMusicArea"></div>
 
@@ -341,6 +358,71 @@
       embed.classList.add('open');
       embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${yt}?rel=0&autoplay=1&playsinline=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>`;
     });
+  }
+
+  const SHORTS_PER_PAGE = 2;
+  let shortsData = [];
+  let shortsPage = 0;
+
+  function wireShortsThumb(thumb) {
+    thumb.addEventListener('click', () => {
+      const yt = thumb.dataset.yt;
+      const embed = thumb.nextElementSibling;
+      thumb.style.display = 'none';
+      embed.classList.add('open');
+      embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${yt}?rel=0&autoplay=1&playsinline=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>`;
+    });
+  }
+
+  function renderShortsPage() {
+    const grid = document.getElementById('shortsGrid');
+    const prevBtn = document.getElementById('shortsPrev');
+    const nextBtn = document.getElementById('shortsNext');
+    const pageInfo = document.getElementById('shortsPageInfo');
+    const totalPages = Math.ceil(shortsData.length / SHORTS_PER_PAGE);
+    const start = shortsPage * SHORTS_PER_PAGE;
+    const items = shortsData.slice(start, start + SHORTS_PER_PAGE);
+
+    grid.innerHTML = items.map(yt => `
+      <div class="shorts-thumb" data-yt="${escH(yt)}">
+        <img src="https://img.youtube.com/vi/${escH(yt)}/hqdefault.jpg" alt="behind the scenes" loading="lazy">
+        <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
+      </div>
+      <div class="shorts-embed"></div>`).join('');
+    grid.querySelectorAll('.shorts-thumb').forEach(wireShortsThumb);
+
+    prevBtn.disabled = shortsPage <= 0;
+    nextBtn.disabled = shortsPage >= totalPages - 1;
+    pageInfo.textContent = `${shortsPage + 1} / ${totalPages}`;
+  }
+
+  function renderShorts(shorts) {
+    const area = document.getElementById('shortsArea');
+    if (!shorts || !shorts.length) {
+      area.innerHTML = '';
+      return;
+    }
+    shortsData = shorts;
+    shortsPage = 0;
+
+    area.innerHTML = `
+      <div class="section-label">BEHIND THE SCENES</div>
+      <div class="shorts-wrap">
+        <button type="button" class="shorts-nav-btn" id="shortsPrev" aria-label="前へ">←</button>
+        <div class="shorts-grid" id="shortsGrid"></div>
+        <button type="button" class="shorts-nav-btn" id="shortsNext" aria-label="次へ">→</button>
+      </div>
+      <div class="shorts-page-info" id="shortsPageInfo"></div>`;
+
+    document.getElementById('shortsPrev').addEventListener('click', () => {
+      if (shortsPage > 0) { shortsPage--; renderShortsPage(); }
+    });
+    document.getElementById('shortsNext').addEventListener('click', () => {
+      const totalPages = Math.ceil(shortsData.length / SHORTS_PER_PAGE);
+      if (shortsPage < totalPages - 1) { shortsPage++; renderShortsPage(); }
+    });
+
+    renderShortsPage();
   }
 
   function parseSpotify(value) {
@@ -527,6 +609,7 @@
     setLyrics(song.lyrics);
 
     renderMedia(song.yt, song.title, song.appleMusic, song.externalVideo, song.spotify);
+    renderShorts(song.shorts);
     renderAppleMusic(song.appleMusic);
     renderExternalVideo(song.externalVideo);
     renderSpotify(song.spotify);
@@ -537,6 +620,7 @@
     document.getElementById('typeBadge').style.display = 'none';
     setLyrics('');
     renderMedia('', '');
+    renderShorts([]);
     renderAppleMusic('');
     renderExternalVideo('');
     renderSpotify('');
@@ -556,7 +640,7 @@
     }
 
     if (item) {
-      return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, spotify: item.spotify, externalVideo: item.externalVideo || '', lyrics: item.lyrics || '', album, albumText: item.albumText || '' };
+      return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, spotify: item.spotify, externalVideo: item.externalVideo || '', lyrics: item.lyrics || '', shorts: item.shorts || [], album, albumText: item.albumText || '' };
     }
 
     if (couplingParent) {
