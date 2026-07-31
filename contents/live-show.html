@@ -57,6 +57,22 @@
     .mv-embed.open { display: block; }
     .mv-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
 
+    #shortsArea:not(:empty) { display: block; margin-bottom: 1.5rem; }
+    .shorts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .shorts-grid.single { grid-template-columns: minmax(200px, 360px); justify-content: center; }
+    .shorts-thumb { position: relative; cursor: pointer; }
+    .shorts-thumb img { width: 100%; aspect-ratio: 9/16; object-fit: cover; display: block; background: #000; }
+    .shorts-thumb:hover .mv-thumb-play { background: rgba(0,0,0,0.45); }
+    .shorts-thumb .mv-thumb-play-btn { width: 40px; height: 40px; }
+    .shorts-thumb .mv-thumb-play-btn::after { border-width: 8px 0 8px 16px; margin-left: 3px; }
+    .shorts-embed { display: none; }
+    .shorts-embed.open { display: block; }
+    .shorts-embed iframe { width: 100%; aspect-ratio: 9/16; border: none; display: block; }
+    .shorts-controls { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 10px; }
+    .shorts-nav-btn { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--black); background: var(--white); color: var(--black); cursor: pointer; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: background 0.15s, color 0.15s; }
+    .shorts-nav-btn:hover { background: var(--black); color: var(--white); }
+    .shorts-page-info { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); }
+
     .video-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; color: var(--gray); margin-bottom: 6px; }
     .video-more-btn { display: block; width: 100%; margin-bottom: 1.5rem; padding: 0.7rem; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: var(--white); color: var(--black); border: 1px solid var(--black); cursor: pointer; transition: background 0.15s, color 0.15s; }
     .video-more-btn:hover { background: var(--black); color: var(--white); }
@@ -133,6 +149,7 @@
 
   <div class="content">
     <div id="mediaArea"></div>
+    <div id="shortsArea"></div>
 
     <div class="detail-address" id="address"></div>
     <div class="detail-note" id="noteText" style="display:none;"></div>
@@ -306,6 +323,82 @@
       });
       mediaArea.appendChild(btn);
     }
+  }
+
+  let shortsData = [];
+  let shortsIndex = 0;
+
+  function wireShortsThumb(thumb) {
+    thumb.addEventListener('click', () => {
+      const yt = thumb.dataset.yt;
+      const embed = thumb.nextElementSibling;
+      thumb.style.display = 'none';
+      embed.classList.add('open');
+      embed.innerHTML = `<iframe src="https://www.youtube.com/embed/${yt}?rel=0&autoplay=1&playsinline=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>`;
+    });
+  }
+
+  function renderShortsPage() {
+    const grid = document.getElementById('shortsGrid');
+    const pageInfo = document.getElementById('shortsPageInfo');
+    const len = shortsData.length;
+    const count = Math.min(2, len);
+    const items = [];
+    for (let i = 0; i < count; i++) items.push(shortsData[(shortsIndex + i) % len]);
+
+    grid.innerHTML = items.map(yt => `
+      <div class="shorts-thumb" data-yt="${escH(yt)}">
+        <img src="https://img.youtube.com/vi/${escH(yt)}/maxresdefault.jpg" alt="behind the scenes" loading="lazy">
+        <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
+      </div>
+      <div class="shorts-embed"></div>`).join('');
+    grid.querySelectorAll('.shorts-thumb').forEach(thumb => {
+      wireShortsThumb(thumb);
+      const yt = thumb.dataset.yt;
+      const img = thumb.querySelector('img');
+      img.addEventListener('load', () => {
+        if (img.naturalWidth === 120) img.src = `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
+      });
+      img.addEventListener('error', () => {
+        img.src = `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
+      });
+    });
+
+    if (pageInfo) pageInfo.textContent = `${shortsIndex + 1} / ${len}`;
+  }
+
+  function renderShorts(shorts) {
+    const area = document.getElementById('shortsArea');
+    if (!shorts || !shorts.length) {
+      area.innerHTML = '';
+      return;
+    }
+    shortsData = shorts;
+    shortsIndex = 0;
+    const hasMultiple = shorts.length > 1;
+
+    area.innerHTML = `
+      <div class="section-label">BEHIND THE SCENES</div>
+      <div class="shorts-grid${hasMultiple ? '' : ' single'}" id="shortsGrid"></div>
+      ${hasMultiple ? `
+      <div class="shorts-controls">
+        <button type="button" class="shorts-nav-btn" id="shortsPrev" aria-label="前へ">←</button>
+        <span class="shorts-page-info" id="shortsPageInfo"></span>
+        <button type="button" class="shorts-nav-btn" id="shortsNext" aria-label="次へ">→</button>
+      </div>` : ''}`;
+
+    if (hasMultiple) {
+      document.getElementById('shortsPrev').addEventListener('click', () => {
+        shortsIndex = (shortsIndex - 1 + shortsData.length) % shortsData.length;
+        renderShortsPage();
+      });
+      document.getElementById('shortsNext').addEventListener('click', () => {
+        shortsIndex = (shortsIndex + 1) % shortsData.length;
+        renderShortsPage();
+      });
+    }
+
+    renderShortsPage();
   }
 
   function spotifyPlaylistId(url) {
@@ -502,6 +595,7 @@
     document.getElementById('address').textContent = show.location;
 
     renderMedia(show.videos, show.venue || tour.name);
+    renderShorts(show.shorts);
 
     if (show.note) {
       const noteEl = document.getElementById('noteText');
@@ -525,6 +619,7 @@
   function renderNotFound() {
     document.getElementById('venueName').textContent = '公演情報が見つかりませんでした';
     renderMedia([], '');
+    renderShorts([]);
     renderSpotifyPlaylist('');
     renderSetlist([], new Map());
     renderAlbumRatio([], new Map());
