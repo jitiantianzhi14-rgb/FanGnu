@@ -410,19 +410,19 @@
     }
     shortsData = shorts;
     shortsIndex = 0;
-    const hasMultiple = shorts.length > 1;
+    const needsNav = shorts.length > 2;
 
     area.innerHTML = `
       <div class="section-label">BEHIND THE SCENES</div>
-      <div class="shorts-grid${hasMultiple ? '' : ' single'}" id="shortsGrid"></div>
-      ${hasMultiple ? `
+      <div class="shorts-grid${shorts.length === 1 ? ' single' : ''}" id="shortsGrid"></div>
+      ${needsNav ? `
       <div class="shorts-controls">
         <button type="button" class="shorts-nav-btn" id="shortsPrev" aria-label="前へ">←</button>
         <span class="shorts-page-info" id="shortsPageInfo"></span>
         <button type="button" class="shorts-nav-btn" id="shortsNext" aria-label="次へ">→</button>
       </div>` : ''}`;
 
-    if (hasMultiple) {
+    if (needsNav) {
       document.getElementById('shortsPrev').addEventListener('click', () => {
         shortsIndex = (shortsIndex - 1 + shortsData.length) % shortsData.length;
         renderShortsPage();
