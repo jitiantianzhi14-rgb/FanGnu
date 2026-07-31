@@ -461,9 +461,7 @@
       </div>`;
   }
 
-  const LIVE_HISTORY_PAGE_SIZE = 10;
-  let liveHistoryAll = [];
-  let liveHistoryShown = 0;
+  const LIVE_HISTORY_INITIAL_COUNT = 10;
 
   function liveHistoryItemHtml(h) {
     const srcParam = h.source === 'srvvinci' ? '&src=srvvinci' : '';
@@ -477,30 +475,24 @@
       </li>`;
   }
 
-  function renderLiveHistoryPage() {
-    const list = document.getElementById('liveHistoryList');
-    const moreBtn = document.getElementById('liveHistoryShowMore');
-    const nextShown = Math.min(liveHistoryShown + LIVE_HISTORY_PAGE_SIZE, liveHistoryAll.length);
-    const page = liveHistoryAll.slice(liveHistoryShown, nextShown);
-    list.insertAdjacentHTML('beforeend', page.map(liveHistoryItemHtml).join(''));
-    liveHistoryShown = nextShown;
-    moreBtn.style.display = liveHistoryShown < liveHistoryAll.length ? 'block' : 'none';
-  }
-
   function renderLiveHistory(history) {
     const area = document.getElementById('liveHistoryArea');
     if (!history.length) {
       area.innerHTML = '';
       return;
     }
-    liveHistoryAll = history;
-    liveHistoryShown = 0;
+    const initial = history.slice(0, LIVE_HISTORY_INITIAL_COUNT);
+    const rest = history.slice(LIVE_HISTORY_INITIAL_COUNT);
     area.innerHTML = `
       <div class="section-label">LIVE HISTORY（全${history.length}回）</div>
-      <ol class="live-history-list" id="liveHistoryList"></ol>
-      <button type="button" class="show-more-btn" id="liveHistoryShowMore" style="display:none;">もっと表示</button>`;
-    document.getElementById('liveHistoryShowMore').addEventListener('click', () => renderLiveHistoryPage());
-    renderLiveHistoryPage();
+      <ol class="live-history-list" id="liveHistoryList">${initial.map(liveHistoryItemHtml).join('')}</ol>
+      ${rest.length ? `<button type="button" class="show-more-btn" id="liveHistoryShowMore">もっと表示（他${rest.length}件）</button>` : ''}`;
+    if (rest.length) {
+      document.getElementById('liveHistoryShowMore').addEventListener('click', function onClick() {
+        document.getElementById('liveHistoryList').insertAdjacentHTML('beforeend', rest.map(liveHistoryItemHtml).join(''));
+        this.remove();
+      });
+    }
   }
 
   function setMetaContent(selector, content) {
