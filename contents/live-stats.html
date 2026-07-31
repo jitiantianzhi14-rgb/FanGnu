@@ -432,13 +432,27 @@
 
   function bindTooltips(container) {
     container.addEventListener('pointermove', (e) => {
+      if (e.pointerType === 'touch') return; // タッチはtapイベントで別途処理
       const mark = e.target.closest('[data-tt-value]');
       if (!mark) { hideTooltip(); return; }
       showTooltip(e.clientX, e.clientY, mark.dataset.ttValue, mark.dataset.ttLabel);
     });
-    container.addEventListener('pointerleave', hideTooltip);
+    container.addEventListener('pointerleave', (e) => {
+      if (e.pointerType === 'touch') return;
+      hideTooltip();
+    });
   }
   ['songYearChart', 'yearTotalChart', 'albumRatioChart', 'jpMap'].forEach(id => bindTooltips(document.getElementById(id)));
+
+  // スマホ等のタップ操作: タップしたマークのツールチップを表示し、それ以外の場所のタップで閉じる
+  document.addEventListener('click', (e) => {
+    const mark = e.target.closest('[data-tt-value]');
+    if (mark) {
+      showTooltip(e.clientX, e.clientY, mark.dataset.ttValue, mark.dataset.ttLabel);
+    } else {
+      hideTooltip();
+    }
+  });
 
   function escH(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
