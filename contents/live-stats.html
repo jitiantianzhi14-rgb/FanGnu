@@ -86,6 +86,31 @@
     .map-note { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--gray); text-align: right; margin-top: 6px; }
     .map-note a { color: var(--gray); text-decoration: underline; }
 
+    .chart-card { background: var(--white); border: 1px solid var(--border); padding: 1.25rem; }
+    .chart-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); margin-bottom: 1rem; }
+
+    .hbar-row { display: flex; align-items: center; gap: 10px; padding: 5px 0; }
+    .hbar-label { width: 130px; flex-shrink: 0; font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .hbar-label a:hover { color: var(--red); }
+    .hbar-track-wrap { flex: 1; min-width: 0; }
+    .hbar-fill { height: 16px; max-height: 16px; border-radius: 0 4px 4px 0; }
+    .hbar-value { width: 50px; flex-shrink: 0; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); }
+
+    .stack-row { display: flex; align-items: center; gap: 10px; padding: 5px 0; }
+    .stack-label { width: 130px; flex-shrink: 0; font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .stack-label a:hover { color: var(--red); }
+    .stack-track-wrap { flex: 1; min-width: 0; }
+    .stack-track { height: 16px; max-height: 16px; display: flex; gap: 2px; }
+    .stack-seg { height: 16px; }
+    .stack-seg:last-child { border-radius: 0 4px 4px 0; }
+    .stack-value { width: 50px; flex-shrink: 0; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); }
+
+    .chart-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--black); }
+    .legend-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+    .chart-select { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; padding: 6px 10px; border: 1px solid var(--black); background: var(--white); color: var(--black); cursor: pointer; }
+
     .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); margin-top: 2rem; }
     .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
     .footer-logo .red { color: var(--red); }
@@ -97,6 +122,7 @@
       .summary-grid { grid-template-columns: repeat(2, 1fr); }
       .summary-card { border-bottom: 1px solid rgba(255,255,255,0.15); }
       .map-section { flex-direction: column; }
+      .hbar-label, .stack-label { width: 84px; font-size: 11px; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
   </style>
@@ -305,6 +331,40 @@
         </svg>
       </div>
       <div class="map-note">出典: <a href="https://commons.wikimedia.org/wiki/File:Blank_map_of_Japan_new.svg" target="_blank" rel="noopener">Wikimedia Commons</a>（CC BY-SA 3.0）／沖縄県は位置調整のうえ表示</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">SONGS BY YEAR</div>
+      <div class="chart-card">
+        <div class="chart-sub">よく演奏される曲（上位20曲）の年別内訳</div>
+        <div id="songYearChart"><div class="loading">集計中…</div></div>
+        <div class="chart-legend" id="songYearLegend"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">YEARLY PERFORMANCES</div>
+      <div class="chart-card">
+        <div class="chart-sub">年別の総演奏回数（各公演のセットリストに含まれるユニーク曲数の合計）</div>
+        <div id="yearTotalChart"><div class="loading">集計中…</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">ALBUM RATIO</div>
+      <div class="chart-card">
+        <div class="chart-sub">全公演の演奏曲が、どのリリースに収録された曲かの内訳</div>
+        <div id="albumRatioChart"><div class="loading">集計中…</div></div>
+        <div class="chart-legend" id="albumRatioLegend"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">SONGS IN ALBUM</div>
+      <div class="chart-card">
+        <div class="chart-sub"><select class="chart-select" id="albumSelect"></select></div>
+        <div id="albumSongsChart"><div class="loading">集計中…</div></div>
       </div>
     </div>
   </div>
@@ -577,6 +637,222 @@
     renderTopList('overseasRankLabel', 'overseasRankList', '海外 TOP5', countryCounts.entries(), `${countryCounts.size}ヶ国`);
   }
 
+  // ---- 年別・アルバム別集計 ----
+
+  const YEAR_RAMP = ['#cde2fb', '#9ec5f4', '#6da7ec', '#3987e5', '#256abf', '#184f95', '#0d366b'];
+  const ALBUM_PALETTE = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#4a3aa7', '#e34948'];
+
+  function collectYearlyStats(kgLive, svLive) {
+    const allTours = [...(kgLive.tours || []), ...(svLive.tours || [])];
+    const songYearCounts = new Map();
+    const yearTotals = new Map();
+
+    allTours.forEach(tour => {
+      (tour.shows || []).forEach(show => {
+        const year = (show.date || '').slice(0, 4);
+        if (!year) return;
+        const uniqueKeys = new Set();
+        (show.setlist || []).forEach(s => uniqueKeys.add(normalizeTitle(s)));
+        uniqueKeys.forEach(key => {
+          if (!songYearCounts.has(key)) songYearCounts.set(key, new Map());
+          const yearMap = songYearCounts.get(key);
+          yearMap.set(year, (yearMap.get(year) || 0) + 1);
+          yearTotals.set(year, (yearTotals.get(year) || 0) + 1);
+        });
+      });
+    });
+
+    return { songYearCounts, yearTotals };
+  }
+
+  function buildAlbumMap(kgDisco, svDisco) {
+    const songAlbum = new Map();
+    const albumTracks = new Map();
+
+    const studioAlbums = (kgDisco.albums || []).filter(a => a.note !== 'ライブアルバム');
+    studioAlbums.forEach(album => {
+      const tracks = [];
+      (album.tracks || []).forEach(t => {
+        const key = normalizeTitle(t.title);
+        if (!songAlbum.has(key)) songAlbum.set(key, album.title);
+        tracks.push({ title: t.title, key });
+      });
+      albumTracks.set(album.title, tracks);
+    });
+
+    (svDisco.groups || []).forEach(group => {
+      const titles = [];
+      [...(group.demos || []), ...(group.singles || []), ...(group.albums || [])].forEach(coll => {
+        if (coll.tracks) coll.tracks.forEach(t => titles.push(t.title));
+        else titles.push(coll.title);
+      });
+      titles.forEach(title => {
+        const key = normalizeTitle(title);
+        if (!songAlbum.has(key)) songAlbum.set(key, 'Srv.Vinci期');
+      });
+    });
+
+    (kgDisco.items || []).forEach(item => {
+      const key = normalizeTitle(item.title);
+      if (!songAlbum.has(key)) songAlbum.set(key, 'シングル（アルバム未収録）');
+      if (item.coupling) {
+        const ck = normalizeTitle(item.coupling.title);
+        if (!songAlbum.has(ck)) songAlbum.set(ck, 'シングル（アルバム未収録）');
+      }
+    });
+
+    return { songAlbum, albumTracks };
+  }
+
+  function songTotal(yearMap) {
+    return [...yearMap.values()].reduce((a, b) => a + b, 0);
+  }
+
+  function renderSongYearChart(songYearCounts, songIndex) {
+    const container = document.getElementById('songYearChart');
+    const legendEl = document.getElementById('songYearLegend');
+
+    const entries = [...songYearCounts.entries()]
+      .map(([key, yearMap]) => ({ key, yearMap, total: songTotal(yearMap) }))
+      .sort((a, b) => b.total - a.total)
+      .slice(0, 20);
+
+    if (!entries.length) {
+      container.innerHTML = '<div class="loading">データがありません。</div>';
+      return;
+    }
+
+    const allYears = [...new Set(entries.flatMap(e => [...e.yearMap.keys()]))].sort();
+    const yearColor = (year) => {
+      const idx = allYears.indexOf(year);
+      const steps = YEAR_RAMP.length;
+      const pos = allYears.length <= 1 ? steps - 1 : Math.round((idx / (allYears.length - 1)) * (steps - 1));
+      return YEAR_RAMP[pos];
+    };
+    const maxTotal = entries[0].total;
+
+    container.innerHTML = entries.map(({ key, yearMap, total }) => {
+      const info = songIndex.get(key);
+      const title = info ? info.title : key;
+      const href = info ? songHref(info) : null;
+      const barWidthPct = (total / maxTotal) * 100;
+      const segs = allYears
+        .filter(y => yearMap.has(y))
+        .map(y => {
+          const c = yearMap.get(y);
+          const pct = (c / total) * 100;
+          return `<div class="stack-seg" style="width:${pct}%;background:${yearColor(y)}" title="${escH(title)}（${y}年）: ${c}回"></div>`;
+        }).join('');
+      const labelInner = href ? `<a href="${href}">${escH(title)}</a>` : escH(title);
+      return `
+        <div class="stack-row">
+          <div class="stack-label">${labelInner}</div>
+          <div class="stack-track-wrap"><div class="stack-track" style="width:${barWidthPct}%">${segs}</div></div>
+          <div class="stack-value">${total}回</div>
+        </div>`;
+    }).join('');
+
+    legendEl.innerHTML = allYears.map(y => `
+      <div class="legend-item"><span class="legend-swatch" style="background:${yearColor(y)}"></span>${escH(y)}年</div>`).join('');
+  }
+
+  function renderYearTotalChart(yearTotals) {
+    const container = document.getElementById('yearTotalChart');
+    const years = [...yearTotals.keys()].sort();
+    if (!years.length) {
+      container.innerHTML = '<div class="loading">データがありません。</div>';
+      return;
+    }
+    const max = Math.max(...yearTotals.values());
+    container.innerHTML = years.map(y => {
+      const c = yearTotals.get(y);
+      const pct = (c / max) * 100;
+      return `
+        <div class="hbar-row">
+          <div class="hbar-label">${escH(y)}年</div>
+          <div class="hbar-track-wrap"><div class="hbar-fill" style="width:${pct}%;background:var(--red)" title="${escH(y)}年: ${c}回"></div></div>
+          <div class="hbar-value">${c}回</div>
+        </div>`;
+    }).join('');
+  }
+
+  function renderAlbumRatioChart(songYearCounts, songAlbum) {
+    const container = document.getElementById('albumRatioChart');
+    const legendEl = document.getElementById('albumRatioLegend');
+    const albumTotals = new Map();
+    let grandTotal = 0;
+
+    songYearCounts.forEach((yearMap, key) => {
+      const total = songTotal(yearMap);
+      const label = songAlbum.get(key) || 'その他/不明';
+      albumTotals.set(label, (albumTotals.get(label) || 0) + total);
+      grandTotal += total;
+    });
+
+    if (!grandTotal) {
+      container.innerHTML = '<div class="loading">データがありません。</div>';
+      return;
+    }
+
+    const sorted = [...albumTotals.entries()].sort((a, b) => b[1] - a[1]);
+
+    container.innerHTML = `
+      <div class="stack-track" style="width:100%;height:24px;max-height:24px;">
+        ${sorted.map(([label, count], i) => {
+          const pct = (count / grandTotal) * 100;
+          return `<div class="stack-seg" style="width:${pct}%;height:24px;background:${ALBUM_PALETTE[i % ALBUM_PALETTE.length]}" title="${escH(label)}: ${count}回（${pct.toFixed(1)}%）"></div>`;
+        }).join('')}
+      </div>`;
+
+    legendEl.innerHTML = sorted.map(([label, count], i) => {
+      const pct = (count / grandTotal) * 100;
+      return `<div class="legend-item"><span class="legend-swatch" style="background:${ALBUM_PALETTE[i % ALBUM_PALETTE.length]}"></span>${escH(label)}（${pct.toFixed(1)}%）</div>`;
+    }).join('');
+  }
+
+  let albumTracksData = new Map();
+  let songYearCountsData = new Map();
+  let songIndexData = new Map();
+
+  function renderAlbumSongsChart(albumLabel) {
+    const container = document.getElementById('albumSongsChart');
+    const tracks = albumTracksData.get(albumLabel) || [];
+    const rows = tracks
+      .map(t => {
+        const yearMap = songYearCountsData.get(t.key);
+        return { title: t.title, total: yearMap ? songTotal(yearMap) : 0, key: t.key };
+      })
+      .sort((a, b) => b.total - a.total);
+
+    if (!rows.length) {
+      container.innerHTML = '<div class="loading">データがありません。</div>';
+      return;
+    }
+    const max = Math.max(...rows.map(r => r.total), 1);
+
+    container.innerHTML = rows.map(r => {
+      const info = songIndexData.get(r.key);
+      const href = info ? songHref(info) : null;
+      const pct = (r.total / max) * 100;
+      const labelInner = href ? `<a href="${href}">${escH(r.title)}</a>` : escH(r.title);
+      return `
+        <div class="hbar-row">
+          <div class="hbar-label">${labelInner}</div>
+          <div class="hbar-track-wrap"><div class="hbar-fill" style="width:${pct}%;background:var(--red)" title="${escH(r.title)}: ${r.total}回"></div></div>
+          <div class="hbar-value">${r.total}回</div>
+        </div>`;
+    }).join('');
+  }
+
+  function initAlbumSelect(albumTracks) {
+    const select = document.getElementById('albumSelect');
+    const labels = [...albumTracks.keys()];
+    if (!labels.length) return;
+    select.innerHTML = labels.map(l => `<option value="${escH(l)}">${escH(l)}</option>`).join('');
+    select.addEventListener('change', () => renderAlbumSongsChart(select.value));
+    renderAlbumSongsChart(labels[0]);
+  }
+
   Promise.all([
     loadJson('data/kinggnu-live.json'),
     loadJson('data/srvvinci-live.json'),
@@ -589,12 +865,27 @@
     renderRanking(stats.songCounts, songIndex);
     renderMap(stats.prefCounts);
     renderLocationRanking(stats.prefCounts, stats.countryCounts);
+
+    const { songYearCounts, yearTotals } = collectYearlyStats(kgLive, svLive);
+    const { songAlbum, albumTracks } = buildAlbumMap(kgDisco, svDisco);
+    songYearCountsData = songYearCounts;
+    songIndexData = songIndex;
+    albumTracksData = albumTracks;
+
+    renderSongYearChart(songYearCounts, songIndex);
+    renderYearTotalChart(yearTotals);
+    renderAlbumRatioChart(songYearCounts, songAlbum);
+    initAlbumSelect(albumTracks);
   }).catch(err => {
     console.error(err);
     document.getElementById('summaryGrid').innerHTML = `<div class="loading">データの読み込みに失敗しました。</div>`;
     document.getElementById('rankList').innerHTML = '';
     document.getElementById('domesticRankList').innerHTML = '';
     document.getElementById('overseasRankList').innerHTML = '';
+    document.getElementById('songYearChart').innerHTML = '';
+    document.getElementById('yearTotalChart').innerHTML = '';
+    document.getElementById('albumRatioChart').innerHTML = '';
+    document.getElementById('albumSongsChart').innerHTML = '';
   });
   </script>
 
