@@ -337,8 +337,9 @@
     <div>
       <div class="section-label">SONGS BY YEAR</div>
       <div class="chart-card">
-        <div class="chart-sub">よく演奏される曲（上位20曲）の年別内訳</div>
+        <div class="chart-sub"><select class="chart-select" id="songYearAlbumSelect"></select>　曲別の年別内訳（演奏回数順）</div>
         <div id="songYearChart"><div class="loading">集計中…</div></div>
+        <button type="button" class="show-more-btn" id="songYearShowMore" style="display:none;">もっと表示</button>
         <div class="chart-legend" id="songYearLegend"></div>
       </div>
     </div>
@@ -708,40 +709,39 @@
     return [...yearMap.values()].reduce((a, b) => a + b, 0);
   }
 
-  function renderSongYearChart(songYearCounts, songIndex) {
+  const SONG_YEAR_PAGE_SIZE = 20;
+  let songYearAllEntries = [];
+  let songYearAllYears = [];
+  let songYearShown = 0;
+  let songYearSongIndex = null;
+  let songYearCountsRef = null;
+  let songAlbumRef = null;
+
+  function songYearColor(year) {
+    const idx = songYearAllYears.indexOf(year);
+    const steps = YEAR_RAMP.length;
+    const pos = songYearAllYears.length <= 1 ? steps - 1 : Math.round((idx / (songYearAllYears.length - 1)) * (steps - 1));
+    return YEAR_RAMP[pos];
+  }
+
+  function renderSongYearPage() {
     const container = document.getElementById('songYearChart');
-    const legendEl = document.getElementById('songYearLegend');
+    const moreBtn = document.getElementById('songYearShowMore');
+    const nextShown = Math.min(songYearShown + SONG_YEAR_PAGE_SIZE, songYearAllEntries.length);
+    const page = songYearAllEntries.slice(songYearShown, nextShown);
+    const maxTotal = songYearAllEntries[0].total;
 
-    const entries = [...songYearCounts.entries()]
-      .map(([key, yearMap]) => ({ key, yearMap, total: songTotal(yearMap) }))
-      .sort((a, b) => b.total - a.total)
-      .slice(0, 20);
-
-    if (!entries.length) {
-      container.innerHTML = '<div class="loading">データがありません。</div>';
-      return;
-    }
-
-    const allYears = [...new Set(entries.flatMap(e => [...e.yearMap.keys()]))].sort();
-    const yearColor = (year) => {
-      const idx = allYears.indexOf(year);
-      const steps = YEAR_RAMP.length;
-      const pos = allYears.length <= 1 ? steps - 1 : Math.round((idx / (allYears.length - 1)) * (steps - 1));
-      return YEAR_RAMP[pos];
-    };
-    const maxTotal = entries[0].total;
-
-    container.innerHTML = entries.map(({ key, yearMap, total }) => {
-      const info = songIndex.get(key);
+    container.insertAdjacentHTML('beforeend', page.map(({ key, yearMap, total }) => {
+      const info = songYearSongIndex.get(key);
       const title = info ? info.title : key;
       const href = info ? songHref(info) : null;
       const barWidthPct = (total / maxTotal) * 100;
-      const segs = allYears
+      const segs = songYearAllYears
         .filter(y => yearMap.has(y))
         .map(y => {
           const c = yearMap.get(y);
           const pct = (c / total) * 100;
-          return `<div class="stack-seg" style="width:${pct}%;background:${yearColor(y)}" title="${escH(title)}（${y}年）: ${c}回"></div>`;
+          return `<div class="stack-seg" style="width:${pct}%;background:${songYearColor(y)}" title="${escH(title)}（${y}年）: ${c}回"></div>`;
         }).join('');
       const labelInner = href ? `<a href="${href}">${escH(title)}</a>` : escH(title);
       return `
@@ -750,10 +750,49 @@
           <div class="stack-track-wrap"><div class="stack-track" style="width:${barWidthPct}%">${segs}</div></div>
           <div class="stack-value">${total}回</div>
         </div>`;
-    }).join('');
+    }).join(''));
 
-    legendEl.innerHTML = allYears.map(y => `
-      <div class="legend-item"><span class="legend-swatch" style="background:${yearColor(y)}"></span>${escH(y)}年</div>`).join('');
+    songYearShown = nextShown;
+    moreBtn.style.display = songYearShown < songYearAllEntries.length ? 'block' : 'none';
+  }
+
+  function renderSongYearChart(songYearCounts, songIndex, songAlbum, filterAlbum) {
+    const container = document.getElementById('songYearChart');
+    const legendEl = document.getElementById('songYearLegend');
+    songYearSongIndex = songIndex;
+
+    songYearAllEntries = [...songYearCounts.entries()]
+      .filter(([key]) => !filterAlbum || filterAlbum === 'すべて' || songAlbum.get(key) === filterAlbum)
+      .map(([key, yearMap]) => ({ key, yearMap, total: songTotal(yearMap) }))
+      .sort((a, b) => b.total - a.total);
+
+    if (!songYearAllEntries.length) {
+      container.innerHTML = '<div class="loading">データがありません。</div>';
+      legendEl.innerHTML = '';
+      document.getElementById('songYearShowMore').style.display = 'none';
+      return;
+    }
+
+    songYearAllYears = [...new Set(songYearAllEntries.flatMap(e => [...e.yearMap.keys()]))].sort();
+    container.innerHTML = '';
+    songYearShown = 0;
+    renderSongYearPage();
+
+    legendEl.innerHTML = songYearAllYears.map(y => `
+      <div class="legend-item"><span class="legend-swatch" style="background:${songYearColor(y)}"></span>${escH(y)}年</div>`).join('');
+  }
+
+  function initSongYearFilter(songYearCounts, songIndex, songAlbum, albumTracks) {
+    songYearCountsRef = songYearCounts;
+    songAlbumRef = songAlbum;
+    const select = document.getElementById('songYearAlbumSelect');
+    const options = ['すべて', ...albumTracks.keys(), 'シングル（アルバム未収録）', 'Srv.Vinci期'];
+    const extra = [...new Set(songAlbum.values())].filter(l => !options.includes(l));
+    options.push(...extra);
+    select.innerHTML = options.map(l => `<option value="${escH(l)}">${escH(l)}</option>`).join('');
+    select.addEventListener('change', () => renderSongYearChart(songYearCountsRef, songIndex, songAlbumRef, select.value));
+    document.getElementById('songYearShowMore').addEventListener('click', () => renderSongYearPage());
+    renderSongYearChart(songYearCounts, songIndex, songAlbum, 'すべて');
   }
 
   function renderYearTotalChart(yearTotals) {
@@ -872,7 +911,7 @@
     songIndexData = songIndex;
     albumTracksData = albumTracks;
 
-    renderSongYearChart(songYearCounts, songIndex);
+    initSongYearFilter(songYearCounts, songIndex, songAlbum, albumTracks);
     renderYearTotalChart(yearTotals);
     renderAlbumRatioChart(songYearCounts, songAlbum);
     initAlbumSelect(albumTracks);
