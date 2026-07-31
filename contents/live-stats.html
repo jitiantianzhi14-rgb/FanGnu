@@ -116,6 +116,7 @@
     .filter-chip.active:hover { background: var(--red); border-color: var(--red); }
 
     .tabs-wrap { display: flex; flex-direction: column; gap: 1.25rem; }
+    .tabs-wrap > .section-label { margin-bottom: 0; }
     .tab-bar { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 2px solid var(--border); }
     .tab-btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; padding: 1rem; text-align: center; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; background: none; color: var(--gray); cursor: pointer; transition: all 0.15s; }
     .tab-btn:hover { color: var(--black); }
@@ -165,6 +166,7 @@
     </div>
 
     <div class="tabs-wrap">
+    <div class="section-label">STATS</div>
     <div class="tab-bar" id="statsTabs">
       <button type="button" class="tab-btn active" data-tab="ranking">楽曲ランキング</button>
       <button type="button" class="tab-btn" data-tab="yearly">年別演奏回数</button>
@@ -353,7 +355,6 @@
     </div>
 
     <div class="tab-panel active" data-panel="ranking">
-      <div class="section-label">SONG RANKING</div>
       <div class="chart-card">
         <div class="chart-sub">曲別の年別内訳（演奏回数順）</div>
         <div class="filter-chips" id="songYearAlbumChips"></div>
@@ -364,7 +365,6 @@
     </div>
 
     <div class="tab-panel" data-panel="yearly">
-      <div class="section-label">YEARLY PERFORMANCES</div>
       <div class="chart-card">
         <div class="chart-sub">年別の総演奏回数（各公演のセットリストに含まれるユニーク曲数の合計）</div>
         <div id="yearTotalChart"><div class="loading">集計中…</div></div>
@@ -372,7 +372,6 @@
     </div>
 
     <div class="tab-panel" data-panel="album">
-      <div class="section-label">ALBUM RATIO</div>
       <div class="chart-card">
         <div class="chart-sub">演奏曲がどのリリースに収録された曲かの内訳（全期間＋年別）</div>
         <div id="albumRatioChart"><div class="loading">集計中…</div></div>
