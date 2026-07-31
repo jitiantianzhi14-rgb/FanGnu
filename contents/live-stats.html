@@ -109,7 +109,11 @@
     .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--black); }
     .legend-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
 
-    .chart-select { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; padding: 6px 10px; border: 1px solid var(--black); background: var(--white); color: var(--black); cursor: pointer; }
+    .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
+    .filter-chip { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; padding: 6px 14px; border: 1px solid var(--border); background: var(--white); color: var(--gray); cursor: pointer; transition: all 0.15s; }
+    .filter-chip:hover { border-color: var(--black); color: var(--black); }
+    .filter-chip.active { background: var(--black); color: var(--white); border-color: var(--black); }
+    .filter-chip.active:hover { background: var(--red); border-color: var(--red); }
 
     .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); margin-top: 2rem; }
     .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
@@ -337,7 +341,8 @@
     <div>
       <div class="section-label">SONGS BY YEAR</div>
       <div class="chart-card">
-        <div class="chart-sub"><select class="chart-select" id="songYearAlbumSelect"></select>　曲別の年別内訳（演奏回数順）</div>
+        <div class="chart-sub">曲別の年別内訳（演奏回数順）</div>
+        <div class="filter-chips" id="songYearAlbumChips"></div>
         <div id="songYearChart"><div class="loading">集計中…</div></div>
         <button type="button" class="show-more-btn" id="songYearShowMore" style="display:none;">もっと表示</button>
         <div class="chart-legend" id="songYearLegend"></div>
@@ -364,7 +369,7 @@
     <div>
       <div class="section-label">SONGS IN ALBUM</div>
       <div class="chart-card">
-        <div class="chart-sub"><select class="chart-select" id="albumSelect"></select></div>
+        <div class="filter-chips" id="albumChips"></div>
         <div id="albumSongsChart"><div class="loading">集計中…</div></div>
       </div>
     </div>
@@ -785,12 +790,22 @@
   function initSongYearFilter(songYearCounts, songIndex, songAlbum, albumTracks) {
     songYearCountsRef = songYearCounts;
     songAlbumRef = songAlbum;
-    const select = document.getElementById('songYearAlbumSelect');
+    const chipsEl = document.getElementById('songYearAlbumChips');
     const options = ['すべて', ...albumTracks.keys(), 'シングル（アルバム未収録）', 'Srv.Vinci期'];
     const extra = [...new Set(songAlbum.values())].filter(l => !options.includes(l));
     options.push(...extra);
-    select.innerHTML = options.map(l => `<option value="${escH(l)}">${escH(l)}</option>`).join('');
-    select.addEventListener('change', () => renderSongYearChart(songYearCountsRef, songIndex, songAlbumRef, select.value));
+
+    chipsEl.innerHTML = options.map((l, i) =>
+      `<button type="button" class="filter-chip${i === 0 ? ' active' : ''}" data-value="${escH(l)}">${escH(l)}</button>`
+    ).join('');
+    chipsEl.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        chipsEl.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        renderSongYearChart(songYearCountsRef, songIndex, songAlbumRef, chip.dataset.value);
+      });
+    });
+
     document.getElementById('songYearShowMore').addEventListener('click', () => renderSongYearPage());
     renderSongYearChart(songYearCounts, songIndex, songAlbum, 'すべて');
   }
@@ -884,11 +899,19 @@
   }
 
   function initAlbumSelect(albumTracks) {
-    const select = document.getElementById('albumSelect');
+    const chipsEl = document.getElementById('albumChips');
     const labels = [...albumTracks.keys()];
     if (!labels.length) return;
-    select.innerHTML = labels.map(l => `<option value="${escH(l)}">${escH(l)}</option>`).join('');
-    select.addEventListener('change', () => renderAlbumSongsChart(select.value));
+    chipsEl.innerHTML = labels.map((l, i) =>
+      `<button type="button" class="filter-chip${i === 0 ? ' active' : ''}" data-value="${escH(l)}">${escH(l)}</button>`
+    ).join('');
+    chipsEl.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        chipsEl.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        renderAlbumSongsChart(chip.dataset.value);
+      });
+    });
     renderAlbumSongsChart(labels[0]);
   }
 
