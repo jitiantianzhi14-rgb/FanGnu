@@ -92,6 +92,8 @@
     a.setlist-row { cursor: pointer; transition: background 0.15s, color 0.15s; }
     a.setlist-row:hover { background: var(--bg); color: var(--red); }
     .setlist-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); width: 22px; flex-shrink: 0; }
+    .setlist-title { flex: 1; min-width: 0; }
+    .setlist-detail-btn { width: 24px; height: 24px; background: var(--red); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; }
     .no-setlist { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); padding: 2rem 0; text-align: center; border: 1px dashed var(--border); margin-top: 2rem; }
 
     .stack-track { height: 20px; max-height: 20px; display: flex; gap: 2px; }
@@ -432,9 +434,9 @@
     area.innerHTML = `
       <div class="section-label">SETLIST</div>
       <ol class="setlist-list">${setlist.map((s, i) => {
-        const inner = `<span class="setlist-num">${String(i + 1).padStart(2, '0')}</span>${escH(s)}`;
         const info = resolveSongInfo(s, songIndex);
         const href = info ? songHref(info) : null;
+        const inner = `<span class="setlist-num">${String(i + 1).padStart(2, '0')}</span><span class="setlist-title">${escH(s)}</span>${href ? `<span class="setlist-detail-btn" aria-hidden="true">→</span>` : ''}`;
         return href
           ? `<li class="setlist-item"><a class="setlist-row" href="${href}">${inner}</a></li>`
           : `<li class="setlist-item"><span class="setlist-row">${inner}</span></li>`;
