@@ -210,7 +210,7 @@
 
     <div class="action-buttons">
       <a href="#" id="discographyLink" class="action-btn outline">← ディスコグラフィーに戻る</a>
-      <a href="#" id="liveListLink" class="action-btn">ライブ一覧を見る →</a>
+      <a href="live-stats.html" class="action-btn">統計を見る →</a>
     </div>
   </div>
 
@@ -714,7 +714,6 @@
 
   const isSrvvinci = src === 'srvvinci';
   document.getElementById('discographyLink').href = isSrvvinci ? 'srvvinci.html' : 'discography.html';
-  document.getElementById('liveListLink').href = isSrvvinci ? 'srvvinci-live.html' : 'live.html';
 
   const lookup = isSrvvinci ? findInSrvvinci(yt, am, ext) : findInDiscography(yt, ext, sp);
   lookup
