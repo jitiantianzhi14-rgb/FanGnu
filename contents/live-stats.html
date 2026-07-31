@@ -115,6 +115,14 @@
     .filter-chip.active { background: var(--black); color: var(--white); border-color: var(--black); }
     .filter-chip.active:hover { background: var(--red); border-color: var(--red); }
 
+    .tab-bar { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tab-btn { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; padding: 10px 18px; border: 1px solid var(--black); background: var(--white); color: var(--black); cursor: pointer; transition: all 0.15s; }
+    .tab-btn:hover { background: var(--bg); }
+    .tab-btn.active { background: var(--black); color: var(--white); }
+    .tab-btn.active:hover { background: var(--red); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
     .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); margin-top: 2rem; }
     .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
     .footer-logo .red { color: var(--red); }
@@ -154,12 +162,14 @@
       <div class="summary-grid" id="summaryGrid"><div class="loading">集計中…</div></div>
     </div>
 
-    <div>
-      <div class="section-label" id="rankLabel">SONG RANKING</div>
-      <div class="rank-list" id="rankList"><div class="loading">集計中…</div></div>
-      <button type="button" class="show-more-btn" id="rankShowMore" style="display:none;">もっと表示</button>
+    <div class="tab-bar" id="statsTabs">
+      <button type="button" class="tab-btn active" data-tab="ranking">楽曲ランキング</button>
+      <button type="button" class="tab-btn" data-tab="yearly">年別演奏回数</button>
+      <button type="button" class="tab-btn" data-tab="album">アルバム比率</button>
+      <button type="button" class="tab-btn" data-tab="map">地図</button>
     </div>
 
+    <div class="tab-panel" data-panel="map">
     <div class="map-section">
       <div class="map-rank-col">
         <div class="section-label" id="domesticRankLabel">国内 TOP5</div>
@@ -337,9 +347,10 @@
       <div class="map-note">出典: <a href="https://commons.wikimedia.org/wiki/File:Blank_map_of_Japan_new.svg" target="_blank" rel="noopener">Wikimedia Commons</a>（CC BY-SA 3.0）／沖縄県は位置調整のうえ表示</div>
       </div>
     </div>
+    </div>
 
-    <div>
-      <div class="section-label">SONGS BY YEAR</div>
+    <div class="tab-panel active" data-panel="ranking">
+      <div class="section-label">SONG RANKING</div>
       <div class="chart-card">
         <div class="chart-sub">曲別の年別内訳（演奏回数順）</div>
         <div class="filter-chips" id="songYearAlbumChips"></div>
@@ -349,7 +360,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="tab-panel" data-panel="yearly">
       <div class="section-label">YEARLY PERFORMANCES</div>
       <div class="chart-card">
         <div class="chart-sub">年別の総演奏回数（各公演のセットリストに含まれるユニーク曲数の合計）</div>
@@ -357,7 +368,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="tab-panel" data-panel="album">
       <div class="section-label">ALBUM RATIO</div>
       <div class="chart-card">
         <div class="chart-sub">演奏曲がどのリリースに収録された曲かの内訳（全期間＋年別）</div>
@@ -376,7 +387,18 @@
   </footer>
 
   <script>
-  document.getElementById('rankShowMore').addEventListener('click', () => renderRankPage());
+  function initTabs() {
+    const tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+      });
+    });
+  }
+  initTabs();
 
   function escH(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -550,47 +572,6 @@
         <div class="summary-label">最新公演</div>
         <div class="summary-value small">${lastLink}</div>
       </div>`;
-  }
-
-  const RANK_PAGE_SIZE = 10;
-  let rankedSongs = [];
-  let rankShown = 0;
-
-  function renderRankPage() {
-    const list = document.getElementById('rankList');
-    const moreBtn = document.getElementById('rankShowMore');
-    const nextShown = Math.min(rankShown + RANK_PAGE_SIZE, rankedSongs.length);
-    const page = rankedSongs.slice(rankShown, nextShown);
-
-    list.insertAdjacentHTML('beforeend', page.map(([key, count, info], i) => {
-      const title = info ? info.title : key;
-      const inner = `
-        <span class="rank-num">${rankShown + i + 1}</span>
-        <span class="rank-title">${escH(title)}</span>
-        <span class="rank-count"><b>${count}</b>回</span>`;
-      const href = info ? songHref(info) : null;
-      if (href) {
-        return `<a class="rank-item" href="${href}">${inner}</a>`;
-      }
-      return `<div class="rank-item">${inner}</div>`;
-    }).join(''));
-
-    rankShown = nextShown;
-    moreBtn.style.display = rankShown < rankedSongs.length ? 'block' : 'none';
-  }
-
-  function renderRanking(songCounts, songIndex) {
-    const rankLabel = document.getElementById('rankLabel');
-    const list = document.getElementById('rankList');
-
-    rankedSongs = [...songCounts.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .map(([key, count]) => [key, count, songIndex.get(key)]);
-    rankShown = 0;
-
-    rankLabel.textContent = `SONG RANKING（全${rankedSongs.length}曲）`;
-    list.innerHTML = '';
-    renderRankPage();
   }
 
   function renderMap(prefCounts) {
@@ -908,7 +889,6 @@
     const stats = collectStats(kgLive, svLive);
     const songIndex = buildSongIndex(kgDisco, svDisco);
     renderSummary(stats);
-    renderRanking(stats.songCounts, songIndex);
     renderMap(stats.prefCounts);
     renderLocationRanking(stats.prefCounts, stats.countryCounts);
 
@@ -921,7 +901,6 @@
   }).catch(err => {
     console.error(err);
     document.getElementById('summaryGrid').innerHTML = `<div class="loading">データの読み込みに失敗しました。</div>`;
-    document.getElementById('rankList').innerHTML = '';
     document.getElementById('domesticRankList').innerHTML = '';
     document.getElementById('overseasRankList').innerHTML = '';
     document.getElementById('songYearChart').innerHTML = '';
