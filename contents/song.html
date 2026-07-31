@@ -93,6 +93,10 @@
     .live-stat-value a:hover { color: var(--red); }
     .live-stat-value.empty { color: #666; font-weight: 400; }
     .live-stat.count .live-stat-value { font-family: 'IBM Plex Mono', monospace; font-size: 34px; font-weight: 900; color: var(--red); line-height: 1; }
+
+    .live-years { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .live-years-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 700; color: var(--gray); margin-right: 4px; }
+    .live-year-tag { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; padding: 3px 8px; background: var(--white); border: 1px solid var(--border); color: var(--black); }
     .live-stat.count .live-stat-unit { font-size: 11px; font-weight: 700; color: #999; margin-left: 2px; }
 
     .live-history-list { list-style: none; background: var(--white); border: 1px solid var(--border); }
@@ -150,6 +154,7 @@
 
   <div class="content">
     <div id="liveStatsArea"></div>
+    <div id="liveYearsArea"></div>
 
     <div id="mediaArea"></div>
 
@@ -420,6 +425,20 @@
       </div>`;
   }
 
+  function renderLiveYears(history) {
+    const area = document.getElementById('liveYearsArea');
+    if (!history.length) {
+      area.innerHTML = '';
+      return;
+    }
+    const years = [...new Set(history.map(h => (h.date || '').slice(0, 4)))].filter(Boolean).sort();
+    area.innerHTML = `
+      <div class="live-years">
+        <span class="live-years-label">披露年</span>
+        ${years.map(y => `<span class="live-year-tag">${escH(y)}</span>`).join('')}
+      </div>`;
+  }
+
   function renderLiveHistory(history) {
     const area = document.getElementById('liveHistoryArea');
     if (!history.length) {
@@ -573,6 +592,7 @@
     .then(history => {
       const list = history || [];
       renderLiveStats(list);
+      renderLiveYears(list);
       renderLiveHistory(list);
     })
     .catch(err => {

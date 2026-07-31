@@ -78,6 +78,17 @@
     .setlist-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); width: 22px; flex-shrink: 0; }
     .no-setlist { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); padding: 2rem 0; text-align: center; border: 1px dashed var(--border); margin-top: 2rem; }
 
+    .stack-track { height: 20px; max-height: 20px; display: flex; gap: 2px; }
+    .stack-seg { height: 20px; }
+    .stack-seg:last-child { border-radius: 0 4px 4px 0; }
+    .chart-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 1rem; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--black); }
+    .legend-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    .chart-tooltip { position: fixed; z-index: 500; pointer-events: none; background: var(--black); color: var(--white); padding: 6px 10px; border-radius: 4px; white-space: nowrap; opacity: 0; transition: opacity 0.06s linear; }
+    .chart-tooltip.visible { opacity: 1; }
+    .chart-tooltip .tt-value { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; line-height: 1.3; }
+    .chart-tooltip .tt-label { font-size: 10px; color: #ccc; line-height: 1.3; }
+
     .action-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
     .header-btn { flex: 1 1 0; min-width: 200px; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; border: 1px solid var(--black); padding: 1.5rem 1.5rem; background: var(--black); color: var(--white); transition: background 0.15s; }
     .header-btn:hover { background: var(--red); border-color: var(--red); }
@@ -128,6 +139,7 @@
     <div class="map-area" id="mapArea" style="display:none;"></div>
     <div id="spotifyArea"></div>
     <div id="setlistArea"></div>
+    <div id="albumRatioArea"></div>
 
     <div class="action-buttons">
       <a href="#" id="archiveLink" class="header-btn outline">← ライブアーカイブに戻る</a>
@@ -336,12 +348,140 @@
       }).join('')}</ol>`;
   }
 
+  // ---- カスタムツールチップ ----
+  const tooltipEl = document.createElement('div');
+  tooltipEl.className = 'chart-tooltip';
+  tooltipEl.innerHTML = '<div class="tt-value"></div><div class="tt-label"></div>';
+  document.body.appendChild(tooltipEl);
+  const tooltipValueEl = tooltipEl.querySelector('.tt-value');
+  const tooltipLabelEl = tooltipEl.querySelector('.tt-label');
+
+  function showTooltip(x, y, value, label) {
+    tooltipValueEl.textContent = value;
+    tooltipLabelEl.textContent = label;
+    const spaceRight = window.innerWidth - x;
+    const offsetX = spaceRight < 160 ? -12 - tooltipEl.offsetWidth : 12;
+    tooltipEl.style.left = `${x + offsetX}px`;
+    tooltipEl.style.top = `${y + 16}px`;
+    tooltipEl.classList.add('visible');
+  }
+
+  function hideTooltip() {
+    tooltipEl.classList.remove('visible');
+  }
+
+  function bindTooltips(container) {
+    container.addEventListener('pointermove', (e) => {
+      if (e.pointerType === 'touch') return;
+      const mark = e.target.closest('[data-tt-value]');
+      if (!mark) { hideTooltip(); return; }
+      showTooltip(e.clientX, e.clientY, mark.dataset.ttValue, mark.dataset.ttLabel);
+    });
+    container.addEventListener('pointerleave', (e) => {
+      if (e.pointerType === 'touch') return;
+      hideTooltip();
+    });
+  }
+  document.addEventListener('click', (e) => {
+    const mark = e.target.closest('[data-tt-value]');
+    if (mark) showTooltip(e.clientX, e.clientY, mark.dataset.ttValue, mark.dataset.ttLabel);
+    else hideTooltip();
+  });
+
+  // ---- 公演ごとのアルバム比率 ----
+  const ALBUM_PALETTE = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#4a3aa7', '#e34948'];
+
+  function buildAlbumMap(kgDisco, svDisco) {
+    const songAlbum = new Map();
+
+    const itemTitleByYt = new Map();
+    (kgDisco.items || []).forEach(item => {
+      if (item.yt) itemTitleByYt.set(item.yt, item.title);
+      if (item.coupling && item.coupling.yt) itemTitleByYt.set(item.coupling.yt, item.coupling.title);
+    });
+
+    const studioAlbums = (kgDisco.albums || []).filter(a => a.note !== 'ライブアルバム');
+    studioAlbums.forEach(album => {
+      (album.tracks || []).forEach(t => {
+        const canonicalTitle = (t.yt && itemTitleByYt.get(t.yt)) || t.title;
+        const key = normalizeTitle(canonicalTitle);
+        if (!songAlbum.has(key)) songAlbum.set(key, album.title);
+      });
+    });
+
+    (svDisco.groups || []).forEach(group => {
+      const titles = [];
+      [...(group.demos || []), ...(group.singles || []), ...(group.albums || [])].forEach(coll => {
+        if (coll.tracks) coll.tracks.forEach(t => titles.push(t.title));
+        else titles.push(coll.title);
+      });
+      titles.forEach(title => {
+        const key = normalizeTitle(title);
+        if (!songAlbum.has(key)) songAlbum.set(key, 'Srv.Vinci期');
+      });
+    });
+
+    (kgDisco.items || []).forEach(item => {
+      if (item.type === 'UNRELEASED') return;
+      const key = normalizeTitle(item.title);
+      if (!songAlbum.has(key)) songAlbum.set(key, 'シングル（アルバム未収録）');
+      if (item.coupling) {
+        const ck = normalizeTitle(item.coupling.title);
+        if (!songAlbum.has(ck)) songAlbum.set(ck, 'シングル（アルバム未収録）');
+      }
+    });
+
+    return songAlbum;
+  }
+
+  async function loadAlbumMap() {
+    try {
+      const [kgRes, svRes] = await Promise.all([
+        fetch('data/kinggnu-discography.json'),
+        fetch('data/srvvinci-discography.json'),
+      ]);
+      return buildAlbumMap(await kgRes.json(), await svRes.json());
+    } catch (err) {
+      console.error(err);
+      return new Map();
+    }
+  }
+
+  function renderAlbumRatio(setlist, songAlbum) {
+    const area = document.getElementById('albumRatioArea');
+    if (!setlist || !setlist.length) {
+      area.innerHTML = '';
+      return;
+    }
+
+    const counts = new Map();
+    setlist.forEach(s => {
+      const label = songAlbum.get(normalizeTitle(s)) || 'その他/不明';
+      counts.set(label, (counts.get(label) || 0) + 1);
+    });
+
+    const total = setlist.length;
+    const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+
+    area.innerHTML = `
+      <div class="section-label">ALBUM RATIO</div>
+      <div class="stack-track">${sorted.map(([label, count], i) => {
+        const pct = (count / total) * 100;
+        return `<div class="stack-seg" style="width:${pct}%;background:${ALBUM_PALETTE[i % ALBUM_PALETTE.length]}" data-tt-value="${count}曲（${pct.toFixed(1)}%）" data-tt-label="${escH(label)}"></div>`;
+      }).join('')}</div>
+      <div class="chart-legend">${sorted.map(([label, count], i) => {
+        const pct = (count / total) * 100;
+        return `<div class="legend-item"><span class="legend-swatch" style="background:${ALBUM_PALETTE[i % ALBUM_PALETTE.length]}"></span>${escH(label)}（${count}曲・${pct.toFixed(1)}%）</div>`;
+      }).join('')}</div>`;
+    bindTooltips(area);
+  }
+
   function setMetaContent(selector, content) {
     const el = document.querySelector(selector);
     if (el) el.setAttribute('content', content);
   }
 
-  function renderShow(tour, show, songIndex) {
+  function renderShow(tour, show, songIndex, songAlbum) {
     const pageTitle = `${show.venue || show.location} — 公演詳細 — FanGNU`;
     document.title = pageTitle;
     const desc = `${show.date} ${tour.name}（${show.venue || show.location}）の公演詳細。セットリストなどをまとめて掲載。`;
@@ -379,6 +519,7 @@
 
     renderSpotifyPlaylist(show.spotifyPlaylist);
     renderSetlist(show.setlist, songIndex);
+    renderAlbumRatio(show.setlist, songAlbum);
   }
 
   function renderNotFound() {
@@ -386,6 +527,7 @@
     renderMedia([], '');
     renderSpotifyPlaylist('');
     renderSetlist([], new Map());
+    renderAlbumRatio([], new Map());
   }
 
   async function findShow(date, isSrvvinci) {
@@ -404,9 +546,9 @@
   const backHref = isSrvvinci ? 'srvvinci-live.html' : 'live.html';
   document.getElementById('archiveLink').href = backHref;
 
-  Promise.all([findShow(date, isSrvvinci), loadSongIndex(isSrvvinci)])
-    .then(([result, songIndex]) => {
-      if (result) renderShow(result.tour, result.show, songIndex);
+  Promise.all([findShow(date, isSrvvinci), loadSongIndex(isSrvvinci), loadAlbumMap()])
+    .then(([result, songIndex, songAlbum]) => {
+      if (result) renderShow(result.tour, result.show, songIndex, songAlbum);
       else renderNotFound();
     })
     .catch(err => {
