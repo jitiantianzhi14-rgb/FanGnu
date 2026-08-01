@@ -716,10 +716,11 @@
   }
 
   const params = new URLSearchParams(location.search);
-  const yt  = params.get('yt') || '';
-  const am  = params.get('am') || '';
-  const ext = params.get('ext') || '';
-  const sp  = params.get('sp') || '';
+  const hashParams = new URLSearchParams(location.hash.slice(1));
+  const yt  = params.get('yt') || hashParams.get('yt') || '';
+  const am  = params.get('am') || hashParams.get('am') || '';
+  const ext = params.get('ext') || hashParams.get('ext') || '';
+  const sp  = params.get('sp') || hashParams.get('sp') || '';
   const src = params.get('src') === 'srvvinci' ? 'srvvinci' : 'discography';
 
   const isSrvvinci = src === 'srvvinci';
@@ -731,10 +732,16 @@
       if (!song) { renderNotFound(); return null; }
       renderSong(song);
       const url = new URL(location.href);
-      const reordered = new URLSearchParams();
-      reordered.set('title', song.title);
-      for (const [k, v] of url.searchParams) reordered.set(k, v);
-      url.search = reordered.toString();
+      const query = new URLSearchParams();
+      query.set('title', song.title);
+      if (isSrvvinci) query.set('src', 'srvvinci');
+      const hash = new URLSearchParams();
+      if (yt) hash.set('yt', yt);
+      else if (ext) hash.set('ext', ext);
+      else if (am) hash.set('am', am);
+      else if (sp) hash.set('sp', sp);
+      url.search = query.toString();
+      url.hash = hash.toString();
       history.replaceState(null, '', url);
       return findLiveHistory(song.title);
     })
