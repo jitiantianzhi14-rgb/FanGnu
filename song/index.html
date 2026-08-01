@@ -18,7 +18,7 @@
   <meta property="og:locale" content="ja_JP">
   <meta property="og:title" content="楽曲詳細 — FanGNU">
   <meta property="og:description" content="King Gnu・Srv.Vinci時代の楽曲詳細ページ。MV・タイアップ情報・ライブ披露履歴などをまとめて掲載。">
-  <meta property="og:url" content="https://jitiantianzhi14-rgb.github.io/FanGnu/contents/song.html">
+  <meta property="og:url" content="https://jitiantianzhi14-rgb.github.io/FanGnu/song/">
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -165,11 +165,11 @@
 <body>
 
   <nav class="nav">
-    <a href="../index.html" class="nav-logo">Fan<span class="red">GNU</span></a>
+    <a href="../" class="nav-logo">Fan<span class="red">GNU</span></a>
     <div class="nav-links">
-      <a href="members/members.html">メンバー</a>
-      <a href="discography.html">ディスコグラフィー</a>
-      <a href="live.html">ライブ</a>
+      <a href="../members/">メンバー</a>
+      <a href="../discography/">ディスコグラフィー</a>
+      <a href="../live/">ライブ</a>
     </div>
   </nav>
 
@@ -220,15 +220,15 @@
 
     <div class="action-buttons">
       <a href="#" id="discographyLink" class="action-btn outline">← ディスコグラフィーに戻る</a>
-      <a href="live-stats.html" class="action-btn">統計を見る →</a>
+      <a href="../live-stats/" class="action-btn">統計を見る →</a>
     </div>
   </div>
 
   <footer class="footer">
-    <a href="../index.html" class="footer-logo">Fan<span class="red">GNU</span></a>
+    <a href="../" class="footer-logo">Fan<span class="red">GNU</span></a>
     <div class="footer-copy">
       非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>
-      <a href="../privacy.html">プライバシーポリシー</a> ／ <a href="contact.html">お問い合わせ</a> ／ © FanGNU Unofficial
+      <a href="../privacy/">プライバシーポリシー</a> ／ <a href="../contact/">お問い合わせ</a> ／ © FanGNU Unofficial
     </div>
   </footer>
 
@@ -270,7 +270,7 @@
   function setAlbumInfo(id, song) {
     const el = document.getElementById(id);
     if (song.album && song.album.title) {
-      const target = isSrvvinci ? 'srvvinci.html' : 'discography.html';
+      const target = isSrvvinci ? '../srvvinci/' : '../discography/';
       const numText = song.album.num ? `（${String(song.album.num).padStart(2,'0')}）` : '';
       el.innerHTML = `<a href="${target}?album=${encodeURIComponent(song.album.title)}">${escH(song.album.title)}${numText}</a>`;
       el.classList.remove('empty');
@@ -503,8 +503,8 @@
     if (!title) return [];
     const normTarget = normalizeTitle(title);
     const [kinggnuHits, srvvinciHits] = await Promise.all([
-      collectLiveHits('data/kinggnu-live.json', title, normTarget, 'kinggnu'),
-      collectLiveHits('data/srvvinci-live.json', title, normTarget, 'srvvinci'),
+      collectLiveHits('../data/kinggnu-live.json', title, normTarget, 'kinggnu'),
+      collectLiveHits('../data/srvvinci-live.json', title, normTarget, 'srvvinci'),
     ]);
     const results = [...kinggnuHits, ...srvvinciHits];
     results.sort((a, b) => b.date.localeCompare(a.date));
@@ -514,7 +514,7 @@
   function liveLinkHtml(entry) {
     if (!entry) return `<span class="live-stat-value empty">-</span>`;
     const srcParam = entry.source === 'srvvinci' ? '&src=srvvinci' : '';
-    return `<a href="live-show.html?date=${encodeURIComponent(entry.date)}${srcParam}">${escH(entry.date)}<br>${escH(entry.tourName)}</a>`;
+    return `<a href="../live-show/?date=${encodeURIComponent(entry.date)}${srcParam}">${escH(entry.date)}<br>${escH(entry.tourName)}</a>`;
   }
 
   function renderLiveStats(history) {
@@ -574,7 +574,7 @@
     const srcParam = h.source === 'srvvinci' ? '&src=srvvinci' : '';
     return `
       <li class="live-history-item">
-        <a class="live-history-row" href="live-show.html?date=${encodeURIComponent(h.date)}${srcParam}">
+        <a class="live-history-row" href="../live-show/?date=${encodeURIComponent(h.date)}${srcParam}">
           <span class="lh-date">${escH(h.date)}</span>
           <span class="lh-tour">${escH(h.tourName)}</span>
           <span class="lh-venue">${escH(h.venue || '')}</span>
@@ -652,7 +652,7 @@
   }
 
   async function findInDiscography(yt, ext, sp) {
-    const res = await fetch('data/kinggnu-discography.json');
+    const res = await fetch('../data/kinggnu-discography.json');
     const data = await res.json();
     const matches = (i) => (yt && i.yt === yt) || (ext && i.externalVideo === ext) || (sp && i.spotify === sp);
     const item = data.items.find(matches);
@@ -682,7 +682,7 @@
   }
 
   async function findInSrvvinci(yt, am, ext) {
-    const res = await fetch('data/srvvinci-discography.json');
+    const res = await fetch('../data/srvvinci-discography.json');
     const data = await res.json();
     for (const group of data.groups) {
       const collections = [
@@ -723,7 +723,7 @@
   const src = params.get('src') === 'srvvinci' ? 'srvvinci' : 'discography';
 
   const isSrvvinci = src === 'srvvinci';
-  document.getElementById('discographyLink').href = isSrvvinci ? 'srvvinci.html' : 'discography.html';
+  document.getElementById('discographyLink').href = isSrvvinci ? '../srvvinci/' : '../discography/';
 
   const lookup = isSrvvinci ? findInSrvvinci(yt, am, ext) : findInDiscography(yt, ext, sp);
   lookup
@@ -747,17 +747,17 @@
     if (document.referrer && document.referrer.includes(location.host)) {
       history.back();
     } else {
-      location.href = 'discography.html';
+      location.href = '../discography/';
     }
   });
   </script>
 
   <nav class="bottom-nav">
-    <a href="../index.html" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
-    <a href="discography.html" class="bn-item"><span class="bn-icon">💿</span>ディスコグラフィー</a>
-    <a href="members/members.html" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
-    <a href="live-stats.html" class="bn-item"><span class="bn-icon">📊</span>統計</a>
-    <a href="live.html" class="bn-item"><span class="bn-icon">🎤</span>ライブ</a>
+    <a href="../" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
+    <a href="../discography/" class="bn-item"><span class="bn-icon">💿</span>ディスコグラフィー</a>
+    <a href="../members/" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
+    <a href="../live-stats/" class="bn-item"><span class="bn-icon">📊</span>統計</a>
+    <a href="../live/" class="bn-item"><span class="bn-icon">🎤</span>ライブ</a>
   </nav>
 
 </body>

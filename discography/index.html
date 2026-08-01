@@ -18,7 +18,7 @@
   <meta property="og:locale" content="ja_JP">
   <meta property="og:title" content="Discography — FanGNU">
   <meta property="og:description" content="King Gnuのシングル・アルバム・タイアップ情報を網羅したディスコグラフィー一覧。">
-  <meta property="og:url" content="https://jitiantianzhi14-rgb.github.io/FanGnu/contents/discography.html">
+  <meta property="og:url" content="https://jitiantianzhi14-rgb.github.io/FanGnu/discography/">
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,11 +136,11 @@
 <body>
 
   <nav class="nav">
-    <a href="../index.html" class="nav-logo">Fan<span class="red">GNU</span></a>
+    <a href="../" class="nav-logo">Fan<span class="red">GNU</span></a>
     <div class="nav-links">
-      <a href="members/members.html">メンバー</a>
-      <a href="discography.html" class="active">ディスコグラフィー</a>
-      <a href="live.html">ライブ</a>
+      <a href="../members/">メンバー</a>
+      <a href="./" class="active">ディスコグラフィー</a>
+      <a href="../live/">ライブ</a>
     </div>
   </nav>
 
@@ -149,8 +149,8 @@
     <h1 class="page-header-title">Discography<span class="red">.</span></h1>
     <p class="page-header-desc">King Gnu 名義の全シングル・アルバムを収録。</p>
     <div class="page-header-actions">
-      <a href="srvvinci.html" class="header-btn">King Gnu以前のディスコグラフィー →</a>
-      <a href="live-stats.html" class="header-btn">ライブ・楽曲統計を見る →</a>
+      <a href="../srvvinci/" class="header-btn">King Gnu以前のディスコグラフィー →</a>
+      <a href="../live-stats/" class="header-btn">ライブ・楽曲統計を見る →</a>
     </div>
   </div>
 
@@ -170,10 +170,10 @@
   <div class="content" id="discContent"></div>
 
   <footer class="footer">
-    <a href="../index.html" class="footer-logo">Fan<span class="red">GNU</span></a>
+    <a href="../" class="footer-logo">Fan<span class="red">GNU</span></a>
     <div class="footer-copy">
       非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>
-      <a href="../privacy.html">プライバシーポリシー</a> ／ <a href="contact.html">お問い合わせ</a> ／ © FanGNU Unofficial
+      <a href="../privacy/">プライバシーポリシー</a> ／ <a href="../contact/">お問い合わせ</a> ／ © FanGNU Unofficial
     </div>
   </footer>
 
@@ -194,7 +194,7 @@
     else if (ext) params.set('ext', ext);
     else if (sp) params.set('sp', sp);
     else return null;
-    return `song.html?${params.toString()}`;
+    return `../song/?${params.toString()}`;
   }
 
   function sortKey(year) {
@@ -227,7 +227,7 @@
     const isAlbum = item.type === 'ALBUM';
 
     if (item.discs) {
-      const href = `release.html?title=${encodeURIComponent(item.title)}`;
+      const href = `../release/?title=${encodeURIComponent(item.title)}`;
       return `
         <a class="disc-card" data-type="${escH(item.type)}" data-year="${escH(item.yearKey)}" href="${href}">
           <div class="disc-card-head">
@@ -242,7 +242,7 @@
     if (isAlbum) {
       const detailHtml = `<div class="disc-detail">
           <div class="disc-song-list">
-            <a class="disc-song-row" href="album.html?album=${encodeURIComponent(item.title)}">
+            <a class="disc-song-row" href="../album/?album=${encodeURIComponent(item.title)}">
               <span class="disc-song-title">${escH(item.title)}</span>
               <span class="disc-song-arrow">→アルバム詳細へ</span>
             </a>
@@ -383,7 +383,7 @@
   }
 
   // データ読み込み → 初期描画
-  fetch('data/kinggnu-discography.json')
+  fetch('../data/kinggnu-discography.json')
     .then(res => res.json())
     .then(data => {
       const items = (data.items || []).filter(i => i.type !== 'UNRELEASED').map(i => ({ ...i }));
@@ -404,11 +404,11 @@
   </script>
 
   <nav class="bottom-nav">
-    <a href="../index.html" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
-    <a href="discography.html" class="bn-item active"><span class="bn-icon">💿</span>ディスコグラフィー</a>
-    <a href="members/members.html" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
-    <a href="live-stats.html" class="bn-item"><span class="bn-icon">📊</span>統計</a>
-    <a href="live.html" class="bn-item"><span class="bn-icon">🎤</span>ライブ</a>
+    <a href="../" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
+    <a href="./" class="bn-item active"><span class="bn-icon">💿</span>ディスコグラフィー</a>
+    <a href="../members/" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
+    <a href="../live-stats/" class="bn-item"><span class="bn-icon">📊</span>統計</a>
+    <a href="../live/" class="bn-item"><span class="bn-icon">🎤</span>ライブ</a>
   </nav>
 
 </body>

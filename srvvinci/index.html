@@ -18,7 +18,7 @@
   <meta property="og:locale" content="ja_JP">
   <meta property="og:title" content="前身バンド ディスコグラフィー — FanGNU">
   <meta property="og:description" content="King Gnu結成以前、Srv.Vinci・Mrs.Vinci時代の楽曲・音源をまとめたディスコグラフィー。">
-  <meta property="og:url" content="https://jitiantianzhi14-rgb.github.io/FanGnu/contents/srvvinci.html">
+  <meta property="og:url" content="https://jitiantianzhi14-rgb.github.io/FanGnu/srvvinci/">
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -123,11 +123,11 @@
 <body>
 
   <nav class="nav">
-    <a href="../index.html" class="nav-logo">Fan<span class="red">GNU</span></a>
+    <a href="../" class="nav-logo">Fan<span class="red">GNU</span></a>
     <div class="nav-links">
-      <a href="members/members.html">メンバー</a>
-      <a href="discography.html">ディスコグラフィー</a>
-      <a href="live.html">ライブ</a>
+      <a href="../members/">メンバー</a>
+      <a href="../discography/">ディスコグラフィー</a>
+      <a href="../live/">ライブ</a>
     </div>
   </nav>
 
@@ -136,17 +136,17 @@
     <h1 class="page-header-title">Discography<span class="red">.</span></h1>
     <p class="page-header-desc">King Gnu 結成以前の活動記録。</p>
     <div class="page-header-actions">
-      <a href="discography.html" class="header-btn">← King Gnu ディスコグラフィー</a>
+      <a href="../discography/" class="header-btn">← King Gnu ディスコグラフィー</a>
     </div>
   </div>
 
   <div class="content" id="discContent"></div>
 
   <footer class="footer">
-    <a href="../index.html" class="footer-logo">Fan<span class="red">GNU</span></a>
+    <a href="../" class="footer-logo">Fan<span class="red">GNU</span></a>
     <div class="footer-copy">
       非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>
-      <a href="../privacy.html">プライバシーポリシー</a> ／ <a href="contact.html">お問い合わせ</a> ／ © FanGNU Unofficial
+      <a href="../privacy/">プライバシーポリシー</a> ／ <a href="../contact/">お問い合わせ</a> ／ © FanGNU Unofficial
     </div>
   </footer>
 
@@ -168,7 +168,7 @@
     if (yt) params.set('yt', yt);
     if (am) params.set('am', am);
     if (ext) params.set('ext', ext);
-    return `song.html?${params.toString()}`;
+    return `../song/?${params.toString()}`;
   }
 
   function buildTrackGrid(tracks) {
@@ -212,7 +212,7 @@
       const previewEmbedHtml = previewYt ? `<div class="disc-embed" data-yt="${escH(previewYt)}"></div>` : '';
       const detailHtml = `<div class="disc-detail">
              <div class="disc-song-list">
-               <a class="disc-song-row" href="album.html?src=srvvinci&album=${encodeURIComponent(item.title)}">
+               <a class="disc-song-row" href="../album/?src=srvvinci&album=${encodeURIComponent(item.title)}">
                  <span class="disc-song-title">${escH(item.title)}</span>
                  <span class="disc-song-arrow">→アルバム詳細へ</span>
                </a>
@@ -312,7 +312,7 @@
     card.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
-  fetch('data/srvvinci-discography.json')
+  fetch('../data/srvvinci-discography.json')
     .then(res => res.json())
     .then(data => {
       GROUPS = buildGroups(data.groups || []);
@@ -326,11 +326,11 @@
   </script>
 
   <nav class="bottom-nav">
-    <a href="../index.html" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
-    <a href="discography.html" class="bn-item active"><span class="bn-icon">💿</span>ディスコグラフィー</a>
-    <a href="members/members.html" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
-    <a href="live-stats.html" class="bn-item"><span class="bn-icon">📊</span>統計</a>
-    <a href="live.html" class="bn-item"><span class="bn-icon">🎤</span>ライブ</a>
+    <a href="../" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
+    <a href="../discography/" class="bn-item active"><span class="bn-icon">💿</span>ディスコグラフィー</a>
+    <a href="../members/" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
+    <a href="../live-stats/" class="bn-item"><span class="bn-icon">📊</span>統計</a>
+    <a href="../live/" class="bn-item"><span class="bn-icon">🎤</span>ライブ</a>
   </nav>
 
 </body>
