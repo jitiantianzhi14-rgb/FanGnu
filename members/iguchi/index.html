@@ -94,6 +94,11 @@
     .nav-btn.next { background: var(--black); color: var(--white); }
     .nav-btn.next:hover { background: var(--accent); border-color: var(--accent); }
 
+    .coming-soon { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; text-align: center; }
+    .coming-soon-icon { font-size: 32px; margin-bottom: 1rem; }
+    .coming-soon-title { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 0.15em; color: var(--gray); margin-bottom: 0.75rem; }
+    .coming-soon-body { font-size: 13px; color: var(--gray); }
+
     .footer { padding: 2rem; border-top: 2px solid var(--black); display: flex; align-items: center; justify-content: space-between; background: var(--white); }
     .footer-logo { font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 700; }
     .footer-logo .red { color: var(--red); }
@@ -131,89 +136,21 @@
   </div>
 
   <div style="background:var(--white); border-bottom:2px solid var(--black);">
-    <div class="hero">
+    <div class="hero" style="grid-template-columns: 1fr;">
       <div class="hero-left">
         <div class="hero-num">02 / 04</div>
-        <div class="hero-role">VOCAL / KEYBOARD</div>
         <div class="hero-name-ja">井口理</div>
         <div class="hero-name-en">SATOSHI IGUCHI</div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-tags">
-          <span class="tag">VOCAL</span>
-          <span class="tag">KEYBOARD</span>
-          <span class="tag">ACTOR</span>
-          <span class="tag">FALSETTO</span>
-        </div>
-        <p class="hero-desc">圧倒的な声域と表現力を持つKing Gnuのメインボーカル。高音のファルセットから低音まで自在に操る歌唱スタイルが特徴。俳優としても多数のドラマ・映画に出演し、二刀流で活躍。</p>
       </div>
     </div>
   </div>
 
   <div class="content">
 
-    <div class="section">
-      <div class="sec-label">PROFILE</div>
-      <div class="profile-grid">
-        <div class="profile-cell"><div class="profile-key">生年月日</div><div class="profile-val">1992年9月28日</div></div>
-        <div class="profile-cell"><div class="profile-key">出身地</div><div class="profile-val">長野県松本市</div></div>
-        <div class="profile-cell"><div class="profile-key">血液型</div><div class="profile-val">A型</div></div>
-        <div class="profile-cell"><div class="profile-key">担当</div><div class="profile-val">ボーカル・キーボード</div></div>
-        <div class="profile-cell"><div class="profile-key">学歴</div><div class="profile-val">東京藝術大学 音楽学部声楽科</div></div>
-        <div class="profile-cell"><div class="profile-key">別活動</div><div class="profile-val">俳優</div></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="sec-label">TIMELINE</div>
-      <div class="timeline-list">
-        <div class="tl-item">
-          <div class="tl-year">2013</div>
-          <div class="tl-body"><div class="tl-title">Srv.Vinci 結成</div>常田大希と共にSrv.Vinciを結成。</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2017</div>
-          <div class="tl-body"><div class="tl-title">King Gnu 結成</div>バンド名をKing Gnuに改名。</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2019</div>
-          <div class="tl-body"><div class="tl-title">「白日」で一躍注目</div>「白日」のボーカルパートが大きな話題に。ファルセットを多用した歌唱が絶賛される。</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2021</div>
-          <div class="tl-body"><div class="tl-title">俳優業本格化</div>ドラマ「大豆田とわ子と三人の元夫」に出演、演技力が高く評価される。</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2023</div>
-          <div class="tl-body"><div class="tl-title">映画・ドラマ多数出演</div>俳優としての活動が加速。音楽と俳優を両立する二刀流スタイルを確立。</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="sec-label">ACTING WORKS</div>
-      <div class="works-grid">
-        <div class="work-item">
-          <div class="work-year">2021</div>
-          <div class="work-title">大豆田とわ子と三人の元夫</div>
-          <div class="work-note">フジテレビ系ドラマ</div>
-        </div>
-        <div class="work-item">
-          <div class="work-year">2022</div>
-          <div class="work-title">エルピス —希望、あるいは災い—</div>
-          <div class="work-note">カンテレ・フジテレビ系ドラマ</div>
-        </div>
-        <div class="work-item">
-          <div class="work-year">2023</div>
-          <div class="work-title">どうする家康</div>
-          <div class="work-note">NHK大河ドラマ</div>
-        </div>
-        <div class="work-item">
-          <div class="work-year">2024</div>
-          <div class="work-title">燕は戻ってこない</div>
-          <div class="work-note">NHKドラマ</div>
-        </div>
-      </div>
+    <div class="coming-soon">
+      <div class="coming-soon-icon">🚧</div>
+      <div class="coming-soon-title">COMING SOON</div>
+      <div class="coming-soon-body">内容を確認の上、近日公開予定です。</div>
     </div>
 
     <div class="nav-bottom">
