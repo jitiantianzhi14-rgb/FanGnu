@@ -220,7 +220,7 @@
 
     <div class="action-buttons">
       <a href="#" id="discographyLink" class="action-btn outline">← ディスコグラフィーに戻る</a>
-      <a href="../live-stats/" class="action-btn">統計を見る →</a>
+      <a href="../stats/" class="action-btn">統計を見る →</a>
     </div>
   </div>
 
@@ -270,7 +270,7 @@
   function setAlbumInfo(id, song) {
     const el = document.getElementById(id);
     if (song.album && song.album.title) {
-      const target = isSrvvinci ? '../srvvinci/' : '../discography/';
+      const target = isSrvvinci ? '../srvvinci-discography/' : '../discography/';
       const numText = song.album.num ? `（${String(song.album.num).padStart(2,'0')}）` : '';
       el.innerHTML = `<a href="${target}?album=${encodeURIComponent(song.album.title)}">${escH(song.album.title)}${numText}</a>`;
       el.classList.remove('empty');
@@ -723,7 +723,7 @@
   const src = params.get('src') === 'srvvinci' ? 'srvvinci' : 'discography';
 
   const isSrvvinci = src === 'srvvinci';
-  document.getElementById('discographyLink').href = isSrvvinci ? '../srvvinci/' : '../discography/';
+  document.getElementById('discographyLink').href = isSrvvinci ? '../srvvinci-discography/' : '../discography/';
 
   const lookup = isSrvvinci ? findInSrvvinci(yt, am, ext) : findInDiscography(yt, ext, sp);
   lookup
@@ -756,7 +756,7 @@
     <a href="../" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
     <a href="../discography/" class="bn-item"><span class="bn-icon">💿</span>ディスコグラフィー</a>
     <a href="../members/" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
-    <a href="../live-stats/" class="bn-item"><span class="bn-icon">📊</span>統計</a>
+    <a href="../stats/" class="bn-item"><span class="bn-icon">📊</span>統計</a>
     <a href="../live/" class="bn-item"><span class="bn-icon">🎤</span>ライブ</a>
   </nav>
 

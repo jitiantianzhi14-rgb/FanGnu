@@ -221,7 +221,7 @@
     setInfo('infoYear', album.year);
     setExtra('infoExtra', album.extra);
     renderTracks(album.tracks, isSrvvinci);
-    const backHref = isSrvvinci ? '../srvvinci/' : '../discography/';
+    const backHref = isSrvvinci ? '../srvvinci-discography/' : '../discography/';
     document.getElementById('discographyLink').href = `${backHref}?album=${encodeURIComponent(album.title)}`;
   }
 
@@ -230,7 +230,7 @@
     setInfo('infoYear', '');
     setExtra('infoExtra', '');
     renderTracks([]);
-    document.getElementById('discographyLink').href = isSrvvinci ? '../srvvinci/' : '../discography/';
+    document.getElementById('discographyLink').href = isSrvvinci ? '../srvvinci-discography/' : '../discography/';
   }
 
   const params = new URLSearchParams(location.search);
@@ -263,7 +263,7 @@
     if (document.referrer && document.referrer.includes(location.host)) {
       history.back();
     } else {
-      location.href = isSrvvinci ? '../srvvinci/' : '../discography/';
+      location.href = isSrvvinci ? '../srvvinci-discography/' : '../discography/';
     }
   });
   </script>
@@ -272,7 +272,7 @@
     <a href="../" class="bn-item"><span class="bn-icon">🏠</span>ホーム</a>
     <a href="../discography/" class="bn-item"><span class="bn-icon">💿</span>ディスコグラフィー</a>
     <a href="../members/" class="bn-item"><span class="bn-icon">👥</span>メンバー</a>
-    <a href="../live-stats/" class="bn-item"><span class="bn-icon">📊</span>統計</a>
+    <a href="../stats/" class="bn-item"><span class="bn-icon">📊</span>統計</a>
     <a href="../live/" class="bn-item"><span class="bn-icon">🎤</span>ライブ</a>
   </nav>
 
