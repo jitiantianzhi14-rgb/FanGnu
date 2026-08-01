@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jitiantianzhi14-rgb.github.io/FanGnu/sitemap.xml
+Sitemap: https://fungnu.com/sitemap.xml
