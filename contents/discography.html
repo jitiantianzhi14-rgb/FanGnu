@@ -181,7 +181,7 @@
   let DISCS = [];
 
   function escH(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 
   function formatNote(value) {
@@ -313,7 +313,7 @@
         const isOpen = card.classList.toggle('expanded');
         embeds.forEach(embed => {
           embed.innerHTML = isOpen
-            ? `<iframe src="https://www.youtube.com/embed/${embed.dataset.yt}?rel=0&playsinline=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>`
+            ? `<iframe src="https://www.youtube.com/embed/${escH(embed.dataset.yt)}?rel=0&playsinline=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>`
             : '';
         });
       });
