@@ -156,9 +156,30 @@
       .hbar-label, .stack-label { width: 84px; font-size: 11px; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
+    .site-notice-overlay { position: fixed; inset: 0; background: rgba(17,17,17,0.6); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .site-notice-box { background: var(--white); border: 2px solid var(--black); max-width: 380px; width: 100%; padding: 2rem 1.75rem; text-align: center; }
+    .site-notice-icon { font-size: 28px; margin-bottom: 0.75rem; }
+    .site-notice-title { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: var(--black); margin-bottom: 0.75rem; }
+    .site-notice-title .red { color: var(--red); }
+    .site-notice-body { font-size: 12px; color: #555; line-height: 1.8; margin-bottom: 1.5rem; }
+    .site-notice-close { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--white); background: var(--black); border: none; padding: 0.7rem 1.5rem; cursor: pointer; transition: background 0.15s; }
+    .site-notice-close:hover { background: var(--red); }
   </style>
 </head>
 <body>
+  <div class="site-notice-overlay" id="siteNotice" style="display:none;">
+    <div class="site-notice-box">
+      <div class="site-notice-icon">🚧</div>
+      <div class="site-notice-title">当サイトは現在<span class="red">制作中</span>です</div>
+      <div class="site-notice-body">一部のページは内容を確認・更新中です。情報が不正確な場合がありますので、あらかじめご了承ください。</div>
+      <button class="site-notice-close" onclick="document.getElementById('siteNotice').style.display='none';sessionStorage.setItem('siteNoticeDismissed','1');">閉じる</button>
+    </div>
+  </div>
+  <script>
+    if (!sessionStorage.getItem('siteNoticeDismissed')) {
+      document.getElementById('siteNotice').style.display = 'flex';
+    }
+  </script>
 
   <nav class="nav">
     <a href="../" class="nav-logo">Fun<span class="red">GNU</span></a>
