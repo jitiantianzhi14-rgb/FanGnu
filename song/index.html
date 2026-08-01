@@ -730,6 +730,12 @@
     .then(song => {
       if (!song) { renderNotFound(); return null; }
       renderSong(song);
+      const url = new URL(location.href);
+      const reordered = new URLSearchParams();
+      reordered.set('title', song.title);
+      for (const [k, v] of url.searchParams) reordered.set(k, v);
+      url.search = reordered.toString();
+      history.replaceState(null, '', url);
       return findLiveHistory(song.title);
     })
     .then(history => {
