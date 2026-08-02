@@ -7,10 +7,10 @@
         {
           "title": "1st demo", "year": "2015.04.01", "note": "", "extra": "【概要】\n・2015.04.01にライブ会場限定で販売されたSrv.Vinci 1st demoである．（要修正）\n・表記揺れで[Cheap Transistor](../song/?ext=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdlS18oUHw4o&src=srvvinci)が「チープトランジスタ」とCD内の表記情報にある．（要修正）\n・[「Stem」](../song/?yt=YiQTjl71ipM&src=srvvinci)「[ABUKU](../song/?yt=6QQoZW0SOnI&src=srvvinci)」はPERIMETRONのYouTubeに動画が投稿されている．",
           "tracks": [
-            { "num": 1, "title": "Stem", "yt": "YiQTjl71ipM", "note": "", "spotify": "", "lyrics": "https://www.utatime.com/lyrics/srv-vinci/stem/" },
-            { "num": 2, "title": "ABUKU", "yt": "6QQoZW0SOnI", "note": "", "spotify": "", "lyrics": "https://www.utatime.com/lyrics/srv-vinci/abuku/" },
-            { "num": 3, "title": "Cheap Transistor", "externalVideo": "https://www.youtube.com/watch?v=dlS18oUHw4o", "hideVideo": true, "note": "", "spotify": "", "lyrics": "" },
-            { "num": 4, "title": "もっと静かに狂わせて", "externalVideo": "https://www.youtube.com/watch?v=Vr65t6nt_0U", "hideVideo": true, "note": "", "spotify": "", "lyrics": "" }
+            { "num": 1, "title": "Stem", "yt": "YiQTjl71ipM", "note": "", "extra": "【概要】\n・[Srv.Vinci 1st demo](../srvvinci-discography/?album=1st%20demo)の1曲目である．\n・MVは2014.06.08に公開．\n・後にmillennium parade（現：ꉈꀧ꒒꒒ꁄꍈꍈꀧ꒦ꉈ ꉣꅔꎡꅔꁕꁄ）のアルバム「THE MILLENNIUM PARADE」の「Philip」としてリアレンジされる．\n・vimeoではSrv.Vinci名義ではなく，DTMP（Daiki Tsuneta Millennium Parade）名義で配信されている．\n・Stemは日本語で「茎」や「幹」と訳される．\n\n【リンク】\n・[Stem（DTMP名義）-Vimeo](https://vimeo.com/218510360)", "spotify": "", "lyrics": "https://www.utatime.com/lyrics/srv-vinci/stem/" },
+            { "num": 2, "title": "ABUKU", "yt": "6QQoZW0SOnI", "note": "", "extra": "【概要】\n・[Srv.Vinci 1st demo](../srvvinci-discography/?album=1st%20demo)の2曲目である．\n・MVは2013.07.20に公開．PERIMETRONの動画の中で一番古い動画となっている．\n・後に[King Gnu 4th ALBUM「THE GREATEST UNKNOWN」](../discography/?album=THE%20GREATEST%20UNKNOWN)に収録される[「泡」](../song/?yt=jSf6S6ny6-A)へとリアレンジされる．\n・ミレパなどのライブでもアレンジされて披露されたそう．（要修正）", "spotify": "", "lyrics": "https://www.utatime.com/lyrics/srv-vinci/abuku/" },
+            { "num": 3, "title": "もっと静かに狂わせて", "externalVideo": "https://www.youtube.com/watch?v=Vr65t6nt_0U", "hideVideo": true, "note": "", "extra": "【概要】\n・[Srv.Vinci 1st demo](../srvvinci-discography/?album=1st%20demo)の3曲目である．\n・Srv.Vinciの[1st Album「Mad me more softly」](../srvvinci-discography/?album=Mad%20me%20more%20softly)の名前の由来になったと考えられている．", "spotify": "", "lyrics": "" },
+            { "num": 4, "title": "Cheap Transistor", "externalVideo": "https://www.youtube.com/watch?v=dlS18oUHw4o", "hideVideo": true, "note": "", "extra": "【概要】\n・[Srv.Vinci 1st demo](../srvvinci-discography/?album=1st%20demo)の4曲目である．\n・表記揺れでCheap Transistorが「チープトランジスタ」とCD内の表記情報にある．（要修正）\n・[Diddy's Underground JamのHello from underground](../srvvinci-discography/?album=Hello%20from%20underground%EF%BC%88Diddy's%20Underground%20Jam%20%E7%89%88%EF%BC%89)に収録される「チープなメディア」と関連している．", "spotify": "", "lyrics": "" }
           ]
         },
         { "title": "NUMÉRO × THE ROOTS OF BLOOD", "yt": null, "lyrics": "" },
@@ -51,9 +51,9 @@
       "name": "Mrs.Vinci",
       "desc": "常田大希の別名義プロジェクト",
       "singles": [
-        { "title": "In Tokyo", "yt": "GXk_ANNlXEU", "lyrics": "" },
-        { "title": "In Rose", "yt": "YZLNZ7lfd_s", "yt2": "nwotP3Wbcbs", "lyrics": "" },
-        { "title": "SOUND CLOUD", "year": "2013.08.31", "externalVideo": "https://x.com/vinyl_king0218/status/2076630789740261688", "hideVideo": true, "lyrics": "" }
+        { "title": "In Tokyo", "yt": "GXk_ANNlXEU", "extra": "【概要】\n・[King Gnu 3rd ALBUM「CEREMONY」](../discography/?album=CEREMONY)の[開会式](../song/?yt=KG6a1-AVNvw)，[幕間](../song/?yt=z_3qnhlBsqA)，[閉会式](../song/?yt=4Ji37x6p0Zs)としてリアレンジされた．\n・ディディーの地下室の[「hello from underground」](../srvvinci-discography/?album=hello%20from%20underground%EF%BC%88%E3%83%87%E3%82%A3%E3%83%87%E3%82%A3%E3%83%BC%E3%81%AE%E5%9C%B0%E4%B8%8B%E5%AE%A4%20%E7%89%88%EF%BC%89)に収録されている「東京」のアレンジである．\n・L.ベルリオーズ幻想交響曲第4楽章が使用されている．後にWWWにも同様に使用されている．（要修正）\n\n【リンク】\n・[In Tokyo-Vimeo](https://vimeo.com/69160735)", "lyrics": "" },
+        { "title": "In Rose", "yt": "YZLNZ7lfd_s", "yt2": "nwotP3Wbcbs", "extra": "【概要】\n・Gutte solo in Rose，Guitar in Rose，Session in Roseといくつか表記の仕方がある．\n・上記のようにネット上には3種類存在するが，Guitar in Roseは他の二つとはマスタリングや後奏に違いがある．\n\n【リンク】\n・[In Rose-Vimeo](https://vimeo.com/69170962)", "lyrics": "" },
+        { "title": "SOUND CLOUD", "year": "2013.08.31", "externalVideo": "https://x.com/vinyl_king0218/status/2076630789740261688", "hideVideo": true, "extra": "【概要】\n・曲の長さは3分46秒である．\n・SOUND CLOUDの映像が[McDonald Romance](../song/?yt=YeBt1NhOJtA)のMVに使われた．（要修正）", "lyrics": "" }
       ]
     },
     {
