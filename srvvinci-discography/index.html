@@ -185,11 +185,12 @@
     return m ? m[1] : '';
   }
 
-  function songHref(yt, am, ext) {
+  function songHref(yt, am, ext, rel) {
     const params = new URLSearchParams({ src: 'srvvinci' });
     if (yt) params.set('yt', yt);
     if (am) params.set('am', am);
     if (ext) params.set('ext', ext);
+    if (rel) params.set('rel', rel);
     return `../song/?${params.toString()}`;
   }
 
@@ -255,7 +256,7 @@
         </div>`;
     }
 
-    const rowHref = item.yt ? songHref(item.yt) : (item.externalVideo ? songHref(null, null, item.externalVideo) : null);
+    const rowHref = item.yt ? songHref(item.yt, null, null, 'single') : (item.externalVideo ? songHref(null, null, item.externalVideo, 'single') : null);
     const hasDetail = !!rowHref;
     const songListHtml = rowHref ? `<div class="disc-song-list">${songRow(item.title, rowHref)}</div>` : '';
     const detailHtml = hasDetail
