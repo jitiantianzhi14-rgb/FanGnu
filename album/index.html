@@ -211,18 +211,19 @@
     return m ? m[1] : '';
   }
 
-  function songHref(t, isSrvvinci) {
+  function songHref(t, isSrvvinci, albumTitle) {
     const params = new URLSearchParams();
     if (isSrvvinci) params.set('src', 'srvvinci');
     if (t.yt) params.set('yt', t.yt);
     else if (t.appleMusic) params.set('am', appleMusicId(t.appleMusic));
     else if (t.externalVideo) params.set('ext', t.externalVideo);
     else if (t.spotify) params.set('sp', t.spotify);
+    else if (isSrvvinci && albumTitle) { params.set('album', albumTitle); params.set('num', t.num); }
     else return null;
     return `../song/?${params.toString()}`;
   }
 
-  function renderTracks(tracks, isSrvvinci) {
+  function renderTracks(tracks, isSrvvinci, albumTitle) {
     const area = document.getElementById('tracksArea');
     if (!tracks || !tracks.length) {
       area.innerHTML = `<div class="no-tracks">収録曲情報はまだありません。</div>`;
@@ -230,7 +231,7 @@
     }
     area.innerHTML = `
       <ol class="track-list">${tracks.map(t => {
-        const href = songHref(t, isSrvvinci);
+        const href = songHref(t, isSrvvinci, albumTitle);
         const inner = `
           <span class="track-num">${String(t.num).padStart(2, '0')}</span>
           <span class="track-title">${escH(t.displayTitle || t.title)}</span>
@@ -254,7 +255,7 @@
     setTeaser('teaserArea', album.teaserYt || album.yt);
     setInfo('infoYear', album.year);
     setExtra('infoExtra', album.extra);
-    renderTracks(album.tracks, isSrvvinci);
+    renderTracks(album.tracks, isSrvvinci, album.title);
     const backHref = isSrvvinci ? '../srvvinci-discography/' : '../discography/';
     document.getElementById('discographyLink').href = `${backHref}?album=${encodeURIComponent(album.title)}`;
   }

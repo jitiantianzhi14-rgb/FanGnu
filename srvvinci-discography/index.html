@@ -185,22 +185,23 @@
     return m ? m[1] : '';
   }
 
-  function songHref(yt, am, ext, rel) {
+  function songHref(yt, am, ext, rel, album, num) {
     const params = new URLSearchParams({ src: 'srvvinci' });
     if (yt) params.set('yt', yt);
     if (am) params.set('am', am);
     if (ext) params.set('ext', ext);
     if (rel) params.set('rel', rel);
+    if (album && num) { params.set('album', album); params.set('num', num); }
     return `../song/?${params.toString()}`;
   }
 
-  function buildTrackGrid(tracks) {
+  function buildTrackGrid(tracks, albumTitle) {
     if (!tracks || !tracks.length) return `<div class="tbd">トラックリスト準備中</div>`;
     return `<div class="track-grid">${tracks.map(t => {
       const numTitle = `
           <span class="track-num">${String(t.num).padStart(2,'0')}</span>
           <span class="track-title">${escH(t.title)}</span>`;
-      const href = t.yt ? songHref(t.yt) : (t.appleMusic ? songHref(null, appleMusicId(t.appleMusic)) : (t.externalVideo ? songHref(null, null, t.externalVideo) : null));
+      const href = t.yt ? songHref(t.yt) : (t.appleMusic ? songHref(null, appleMusicId(t.appleMusic)) : (t.externalVideo ? songHref(null, null, t.externalVideo) : (albumTitle ? songHref(null, null, null, null, albumTitle, t.num) : null)));
       if (href) {
         return `
           <div class="track-row">
@@ -242,7 +243,7 @@
              </div>
              ${item.note ? `<div class="disc-note">${escH(item.note)}</div>` : ''}
              ${previewEmbedHtml}
-             ${buildTrackGrid(item.tracks)}
+             ${buildTrackGrid(item.tracks, item.title)}
            </div>`;
       return `
         <div class="disc-card" data-title="${escH(item.title)}">

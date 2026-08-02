@@ -63,23 +63,23 @@
         {
           "title": "Hello From Underground（Diddi's Asianground Jam 版）", "year": "", "note": "", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
           "tracks": [
-            { "num": 1, "title": "前触", "yt": "", "note": "", "spotify": "", "lyrics": "" }
+            { "num": 1, "title": "前触", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは1分45秒である．\n・インスト曲である．", "spotify": "", "lyrics": "" }
           ]
         },
         {
           "title": "Hello from underground（Diddy's Underground Jam 版）", "year": "", "note": "", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
           "tracks": [
-            { "num": 1, "title": "チープなメディア", "yt": "", "note": "", "spotify": "", "lyrics": "" },
-            { "num": 2, "title": "アンダーグラウンド?", "yt": "", "note": "", "spotify": "", "lyrics": "" },
-            { "num": 3, "title": "新宿メトロライン", "yt": "", "note": "", "spotify": "", "lyrics": "" }
+            { "num": 1, "title": "チープなメディア", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは3分17秒である．\n・後に[Srv.Vinci 1st demo](../srvvinci-discography/?album=1st%20demo)の[「Cheap Transistor」](../song/?ext=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdlS18oUHw4o&src=srvvinci)としてアレンジされる．\n・常田大希がボーカルを務める．", "spotify": "", "lyrics": "" },
+            { "num": 2, "title": "アンダーグラウンド", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは2分49秒である．\n・インスト曲である．", "spotify": "", "lyrics": "" },
+            { "num": 3, "title": "新宿メトロライン", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは5分29秒である．\n・常田大希がボーカルを務める．", "spotify": "", "lyrics": "" }
           ]
         },
         {
           "title": "hello from underground（ディディーの地下室 版）", "year": "", "note": "", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
           "tracks": [
-            { "num": 1, "title": "新宿メトロライン", "yt": "", "note": "", "spotify": "", "lyrics": "" },
-            { "num": 2, "title": "東京", "yt": "", "note": "", "spotify": "", "lyrics": "" },
-            { "num": 3, "title": "コルトレーンズ・ゲリラ", "yt": "", "note": "", "spotify": "", "lyrics": "" }
+            { "num": 1, "title": "新宿メトロライン", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは5分29秒である．\n・常田大希がボーカルを務める．", "spotify": "", "lyrics": "" },
+            { "num": 2, "title": "東京", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは5分7秒である．\n・後にMrs.Vinciの[「In Tokyo」](../song/?yt=GXk_ANNlXEU&src=srvvinci)，[King Gnu 3rd ALBUM「CEREMONY」](../discography/?album=CEREMONY)の[「開会式」](../song/?yt=KG6a1-AVNvw)[「幕間」](../song/?yt=z_3qnhlBsqA)[「閉会式」](../song/?yt=4Ji37x6p0Zs)としてリアレンジされた．\n・常田大希がボーカルを務める．", "spotify": "", "lyrics": "" },
+            { "num": 3, "title": "コルトレーンズ・ゲリラ", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは2分4秒である．\n・インタルード曲である．", "spotify": "", "lyrics": "" }
           ]
         }
       ]
