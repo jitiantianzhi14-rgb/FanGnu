@@ -5,7 +5,7 @@
       "desc": "常田大希を中心とした前身バンド（〜2017年）",
       "demos": [
         {
-          "title": "1st demo", "year": "2015.04.01", "note": "",
+          "title": "1st demo", "year": "2015.04.01", "note": "", "extra": "【概要】\n・2015.04.01にライブ会場限定で販売されたSrv.Vinci 1st demoである．（要修正）\n・表記揺れで[Cheap Transistor](../song/?ext=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdlS18oUHw4o&src=srvvinci)が「チープトランジスタ」とCD内の表記情報にある．（要修正）\n・[「Stem」](../song/?yt=YiQTjl71ipM&src=srvvinci)「[ABUKU](../song/?yt=6QQoZW0SOnI&src=srvvinci)」はPERIMETRONのYouTubeに動画が投稿されている．",
           "tracks": [
             { "num": 1, "title": "Stem", "yt": "YiQTjl71ipM", "note": "", "spotify": "", "lyrics": "https://www.utatime.com/lyrics/srv-vinci/stem/" },
             { "num": 2, "title": "ABUKU", "yt": "6QQoZW0SOnI", "note": "", "spotify": "", "lyrics": "https://www.utatime.com/lyrics/srv-vinci/abuku/" },
@@ -22,7 +22,7 @@
       ],
       "albums": [
         {
-          "title": "トーキョー・カオティック", "year": "2016.09.14", "note": "", "yt": "91ClD6WZB20", "type": "ミニアルバム",
+          "title": "トーキョー・カオティック", "year": "2016.09.14", "note": "", "yt": "91ClD6WZB20", "type": "ミニアルバム", "extra": "【概要】\n・ライブ会場，タワーレコードで限定販売されたSrv.Vinci 2nd mini Albumである．\n・2016.09.02にプレリリースパーティとして[「TOKYO CHAOTIC FESTIVAL 2016」](../live-show/?src=srvvinci&date=2016.09.02)が開催された．\n・同日，渋谷WWWで行われた先行リリースパーティーにて500枚限定でサイン入り盤が販売された．（要修正）\n・アメリカツアー中の名義である「Tokyo Chaotic!!!」と同じ名前である．\n\n【リンク】\n・[【Live】TOKYO CHAOTIC FESTIVAL 2016-東京塩麴](https://shiokouji.tokyo/live/92%E9%87%91tokyo-chaotic-festival-2016/)",
           "tracks": [
             { "num": 1, "title": "ロウラヴ", "yt": "nhH03chZJMQ", "note": "", "spotify": "", "lyrics": "https://petitlyrics.com/lyrics/2863592" },
             { "num": 2, "title": "サマーレイン・ダイバー", "yt": "", "note": "", "spotify": "", "lyrics": "" },
@@ -31,7 +31,7 @@
           ]
         },
         {
-          "title": "Mad me more softly", "year": "2015.09.16", "note": "", "yt": "pooEvhVCiyE",
+          "title": "Mad me more softly", "year": "2015.09.16", "note": "", "yt": "pooEvhVCiyE", "extra": "【概要】\n・Srv.Vinciの1st Albumである．\n・Mad Me More Softlyは「もっと優しく狂わせて」の意味であり，1st demoの[「もっと静かに狂わせて」](../song/?ext=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DVr65t6nt_0U&src=srvvinci)が由来していると考えられている．\n・特設サイトではRemix版[Devil's MC](../song/?am=1040415179&src=srvvinci)と[Heroine](../song/?am=1040415181&src=srvvinci)の2曲が公開された．（要修正）\n・日本語詞はDaiki Tsuneta，英詞はYuta Nakanoが主に作詞した．（要修正）\n・発売を記念して「Metome Remix Heroine」と「Koki Nakano Remix Devil's MC」のリミックスが配信された．（要修正）",
           "tracks": [
             { "num": 1, "title": "Devil's MC", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/devils-mc/1040415179", "lyrics": "" },
             { "num": 2, "title": "PPL", "yt": "", "note": "", "appleMusic": "https://music.apple.com/jp/song/ppl/1040415180", "lyrics": "https://petitlyrics.com/lyrics/2972290" },
@@ -61,13 +61,13 @@
       "desc": "同一人物による複数の別名義。Hello From Underground シリーズ各バージョン",
       "albums": [
         {
-          "title": "Hello From Underground（Diddi's Asianground Jam 版）", "year": "", "note": "",
+          "title": "Hello From Underground（Diddi's Asianground Jam 版）", "year": "", "note": "", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
           "tracks": [
             { "num": 1, "title": "前触", "yt": "", "note": "", "spotify": "", "lyrics": "" }
           ]
         },
         {
-          "title": "Hello from underground（Diddy's Underground Jam 版）", "year": "", "note": "",
+          "title": "Hello from underground（Diddy's Underground Jam 版）", "year": "", "note": "", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
           "tracks": [
             { "num": 1, "title": "チープなメディア", "yt": "", "note": "", "spotify": "", "lyrics": "" },
             { "num": 2, "title": "アンダーグラウンド?", "yt": "", "note": "", "spotify": "", "lyrics": "" },
@@ -75,7 +75,7 @@
           ]
         },
         {
-          "title": "hello from underground（ディディーの地下室 版）", "year": "", "note": "",
+          "title": "hello from underground（ディディーの地下室 版）", "year": "", "note": "", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
           "tracks": [
             { "num": 1, "title": "新宿メトロライン", "yt": "", "note": "", "spotify": "", "lyrics": "" },
             { "num": 2, "title": "東京", "yt": "", "note": "", "spotify": "", "lyrics": "" },
