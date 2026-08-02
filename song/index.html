@@ -655,10 +655,11 @@
     setExtra('infoExtra', song.extra);
     setLyrics(song.lyrics);
 
-    renderMedia(song.yt, song.title, song.appleMusic, song.externalVideo, song.spotify);
+    const visibleExternalVideo = song.hideVideo ? '' : song.externalVideo;
+    renderMedia(song.yt, song.title, song.appleMusic, visibleExternalVideo, song.spotify);
     renderShorts(song.shorts);
     renderAppleMusic(song.appleMusic);
-    renderExternalVideo(song.externalVideo);
+    renderExternalVideo(visibleExternalVideo);
     renderSpotify(song.spotify);
   }
 
@@ -687,17 +688,17 @@
     }
 
     if (item) {
-      return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, spotify: item.spotify, externalVideo: item.externalVideo || '', lyrics: item.lyrics || '', shorts: item.shorts || [], album, albumText: item.albumText || '' };
+      return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, spotify: item.spotify, externalVideo: item.externalVideo || '', hideVideo: !!item.hideVideo, lyrics: item.lyrics || '', shorts: item.shorts || [], album, albumText: item.albumText || '' };
     }
 
     if (couplingParent) {
       const c = couplingParent.coupling;
-      return { type: couplingParent.type, title: c.title, year: couplingParent.year, note: c.note, extra: c.extra || '', yt: c.yt, spotify: c.spotify, externalVideo: c.externalVideo || '', lyrics: c.lyrics || '', album };
+      return { type: couplingParent.type, title: c.title, year: couplingParent.year, note: c.note, extra: c.extra || '', yt: c.yt, spotify: c.spotify, externalVideo: c.externalVideo || '', hideVideo: !!c.hideVideo, lyrics: c.lyrics || '', album };
     }
 
     if (album) {
       const t = album.track;
-      return { type: 'ALBUM', title: t.title, year: album.year, note: t.note, extra: t.extra || '', yt: t.yt, spotify: t.spotify, externalVideo: t.externalVideo || '', lyrics: t.lyrics || '', album: { title: album.title, num: album.num } };
+      return { type: 'ALBUM', title: t.title, year: album.year, note: t.note, extra: t.extra || '', yt: t.yt, spotify: t.spotify, externalVideo: t.externalVideo || '', hideVideo: !!t.hideVideo, lyrics: t.lyrics || '', album: { title: album.title, num: album.num } };
     }
 
     return null;
@@ -717,7 +718,7 @@
       for (const coll of collections) {
         const track = (coll.tracks || []).find(t => (yt && t.yt === yt) || (am && appleMusicId(t.appleMusic) === am) || (ext && t.externalVideo === ext));
         if (track) {
-          return { type: coll.type, title: track.title, year: coll.year || '', note: track.note || '', extra: '', yt: track.yt || '', spotify: track.spotify || '', appleMusic: track.appleMusic || '', externalVideo: track.externalVideo || '', lyrics: track.lyrics || '', album: { title: coll.title, num: track.num } };
+          return { type: coll.type, title: track.title, year: coll.year || '', note: track.note || '', extra: '', yt: track.yt || '', spotify: track.spotify || '', appleMusic: track.appleMusic || '', externalVideo: track.externalVideo || '', hideVideo: !!track.hideVideo, lyrics: track.lyrics || '', album: { title: coll.title, num: track.num } };
         }
       }
 
@@ -726,7 +727,7 @@
         ...(group.singles || []).filter(d => !d.tracks).map(d => ({ ...d, type: d.type || 'SINGLE' })),
       ];
       const item = flatPools.find(i => (yt && i.yt === yt) || (ext && i.externalVideo === ext));
-      if (item) return { type: item.type, title: item.title, year: item.year || '', note: item.note || '', extra: item.extra, yt: item.yt, spotify: item.spotify || '', appleMusic: '', externalVideo: item.externalVideo || '', lyrics: item.lyrics || '', album: null };
+      if (item) return { type: item.type, title: item.title, year: item.year || '', note: item.note || '', extra: item.extra, yt: item.yt, spotify: item.spotify || '', appleMusic: '', externalVideo: item.externalVideo || '', hideVideo: !!item.hideVideo, lyrics: item.lyrics || '', album: null };
 
       for (const coll of collections) {
         if (yt && coll.yt === yt) {

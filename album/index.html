@@ -103,6 +103,8 @@
     .site-notice-body { font-size: 12px; color: #555; line-height: 1.8; margin-bottom: 1.5rem; }
     .site-notice-close { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--white); background: var(--black); border: none; padding: 0.7rem 1.5rem; cursor: pointer; transition: background 0.15s; }
     .site-notice-close:hover { background: var(--red); }
+    .teaser-embed { margin-bottom: 24px; }
+    .teaser-embed iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
   </style>
 </head>
 <body>
@@ -137,6 +139,8 @@
   </div>
 
   <div class="content">
+    <div id="teaserArea"></div>
+
     <dl class="album-info">
       <div class="album-info-row">
         <dt class="album-info-label">発売日</dt>
@@ -237,9 +241,17 @@
       }).join('')}</ol>`;
   }
 
+  function setTeaser(id, yt) {
+    const el = document.getElementById(id);
+    el.innerHTML = yt
+      ? `<div class="teaser-embed"><iframe src="https://www.youtube.com/embed/${escH(yt)}?rel=0&playsinline=1" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe></div>`
+      : '';
+  }
+
   function renderAlbum(album, isSrvvinci) {
     document.title = `${album.title} — アルバム概要 — FunGNU`;
     document.getElementById('albumTitle').textContent = album.title;
+    setTeaser('teaserArea', album.teaserYt || album.yt);
     setInfo('infoYear', album.year);
     setExtra('infoExtra', album.extra);
     renderTracks(album.tracks, isSrvvinci);
@@ -249,6 +261,7 @@
 
   function renderNotFound(isSrvvinci) {
     document.getElementById('albumTitle').textContent = 'アルバムが見つかりませんでした';
+    setTeaser('teaserArea', '');
     setInfo('infoYear', '');
     setExtra('infoExtra', '');
     renderTracks([]);

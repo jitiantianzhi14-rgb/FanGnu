@@ -9,15 +9,15 @@
           "tracks": [
             { "num": 1, "title": "Stem", "yt": "YiQTjl71ipM", "note": "", "spotify": "", "lyrics": "https://www.utatime.com/lyrics/srv-vinci/stem/" },
             { "num": 2, "title": "ABUKU", "yt": "6QQoZW0SOnI", "note": "", "spotify": "", "lyrics": "https://www.utatime.com/lyrics/srv-vinci/abuku/" },
-            { "num": 3, "title": "Cheap Transistor", "externalVideo": "https://www.youtube.com/watch?v=dlS18oUHw4o", "note": "", "spotify": "", "lyrics": "" },
-            { "num": 4, "title": "もっと静かに狂わせて", "externalVideo": "https://www.youtube.com/watch?v=Vr65t6nt_0U", "note": "", "spotify": "", "lyrics": "" }
+            { "num": 3, "title": "Cheap Transistor", "externalVideo": "https://www.youtube.com/watch?v=dlS18oUHw4o", "hideVideo": true, "note": "", "spotify": "", "lyrics": "" },
+            { "num": 4, "title": "もっと静かに狂わせて", "externalVideo": "https://www.youtube.com/watch?v=Vr65t6nt_0U", "hideVideo": true, "note": "", "spotify": "", "lyrics": "" }
           ]
         },
         { "title": "NUMÉRO × THE ROOTS OF BLOOD", "yt": null, "lyrics": "" },
         { "title": "Re:", "yt": null, "lyrics": "" }
       ],
       "singles": [
-        { "title": "都", "externalVideo": "https://www.youtube.com/watch?v=mIdXhe-p-ow", "year": "2016.05.05", "type": "配信SG", "lyrics": "https://gethighwithme.memo.wiki/d/%C5%D4" },
+        { "title": "都", "externalVideo": "https://www.youtube.com/watch?v=mIdXhe-p-ow", "hideVideo": true, "year": "2016.05.05", "type": "配信SG", "lyrics": "https://gethighwithme.memo.wiki/d/%C5%D4" },
         { "title": "ロウラヴ", "yt": "nhH03chZJMQ", "year": "2016.04.01", "type": "配信SG", "lyrics": "https://petitlyrics.com/lyrics/2863592" }
       ],
       "albums": [
@@ -26,7 +26,7 @@
           "tracks": [
             { "num": 1, "title": "ロウラヴ", "yt": "nhH03chZJMQ", "note": "", "spotify": "", "lyrics": "https://petitlyrics.com/lyrics/2863592" },
             { "num": 2, "title": "サマーレイン・ダイバー", "yt": "", "note": "", "spotify": "", "lyrics": "" },
-            { "num": 3, "title": "Vinyl", "externalVideo": "https://www.youtube.com/watch?v=1ElFcjEt_eM", "note": "", "spotify": "", "lyrics": "https://petitlyrics.com/lyrics/2846224" },
+            { "num": 3, "title": "Vinyl", "externalVideo": "https://www.youtube.com/watch?v=1ElFcjEt_eM", "hideVideo": true, "note": "", "spotify": "", "lyrics": "https://petitlyrics.com/lyrics/2846224" },
             { "num": 4, "title": "破裂", "yt": "", "note": "", "spotify": "", "lyrics": "" }
           ]
         },
@@ -53,7 +53,7 @@
       "singles": [
         { "title": "In Tokyo", "yt": "GXk_ANNlXEU", "lyrics": "" },
         { "title": "In Rose", "yt": "YZLNZ7lfd_s", "yt2": "nwotP3Wbcbs", "lyrics": "" },
-        { "title": "SOUND CLOUD", "year": "2013.08.31", "externalVideo": "https://x.com/vinyl_king0218/status/2076630789740261688", "lyrics": "" }
+        { "title": "SOUND CLOUD", "year": "2013.08.31", "externalVideo": "https://x.com/vinyl_king0218/status/2076630789740261688", "hideVideo": true, "lyrics": "" }
       ]
     },
     {
