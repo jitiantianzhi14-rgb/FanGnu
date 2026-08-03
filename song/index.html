@@ -68,8 +68,7 @@
     .content { max-width: 800px; margin: 0 auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2rem; }
 
     .mv-thumb-wrap { position: relative; cursor: pointer; }
-    #mediaArea .mv-thumb-wrap + .mv-thumb-wrap,
-    #mediaArea .mv-embed + .mv-thumb-wrap { margin-top: 24px; }
+    .mv-item + .mv-item { margin-top: 24px; }
     .mv-thumb-wrap img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
     .mv-thumb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); transition: background 0.15s; }
     .mv-thumb-wrap:hover .mv-thumb-play { background: rgba(0,0,0,0.45); }
@@ -343,12 +342,6 @@
     }
   }
 
-  function appleMusicId(url) {
-    if (!url) return '';
-    const m = url.match(/(\d+)(?:\?.*)?$/);
-    return m ? m[1] : '';
-  }
-
   function renderAppleMusic(appleMusic) {
     const area = document.getElementById('appleMusicArea');
     if (!appleMusic) {
@@ -392,11 +385,13 @@
     mediaArea.innerHTML = `
       <div class="section-label">MOVIE</div>
       ${yts.map(id => `
-        <div class="mv-thumb-wrap" data-yt="${escH(id)}">
-          <img src="https://img.youtube.com/vi/${escH(id)}/maxresdefault.jpg" alt="${escH(title)} MV" loading="lazy">
-          <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
-        </div>
-        <div class="mv-embed"></div>`).join('')}`;
+        <div class="mv-item">
+          <div class="mv-thumb-wrap" data-yt="${escH(id)}">
+            <img src="https://img.youtube.com/vi/${escH(id)}/maxresdefault.jpg" alt="${escH(title)} MV" loading="lazy">
+            <div class="mv-thumb-play"><div class="mv-thumb-play-btn"></div></div>
+          </div>
+          <div class="mv-embed"></div>
+        </div>`).join('')}`;
 
     mediaArea.querySelectorAll('.mv-thumb-wrap').forEach(thumb => {
       const id = thumb.dataset.yt;
@@ -766,119 +761,81 @@
     renderSpotify('');
   }
 
-  async function findInDiscography(yt, ext, sp) {
-    const res = await fetch('../data/kinggnu-discography.json');
-    const data = await res.json();
-    const matches = (i) => (yt && i.yt === yt) || (ext && i.externalVideo === ext) || (sp && i.spotify === sp);
-    const item = data.items.find(matches);
-    const couplingParent = data.items.find(i => i.coupling && matches(i.coupling));
+  async function findBySlug(slug) {
+    const [kgRes, svRes] = await Promise.all([
+      fetch('../data/kinggnu-discography.json'),
+      fetch('../data/srvvinci-discography.json'),
+    ]);
+    const kg = await kgRes.json();
+    const sv = await svRes.json();
 
-    let album = null;
-    for (const a of data.albums) {
-      const track = (a.tracks || []).find(t => (yt && t.yt === yt) || (ext && t.externalVideo === ext) || (sp && t.spotify === sp));
-      if (track) { album = { title: a.title, num: track.num, year: a.year, track }; break; }
+    for (const item of kg.items) {
+      if (item.slug === slug) {
+        let album = null;
+        for (const a of kg.albums) {
+          const track = (a.tracks || []).find(t => t.yt && t.yt === item.yt);
+          if (track) { album = { title: a.title, num: track.num }; break; }
+        }
+        return { isSrvvinci: false, type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, yt2: item.yt2 || '', tweets: item.tweets || [], spotify: item.spotify, externalVideo: item.externalVideo || '', hideVideo: !!item.hideVideo, lyrics: item.lyrics || '', shorts: item.shorts || [], album, albumText: item.albumText || '' };
+      }
+      if (item.coupling && item.coupling.slug === slug) {
+        const c = item.coupling;
+        return { isSrvvinci: false, type: item.type, title: c.title, year: item.year, note: c.note, extra: c.extra || '', yt: c.yt, yt2: c.yt2 || '', tweets: c.tweets || [], spotify: c.spotify, externalVideo: c.externalVideo || '', hideVideo: !!c.hideVideo, lyrics: c.lyrics || '', album: null };
+      }
+    }
+    for (const a of kg.albums) {
+      for (const t of (a.tracks || [])) {
+        if (t.slug === slug) {
+          return { isSrvvinci: false, type: 'ALBUM', title: t.title, year: a.year, note: t.note, extra: t.extra || '', yt: t.yt, yt2: t.yt2 || '', tweets: t.tweets || [], spotify: t.spotify, externalVideo: t.externalVideo || '', hideVideo: !!t.hideVideo, lyrics: t.lyrics || '', album: { title: a.title, num: t.num } };
+        }
+      }
     }
 
-    if (item) {
-      return { type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, yt2: item.yt2 || '', tweets: item.tweets || [], spotify: item.spotify, externalVideo: item.externalVideo || '', hideVideo: !!item.hideVideo, lyrics: item.lyrics || '', shorts: item.shorts || [], album, albumText: item.albumText || '' };
-    }
-
-    if (couplingParent) {
-      const c = couplingParent.coupling;
-      return { type: couplingParent.type, title: c.title, year: couplingParent.year, note: c.note, extra: c.extra || '', yt: c.yt, yt2: c.yt2 || '', tweets: c.tweets || [], spotify: c.spotify, externalVideo: c.externalVideo || '', hideVideo: !!c.hideVideo, lyrics: c.lyrics || '', album };
-    }
-
-    if (album) {
-      const t = album.track;
-      return { type: 'ALBUM', title: t.title, year: album.year, note: t.note, extra: t.extra || '', yt: t.yt, yt2: t.yt2 || '', tweets: t.tweets || [], spotify: t.spotify, externalVideo: t.externalVideo || '', hideVideo: !!t.hideVideo, lyrics: t.lyrics || '', album: { title: album.title, num: album.num } };
-    }
-
-    return null;
-  }
-
-  async function findInSrvvinci(yt, am, ext, rel, album, num) {
-    const res = await fetch('../data/srvvinci-discography.json');
-    const data = await res.json();
-    for (const group of data.groups) {
+    for (const group of sv.groups) {
       const collections = [
         ...(group.demos || []).filter(d => d.tracks).map(d => ({ ...d, type: d.type || 'DEMO' })),
         ...(group.singles || []).filter(d => d.tracks).map(d => ({ ...d, type: d.type || 'SINGLE' })),
         ...(group.albums || []).map(a => ({ ...a, type: a.type || 'ALBUM' })),
       ];
-
-      // yt/am/extを持たない楽曲（動画等の識別子が存在しないもの）は、アルバム名＋トラック番号で特定する
-      if (album && num) {
-        const coll = collections.find(c => c.title === album);
-        const track = coll && (coll.tracks || []).find(t => String(t.num) === String(num));
-        if (track) {
-          return { type: coll.type, title: track.title, year: coll.year || '', note: track.note || '', extra: track.extra || '', yt: track.yt || '', yt2: track.yt2 || '', tweets: track.tweets || [], spotify: track.spotify || '', appleMusic: track.appleMusic || '', externalVideo: track.externalVideo || '', hideVideo: !!track.hideVideo, lyrics: track.lyrics || '', album: { title: coll.title, num: track.num } };
-        }
-      }
-
-      const findTrack = () => {
-        for (const coll of collections) {
-          const track = (coll.tracks || []).find(t => (yt && t.yt === yt) || (am && appleMusicId(t.appleMusic) === am) || (ext && t.externalVideo === ext));
-          if (track) {
-            return { type: coll.type, title: track.title, year: coll.year || '', note: track.note || '', extra: track.extra || '', yt: track.yt || '', yt2: track.yt2 || '', tweets: track.tweets || [], spotify: track.spotify || '', appleMusic: track.appleMusic || '', externalVideo: track.externalVideo || '', hideVideo: !!track.hideVideo, lyrics: track.lyrics || '', album: { title: coll.title, num: track.num } };
+      for (const coll of collections) {
+        for (const t of (coll.tracks || [])) {
+          if (t.slug === slug) {
+            return { isSrvvinci: true, type: coll.type, title: t.title, year: coll.year || '', note: t.note || '', extra: t.extra || '', yt: t.yt || '', yt2: t.yt2 || '', tweets: t.tweets || [], spotify: t.spotify || '', appleMusic: t.appleMusic || '', externalVideo: t.externalVideo || '', hideVideo: !!t.hideVideo, lyrics: t.lyrics || '', album: { title: coll.title, num: t.num } };
           }
         }
-        return null;
-      };
-
-      const findFlat = () => {
-        const flatPools = [
-          ...(group.demos || []).filter(d => !d.tracks).map(d => ({ ...d, type: d.type || 'DEMO' })),
-          ...(group.singles || []).filter(d => !d.tracks).map(d => ({ ...d, type: d.type || 'SINGLE' })),
-        ];
-        const item = flatPools.find(i => (yt && i.yt === yt) || (ext && i.externalVideo === ext));
-        if (!item) return null;
-        return { type: item.type, title: item.title, year: item.year || '', note: item.note || '', extra: item.extra, yt: item.yt, yt2: item.yt2 || '', tweets: item.tweets || [], spotify: item.spotify || '', appleMusic: '', externalVideo: item.externalVideo || '', hideVideo: !!item.hideVideo, lyrics: item.lyrics || '', album: null };
-      };
-
-      // 通常はトラック単位の一致を優先（同じ動画IDが単体シングルとしても登録されている場合、収録アルバム情報を優先して表示するため）。
-      // rel=single 指定時は、単体シングルとしてのリリース情報を優先する。
-      const result = rel === 'single' ? (findFlat() || findTrack()) : (findTrack() || findFlat());
-      if (result) return result;
-
-      for (const coll of collections) {
-        if (yt && coll.yt === yt) {
-          return { type: coll.type, title: coll.title, year: coll.year || '', note: coll.note || '', extra: coll.extra || '', yt: coll.yt, spotify: '', appleMusic: '', lyrics: coll.lyrics || '', album: null };
+      }
+      const flatPools = [
+        ...(group.demos || []).filter(d => !d.tracks).map(d => ({ ...d, type: d.type || 'DEMO' })),
+        ...(group.singles || []).filter(d => !d.tracks).map(d => ({ ...d, type: d.type || 'SINGLE' })),
+      ];
+      for (const item of flatPools) {
+        if (item.slug === slug) {
+          return { isSrvvinci: true, type: item.type, title: item.title, year: item.year || '', note: item.note || '', extra: item.extra || '', yt: item.yt || '', yt2: item.yt2 || '', tweets: item.tweets || [], spotify: item.spotify || '', appleMusic: '', externalVideo: item.externalVideo || '', hideVideo: !!item.hideVideo, lyrics: item.lyrics || '', album: null };
         }
       }
     }
+
     return null;
   }
 
   const params = new URLSearchParams(location.search);
   const hashParams = new URLSearchParams(location.hash.slice(1));
-  const yt  = params.get('yt') || hashParams.get('yt') || '';
-  const am  = params.get('am') || hashParams.get('am') || '';
-  const ext = params.get('ext') || hashParams.get('ext') || '';
-  const sp  = params.get('sp') || hashParams.get('sp') || '';
-  const rel = params.get('rel') || hashParams.get('rel') || '';
-  const album = params.get('album') || hashParams.get('album') || '';
-  const num = params.get('num') || hashParams.get('num') || '';
-  const src = params.get('src') === 'srvvinci' ? 'srvvinci' : 'discography';
+  const slug = params.get('slug') || hashParams.get('slug') || '';
 
-  const isSrvvinci = src === 'srvvinci';
-  document.getElementById('discographyLink').href = isSrvvinci ? '../srvvinci-discography/' : '../discography/';
+  let isSrvvinci = false;
 
-  const lookup = isSrvvinci ? findInSrvvinci(yt, am, ext, rel, album, num) : findInDiscography(yt, ext, sp);
+  const lookup = findBySlug(slug);
   lookup
     .then(song => {
       if (!song) { renderNotFound(); return null; }
+      isSrvvinci = song.isSrvvinci;
+      document.getElementById('discographyLink').href = isSrvvinci ? '../srvvinci-discography/' : '../discography/';
       renderSong(song);
       const url = new URL(location.href);
       const query = new URLSearchParams();
       query.set('title', song.title);
-      if (isSrvvinci) query.set('src', 'srvvinci');
       const hash = new URLSearchParams();
-      if (yt) hash.set('yt', yt);
-      else if (ext) hash.set('ext', ext);
-      else if (am) hash.set('am', am);
-      else if (sp) hash.set('sp', sp);
-      else if (album && num) { hash.set('album', album); hash.set('num', num); }
-      if (rel) hash.set('rel', rel);
+      if (slug) hash.set('slug', slug);
       url.search = query.toString();
       url.hash = hash.toString();
       history.replaceState(null, '', url);

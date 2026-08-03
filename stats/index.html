@@ -497,21 +497,8 @@
       .trim();
   }
 
-  function appleMusicId(url) {
-    if (!url) return '';
-    const m = url.match(/(\d+)(?:\?.*)?$/);
-    return m ? m[1] : '';
-  }
-
   function songHref(info) {
-    const params = new URLSearchParams();
-    if (info.src === 'srvvinci') params.set('src', 'srvvinci');
-    if (info.yt) params.set('yt', info.yt);
-    else if (info.appleMusic) params.set('am', appleMusicId(info.appleMusic));
-    else if (info.externalVideo) params.set('ext', info.externalVideo);
-    else if (info.spotify) params.set('sp', info.spotify);
-    else return null;
-    return `../song/?${params.toString()}`;
+    return info && info.slug ? `../song/?slug=${encodeURIComponent(info.slug)}` : null;
   }
 
   const PREF_MAP = {
@@ -549,9 +536,9 @@
 
     (kgDisco.items || []).forEach(item => {
       if (!item.title) return;
-      addSong(item.title, { title: item.title, yt: item.yt || '', externalVideo: item.externalVideo || '', spotify: item.spotify || '', src: 'discography' });
+      addSong(item.title, { title: item.title, slug: item.slug || '', src: 'discography' });
       if (item.coupling && item.coupling.title) {
-        addSong(item.coupling.title, { title: item.coupling.title, yt: item.coupling.yt || '', externalVideo: item.coupling.externalVideo || '', spotify: item.coupling.spotify || '', src: 'discography' });
+        addSong(item.coupling.title, { title: item.coupling.title, slug: item.coupling.slug || '', src: 'discography' });
       }
     });
     // 通常盤を優先し、ライブアルバムは音源がない曲を補うフォールバックとして最後に処理する
@@ -560,7 +547,7 @@
     const liveAlbums = kgAlbums.filter(a => a.note === 'ライブアルバム');
     [...studioAlbums, ...liveAlbums].forEach(album => {
       (album.tracks || []).forEach(t => {
-        addSong(t.title, { title: t.title, yt: t.yt || '', src: 'discography' });
+        addSong(t.title, { title: t.title, slug: t.slug || '', src: 'discography' });
       });
     });
 
@@ -570,7 +557,7 @@
         ...(group.singles || []).filter(d => !d.tracks),
       ];
       flatItems.forEach(d => {
-        addSong(d.title, { title: d.title, yt: d.yt || '', appleMusic: d.appleMusic || '', externalVideo: d.externalVideo || '', spotify: d.spotify || '', src: 'srvvinci' });
+        addSong(d.title, { title: d.title, slug: d.slug || '', src: 'srvvinci' });
       });
 
       const collections = [
@@ -579,9 +566,8 @@
         ...(group.albums || []),
       ];
       collections.forEach(coll => {
-        addSong(coll.title, { title: coll.title, yt: coll.yt || '', src: 'srvvinci' });
         (coll.tracks || []).forEach(t => {
-          addSong(t.title, { title: t.title, yt: t.yt || '', appleMusic: t.appleMusic || '', externalVideo: t.externalVideo || '', spotify: t.spotify || '', src: 'srvvinci' });
+          addSong(t.title, { title: t.title, slug: t.slug || '', src: 'srvvinci' });
         });
       });
     });

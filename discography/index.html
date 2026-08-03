@@ -210,13 +210,8 @@
     return escH(value).replace(/\n/g, '<br>');
   }
 
-  function songHref(yt, ext, sp) {
-    const params = new URLSearchParams();
-    if (yt) params.set('yt', yt);
-    else if (ext) params.set('ext', ext);
-    else if (sp) params.set('sp', sp);
-    else return null;
-    return `../song/?${params.toString()}`;
+  function songHref(slug) {
+    return slug ? `../song/?slug=${encodeURIComponent(slug)}` : null;
   }
 
   function sortKey(year) {
@@ -233,7 +228,7 @@
       const numTitle = `
           <span class="track-num">${String(t.num).padStart(2,'0')}</span>
           <span class="track-title">${escH(t.displayTitle || t.title)}</span>`;
-      const href = songHref(t.yt, t.externalVideo, t.spotify);
+      const href = songHref(t.slug);
       const link = href
         ? `<a class="track-link" href="${href}">${numTitle}</a>`
         : `<span class="track-link">${numTitle}</span>`;
@@ -286,16 +281,16 @@
     }
 
     const hasDetail = !!(item.note || item.yt || item.externalVideo || item.spotify || item.coupling);
-    const songRow = (title, yt, ext, sp) => {
-      const href = songHref(yt, ext, sp);
+    const songRow = (title, slug) => {
+      const href = songHref(slug);
       const inner = `<span class="disc-song-title">${escH(title)}</span>${href ? `<span class="disc-song-arrow">楽曲詳細 →</span>` : ''}`;
       return href
         ? `<a class="disc-song-row" href="${href}">${inner}</a>`
         : `<div class="disc-song-row">${inner}</div>`;
     };
     const songRowsHtml = [
-      (item.yt || item.externalVideo || item.spotify) ? songRow(item.title, item.yt, item.externalVideo, item.spotify) : '',
-      item.coupling ? songRow(item.coupling.title, item.coupling.yt, item.coupling.externalVideo, item.coupling.spotify) : '',
+      (item.yt || item.externalVideo || item.spotify) ? songRow(item.title, item.slug) : '',
+      item.coupling ? songRow(item.coupling.title, item.coupling.slug) : '',
     ].join('');
     const songListHtml = songRowsHtml ? `<div class="disc-song-list">${songRowsHtml}</div>` : '';
     const detailHtml = hasDetail

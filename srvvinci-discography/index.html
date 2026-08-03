@@ -179,20 +179,8 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 
-  function appleMusicId(url) {
-    if (!url) return '';
-    const m = url.match(/(\d+)(?:\?.*)?$/);
-    return m ? m[1] : '';
-  }
-
-  function songHref(yt, am, ext, rel, album, num) {
-    const params = new URLSearchParams({ src: 'srvvinci' });
-    if (yt) params.set('yt', yt);
-    if (am) params.set('am', am);
-    if (ext) params.set('ext', ext);
-    if (rel) params.set('rel', rel);
-    if (album && num) { params.set('album', album); params.set('num', num); }
-    return `../song/?${params.toString()}`;
+  function songHref(slug) {
+    return slug ? `../song/?slug=${encodeURIComponent(slug)}` : null;
   }
 
   function buildTrackGrid(tracks, albumTitle) {
@@ -201,7 +189,7 @@
       const numTitle = `
           <span class="track-num">${String(t.num).padStart(2,'0')}</span>
           <span class="track-title">${escH(t.title)}</span>`;
-      const href = t.yt ? songHref(t.yt) : (t.appleMusic ? songHref(null, appleMusicId(t.appleMusic)) : (t.externalVideo ? songHref(null, null, t.externalVideo) : (albumTitle ? songHref(null, null, null, null, albumTitle, t.num) : null)));
+      const href = songHref(t.slug);
       if (href) {
         return `
           <div class="track-row">
@@ -257,7 +245,7 @@
         </div>`;
     }
 
-    const rowHref = item.yt ? songHref(item.yt, null, null, 'single') : (item.externalVideo ? songHref(null, null, item.externalVideo, 'single') : null);
+    const rowHref = songHref(item.slug);
     const hasDetail = !!rowHref;
     const songListHtml = rowHref ? `<div class="disc-song-list">${songRow(item.title, rowHref)}</div>` : '';
     const detailHtml = hasDetail
