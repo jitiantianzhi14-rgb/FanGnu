@@ -587,7 +587,8 @@
     return title
       .replace(/\s*★.*$/, '')
       .replace(/[（(][^）)]*[）)]\s*$/, '')
-      .trim();
+      .trim()
+      .toLowerCase();
   }
 
   async function collectLiveHits(file, title, normTarget, source) {
@@ -776,17 +777,17 @@
           const track = (a.tracks || []).find(t => t.yt && t.yt === item.yt);
           if (track) { album = { title: a.title, num: track.num }; break; }
         }
-        return { isSrvvinci: false, type: item.type, title: item.title, year: item.year, note: item.note, extra: item.extra, yt: item.yt, yt2: item.yt2 || '', tweets: item.tweets || [], spotify: item.spotify, externalVideo: item.externalVideo || '', hideVideo: !!item.hideVideo, lyrics: item.lyrics || '', shorts: item.shorts || [], album, albumText: item.albumText || '' };
+        return { isSrvvinci: false, type: item.type, title: item.title, liveTitle: item.liveTitle || '', year: item.year, note: item.note, extra: item.extra, yt: item.yt, yt2: item.yt2 || '', tweets: item.tweets || [], spotify: item.spotify, externalVideo: item.externalVideo || '', hideVideo: !!item.hideVideo, lyrics: item.lyrics || '', shorts: item.shorts || [], album, albumText: item.albumText || '' };
       }
       if (item.coupling && item.coupling.slug === slug) {
         const c = item.coupling;
-        return { isSrvvinci: false, type: item.type, title: c.title, year: item.year, note: c.note, extra: c.extra || '', yt: c.yt, yt2: c.yt2 || '', tweets: c.tweets || [], spotify: c.spotify, externalVideo: c.externalVideo || '', hideVideo: !!c.hideVideo, lyrics: c.lyrics || '', album: null };
+        return { isSrvvinci: false, type: item.type, title: c.title, liveTitle: c.liveTitle || '', year: item.year, note: c.note, extra: c.extra || '', yt: c.yt, yt2: c.yt2 || '', tweets: c.tweets || [], spotify: c.spotify, externalVideo: c.externalVideo || '', hideVideo: !!c.hideVideo, lyrics: c.lyrics || '', album: null };
       }
     }
     for (const a of kg.albums) {
       for (const t of (a.tracks || [])) {
         if (t.slug === slug) {
-          return { isSrvvinci: false, type: 'ALBUM', title: t.title, year: a.year, note: t.note, extra: t.extra || '', yt: t.yt, yt2: t.yt2 || '', tweets: t.tweets || [], spotify: t.spotify, externalVideo: t.externalVideo || '', hideVideo: !!t.hideVideo, lyrics: t.lyrics || '', album: { title: a.title, num: t.num } };
+          return { isSrvvinci: false, type: 'ALBUM', title: t.title, liveTitle: t.liveTitle || '', year: a.year, note: t.note, extra: t.extra || '', yt: t.yt, yt2: t.yt2 || '', tweets: t.tweets || [], spotify: t.spotify, externalVideo: t.externalVideo || '', hideVideo: !!t.hideVideo, lyrics: t.lyrics || '', album: { title: a.title, num: t.num } };
         }
       }
     }
@@ -800,7 +801,7 @@
       for (const coll of collections) {
         for (const t of (coll.tracks || [])) {
           if (t.slug === slug) {
-            return { isSrvvinci: true, type: coll.type, title: t.title, year: coll.year || '', note: t.note || '', extra: t.extra || '', yt: t.yt || '', yt2: t.yt2 || '', tweets: t.tweets || [], spotify: t.spotify || '', appleMusic: t.appleMusic || '', externalVideo: t.externalVideo || '', hideVideo: !!t.hideVideo, lyrics: t.lyrics || '', album: { title: coll.title, num: t.num } };
+            return { isSrvvinci: true, type: coll.type, title: t.title, liveTitle: t.liveTitle || '', year: coll.year || '', note: t.note || '', extra: t.extra || '', yt: t.yt || '', yt2: t.yt2 || '', tweets: t.tweets || [], spotify: t.spotify || '', appleMusic: t.appleMusic || '', externalVideo: t.externalVideo || '', hideVideo: !!t.hideVideo, lyrics: t.lyrics || '', album: { title: coll.title, num: t.num } };
           }
         }
       }
@@ -810,7 +811,7 @@
       ];
       for (const item of flatPools) {
         if (item.slug === slug) {
-          return { isSrvvinci: true, type: item.type, title: item.title, year: item.year || '', note: item.note || '', extra: item.extra || '', yt: item.yt || '', yt2: item.yt2 || '', tweets: item.tweets || [], spotify: item.spotify || '', appleMusic: '', externalVideo: item.externalVideo || '', hideVideo: !!item.hideVideo, lyrics: item.lyrics || '', album: null };
+          return { isSrvvinci: true, type: item.type, title: item.title, liveTitle: item.liveTitle || '', year: item.year || '', note: item.note || '', extra: item.extra || '', yt: item.yt || '', yt2: item.yt2 || '', tweets: item.tweets || [], spotify: item.spotify || '', appleMusic: '', externalVideo: item.externalVideo || '', hideVideo: !!item.hideVideo, lyrics: item.lyrics || '', album: null };
         }
       }
     }
@@ -839,7 +840,7 @@
       url.search = query.toString();
       url.hash = hash.toString();
       history.replaceState(null, '', url);
-      return findLiveHistory(song.title);
+      return findLiveHistory(song.liveTitle || song.title);
     })
     .then(history => {
       const list = history || [];
