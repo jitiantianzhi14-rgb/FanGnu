@@ -104,7 +104,50 @@ JSONを保存する前に、VS Codeで赤い波線（構文エラー）が出て
 
 ---
 
-## 7. Blu-ray/DVD（`discs`を持つitems）について
+## 7. 新曲・新しいライブを追加したら `sitemap.xml` も更新する
+
+Googleなどの検索エンジンに個別ページを見つけてもらうための一覧ファイルが`sitemap.xml`（サイト直下）です。JSONに曲・ライブを追加しただけではこのファイルは自動で増えないので、以下の`<url>`ブロックをコピーして`</urlset>`の直前に追記してください。
+
+**新曲を追加したとき**（`song/?slug=...`）：
+
+```xml
+  <url>
+    <loc>https://fungnu.com/song/?slug=新しいslug</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+```
+
+**新しいライブを追加したとき**（`live-show/?date=...`）：King Gnu名義のライブ
+
+```xml
+  <url>
+    <loc>https://fungnu.com/live-show/?date=YYYY.MM.DD</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+```
+
+Srv.Vinci時代のライブは`&src=srvvinci`を付ける（XML内では`&`を`&amp;`と書く）：
+
+```xml
+  <url>
+    <loc>https://fungnu.com/live-show/?date=YYYY.MM.DD&amp;src=srvvinci</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+```
+
+- `lastmod`は`2026-08-01`のままで問題ありません（このサイトでは正確な更新日管理はしていません）
+- 忘れても致命的ではありません。Googleは他ページのリンクを辿ってページを見つけることもできますが、サイトマップに載せた方が見つけてもらいやすくなります
+- まとめて何件も追加したい場合はAIに頼んでください
+
+---
+
+## 8. Blu-ray/DVD（`discs`を持つitems）について
 
 `items[]`の中には稀に`"discs": [...]`を持つエントリ（例：Dome Tour Blu-ray）がありますが、これは曲データではなく映像作品の収録内容リストで、`video/`ページ専用の別の仕組みです。曲の追加とは無関係なので、真似しなくてOKです。
 
