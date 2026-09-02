@@ -56,8 +56,6 @@
     .bn-item.active .bn-icon { background: var(--md-primary-container); }
 
     .page-header { padding: 3rem 2rem 2.5rem; border-bottom: 1px solid var(--md-outline-variant); background: var(--md-surface-container-low); }
-    .page-header-tag { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
-    .page-header-tag::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--md-primary); }
     .page-header-title { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 52px; line-height: 1.05; letter-spacing: -0.02em; color: var(--md-on-surface); }
     .page-header-title .red { color: var(--md-primary); }
     .page-header-desc { font-size: 13px; color: var(--md-on-surface-variant); margin-top: 1rem; }
@@ -83,8 +81,13 @@
 
     .disc-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 
+    .disc-year-header { display: flex; align-items: center; gap: 14px; margin-top: 10px; padding: 0 2px; }
+    .disc-year-header:first-child { margin-top: 0; }
+    .disc-year-header-label { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 24px; color: var(--md-on-surface); }
+    .disc-year-header-line { flex: 1; height: 1px; background: var(--md-outline-variant); }
+
     .disc-card { background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 16px; overflow: hidden; transition: box-shadow 0.15s; }
-    .disc-card.hidden { display: none; }
+    .disc-card.hidden, .disc-year-header.hidden { display: none; }
     .disc-card:hover { box-shadow: var(--md-shadow-1); }
 
     .disc-card-head { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; cursor: pointer; }
@@ -181,9 +184,8 @@
   </nav>
 
   <div class="page-header">
-    <div class="page-header-tag">DISCOGRAPHY</div>
-    <h1 class="page-header-title">Discography<span class="red">.</span></h1>
-    <p class="page-header-desc">King Gnu 名義の全シングル・アルバムを収録。</p>
+    <h1 class="page-header-title">Discography</h1>
+    <p class="page-header-desc">King Gnu 名義の全シングル・アルバムなどを掲載</p>
     <div class="data-caveat"><span class="data-caveat-icon material-symbols-outlined">warning</span><span>掲載情報は非公式ファンによる情報収集の途中段階です。二次情報や誤りが含まれている可能性がありますので、あらかじめご了承ください。</span></div>
     <div class="page-header-actions">
       <a href="../srvvinci-discography/" class="header-btn">King Gnu以前のディスコグラフィー →</a>
@@ -333,7 +335,19 @@
 
   function render() {
     const content = document.getElementById('discContent');
-    content.innerHTML = `<div class="disc-grid">${DISCS.map(buildCard).join('')}</div>`;
+    let html = '';
+    let lastYear = null;
+    DISCS.forEach(item => {
+      if (item.yearKey !== lastYear) {
+        html += `<div class="disc-year-header" data-year="${escH(item.yearKey)}">
+          <span class="disc-year-header-label">${escH(item.yearKey || '年不明')}</span>
+          <span class="disc-year-header-line"></span>
+        </div>`;
+        lastYear = item.yearKey;
+      }
+      html += buildCard(item);
+    });
+    content.innerHTML = `<div class="disc-grid">${html}</div>`;
 
     applyFilter();
 
@@ -354,11 +368,18 @@
 
   function applyFilter() {
     let total = 0;
+    const yearVisibleCount = {};
     document.querySelectorAll('.disc-card').forEach(card => {
       const match = (selectedTypes.size === 0 || selectedTypes.has(card.dataset.type)) &&
         (selectedYears.size === 0 || selectedYears.has(card.dataset.year));
       card.classList.toggle('hidden', !match);
-      if (match) total++;
+      if (match) {
+        total++;
+        yearVisibleCount[card.dataset.year] = (yearVisibleCount[card.dataset.year] || 0) + 1;
+      }
+    });
+    document.querySelectorAll('.disc-year-header').forEach(h => {
+      h.classList.toggle('hidden', !yearVisibleCount[h.dataset.year]);
     });
     document.getElementById('filterCount').textContent = `${total} / ${DISCS.length} 件`;
   }

@@ -14,14 +14,14 @@ JSONを保存する前に、VS Codeで赤い波線（構文エラー）が出て
 ```json
 { "type": "配信SG", "year": "2024.10.21", "title": "ねっこ", "slug": "nekko",
   "note": "TBS系日曜劇場『海に眠るダイヤモンド』主題歌",
-  "extra": "【概要】\n・◯◯\n\n【豆知識】\n・◯◯",
+  "extra": "【概要】\n・◯◯\n\n【情報欄】\n・◯◯",
   "yt": "動画ID（YouTubeのURLの v= の後ろの部分）",
   "spotify": "SpotifyのURL", "lyrics": "歌詞サイトのURL" }
 ```
 
 - `type` は `CDSG`（CDシングル） / `配信SG`（配信シングル） / `COVER`（カバー曲） / `UNRELEASED`（未音源化）のどれか
 - `slug` は他のどのエントリとも被らないこと（迷ったら英語タイトルを小文字ハイフン区切りにする）
-- `extra` は `【概要】`と`【豆知識】`の2段構成が今の標準。両方書かなくてもよい
+- `extra` は `【概要】`と`【情報欄】`の2段構成が今の標準。両方書かなくてもよい
 - `note`・`spotify`・`lyrics`は情報がなければ `""`（空文字）でOK
 
 ---
@@ -91,7 +91,7 @@ JSONを保存する前に、VS Codeで赤い波線（構文エラー）が出て
 | フィールド | 意味 | 例 |
 |---|---|---|
 | `yt2` | 2本目の動画（MV欄に2つ並べて表示） | SO BADの2本目の動画ID |
-| `tweets` + 本文中の`{{TWEETS}}` | 豆知識の途中にX(旧Twitter)投稿を埋め込みカルーセル表示 | `"tweets": ["https://x.com/.../status/..."]` を配列で並べ、`extra`本文の埋め込みたい位置に`{{TWEETS}}`という文字列を書く |
+| `tweets` + 本文中の`{{TWEETS}}` | 情報欄の途中にX(旧Twitter)投稿を埋め込みカルーセル表示 | `"tweets": ["https://x.com/.../status/..."]` を配列で並べ、`extra`本文の埋め込みたい位置に`{{TWEETS}}`という文字列を書く |
 | `hideVideo: true` + `externalVideo` | 公式じゃない動画（ファン転載など）へのリンクは非表示にしつつ、そのURL自体はページの裏で保持しておく | Catch!!!など |
 | `shorts` | YouTube Shorts動画IDの配列（あれば下部に表示） | `"shorts": ["動画ID", ...]` |
 | `displayTitle` | 曲一覧などでの表示名を`title`と別にしたいとき | `"一途/逆夢"`など |

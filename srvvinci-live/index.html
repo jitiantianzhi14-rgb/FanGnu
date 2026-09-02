@@ -55,8 +55,6 @@
     .bn-item.active { color: var(--md-on-surface); font-weight: 700; }
     .bn-item.active .bn-icon { background: var(--md-primary-container); }
     .page-header { padding: 3rem 2rem 2.5rem; border-bottom: 1px solid var(--md-outline-variant); background: var(--md-surface-container-low); }
-    .page-header-tag { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
-    .page-header-tag::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--md-primary); }
     .page-header-title { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em; color: var(--md-on-surface); }
     .page-header-title .red { color: var(--md-primary); }
     .page-header-desc { font-size: 13px; color: var(--md-on-surface-variant); margin-top: 1rem; }
@@ -79,6 +77,11 @@
     .search-input::placeholder { color: var(--md-on-surface-variant); }
 
     .content { max-width: 1000px; margin: 0 auto; padding: 2rem; display: flex; flex-direction: column; gap: 10px; }
+
+    .live-year-header { display: flex; align-items: center; gap: 14px; margin-top: 10px; padding: 0 2px; }
+    .live-year-header:first-child { margin-top: 0; }
+    .live-year-header-label { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 24px; color: var(--md-on-surface); }
+    .live-year-header-line { flex: 1; height: 1px; background: var(--md-outline-variant); }
 
     .tour-block { background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 14px; overflow: hidden; }
     .tour-header { cursor: pointer; border-left: 4px solid var(--md-primary); padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; transition: background 0.15s; }
@@ -146,9 +149,8 @@
   </nav>
 
   <div class="page-header">
-    <div class="page-header-tag">LIVE / TOUR / EARLY ERA</div>
-    <h1 class="page-header-title">前身バンド<span class="red">.</span></h1>
-    <p class="page-header-desc">King Gnu 結成以前のライブ活動記録。</p>
+    <h1 class="page-header-title">Srv.Vinciなどライブ</h1>
+    <p class="page-header-desc">King Gnu 結成以前のライブの記録を掲載</p>
     <div class="page-header-actions">
       <a href="../live/" class="header-btn">← King Gnu ライブ</a>
     </div>
@@ -228,7 +230,19 @@
       content.innerHTML = `<div class="no-live">条件に一致するライブがありません。</div>`;
       return;
     }
-    content.innerHTML = tours.map(buildTour).join('');
+    let html = '';
+    let lastYear = null;
+    tours.forEach(tour => {
+      if (tour.year !== lastYear) {
+        html += `<div class="live-year-header">
+          <span class="live-year-header-label">${escH(tour.year)}</span>
+          <span class="live-year-header-line"></span>
+        </div>`;
+        lastYear = tour.year;
+      }
+      html += buildTour(tour);
+    });
+    content.innerHTML = html;
     bindToggles();
   }
 
