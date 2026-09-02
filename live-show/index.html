@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <meta name="google-adsense-account" content="ca-pub-2972783551901156">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-92YX44JD8D"></script>
   <script>
@@ -298,7 +299,7 @@
     return index;
   }
 
-  const VIDEO_INITIAL_COUNT = 4;
+  const VIDEO_INITIAL_COUNT = 2;
 
   function buildVideoItem(video, title) {
     return `
@@ -339,7 +340,7 @@
     const initial = videos.slice(0, VIDEO_INITIAL_COUNT);
     const rest = videos.slice(VIDEO_INITIAL_COUNT);
 
-    mediaArea.innerHTML = initial.map(v => buildVideoItem(v, title)).join('');
+    mediaArea.innerHTML = `<div class="section-label">LIVE MOVIE</div>` + initial.map(v => buildVideoItem(v, title)).join('');
     mediaArea.querySelectorAll('.video-item').forEach(wireVideoItem);
 
     if (rest.length) {
@@ -588,7 +589,7 @@
     const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
 
     area.innerHTML = `
-      <div class="section-label">ALBUM RATIO</div>
+      <div class="section-label">アルバム比率</div>
       <div class="stack-track">${sorted.map(([label, count], i) => {
         const pct = (count / total) * 100;
         return `<div class="stack-seg" style="width:${pct}%;background:${ALBUM_PALETTE[i % ALBUM_PALETTE.length]}" data-tt-value="${count}曲（${pct.toFixed(1)}%）" data-tt-label="${escH(label)}"></div>`;
