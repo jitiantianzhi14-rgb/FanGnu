@@ -66,15 +66,15 @@
     .section-label { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
     .section-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--md-primary); }
 
-    .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--md-primary); border-radius: 16px; overflow: hidden; }
-    .summary-card { padding: 1.5rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); }
+    .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--md-primary-container); border-radius: 16px; overflow: hidden; }
+    .summary-card { padding: 1.5rem 1rem; text-align: center; border-right: 1px solid rgba(74,36,8,0.15); display: flex; flex-direction: column; justify-content: center; }
     .summary-card:last-child { border-right: none; }
-    .summary-label { font-family: 'Roboto Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: rgba(255,255,255,0.75); margin-bottom: 8px; }
-    .summary-value { font-family: 'Roboto Mono', monospace; font-size: 28px; font-weight: 900; color: var(--md-on-primary); line-height: 1; }
-    .summary-value.small { font-size: 13px; font-weight: 700; color: var(--md-on-primary); line-height: 1.5; }
-    .summary-value.small a { color: var(--md-on-primary); }
+    .summary-label { font-family: 'Roboto Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: rgba(74,36,8,0.65); margin-bottom: 8px; }
+    .summary-value { font-family: 'Roboto Mono', monospace; font-size: 28px; font-weight: 900; color: var(--md-on-primary-container); line-height: 1; }
+    .summary-value.small { font-size: 13px; font-weight: 700; color: var(--md-on-primary-container); line-height: 1.5; }
+    .summary-value.small a { color: var(--md-on-primary-container); }
     .summary-value.small a:hover { text-decoration: underline; }
-    .summary-unit { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.75); margin-left: 2px; }
+    .summary-unit { font-size: 10px; font-weight: 700; color: rgba(74,36,8,0.65); margin-left: 2px; }
 
     .rank-list { background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 14px; overflow: hidden; }
     .rank-item { display: flex; align-items: center; gap: 14px; padding: 0.8rem 1.25rem; border-bottom: 1px solid var(--md-outline-variant); }
@@ -100,8 +100,8 @@
     .jp-map-wrap { display: flex; justify-content: center; background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 16px; padding: 1.5rem; }
     .jp-map { width: 100%; max-width: 460px; height: auto; display: block; }
     .jp-map .jp-paths path { fill: #ead8bc; transition: fill 0.15s; }
-    .jp-map g[name].visited path { fill: var(--md-primary); cursor: pointer; }
-    .jp-map g[name].visited:hover path { fill: var(--md-tertiary); }
+    .jp-map g[name].visited path { fill: #d1352b; cursor: pointer; }
+    .jp-map g[name].visited:hover path { fill: #a3241d; }
     .map-note { font-family: 'Roboto Mono', monospace; font-size: 9px; color: var(--md-on-surface-variant); text-align: right; margin-top: 6px; }
     .map-note a { color: var(--md-on-surface-variant); text-decoration: underline; }
 
@@ -161,7 +161,7 @@
       .summary-grid { grid-template-columns: repeat(2, 1fr); }
       .tab-bar { grid-template-columns: repeat(2, 1fr); }
       .tab-btn { padding: 0.8rem 0.5rem; font-size: 11px; }
-      .summary-card { border-bottom: 1px solid rgba(255,255,255,0.2); }
+      .summary-card { border-bottom: 1px solid rgba(74,36,8,0.15); }
       .map-section { flex-direction: column; }
       .hbar-label, .stack-label { width: 84px; font-size: 11px; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
@@ -700,8 +700,8 @@
 
   // ---- 年別・アルバム別集計 ----
 
-  const YEAR_RAMP = ['#f6e0cf', '#edc39f', '#e2a06c', '#d17d3f', '#b5652e', '#8f4f22', '#6b3a18'];
-  const ALBUM_PALETTE = ['#b5652e', '#707a4a', '#a37a1f', '#8c4a35', '#8a9a6b', '#5c7a8a', '#7a4f5c', '#857b6c'];
+  const YEAR_RAMP = ['#bcd8f5', '#8fbdef', '#5a9de5', '#2461c9', '#1c4a9e', '#153a7a', '#0e2857'];
+  const ALBUM_PALETTE = ['#2461c9', '#e8641c', '#0f9e8e', '#e0a319', '#d1368a', '#2f9142', '#7a3fb5', '#d1352b'];
 
   function collectYearlyStats(kgLive, svLive) {
     const allTours = [...(kgLive.tours || []), ...(svLive.tours || [])];
@@ -894,7 +894,7 @@
       return `
         <div class="hbar-row">
           <div class="hbar-label">${escH(y)}年</div>
-          <div class="hbar-track-wrap"><div class="hbar-fill" style="width:${pct}%;background:var(--md-primary)" data-tt-value="${c}回" data-tt-label="${escH(y)}年"></div></div>
+          <div class="hbar-track-wrap"><div class="hbar-fill" style="width:${pct}%;background:#d1352b" data-tt-value="${c}回" data-tt-label="${escH(y)}年"></div></div>
           <div class="hbar-value">${c}回</div>
         </div>`;
     }).join('');
