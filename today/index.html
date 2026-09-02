@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-2972783551901156">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-92YX44JD8D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-92YX44JD8D');
+  </script>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日は何の日 — FunGNU</title>
+  <meta name="description" content="King Gnu・Srv.Vinci時代のライブ公演・リリース日をカレンダーから振り返る「今日は何の日」。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FunGNU">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="今日は何の日 — FunGNU">
+  <meta property="og:description" content="King Gnu・Srv.Vinci時代のライブ公演・リリース日をカレンダーから振り返る「今日は何の日」。">
+  <meta property="og:url" content="https://fungnu.com/today/">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&display=block" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --md-primary: #b5652e; --md-on-primary: #fff; --md-primary-container: #f4dcc8; --md-on-primary-container: #4a2408;
+      --md-secondary: #707a4a; --md-on-secondary: #fff; --md-secondary-container: #e3e8cb; --md-on-secondary-container: #212b06;
+      --md-tertiary: #a37a1f; --md-on-tertiary: #fff; --md-tertiary-container: #ffe8b8; --md-on-tertiary-container: #362a00;
+      --md-surface: #ffffff; --md-surface-container-low: #faf8f6; --md-surface-container: #f3efe9; --md-surface-container-high: #ece5da;
+      --md-on-surface: #201a15; --md-on-surface-variant: #5c5347; --md-outline: #857b6c; --md-outline-variant: #ddd4c5;
+      --md-shadow-1: 0 1px 2px rgba(0,0,0,.15), 0 1px 3px 1px rgba(0,0,0,.10);
+      --md-shadow-2: 0 1px 2px rgba(0,0,0,.15), 0 2px 6px 2px rgba(0,0,0,.10);
+    }
+    body { font-family: 'Roboto', 'Noto Sans JP', sans-serif; background: var(--md-surface); color: var(--md-on-surface); line-height: 1.6; padding-bottom: 64px; }
+    a { color: inherit; text-decoration: none; }
+    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: 400; font-style: normal; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; vertical-align: middle; }
+
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--md-surface); border-bottom: 1px solid var(--md-outline-variant); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 64px; }
+    .nav-logo { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 21px; color: var(--md-on-surface); }
+    .nav-logo .red { color: var(--md-primary); }
+    .nav-links { display: flex; gap: 1.75rem; font-size: 13px; font-weight: 500; color: var(--md-on-surface-variant); }
+    .nav-links a { transition: color 0.15s; padding: 6px 0; }
+    .nav-links a:hover, .nav-links a.active { color: var(--md-primary); }
+    .nav-links a.active { border-bottom: 2px solid var(--md-primary); }
+
+    .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: var(--md-surface-container-low); box-shadow: 0 -1px 3px rgba(0,0,0,.08); z-index: 200; }
+    .bn-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 10px 4px 8px; font-size: 11px; font-weight: 500; color: var(--md-on-surface-variant); transition: color 0.15s; }
+    .bn-item:hover { color: var(--md-on-surface); }
+    .bn-icon { font-size: 17px; line-height: 1; width: 46px; padding: 3px 0; border-radius: 16px; text-align: center; transition: background 0.15s; }
+    .bn-item.active { color: var(--md-on-surface); font-weight: 700; }
+    .bn-item.active .bn-icon { background: var(--md-primary-container); }
+
+    .page-header { padding: 3rem 2rem 2.5rem; border-bottom: 1px solid var(--md-outline-variant); background: var(--md-surface-container-low); }
+    .page-header-tag { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+    .page-header-tag::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--md-primary); }
+    .page-header-title { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 40px; line-height: 1.1; letter-spacing: -0.02em; color: var(--md-on-surface); }
+    .page-header-desc { font-size: 13px; color: var(--md-on-surface-variant); margin-top: 0.75rem; }
+
+    .content { max-width: 760px; margin: 0 auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    .day-nav { display: flex; align-items: center; justify-content: space-between; }
+    .day-nav-btn { font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; color: var(--md-primary); display: flex; align-items: center; gap: 4px; }
+    .day-nav-btn:hover { text-decoration: underline; }
+
+    .calendar { background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 16px; padding: 1.5rem; }
+    .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+    .cal-head-title { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 16px; color: var(--md-on-surface); }
+    .cal-nav-btn { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--md-outline); background: var(--md-surface); color: var(--md-on-surface); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
+    .cal-nav-btn:hover { background: var(--md-surface-container); }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+    .cal-weekday { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; color: var(--md-on-surface-variant); text-align: center; padding-bottom: 6px; }
+    .cal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 700; color: var(--md-on-surface); border: 1px solid transparent; }
+    .cal-day.empty { visibility: hidden; }
+    .cal-day.has-event { border-color: var(--md-primary); color: var(--md-primary); }
+    .cal-day.has-event:hover { background: var(--md-primary-container); }
+    .cal-day.selected { background: var(--md-primary); border-color: var(--md-primary); color: var(--md-on-primary); }
+
+    .day-events { display: flex; flex-direction: column; gap: 10px; }
+    .event-card { display: flex; gap: 12px; background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 14px; padding: 1rem 1.25rem; }
+    .event-icon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--md-primary-container); color: var(--md-on-primary-container); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .event-body { flex: 1; min-width: 0; }
+    .event-year { font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 700; color: var(--md-primary); }
+    .event-title { font-size: 14px; font-weight: 500; color: var(--md-on-surface); margin-top: 2px; }
+    .event-title a:hover { color: var(--md-primary); text-decoration: underline; text-underline-offset: 2px; }
+    .event-sub { font-size: 12px; color: var(--md-on-surface-variant); margin-top: 2px; }
+    .no-events { padding: 2.5rem; text-align: center; font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--md-on-surface-variant); background: var(--md-surface-container-low); border: 1px dashed var(--md-outline-variant); border-radius: 14px; }
+
+    .footer { padding: 1.75rem 2rem; border-top: 1px solid var(--md-outline-variant); display: flex; align-items: center; justify-content: space-between; background: var(--md-surface-container-low); margin-top: 2rem; }
+    .footer-logo { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 15px; color: var(--md-on-surface); }
+    .footer-logo .red { color: var(--md-primary); }
+    .footer-copy { font-size: 11px; color: var(--md-on-surface-variant); text-align: right; }
+    .footer-copy a { text-decoration: underline; text-underline-offset: 2px; }
+    .footer-copy a:hover { color: var(--md-primary); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header-title { font-size: 30px; }
+      .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+    .site-notice-overlay { position: fixed; inset: 0; background: rgba(32,26,25,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .site-notice-box { background: var(--md-surface-container-high); border-radius: 28px; max-width: 380px; width: 100%; padding: 2rem 1.75rem; text-align: center; box-shadow: var(--md-shadow-2); }
+    .site-notice-icon { font-size: 28px; margin-bottom: 0.75rem; }
+    .site-notice-title { font-size: 16px; font-weight: 500; color: var(--md-on-surface); margin-bottom: 0.75rem; }
+    .site-notice-title .red { color: var(--md-primary); }
+    .site-notice-body { font-size: 13px; color: var(--md-on-surface-variant); line-height: 1.7; margin-bottom: 1.5rem; }
+    .site-notice-close { font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; color: var(--md-on-primary); background: var(--md-primary); border: none; border-radius: 100px; padding: 0.7rem 1.6rem; cursor: pointer; transition: box-shadow 0.15s; }
+    .site-notice-close:hover { box-shadow: var(--md-shadow-1); }
+  </style>
+</head>
+<body>
+  <div class="site-notice-overlay" id="siteNotice" style="display:none;">
+    <div class="site-notice-box">
+      <div class="site-notice-icon material-symbols-outlined">construction</div>
+      <div class="site-notice-title">当サイトは現在<span class="red">制作中</span>です</div>
+      <div class="site-notice-body">一部のページは内容を確認・更新中です。情報が不正確な場合がありますので、あらかじめご了承ください。</div>
+      <button class="site-notice-close" onclick="document.getElementById('siteNotice').style.display='none';sessionStorage.setItem('siteNoticeDismissed','1');">閉じる</button>
+    </div>
+  </div>
+  <script>
+    if (!sessionStorage.getItem('siteNoticeDismissed')) {
+      document.getElementById('siteNotice').style.display = 'flex';
+    }
+  </script>
+
+  <nav class="nav">
+    <a href="../" class="nav-logo">Fun<span class="red">GNU</span></a>
+    <div class="nav-links">
+      <a href="../members/">メンバー</a>
+      <a href="../discography/">ディスコグラフィー</a>
+      <a href="../live/">ライブ</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-tag">ON THIS DAY</div>
+    <h1 class="page-header-title" id="pageTitle">今日は何の日</h1>
+    <p class="page-header-desc" id="pageDesc">King Gnu・Srv.Vinciのリリース・ライブ公演から、その日に起きた出来事を年代順にまとめています。</p>
+  </div>
+
+  <div class="content">
+    <div class="day-nav">
+      <a href="#" class="day-nav-btn" id="prevDayBtn">← <span id="prevDayLabel">前日</span></a>
+      <a href="#" class="day-nav-btn" id="nextDayBtn"><span id="nextDayLabel">翌日</span> →</a>
+    </div>
+
+    <div class="calendar">
+      <div class="cal-head">
+        <button type="button" class="cal-nav-btn" id="prevMonthBtn" aria-label="前の月">‹</button>
+        <div class="cal-head-title" id="calMonthLabel"></div>
+        <button type="button" class="cal-nav-btn" id="nextMonthBtn" aria-label="次の月">›</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+
+    <div class="day-events" id="dayEvents"><div class="no-events">集計中…</div></div>
+  </div>
+
+  <footer class="footer">
+    <a href="../" class="footer-logo">Fun<span class="red">GNU</span></a>
+    <div class="footer-copy">
+      非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>
+      <a href="../privacy/">プライバシーポリシー</a> ／ <a href="../contact/">お問い合わせ</a> ／ <a href="#" onclick="window.open('https://x.com/intent/tweet?text='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href),'_blank','noopener');return false;">𝕏でシェア</a> ／ © FunGNU Unofficial
+    </div>
+  </footer>
+
+  <script>
+  function escH(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  function parseYMD(s) {
+    const m = /^(\d{4})\.(\d{2})\.(\d{2})$/.exec(s || '');
+    if (!m) return null;
+    return { y: +m[1], m: +m[2], d: +m[3] };
+  }
+
+  function collectLiveEvents(data, isSrvvinci) {
+    const out = [];
+    (data.tours || []).forEach(tour => {
+      (tour.shows || []).forEach(show => {
+        if (show.status === '中止') return;
+        const dt = parseYMD(show.date);
+        if (!dt) return;
+        const href = isSrvvinci
+          ? `../live-show/?date=${encodeURIComponent(show.date)}&src=srvvinci`
+          : `../live-show/?date=${encodeURIComponent(show.date)}`;
+        out.push({ ...dt, kind: 'live', title: tour.name, subtitle: show.venue || show.location || '', href });
+      });
+    });
+    return out;
+  }
+
+  function collectKingGnuReleases(data) {
+    const out = [];
+    (data.items || []).forEach(item => {
+      if (item.type === 'UNRELEASED') return;
+      const dt = parseYMD(item.year);
+      if (dt && item.slug) {
+        out.push({ ...dt, kind: 'release', title: item.displayTitle || item.title, subtitle: item.type || '', href: `../song/?slug=${encodeURIComponent(item.slug)}` });
+      }
+      if (dt && item.coupling && item.coupling.slug) {
+        out.push({ ...dt, kind: 'release', title: item.coupling.title, subtitle: item.type || '', href: `../song/?slug=${encodeURIComponent(item.coupling.slug)}` });
+      }
+    });
+    (data.albums || []).forEach(album => {
+      const dt = parseYMD(album.year);
+      if (dt) out.push({ ...dt, kind: 'release', title: album.title, subtitle: 'ALBUM', href: `../discography/?album=${encodeURIComponent(album.title)}` });
+    });
+    return out;
+  }
+
+  function collectSrvvinciReleases(data) {
+    const out = [];
+    (data.groups || []).forEach(group => {
+      ['demos', 'singles', 'albums'].forEach(key => {
+        (group[key] || []).forEach(entry => {
+          const dt = parseYMD(entry.year);
+          if (!dt) return;
+          if (entry.tracks) {
+            out.push({ ...dt, kind: 'release', title: entry.title, subtitle: entry.type || '', href: `../srvvinci-discography/?album=${encodeURIComponent(entry.title)}` });
+          } else if (entry.slug) {
+            out.push({ ...dt, kind: 'release', title: entry.title, subtitle: entry.type || '', href: `../song/?slug=${encodeURIComponent(entry.slug)}` });
+          }
+        });
+      });
+    });
+    return out;
+  }
+
+  const MONTH_DAYS = [31,29,31,30,31,30,31,31,30,31,30,31]; // 閏年基準（2月29日まで許容）
+  const WEEKDAYS = ['日','月','火','水','木','金','土'];
+
+  let ALL_EVENTS = [];
+
+  function clampDay(month, day) {
+    return Math.min(day, MONTH_DAYS[month - 1]);
+  }
+
+  function getParams() {
+    const sp = new URLSearchParams(location.search);
+    const now = new Date();
+    let month = parseInt(sp.get('month'), 10);
+    let day = parseInt(sp.get('day'), 10);
+    if (!month || month < 1 || month > 12) month = now.getMonth() + 1;
+    if (!day || day < 1 || day > 31) day = now.getDate();
+    day = clampDay(month, day);
+    return { month, day };
+  }
+
+  function shiftDay(month, day, delta) {
+    // 2024年（閏年）を計算用の仮の年として使い、月日だけのシフトを行う
+    const d = new Date(2024, month - 1, day);
+    d.setDate(d.getDate() + delta);
+    return { month: d.getMonth() + 1, day: d.getDate() };
+  }
+
+  function renderCalendar(month, selectedDay, eventDaysSet) {
+    document.getElementById('calMonthLabel').textContent = `${month}月`;
+    const grid = document.getElementById('calGrid');
+    const firstWeekday = new Date(2024, month - 1, 1).getDay();
+    const daysInMonth = MONTH_DAYS[month - 1];
+
+    let html = WEEKDAYS.map(w => `<div class="cal-weekday">${w}</div>`).join('');
+    for (let i = 0; i < firstWeekday; i++) html += `<div class="cal-day empty"></div>`;
+    for (let d = 1; d <= daysInMonth; d++) {
+      const hasEvent = eventDaysSet.has(d);
+      const isSelected = d === selectedDay;
+      const cls = ['cal-day'];
+      if (hasEvent) cls.push('has-event');
+      if (isSelected) cls.push('selected');
+      html += `<a href="?month=${month}&day=${d}" class="${cls.join(' ')}" data-day="${d}">${d}</a>`;
+    }
+    grid.innerHTML = html;
+  }
+
+  const KIND_ICON = { live: 'mic', release: 'album' };
+
+  function renderDayEvents(month, day) {
+    const now = new Date();
+    const thisYear = now.getFullYear();
+    const matches = ALL_EVENTS
+      .filter(e => e.m === month && e.d === day)
+      .map(e => ({ ...e, yearsAgo: thisYear - e.y }))
+      .sort((a, b) => b.y - a.y);
+
+    const container = document.getElementById('dayEvents');
+    if (!matches.length) {
+      container.innerHTML = `<div class="no-events">${month}月${day}日に該当する記録は見つかりませんでした。</div>`;
+      return;
+    }
+    container.innerHTML = matches.map(e => {
+      const agoLabel = e.yearsAgo > 0 ? `（${e.yearsAgo}年前）` : e.yearsAgo === 0 ? '（今年）' : '';
+      return `
+      <div class="event-card">
+        <div class="event-icon material-symbols-outlined">${KIND_ICON[e.kind]}</div>
+        <div class="event-body">
+          <div class="event-year">${e.y}年 ${agoLabel}</div>
+          <div class="event-title"><a href="${e.href}">${escH(e.title)}</a></div>
+          ${e.subtitle ? `<div class="event-sub">${escH(e.subtitle)}</div>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function eventDaysInMonth(month) {
+    const set = new Set();
+    ALL_EVENTS.forEach(e => { if (e.m === month) set.add(e.d); });
+    return set;
+  }
+
+  function render() {
+    const { month, day } = getParams();
+
+    document.getElementById('pageTitle').textContent = `${month}月${day}日は何の日`;
+    document.getElementById('pageDesc').textContent = `King Gnu・Srv.Vinciのリリース・ライブ公演から、${month}月${day}日に起きた出来事を年代順にまとめています。`;
+
+    const prev = shiftDay(month, day, -1);
+    const next = shiftDay(month, day, 1);
+    document.getElementById('prevDayBtn').href = `?month=${prev.month}&day=${prev.day}`;
+    document.getElementById('nextDayBtn').href = `?month=${next.month}&day=${next.day}`;
+    document.getElementById('prevDayLabel').textContent = `${prev.month}月${prev.day}日`;
+    document.getElementById('nextDayLabel').textContent = `${next.month}月${next.day}日`;
+
+    renderCalendar(month, day, eventDaysInMonth(month));
+    renderDayEvents(month, day);
+
+    document.getElementById('prevMonthBtn').onclick = () => {
+      const m = month === 1 ? 12 : month - 1;
+      location.search = `?month=${m}&day=${clampDay(m, day)}`;
+    };
+    document.getElementById('nextMonthBtn').onclick = () => {
+      const m = month === 12 ? 1 : month + 1;
+      location.search = `?month=${m}&day=${clampDay(m, day)}`;
+    };
+  }
+
+  Promise.all([
+    fetch('../data/kinggnu-live.json').then(r => r.json()),
+    fetch('../data/srvvinci-live.json').then(r => r.json()),
+    fetch('../data/kinggnu-discography.json').then(r => r.json()),
+    fetch('../data/srvvinci-discography.json').then(r => r.json()),
+  ]).then(([kgLive, svLive, kgDisc, svDisc]) => {
+    ALL_EVENTS = [
+      ...collectLiveEvents(kgLive, false),
+      ...collectLiveEvents(svLive, true),
+      ...collectKingGnuReleases(kgDisc),
+      ...collectSrvvinciReleases(svDisc),
+    ];
+    render();
+  }).catch(err => {
+    console.error(err);
+    document.getElementById('dayEvents').innerHTML = '<div class="no-events">データの読み込みに失敗しました。</div>';
+  });
+  </script>
+
+  <nav class="bottom-nav">
+    <a href="../" class="bn-item"><span class="bn-icon material-symbols-outlined">home</span>ホーム</a>
+    <a href="../discography/" class="bn-item"><span class="bn-icon material-symbols-outlined">album</span>ディスコグラフィー</a>
+    <a href="../members/" class="bn-item"><span class="bn-icon material-symbols-outlined">group</span>メンバー</a>
+    <a href="../stats/" class="bn-item"><span class="bn-icon material-symbols-outlined">bar_chart</span>統計</a>
+    <a href="../live/" class="bn-item"><span class="bn-icon material-symbols-outlined">mic</span>ライブ</a>
+  </nav>
+
+</body>
+</html>

@@ -91,7 +91,9 @@
     .news-date { font-family: 'Roboto Mono', monospace; font-size: 10px; color: var(--md-on-surface-variant); white-space: nowrap; }
     .news-badge { background: var(--md-surface-container); color: var(--md-on-surface-variant); font-family: 'Roboto Mono', monospace; font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 6px; white-space: nowrap; }
     .nb-new { background: var(--md-primary-container); color: var(--md-on-primary-container); }
-    .news-text { font-size: 12px; color: var(--md-on-surface-variant); }
+    .news-text { font-size: 14px; line-height: 1.7; color: var(--md-on-surface-variant); }
+    .news-text a { color: var(--md-primary); text-decoration: underline; text-underline-offset: 2px; }
+    .news-text a:hover { color: var(--md-on-surface); }
 
     .footer { padding: 1.75rem 2rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--md-outline-variant); background: var(--md-surface-container-low); }
     .footer-logo { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 16px; color: var(--md-on-surface); }
@@ -154,6 +156,15 @@
     <div class="hero-desc">Srv.Vinci時代から現在まで、King Gnuのすべてを網羅するアーカイブ</div>
   </div>
 
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-tag">TODAY</div>
+      <div class="sec-title">今日は何の日</div>
+      <a href="today/" style="margin-left:auto;font-family:'Roboto Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.08em;color:var(--md-on-surface-variant);border-bottom:1px solid var(--md-outline-variant);padding-bottom:1px;">この月の出来事を見る →</a>
+    </div>
+    <div class="news-list" id="onThisDayList"></div>
+    <div id="onThisDayEmpty" style="display:none;font-size:12px;color:var(--md-on-surface-variant);">本日に該当する記録は見つかりませんでした。</div>
+  </div>
 
   <div class="section">
     <div class="sec-head">
@@ -259,6 +270,120 @@
     <a href="stats/" class="bn-item"><span class="bn-icon material-symbols-outlined">bar_chart</span>統計</a>
     <a href="live/" class="bn-item"><span class="bn-icon material-symbols-outlined">mic</span>ライブ</a>
   </nav>
+
+  <script>
+  function escH(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  function parseYMD(s) {
+    const m = /^(\d{4})\.(\d{2})\.(\d{2})$/.exec(s || '');
+    if (!m) return null;
+    return { y: +m[1], m: +m[2], d: +m[3] };
+  }
+
+  function collectLiveEvents(data, isSrvvinci) {
+    const out = [];
+    (data.tours || []).forEach(tour => {
+      (tour.shows || []).forEach(show => {
+        if (show.status === '中止') return;
+        const dt = parseYMD(show.date);
+        if (!dt) return;
+        const href = isSrvvinci
+          ? `live-show/?date=${encodeURIComponent(show.date)}&src=srvvinci`
+          : `live-show/?date=${encodeURIComponent(show.date)}`;
+        out.push({ ...dt, kind: 'live', title: tour.name, subtitle: show.venue || show.location || '', href });
+      });
+    });
+    return out;
+  }
+
+  function collectKingGnuReleases(data) {
+    const out = [];
+    (data.items || []).forEach(item => {
+      if (item.type === 'UNRELEASED') return;
+      const dt = parseYMD(item.year);
+      if (dt && item.slug) {
+        out.push({ ...dt, kind: 'release', title: item.displayTitle || item.title, subtitle: '', href: `song/?slug=${encodeURIComponent(item.slug)}` });
+      }
+      if (dt && item.coupling && item.coupling.slug) {
+        out.push({ ...dt, kind: 'release', title: item.coupling.title, subtitle: '', href: `song/?slug=${encodeURIComponent(item.coupling.slug)}` });
+      }
+    });
+    (data.albums || []).forEach(album => {
+      const dt = parseYMD(album.year);
+      if (dt) out.push({ ...dt, kind: 'release', title: album.title, subtitle: '', href: `discography/?album=${encodeURIComponent(album.title)}` });
+    });
+    return out;
+  }
+
+  function collectSrvvinciReleases(data) {
+    const out = [];
+    (data.groups || []).forEach(group => {
+      ['demos', 'singles', 'albums'].forEach(key => {
+        (group[key] || []).forEach(entry => {
+          const dt = parseYMD(entry.year);
+          if (!dt) return;
+          if (entry.tracks) {
+            out.push({ ...dt, kind: 'release', title: entry.title, subtitle: '', href: `srvvinci-discography/?album=${encodeURIComponent(entry.title)}` });
+          } else if (entry.slug) {
+            out.push({ ...dt, kind: 'release', title: entry.title, subtitle: '', href: `song/?slug=${encodeURIComponent(entry.slug)}` });
+          }
+        });
+      });
+    });
+    return out;
+  }
+
+  async function renderOnThisDay() {
+    const container = document.getElementById('onThisDayList');
+    const emptyEl = document.getElementById('onThisDayEmpty');
+    try {
+      const [kgLive, svLive, kgDisc, svDisc] = await Promise.all([
+        fetch('data/kinggnu-live.json').then(r => r.json()),
+        fetch('data/srvvinci-live.json').then(r => r.json()),
+        fetch('data/kinggnu-discography.json').then(r => r.json()),
+        fetch('data/srvvinci-discography.json').then(r => r.json()),
+      ]);
+      const all = [
+        ...collectLiveEvents(kgLive, false),
+        ...collectLiveEvents(svLive, true),
+        ...collectKingGnuReleases(kgDisc),
+        ...collectSrvvinciReleases(svDisc),
+      ];
+      const today = new Date();
+      const todayM = today.getMonth() + 1;
+      const todayD = today.getDate();
+      const thisYear = today.getFullYear();
+      const matches = all
+        .filter(e => e.m === todayM && e.d === todayD && e.y < thisYear)
+        .map(e => ({ ...e, yearsAgo: thisYear - e.y }))
+        .sort((a, b) => a.yearsAgo - b.yearsAgo);
+
+      if (!matches.length) {
+        container.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+      }
+      emptyEl.style.display = 'none';
+      container.innerHTML = matches.map(e => {
+        const sentence = e.kind === 'live'
+          ? `<b>${e.yearsAgo}年前の今日</b>は、${e.subtitle ? escH(e.subtitle) + 'で' : ''}<a href="${e.href}">${escH(e.title)}</a>のライブがありました。`
+          : `<b>${e.yearsAgo}年前の今日</b>、<a href="${e.href}">${escH(e.title)}</a>がリリースされました。`;
+        return `
+        <div class="news-item">
+          <div class="news-text">${sentence}</div>
+        </div>`;
+      }).join('');
+    } catch (err) {
+      console.error(err);
+      container.innerHTML = '';
+      emptyEl.textContent = 'データの読み込みに失敗しました。';
+      emptyEl.style.display = 'block';
+    }
+  }
+  renderOnThisDay();
+  </script>
 
 </body>
 </html>
