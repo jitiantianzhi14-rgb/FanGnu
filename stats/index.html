@@ -106,7 +106,8 @@
     .map-note a { color: var(--md-on-surface-variant); text-decoration: underline; }
 
     .chart-card { background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 16px; padding: 1.25rem; }
-    .chart-sub { font-family: 'Roboto Mono', monospace; font-size: 10px; color: var(--md-on-surface-variant); margin-bottom: 1rem; }
+    .chart-sub { font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 700; color: var(--md-on-surface); margin-bottom: 1rem; }
+    .rank-scroll { max-height: 340px; overflow-y: auto; }
 
     .hbar-row { display: flex; align-items: center; gap: 10px; padding: 5px 0; }
     .hbar-label { width: 130px; flex-shrink: 0; font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -133,6 +134,16 @@
     .chart-tooltip .tt-label { font-size: 10px; color: var(--md-outline-variant); line-height: 1.3; }
     .legend-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
 
+    .openclose-wrap { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .openclose-wrap .chart-card { flex: 1; min-width: 0; }
+    .oe-row { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--md-outline-variant); }
+    .oe-row:last-child { border-bottom: none; }
+    .oe-title { flex: 1; font-size: 13px; font-weight: 700; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .oe-title a:hover { color: var(--md-primary); }
+    .oe-count { text-align: center; min-width: 40px; flex-shrink: 0; }
+    .oe-count-value { font-family: 'Roboto Mono', monospace; font-size: 15px; font-weight: 900; color: var(--md-primary); line-height: 1; }
+    .oe-count-label { font-family: 'Roboto Mono', monospace; font-size: 9px; font-weight: 700; color: var(--md-on-surface-variant); letter-spacing: 0.05em; margin-top: 3px; }
+
     .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
     .filter-chip { font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; padding: 7px 14px; border-radius: 8px; border: 1px solid var(--md-outline); background: var(--md-surface); color: var(--md-on-surface-variant); cursor: pointer; transition: all 0.15s; }
     .filter-chip:hover { background: var(--md-surface-container); }
@@ -141,7 +152,7 @@
 
     .tabs-wrap { display: flex; flex-direction: column; gap: 1.25rem; }
     .tabs-wrap > .section-label { margin-bottom: 0; }
-    .tab-bar { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 2px solid var(--md-outline-variant); }
+    .tab-bar { display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 2px solid var(--md-outline-variant); }
     .tab-btn { font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; padding: 1rem; text-align: center; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; background: none; color: var(--md-on-surface-variant); cursor: pointer; transition: all 0.15s; }
     .tab-btn:hover { color: var(--md-on-surface); }
     .tab-btn.active { color: var(--md-on-surface); border-bottom-color: var(--md-primary); }
@@ -163,6 +174,7 @@
       .tab-btn { padding: 0.8rem 0.5rem; font-size: 11px; }
       .summary-card { border-bottom: 1px solid rgba(74,36,8,0.15); }
       .map-section { flex-direction: column; }
+      .openclose-wrap { flex-direction: column; }
       .hbar-label, .stack-label { width: 84px; font-size: 11px; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
@@ -217,6 +229,7 @@
       <button type="button" class="tab-btn active" data-tab="ranking">楽曲ランキング</button>
       <button type="button" class="tab-btn" data-tab="yearly">年別演奏回数</button>
       <button type="button" class="tab-btn" data-tab="album">アルバム比率</button>
+      <button type="button" class="tab-btn" data-tab="openclose">OP・ED曲の傾向</button>
       <button type="button" class="tab-btn" data-tab="map">訪問エリア</button>
     </div>
 
@@ -224,9 +237,9 @@
     <div class="map-section">
       <div class="map-rank-col">
         <div class="section-label" id="domesticRankLabel">国内 TOP5</div>
-        <div class="rank-list" id="domesticRankList"><div class="loading">集計中…</div></div>
+        <div class="rank-list rank-scroll" id="domesticRankList"><div class="loading">集計中…</div></div>
         <div class="section-label" id="overseasRankLabel">海外 TOP5</div>
-        <div class="rank-list" id="overseasRankList"><div class="loading">集計中…</div></div>
+        <div class="rank-list rank-scroll" id="overseasRankList"><div class="loading">集計中…</div></div>
       </div>
       <div class="map-visual-col">
       <div class="section-label" id="prefLabel">MAP</div>
@@ -422,6 +435,19 @@
         <div class="chart-sub">演奏曲がどのリリースに収録された曲かの内訳（全期間＋年別）</div>
         <div id="albumRatioChart"><div class="loading">集計中…</div></div>
         <div class="chart-legend" id="albumRatioLegend"></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="openclose">
+      <div class="openclose-wrap">
+        <div class="chart-card">
+          <div class="chart-sub">セットリストの1曲目として演奏された回数</div>
+          <div id="openerChart" class="rank-scroll"><div class="loading">集計中…</div></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-sub">セットリストのラスト曲として演奏された回数</div>
+          <div id="closerChart" class="rank-scroll"><div class="loading">集計中…</div></div>
+        </div>
       </div>
     </div>
     </div>
@@ -672,12 +698,10 @@
     });
   }
 
-  const TOP_N = 5;
-
   function renderTopList(labelId, listId, labelText, entries, totalCount) {
     const label = document.getElementById(labelId);
     const list = document.getElementById(listId);
-    const ranked = [...entries].sort((a, b) => b[1] - a[1]).slice(0, TOP_N);
+    const ranked = [...entries].sort((a, b) => b[1] - a[1]);
 
     label.textContent = `${labelText}（${totalCount}）`;
 
@@ -694,8 +718,8 @@
   }
 
   function renderLocationRanking(prefCounts, countryCounts) {
-    renderTopList('domesticRankLabel', 'domesticRankList', '国内 TOP5', prefCounts.entries(), `${prefCounts.size} / 47都道府県`);
-    renderTopList('overseasRankLabel', 'overseasRankList', '海外 TOP5', countryCounts.entries(), `${countryCounts.size}ヶ国`);
+    renderTopList('domesticRankLabel', 'domesticRankList', '国内 訪問ランキング', prefCounts.entries(), `${prefCounts.size} / 47都道府県`);
+    renderTopList('overseasRankLabel', 'overseasRankList', '海外 訪問ランキング', countryCounts.entries(), `${countryCounts.size}ヶ国`);
   }
 
   // ---- 年別・アルバム別集計 ----
@@ -962,6 +986,54 @@
     }).join('');
   }
 
+  function collectOpenerCloserStats(kgLive, svLive, songIndex) {
+    const allTours = [...(kgLive.tours || []), ...(svLive.tours || [])];
+    const openerCounts = new Map();
+    const closerCounts = new Map();
+
+    allTours.forEach(tour => {
+      (tour.shows || []).forEach(show => {
+        // SE・開会セレモニーなど実在の楽曲ではないセットリスト表記を除外してから先頭/末尾を判定する
+        const songs = (show.setlist || [])
+          .map(normalizeTitle)
+          .filter(t => songIndex.has(t));
+        if (!songs.length) return;
+        const first = songs[0];
+        const last = songs[songs.length - 1];
+        openerCounts.set(first, (openerCounts.get(first) || 0) + 1);
+        closerCounts.set(last, (closerCounts.get(last) || 0) + 1);
+      });
+    });
+
+    const toSortedRows = counts => [...counts.entries()]
+      .map(([key, count]) => ({ key, count }))
+      .sort((a, b) => b.count - a.count);
+
+    return { openerRows: toSortedRows(openerCounts), closerRows: toSortedRows(closerCounts) };
+  }
+
+  function renderRankChart(containerId, rows, songIndex) {
+    const container = document.getElementById(containerId);
+    if (!rows.length) {
+      container.innerHTML = '<div class="loading">データがありません。</div>';
+      return;
+    }
+
+    const rowHtml = r => {
+      const info = songIndex.get(r.key);
+      const title = info ? info.title : r.key;
+      const href = info ? songHref(info) : null;
+      const titleHtml = href ? `<a href="${href}">${escH(title)}</a>` : escH(title);
+      return `
+        <div class="oe-row">
+          <div class="oe-title">${titleHtml}</div>
+          <div class="oe-count"><div class="oe-count-value">${r.count}</div><div class="oe-count-label">回</div></div>
+        </div>`;
+    };
+
+    container.innerHTML = rows.map(rowHtml).join('');
+  }
+
   Promise.all([
     loadJson('../data/kinggnu-live.json'),
     loadJson('../data/srvvinci-live.json'),
@@ -980,6 +1052,9 @@
     initSongYearFilter(songYearCounts, songIndex, songAlbum, albumTracks);
     renderYearTotalChart(yearTotals);
     renderAlbumRatioChart(songYearCounts, songAlbum);
+    const { openerRows, closerRows } = collectOpenerCloserStats(kgLive, svLive, songIndex);
+    renderRankChart('openerChart', openerRows, songIndex);
+    renderRankChart('closerChart', closerRows, songIndex);
   }).catch(err => {
     console.error(err);
     document.getElementById('summaryGrid').innerHTML = `<div class="loading">データの読み込みに失敗しました。</div>`;
@@ -988,6 +1063,8 @@
     document.getElementById('songYearChart').innerHTML = '';
     document.getElementById('yearTotalChart').innerHTML = '';
     document.getElementById('albumRatioChart').innerHTML = '';
+    document.getElementById('openerChart').innerHTML = '';
+    document.getElementById('closerChart').innerHTML = '';
   });
   </script>
 
