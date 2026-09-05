@@ -29,8 +29,8 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --md-primary: #b5652e; --md-on-primary: #fff; --md-primary-container: #f4dcc8; --md-on-primary-container: #4a2408;
-      --accent: #b5652e;
+      --md-primary: #bf3d2a; --md-on-primary: #fff; --md-primary-container: #f8d9d0; --md-on-primary-container: #5c160a;
+      --accent: var(--md-primary);
       --md-surface: #ffffff; --md-surface-container-low: #faf8f6; --md-surface-container: #f3efe9; --md-surface-container-high: #ece5da;
       --md-on-surface: #201a15; --md-on-surface-variant: #5c5347; --md-outline: #857b6c; --md-outline-variant: #ddd4c5;
       --md-shadow-1: 0 1px 2px rgba(0,0,0,.15), 0 1px 3px 1px rgba(0,0,0,.10);
@@ -42,10 +42,19 @@
     .nav { position: sticky; top: 0; z-index: 100; background: var(--md-surface); border-bottom: 1px solid var(--md-outline-variant); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 64px; }
     .nav-logo { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 21px; color: var(--md-on-surface); }
     .nav-logo .red { color: var(--md-primary); }
-    .nav-links { display: flex; gap: 1.75rem; font-size: 13px; font-weight: 500; color: var(--md-on-surface-variant); }
-    .nav-links a { transition: color 0.15s; padding: 6px 0; }
-    .nav-links a:hover, .nav-links a.active { color: var(--md-primary); }
-    .nav-links a.active { border-bottom: 2px solid var(--md-primary); }
+    .menu-btn { background: none; border: none; font-size: 24px; color: var(--md-on-surface); cursor: pointer; padding: 4px; line-height: 1; }
+    .site-menu-overlay { position: fixed; inset: 0; background: rgba(32,26,25,0.5); z-index: 900; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.25s ease, visibility 0s linear 0.25s; }
+    .site-menu-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity 0.25s ease, visibility 0s linear 0s; }
+    .site-menu-divider { border-top: 1px solid var(--md-outline-variant); margin: 12px 0; }
+    .site-menu-box { position: absolute; top: 0; right: 0; height: 100%; width: 300px; max-width: 82vw; background: var(--md-surface-container-high); border-radius: 20px 0 0 20px; overflow-y: auto; padding: 1.5rem; box-shadow: var(--md-shadow-2); transform: translateX(100%); transition: transform 0.25s ease; }
+    .site-menu-overlay.open .site-menu-box { transform: translateX(0); }
+    .site-menu-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .site-menu-title { font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); }
+    .site-menu-close { background: none; border: none; font-size: 20px; color: var(--md-on-surface-variant); cursor: pointer; padding: 4px; }
+    .site-menu-list { display: flex; flex-direction: column; }
+    .site-menu-list a { display: block; padding: 12px 4px; font-size: 14px; color: var(--md-on-surface); border-bottom: 1px solid var(--md-outline-variant); }
+    .site-menu-list a:last-child { border-bottom: none; }
+    .site-menu-list a:hover { color: var(--md-primary); }
 
     .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: var(--md-surface-container-low); box-shadow: 0 -1px 3px rgba(0,0,0,.08); z-index: 200; }
     .bn-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 10px 4px 8px; font-size: 11px; font-weight: 500; color: var(--md-on-surface-variant); transition: color 0.15s; }
@@ -63,11 +72,16 @@
     .hero-num { font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
     .hero-role { font-family: 'Roboto Mono', monospace; font-size: 10px; color: var(--md-on-surface-variant); letter-spacing: 0.1em; margin-bottom: 1.25rem; }
     .hero-name-ja { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 56px; line-height: 1.05; color: var(--md-on-surface); }
+    .hero-reading { font-family: 'Noto Sans JP', sans-serif; font-size: 13px; color: var(--md-on-surface-variant); margin-top: 4px; }
     .hero-name-en { font-family: 'Roboto Mono', monospace; font-size: 14px; font-weight: 700; color: var(--md-on-surface-variant); letter-spacing: 0.08em; margin-top: 0.5rem; }
+    .hero-groups { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.9rem; }
+    .hero-group { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; border: 1px solid var(--md-outline); color: var(--md-on-surface-variant); border-radius: 8px; padding: 3px 10px; }
     .hero-right { display: flex; flex-direction: column; justify-content: flex-end; gap: 1.5rem; }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; border: 1px solid var(--md-outline); border-radius: 8px; padding: 3px 10px; background: var(--md-surface); }
     .hero-desc { font-size: 13px; color: var(--md-on-surface-variant); line-height: 1.9; }
+    .hero-social { display: flex; gap: 10px; margin-top: 0.25rem; }
+    .hero-social a { display: flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 100px; border: 1px solid var(--md-outline); font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; color: var(--md-on-surface-variant); transition: background 0.15s, color 0.15s, border-color 0.15s; }
+    .hero-social a:hover { background: var(--md-primary-container); color: var(--md-on-primary-container); border-color: transparent; }
+    .hero-social-icon { font-size: 17px; line-height: 1; }
 
     .content { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
@@ -99,11 +113,9 @@
     .work-title { font-size: 13px; font-weight: 500; color: var(--md-on-surface); }
     .work-note { font-size: 11px; color: var(--md-on-surface-variant); margin-top: 3px; }
 
-    .nav-bottom { display: flex; justify-content: space-between; padding: 2rem 0; }
+    .nav-bottom { display: flex; justify-content: center; padding: 2rem 0; }
     .nav-btn { font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; border: 1px solid var(--md-outline); border-radius: 100px; padding: 10px 20px; transition: background 0.15s, color 0.15s; }
     .nav-btn:hover { background: var(--md-surface-container); }
-    .nav-btn.next { background: var(--accent); color: #fff; border-color: transparent; }
-    .nav-btn.next:hover { opacity: 0.9; }
 
     .coming-soon { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; text-align: center; }
     .coming-soon-icon { font-size: 32px; margin-bottom: 1rem; color: var(--accent); }
@@ -118,7 +130,6 @@
     .footer-copy a:hover { color: var(--md-primary); }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
       .hero { grid-template-columns: 1fr; gap: 1.5rem; }
       .hero-name-ja { font-size: 40px; }
       .profile-grid { grid-template-columns: repeat(2, 1fr); }
@@ -150,13 +161,30 @@
     }
   </script>
 
+  <div class="site-menu-overlay" id="siteMenu">
+    <div class="site-menu-box">
+      <div class="site-menu-head">
+        <span class="site-menu-title">MENU</span>
+        <button type="button" class="site-menu-close material-symbols-outlined" id="siteMenuClose" aria-label="閉じる">close</button>
+      </div>
+      <div class="site-menu-list">
+        <a href="../../">ホーム</a>
+        <a href="../../discography/">ディスコグラフィー</a>
+        <a href="../../live/">ライブ</a>
+        <a href="../../stats/">ライブ・楽曲統計</a>
+        <a href="../../members/">メンバー</a>
+        <a href="../../gear/">使用機材</a>
+        <div class="site-menu-divider"></div>
+        <a href="../../links/">リンク集</a>
+        <a href="../../contact/">お問い合わせ</a>
+        <a href="../../privacy/">プライバシーポリシー</a>
+      </div>
+    </div>
+  </div>
+
   <nav class="nav">
     <a href="../../" class="nav-logo">Fun<span class="red">GNU</span></a>
-    <div class="nav-links">
-      <a href="../" class="active">メンバー</a>
-      <a href="../../discography/">ディスコグラフィー</a>
-      <a href="../../live/">ライブ</a>
-    </div>
+    <button type="button" class="menu-btn material-symbols-outlined" id="menuBtn" aria-label="メニュー">menu</button>
   </nav>
 
   <div class="breadcrumb">
@@ -170,20 +198,20 @@
   <div style="background:var(--md-surface-container-low); border-bottom:1px solid var(--md-outline-variant);">
     <div class="hero">
       <div class="hero-left">
-        <div class="hero-num">01 / 04</div>
         <div class="hero-role">VOCAL / GUITAR</div>
         <div class="hero-name-ja">常田大希</div>
+        <div class="hero-reading">つねた だいき</div>
         <div class="hero-name-en">DAIKI TSUNETA</div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-tags">
-          <span class="tag">ボーカル</span>
-          <span class="tag">ギター</span>
-          <span class="tag">作曲・編曲</span>
-          <span class="tag">プロデュース</span>
-          <span class="tag">millennium parade主宰</span>
+        <div class="hero-groups">
+          <span class="hero-group">King Gnu</span>
+          <span class="hero-group">MILLENNIUM PARADE</span>
         </div>
-        <p class="hero-desc">King Gnuの結成メンバーであり、ボーカル・ギターを担当しながら、バンドの楽曲のほとんどで作編曲・プロデュースを手がける中心人物。5歳からチェロを学び、東京藝術大学音楽学部器楽科チェロ専攻に進学するも、「社会と結びついた音楽をしたい」という思いから中退した。2013年に「Srv.Vinci」名義で音楽活動を開始し、2017年にバンド名を「King Gnu」へ改名。2019年からはアーティスト集団「millennium parade」も主宰し、映画・アニメ・CMなど幅広い分野への楽曲提供やプロデュース活動でも精力的に活動している。</p>
+      </div>
+      <div class="hero-right">        <p class="hero-desc">King Gnuの結成メンバーであり、ボーカル・ギターを担当しながら、バンドの楽曲のほとんどで作編曲・プロデュースを手がける中心人物。5歳からチェロを学び、東京藝術大学音楽学部器楽科チェロ専攻に進学するも、「社会と結びついた音楽をしたい」という思いから中退した。2013年に「Srv.Vinci」名義で音楽活動を開始し、2017年にバンド名を「King Gnu」へ改名。2019年からはアーティスト集団「millennium parade」も主宰し、映画・アニメ・CMなど幅広い分野への楽曲提供やプロデュース活動でも精力的に活動している。</p>
+        <div class="hero-social">
+          <a href="https://x.com/DaikiTsuneta" target="_blank" rel="noopener"><span class="hero-social-icon">𝕏</span>X</a>
+          <a href="https://www.instagram.com/daikitsuneta/" target="_blank" rel="noopener"><span class="hero-social-icon material-symbols-outlined">photo_camera</span>Instagram</a>
+        </div>
       </div>
     </div>
   </div>
@@ -194,34 +222,30 @@
       <div class="sec-label">PROFILE</div>
       <div class="profile-grid">
         <div class="profile-cell">
-          <div class="profile-key">生年月日</div>
-          <div class="profile-val">1992年5月15日</div>
+          <div class="profile-key">生年月日・年齢</div>
+          <div class="profile-val">1992年5月15日<span id="ageValue"></span></div>
         </div>
         <div class="profile-cell">
-          <div class="profile-key">出身地</div>
+          <div class="profile-key">出身</div>
           <div class="profile-val">長野県伊那市</div>
         </div>
         <div class="profile-cell">
-          <div class="profile-key">担当パート</div>
-          <div class="profile-val">ボーカル / ギター</div>
-        </div>
-        <div class="profile-cell">
           <div class="profile-key">学歴</div>
-          <div class="profile-val">東京藝術大学音楽学部器楽科チェロ専攻（中退）</div>
+          <div class="profile-val">長野県立伊那北高等学校<br>東京藝術大学音楽学部器楽科チェロ専攻（中退）</div>
         </div>
         <div class="profile-cell">
-          <div class="profile-key">結成・改名</div>
-          <div class="profile-val">Srv.Vinci（2013年）→ King Gnu（2017年改名）</div>
+          <div class="profile-key">担当楽器/パート</div>
+          <div class="profile-val">ボーカル / ギター / ピアノ / チェロ </div>
         </div>
         <div class="profile-cell">
-          <div class="profile-key">兼任</div>
-          <div class="profile-val">millennium parade 主宰</div>
+          <div class="profile-key">レーベル</div>
+          <div class="profile-val">Ariola Japan（Sony Music）</div>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <div class="sec-label">CAREER</div>
+      <div class="sec-label">来歴</div>
       <div class="timeline-list">
         <div class="tl-item">
           <div class="tl-year">1992</div>
@@ -259,7 +283,7 @@
     </div>
 
     <div class="section">
-      <div class="sec-label">WORKS / PRODUCTION（King Gnu外での主な楽曲提供・プロデュース）</div>
+      <div class="sec-label">活動一覧（King Gnu外での主な楽曲提供・プロデュース）</div>
       <div class="works-grid">
         <div class="work-item">
           <div class="work-year">2017.11</div>
@@ -286,7 +310,6 @@
 
     <div class="nav-bottom">
       <a href="../" class="nav-btn">← MEMBERS</a>
-      <a href="../iguchi/" class="nav-btn next">井口理 →</a>
     </div>
 
   </div>
@@ -306,6 +329,32 @@
     <a href="../../stats/" class="bn-item"><span class="bn-icon material-symbols-outlined">bar_chart</span>統計</a>
     <a href="../../live/" class="bn-item"><span class="bn-icon material-symbols-outlined">mic</span>ライブ</a>
   </nav>
+
+  <script>
+    (function() {
+      var birth = new Date(1992, 4, 15);
+      var today = new Date();
+      var age = today.getFullYear() - birth.getFullYear();
+      var m = today.getMonth() - birth.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+      document.getElementById('ageValue').textContent = '（' + age + '歳）';
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var siteMenu = document.getElementById('siteMenu');
+      document.getElementById('menuBtn').addEventListener('click', () => {
+        siteMenu.classList.toggle('open');
+      });
+      document.getElementById('siteMenuClose').addEventListener('click', () => {
+        siteMenu.classList.remove('open');
+      });
+      siteMenu.addEventListener('click', (e) => {
+        if (e.target === siteMenu) siteMenu.classList.remove('open');
+      });
+    })();
+  </script>
 
 </body>
 </html>
