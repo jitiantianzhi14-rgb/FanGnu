@@ -263,7 +263,7 @@
   }
 
   function songHref(slug) {
-    return slug ? `../song/?slug=${encodeURIComponent(slug)}` : null;
+    return slug ? `../song/${encodeURIComponent(slug)}/` : null;
   }
 
   function sortKey(year) {
@@ -296,7 +296,7 @@
     const isAlbum = item.type === 'ALBUM';
 
     if (item.discs) {
-      const href = `../video/?title=${encodeURIComponent(item.title)}`;
+      const href = `../video/${encodeURIComponent(item.slug)}/`;
       return `
         <a class="disc-card" data-type="${escH(item.type)}" data-year="${escH(item.yearKey)}" href="${href}">
           <div class="disc-card-head">
@@ -311,7 +311,7 @@
     if (isAlbum) {
       const detailHtml = `<div class="disc-detail">
           <div class="disc-song-list">
-            <a class="disc-song-row" href="../album/?album=${encodeURIComponent(item.title)}">
+            <a class="disc-song-row" href="../album/${encodeURIComponent(item.slug)}/">
               <span class="disc-song-title">${escH(item.title)}</span>
               <span class="disc-song-arrow">→アルバム詳細へ</span>
             </a>

@@ -108,36 +108,55 @@ JSONを保存する前に、VS Codeで赤い波線（構文エラー）が出て
 
 Googleなどの検索エンジンに個別ページを見つけてもらうための一覧ファイルが`sitemap.xml`（サイト直下）です。JSONに曲・ライブを追加しただけではこのファイルは自動で増えないので、以下の`<url>`ブロックをコピーして`</urlset>`の直前に追記してください。
 
-**新曲を追加したとき**（`song/?slug=...`）：
+**新曲を追加したとき**（`song/<slug>/`）：
+
+楽曲詳細ページはSEO対策のため`song/index.html`のテンプレート方式ではなく、`song/<slug>/index.html`という実ファイルを曲ごとに静的生成する方式に変更されています（2026年9月〜）。JSONに曲を追加したら、生成スクリプトを再実行してファイルを作り直す必要があります（AIに頼めば自動でやってくれます）。
 
 ```xml
   <url>
-    <loc>https://fungnu.com/song/?slug=新しいslug</loc>
+    <loc>https://fungnu.com/song/新しいslug/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 ```
 
-**新しいライブを追加したとき**（`live-show/?date=...`）：King Gnu名義のライブ
+**新しいライブを追加したとき**（`live-show/<date>/`）：King Gnu名義のライブ
+
+公演詳細ページも楽曲ページと同様、`live-show/<date>/index.html`という実ファイルを公演ごとに静的生成する方式です（2026年9月〜）。JSONにライブを追加したら生成スクリプト（`scripts/generate_liveshows.py`）を再実行してください（AIに頼めば自動でやってくれます）。
 
 ```xml
   <url>
-    <loc>https://fungnu.com/live-show/?date=YYYY.MM.DD</loc>
+    <loc>https://fungnu.com/live-show/YYYY.MM.DD/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
 ```
 
-Srv.Vinci時代のライブは`&src=srvvinci`を付ける（XML内では`&`を`&amp;`と書く）：
+Srv.Vinci時代のライブはフォルダ名の末尾に`-srvvinci`を付ける：
 
 ```xml
   <url>
-    <loc>https://fungnu.com/live-show/?date=YYYY.MM.DD&amp;src=srvvinci</loc>
+    <loc>https://fungnu.com/live-show/YYYY.MM.DD-srvvinci/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+  </url>
+```
+
+同じ日に同じ名義で2公演以上ある場合（例：同日2都市を回った等）は`-2`、`-3`…という連番がフォルダ名の末尾に自動で付きます（生成スクリプトが検出して警告を出します）。
+
+**新しいアルバムを追加したとき**（`album/<title>/`）：
+
+アルバム概要ページも同様に`album/<エンコード済みタイトル>/index.html`という実ファイルをアルバムごとに静的生成する方式です（2026年9月〜）。JSONにアルバムを追加したら生成スクリプト（`scripts/generate_albums.py`）を再実行してください。フォルダ名はJavaScriptの`encodeURIComponent()`と同じ規則でタイトルをエンコードしたもの（Srv.Vinci期は末尾に`-srvvinci`）です。
+
+```xml
+  <url>
+    <loc>https://fungnu.com/album/エンコード済みタイトル/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 ```
 
@@ -150,6 +169,8 @@ Srv.Vinci時代のライブは`&src=srvvinci`を付ける（XML内では`&`を`&
 ## 8. Blu-ray/DVD（`discs`を持つitems）について
 
 `items[]`の中には稀に`"discs": [...]`を持つエントリ（例：Dome Tour Blu-ray）がありますが、これは曲データではなく映像作品の収録内容リストで、`video/`ページ専用の別の仕組みです。曲の追加とは無関係なので、真似しなくてOKです。
+
+映像作品ページも`video/<エンコード済みタイトル>/index.html`という実ファイルを静的生成する方式です（2026年9月〜）。`discs`付きitemを追加したら生成スクリプト（`scripts/generate_videos.py`）を再実行してください。
 
 ---
 

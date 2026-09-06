@@ -222,8 +222,8 @@
         const dt = parseYMD(show.date);
         if (!dt) return;
         const href = isSrvvinci
-          ? `../live-show/?date=${encodeURIComponent(show.date)}&src=srvvinci`
-          : `../live-show/?date=${encodeURIComponent(show.date)}`;
+          ? `../live-show/${encodeURIComponent(show.date)}-srvvinci/`
+          : `../live-show/${encodeURIComponent(show.date)}/`;
         out.push({ ...dt, kind: 'live', title: tour.name, subtitle: show.venue || show.location || '', href });
       });
     });
@@ -236,10 +236,10 @@
       if (item.type === 'UNRELEASED') return;
       const dt = parseYMD(item.year);
       if (dt && item.slug) {
-        out.push({ ...dt, kind: 'release', title: item.displayTitle || item.title, subtitle: item.type || '', href: `../song/?slug=${encodeURIComponent(item.slug)}` });
+        out.push({ ...dt, kind: 'release', title: item.displayTitle || item.title, subtitle: item.type || '', href: `../song/${encodeURIComponent(item.slug)}/` });
       }
       if (dt && item.coupling && item.coupling.slug) {
-        out.push({ ...dt, kind: 'release', title: item.coupling.title, subtitle: item.type || '', href: `../song/?slug=${encodeURIComponent(item.coupling.slug)}` });
+        out.push({ ...dt, kind: 'release', title: item.coupling.title, subtitle: item.type || '', href: `../song/${encodeURIComponent(item.coupling.slug)}/` });
       }
     });
     (data.albums || []).forEach(album => {
@@ -259,7 +259,7 @@
           if (entry.tracks) {
             out.push({ ...dt, kind: 'release', title: entry.title, subtitle: entry.type || '', href: `../srvvinci-discography/?album=${encodeURIComponent(entry.title)}` });
           } else if (entry.slug) {
-            out.push({ ...dt, kind: 'release', title: entry.title, subtitle: entry.type || '', href: `../song/?slug=${encodeURIComponent(entry.slug)}` });
+            out.push({ ...dt, kind: 'release', title: entry.title, subtitle: entry.type || '', href: `../song/${encodeURIComponent(entry.slug)}/` });
           }
         });
       });

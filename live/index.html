@@ -227,7 +227,7 @@
       ? `<span class="live-badge${show.status === 'SOLD OUT' ? ' sold' : ''}">${escH(show.status)}</span>`
       : `<span></span>`;
     return `
-      <a class="live-item" href="../live-show/?date=${encodeURIComponent(show.date)}">
+      <a class="live-item" href="../live-show/${encodeURIComponent(show.date)}/">
         <div class="live-date">${escH(show.date)}</div>
         <div class="live-venue">${escH(show.venue || '未定')}</div>
         ${badgeHtml}

@@ -227,7 +227,7 @@
   }
 
   function songHref(slug) {
-    return slug ? `../song/?slug=${encodeURIComponent(slug)}` : null;
+    return slug ? `../song/${encodeURIComponent(slug)}/` : null;
   }
 
   function buildTrackGrid(tracks, albumTitle) {
@@ -271,7 +271,7 @@
       const previewEmbedHtml = previewYt ? `<div class="disc-embed" data-yt="${escH(previewYt)}"></div>` : '';
       const detailHtml = `<div class="disc-detail">
              <div class="disc-song-list">
-               <a class="disc-song-row" href="../album/?src=srvvinci&album=${encodeURIComponent(item.title)}">
+               <a class="disc-song-row" href="../album/${encodeURIComponent(item.slug)}/">
                  <span class="disc-song-title">${escH(item.title)}</span>
                  <span class="disc-song-arrow">→アルバム詳細へ</span>
                </a>
