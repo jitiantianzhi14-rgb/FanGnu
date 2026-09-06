@@ -126,14 +126,26 @@ def main():
         page = template
 
         page_title = f"{title} — FunGNU"
+        release_type = release.get("type") or ""
+        desc = f"King Gnuの{release_type + ' ' if release_type else ''}「{title}」の詳細ページ。収録曲などをまとめて掲載。"
         page = page.replace(
             "<title>リリース詳細 — FunGNU</title>",
             f"<title>{esc_h(page_title)}</title>",
             1,
         )
         page = page.replace(
+            '<meta name="description" content="King Gnuの映像作品・パッケージ商品の詳細ページ。収録曲などをまとめて掲載。">',
+            f'<meta name="description" content="{esc_h(desc)}">',
+            1,
+        )
+        page = page.replace(
             '<meta property="og:title" content="リリース詳細 — FunGNU">',
             f'<meta property="og:title" content="{esc_h(page_title)}">',
+            1,
+        )
+        page = page.replace(
+            '<meta property="og:description" content="King Gnuの映像作品・パッケージ商品の詳細ページ。収録曲などをまとめて掲載。">',
+            f'<meta property="og:description" content="{esc_h(desc)}">',
             1,
         )
         page = page.replace(
