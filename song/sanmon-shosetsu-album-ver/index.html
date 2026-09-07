@@ -72,6 +72,8 @@
     .breadcrumb { padding: 0.75rem 2rem; font-family: 'Roboto Mono', monospace; font-size: 10px; color: var(--md-on-surface-variant); border-bottom: 1px solid var(--md-outline-variant); background: var(--md-surface); display: flex; gap: 8px; align-items: center; }
     .breadcrumb a:hover { color: var(--md-primary); }
     .breadcrumb-sep { color: var(--md-outline-variant); }
+    .share-x-btn { margin-left: auto; flex-shrink: 0; background: none; border: 1px solid var(--md-outline); border-radius: 100px; font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: var(--md-on-surface-variant); cursor: pointer; padding: 4px 10px; transition: background 0.15s, color 0.15s; }
+    .share-x-btn:hover { background: var(--md-primary-container); color: var(--md-on-primary-container); }
 
     .page-header { padding: 0.75rem 2rem 2.5rem; border-bottom: 1px solid var(--md-outline-variant); background: var(--md-surface-container-low); }
     .disc-type-badge { font-family: 'Roboto Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; color: #fff; padding: 3px 9px; border-radius: 8px; display: inline-block; width: fit-content; margin-bottom: 1rem; }
@@ -258,6 +260,7 @@
     <a href="#" id="breadcrumbAlbum" style="display:none;"></a>
     <span class="breadcrumb-sep">/</span>
     <span id="breadcrumbCurrent">三文小説（ALBUM ver.）</span>
+    <button type="button" class="share-x-btn" aria-label="Xでシェア" title="Xでシェア" onclick="window.open('https://x.com/intent/tweet?text='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href),'_blank','noopener');">𝕏 シェア</button>
   </div>
 
   <button type="button" class="back-link" id="backLink">← 戻る</button>
