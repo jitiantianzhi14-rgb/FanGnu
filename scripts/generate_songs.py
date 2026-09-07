@@ -276,11 +276,10 @@ def main():
   fetch('%(ROOT)sdata/amazon-products.json')
     .then(res => res.json())
     .then(products => {
-      const own = products[SONG_DATA.title];
-      if (own && own.length) { renderAmazonProducts(own); return; }
-      if (SONG_DATA.isAlbumTrack && SONG_DATA.album && SONG_DATA.album.title) {
-        renderAmazonProducts(products[SONG_DATA.album.title]);
-      }
+      const own = products[SONG_DATA.title] || [];
+      const albumTitle = SONG_DATA.album && SONG_DATA.album.title;
+      const fromAlbum = albumTitle ? (products[albumTitle] || []) : [];
+      renderAmazonProducts([...own, ...fromAlbum]);
     })
     .catch(() => {});
   renderLiveStats(LIVE_HISTORY);
