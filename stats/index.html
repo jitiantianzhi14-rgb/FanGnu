@@ -60,8 +60,6 @@
     .breadcrumb { padding: 0.75rem 2rem; font-family: 'Roboto Mono', monospace; font-size: 10px; color: var(--md-on-surface-variant); border-bottom: 1px solid var(--md-outline-variant); background: var(--md-surface); display: flex; gap: 8px; align-items: center; }
     .breadcrumb a:hover { color: var(--md-primary); }
     .breadcrumb-sep { color: var(--md-outline-variant); }
-    .share-x-btn { margin-left: auto; flex-shrink: 0; background: none; border: 1px solid var(--md-outline); border-radius: 100px; font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: var(--md-on-surface-variant); cursor: pointer; padding: 4px 10px; transition: background 0.15s, color 0.15s; }
-    .share-x-btn:hover { background: var(--md-primary-container); color: var(--md-on-primary-container); }
 
     .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: var(--md-surface-container-low); box-shadow: 0 -1px 3px rgba(0,0,0,.08); z-index: 200; }
     .bn-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 10px 4px 8px; font-size: 11px; font-weight: 500; color: var(--md-on-surface-variant); transition: color 0.15s; }
@@ -247,7 +245,6 @@
     <a href="../">HOME</a>
     <span class="breadcrumb-sep">/</span>
     ライブ・楽曲統計
-    <button type="button" class="share-x-btn" aria-label="Xでシェア" title="Xでシェア" onclick="window.open('https://x.com/intent/tweet?text='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href),'_blank','noopener');">𝕏 シェア</button>
   </div>
 
   <div class="page-header">
@@ -495,7 +492,7 @@
     <a href="../" class="footer-logo">Fun<span class="red">GNU</span></a>
     <div class="footer-copy">
       非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>
-      <a href="../privacy/">プライバシーポリシー</a> ／ <a href="../contact/">お問い合わせ</a> ／ <a href="#" onclick="window.open('https://x.com/intent/tweet?text='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href),'_blank','noopener');return false;">𝕏でシェア</a> ／ © FunGNU Unofficial
+      <a href="../privacy/">プライバシーポリシー</a> ／ <a href="../contact/">お問い合わせ</a> ／ <a href="https://x.com/FunGNU_info" target="_blank" rel="noopener">FunGNU公式𝕏</a> ／ © FunGNU Unofficial
     </div>
   </footer>
 
