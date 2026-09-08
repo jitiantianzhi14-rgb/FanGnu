@@ -314,8 +314,8 @@ def main():
         canonical_url = f"https://fungnu.com/song/{slug}/"
 
         page = page.replace(
-            "<title>楽曲詳細 — FunGNU</title>",
-            f"<title>{esc_h(title)} — 楽曲詳細 — FunGNU</title>",
+            "<title>楽曲詳細 — FunGNU!!!</title>",
+            f"<title>{esc_h(title)} — 楽曲詳細 — FunGNU!!!</title>",
             1,
         )
         page = page.replace(
@@ -324,8 +324,8 @@ def main():
             1,
         )
         page = page.replace(
-            '<meta property="og:title" content="楽曲詳細 — FunGNU">',
-            f'<meta property="og:title" content="{esc_h(title)} — 楽曲詳細 — FunGNU">',
+            '<meta property="og:title" content="楽曲詳細 — FunGNU!!!">',
+            f'<meta property="og:title" content="{esc_h(title)} — 楽曲詳細 — FunGNU!!!">',
             1,
         )
         page = page.replace(

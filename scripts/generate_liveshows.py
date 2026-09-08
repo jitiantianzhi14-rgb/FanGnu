@@ -133,12 +133,12 @@ def main():
 
                 venue = show.get("venue") or "会場未定"
                 tour_name = tour.get("name") or ""
-                page_title = f"{venue} — 公演詳細 — FunGNU"
+                page_title = f"{venue} — 公演詳細 — FunGNU!!!"
                 desc = f"{date} {tour_name}（{venue}）の公演詳細。セットリストなどをまとめて掲載。"
                 canonical_url = f"https://fungnu.com/live-show/{dir_name}/"
 
                 page = page.replace(
-                    "<title>公演詳細 — FunGNU</title>",
+                    "<title>公演詳細 — FunGNU!!!</title>",
                     f"<title>{esc_h(page_title)}</title>",
                     1,
                 )
@@ -148,7 +148,7 @@ def main():
                     1,
                 )
                 page = page.replace(
-                    '<meta property="og:title" content="公演詳細 — FunGNU">',
+                    '<meta property="og:title" content="公演詳細 — FunGNU!!!">',
                     f'<meta property="og:title" content="{esc_h(page_title)}">',
                     1,
                 )

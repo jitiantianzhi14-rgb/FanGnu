@@ -156,12 +156,12 @@ def main():
 
         page = template
 
-        page_title = f"{title} — アルバム概要 — FunGNU"
+        page_title = f"{title} — アルバム概要 — FunGNU!!!"
         note = album.get("note") or ""
         artist_label = "Srv.Vinci（前身バンド時代）" if is_srvvinci else "King Gnu"
         desc = f"{artist_label}のアルバム「{title}」概要ページ。{note + '。' if note else ''}発売日・収録曲などをまとめて掲載。"
         page = page.replace(
-            "<title>アルバム概要 — FunGNU</title>",
+            "<title>アルバム概要 — FunGNU!!!</title>",
             f"<title>{esc_h(page_title)}</title>",
             1,
         )
@@ -171,7 +171,7 @@ def main():
             1,
         )
         page = page.replace(
-            '<meta property="og:title" content="アルバム概要 — FunGNU">',
+            '<meta property="og:title" content="アルバム概要 — FunGNU!!!">',
             f'<meta property="og:title" content="{esc_h(page_title)}">',
             1,
         )
