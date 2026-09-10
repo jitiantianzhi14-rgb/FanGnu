@@ -248,6 +248,7 @@
     </div>
 
     <div class="tab-panel" data-panel="map">
+    <div class="map-note" style="text-align:left; margin-bottom: 12px;">※ Srv.Vinci期の公演を含みます（中止公演は除く）。</div>
     <div class="map-section">
       <div class="map-rank-col">
         <div class="section-label" id="domesticRankLabel">国内 TOP5</div>
@@ -428,6 +429,7 @@
     </div>
 
     <div class="tab-panel active" data-panel="ranking">
+      <div class="map-note" style="text-align:left; margin-bottom: 12px;">※ Srv.Vinci期の公演を含みます（中止公演は除く）。</div>
       <div class="chart-card">
         <div class="chart-sub">曲別の年別内訳（演奏回数順）</div>
         <div class="filter-chips" id="songYearAlbumChips"></div>
@@ -438,6 +440,7 @@
     </div>
 
     <div class="tab-panel" data-panel="yearly">
+      <div class="map-note" style="text-align:left; margin-bottom: 12px;">※ Srv.Vinci期の公演を含みます（中止公演は除く）。</div>
       <div class="chart-card">
         <div class="chart-sub">年別の総演奏回数（各公演のセットリストに含まれるユニーク曲数の合計）</div>
         <div id="yearTotalChart"><div class="loading">集計中…</div></div>
@@ -445,6 +448,7 @@
     </div>
 
     <div class="tab-panel" data-panel="album">
+      <div class="map-note" style="text-align:left; margin-bottom: 12px;">※ Srv.Vinci期の公演を含みます（中止公演は除く）。</div>
       <div class="chart-card">
         <div class="chart-sub">演奏曲がどのリリースに収録された曲かの内訳（全期間＋年別）</div>
         <div id="albumRatioChart"><div class="loading">集計中…</div></div>
@@ -453,6 +457,7 @@
     </div>
 
     <div class="tab-panel" data-panel="openclose">
+      <div class="map-note" style="text-align:left; margin-bottom: 12px;">※ 開会式・Sympa Ⅰ〜Ⅳなど、歌唱を伴わないインスト曲は集計に含めていません。</div>
       <div class="openclose-wrap">
         <div class="chart-card">
           <div class="chart-sub">セットリストの1曲目として演奏された回数</div>
@@ -650,6 +655,7 @@
 
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
+        if (show.status === '中止') return; // 中止公演は開催実績として数えない
         showCount++;
         const info = { date: show.date, tourName: tour.name, venue: show.venue, isSrvvinci: (svLive.tours || []).includes(tour) };
         if (!last || show.date > last.date) last = info;
@@ -681,7 +687,7 @@
     const overseasShows = [...stats.countryCounts.values()].reduce((a, b) => a + b, 0);
     grid.innerHTML = `
       <div class="summary-card">
-        <div class="summary-label">総公演数</div>
+        <div class="summary-label">総公演数<span class="summary-sub">Srv.Vinci期含む／中止公演は除く</span></div>
         <div class="summary-value">${stats.showCount}<span class="summary-unit">回</span></div>
       </div>
       <div class="summary-card">
@@ -689,7 +695,7 @@
         <div class="summary-value">${stats.tourCount}<span class="summary-unit">件</span></div>
       </div>
       <div class="summary-card">
-        <div class="summary-label">海外公演数</div>
+        <div class="summary-label">海外公演数<span class="summary-sub">Srv.Vinci期含む／中止公演は除く</span></div>
         <div class="summary-value">${overseasShows}<span class="summary-unit">回</span></div>
       </div>
       <div class="summary-card">
@@ -749,6 +755,7 @@
 
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
+        if (show.status === '中止') return; // 中止公演は開催実績として数えない
         const year = (show.date || '').slice(0, 4);
         if (!year) return;
         const uniqueKeys = new Set();
@@ -1001,6 +1008,14 @@
     }).join('');
   }
 
+  // 歌唱を伴わないインスト曲（開会式・Sympa Ⅰ〜Ⅳなど）は「最初/最後に演奏された曲」の集計対象から除く
+  const INSTRUMENTAL_SLUGS = new Set([
+    'mirror', 'dare', 'delta-album', 'dou-album', 'rorrim-album',
+    'kaikaishiki', 'makuai', 'heikaishiki',
+    'sympa-1', 'sympa-2', 'sympa-3', 'sympa-4',
+    'underground', 'maebure',
+  ]);
+
   function collectOpenerCloserStats(kgLive, svLive, songIndex) {
     const allTours = [...(kgLive.tours || []), ...(svLive.tours || [])];
     const openerCounts = new Map();
@@ -1008,10 +1023,15 @@
 
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
-        // SE・開会セレモニーなど実在の楽曲ではないセットリスト表記を除外してから先頭/末尾を判定する
+        if (show.status === '中止') return; // 中止公演は開催実績として数えない
+        // SE・開会セレモニーなど実在の楽曲ではないセットリスト表記や、インスト曲を除外してから先頭/末尾を判定する
         const songs = (show.setlist || [])
           .map(normalizeTitle)
-          .filter(t => songIndex.has(t));
+          .filter(t => {
+            if (!songIndex.has(t)) return false;
+            const info = songIndex.get(t);
+            return !INSTRUMENTAL_SLUGS.has(info.slug);
+          });
         if (!songs.length) return;
         const first = songs[0];
         const last = songs[songs.length - 1];

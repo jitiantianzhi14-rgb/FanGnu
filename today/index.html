@@ -14,12 +14,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>今日は何の日 — FunGNU!!!</title>
-  <meta name="description" content="King Gnu・Srv.Vinci時代のライブ公演・リリース日をカレンダーから振り返る「今日は何の日」。">
+  <meta name="description" content="King Gnu・Srv.Vinci時代のライブ公演・リリース日・メンバーの誕生日をカレンダーから振り返る「今日は何の日」。">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FunGNU!!!">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:title" content="今日は何の日 — FunGNU!!!">
-  <meta property="og:description" content="King Gnu・Srv.Vinci時代のライブ公演・リリース日をカレンダーから振り返る「今日は何の日」。">
+  <meta property="og:description" content="King Gnu・Srv.Vinci時代のライブ公演・リリース日・メンバーの誕生日をカレンダーから振り返る「今日は何の日」。">
   <meta property="og:url" content="https://fungnu.com/today/">
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -247,6 +247,25 @@
     return out;
   }
 
+  const MEMBER_BIRTHDAYS = [
+    { date: '1992.05.15', name: '常田大希', href: '../members/tsuneta/' },
+    { date: '1993.10.05', name: '井口理', href: '../members/iguchi/' },
+    { date: '1992.10.29', name: '新井和輝', href: '../members/arai/' },
+    { date: '1992.09.02', name: '勢喜遊', href: '../members/seki/' },
+  ];
+
+  function collectMemberBirthdays() {
+    return MEMBER_BIRTHDAYS.map(m => {
+      const dt = parseYMD(m.date);
+      return { ...dt, kind: 'birthday', title: `${m.name} 誕生`, subtitle: 'MEMBER', href: m.href };
+    });
+  }
+
+  function collectFormationEvent() {
+    const dt = parseYMD('2017.04.27');
+    return [{ ...dt, kind: 'formation', title: 'King Gnu結成', subtitle: '', href: '../' }];
+  }
+
   const MONTH_DAYS = [31,29,31,30,31,30,31,31,30,31,30,31]; // 閏年基準（2月29日まで許容）
   const WEEKDAYS = ['日','月','火','水','木','金','土'];
 
@@ -293,7 +312,7 @@
     grid.innerHTML = html;
   }
 
-  const KIND_ICON = { live: 'mic', release: 'album' };
+  const KIND_ICON = { live: 'mic', release: 'album', birthday: 'cake', formation: 'celebration' };
 
   function renderDayEvents(month, day) {
     const now = new Date();
@@ -338,7 +357,7 @@
     const { month, day } = getParams();
 
     document.getElementById('pageTitle').textContent = `${month}月${day}日は何の日`;
-    document.getElementById('pageDesc').textContent = `King Gnu・Srv.Vinciのリリース・ライブ公演から、${month}月${day}日に起きた出来事を年代順にまとめています。`;
+    document.getElementById('pageDesc').textContent = `King Gnu・Srv.Vinciのリリース・ライブ公演、メンバーの誕生日などから、${month}月${day}日に起きた出来事を年代順にまとめています。`;
 
     const prev = shiftDay(month, day, -1);
     const next = shiftDay(month, day, 1);
@@ -400,6 +419,8 @@
       ...collectLiveEvents(svLive, true),
       ...collectKingGnuReleases(kgDisc),
       ...collectSrvvinciReleases(svDisc),
+      ...collectMemberBirthdays(),
+      ...collectFormationEvent(),
     ];
     render();
   }).catch(err => {
