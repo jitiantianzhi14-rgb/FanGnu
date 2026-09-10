@@ -137,6 +137,16 @@ def main():
                 desc = f"{date} {tour_name}（{venue}）の公演詳細。セットリストなどをまとめて掲載。"
                 canonical_url = f"https://fungnu.com/live-show/{dir_name}/"
 
+                if not (show.get("note") or "").strip():
+                    noindex_anchor = '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
+                    if noindex_anchor not in page:
+                        raise SystemExit(f"FATAL: noindex anchor not found for {dir_name}")
+                    page = page.replace(
+                        noindex_anchor,
+                        noindex_anchor + '  <meta name="robots" content="noindex">\n',
+                        1,
+                    )
+
                 page = page.replace(
                     "<title>公演詳細 — FunGNU!!!</title>",
                     f"<title>{esc_h(page_title)}</title>",

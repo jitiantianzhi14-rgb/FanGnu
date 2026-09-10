@@ -13,15 +13,16 @@
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ — FunGNU!!!</title>
-  <meta name="description" content="FunGNU!!!への情報提供・修正依頼・その他お問い合わせはこちらから。">
+  <title>運営者について — FunGNU!!!</title>
+  <meta name="description" content="King Gnu非公式ファンサイト「FunGNU!!!」の運営者について。サイトを始めたきっかけや情報収集の方法などを紹介しています。">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FunGNU!!!">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="お問い合わせ — FunGNU!!!">
-  <meta property="og:description" content="FunGNU!!!への情報提供・修正依頼・その他お問い合わせはこちらから。">
-  <meta property="og:url" content="https://fungnu.com/contact/">
+  <meta property="og:title" content="運営者について — FunGNU!!!">
+  <meta property="og:description" content="King Gnu非公式ファンサイト「FunGNU!!!」の運営者について。サイトを始めたきっかけや情報収集の方法などを紹介しています。">
+  <meta property="og:url" content="https://fungnu.com/about/">
   <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://fungnu.com/about/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -73,31 +74,14 @@
     .page-header-title .red { color: var(--md-primary); }
     .page-header-desc { font-size: 13px; color: var(--md-on-surface-variant); margin-top: 1rem; }
 
-    .content { max-width: 700px; margin: 0 auto; padding: 2.5rem 2rem; }
-    .form-section { background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 16px; padding: 2rem; }
-    .form-head { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 8px; }
-    .form-head::before { content: ''; display: inline-block; width: 14px; height: 2px; background: var(--md-primary); }
-    .form-group { margin-bottom: 1.25rem; }
-    .form-label { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--md-on-surface-variant); display: block; margin-bottom: 6px; }
-    .form-label .req { color: var(--md-primary); margin-left: 4px; }
-    .form-input, .form-select, .form-textarea {
-      width: 100%; border: 1px solid var(--md-outline); border-radius: 10px; padding: 10px 12px;
-      font-family: 'Roboto', 'Noto Sans JP', sans-serif; font-size: 13px; color: var(--md-on-surface);
-      background: var(--md-surface); outline: none; transition: border-color 0.15s;
-    }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--md-primary); border-width: 2px; }
-    .form-textarea { resize: vertical; min-height: 140px; }
-    .form-submit { width: 100%; font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; background: var(--md-primary); color: var(--md-on-primary); border: none; border-radius: 100px; padding: 14px; cursor: pointer; transition: box-shadow 0.15s; margin-top: 0.5rem; }
-    .form-submit:hover { box-shadow: var(--md-shadow-1); }
-    .form-submit:disabled { background: var(--md-outline-variant); color: var(--md-on-surface-variant); cursor: default; box-shadow: none; }
-    .form-error { font-size: 12px; color: var(--md-primary); margin-top: 0.75rem; display: none; }
-    .notice { background: var(--md-primary-container); border-radius: 14px; padding: 1.25rem; margin-bottom: 2rem; }
-    .notice-title { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; color: var(--md-on-primary-container); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-    .notice-body { font-size: 12px; color: var(--md-on-primary-container); line-height: 1.8; }
-    .thanks { display: none; background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 16px; padding: 3rem 2rem; text-align: center; }
-    .thanks-icon { font-size: 36px; margin-bottom: 1rem; color: var(--md-primary); }
-    .thanks-title { font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 500; margin-bottom: 0.75rem; color: var(--md-on-surface); }
-    .thanks-body { font-size: 13px; color: var(--md-on-surface-variant); }
+    .content { max-width: 760px; margin: 0 auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2.5rem; }
+    .section-label { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+    .section-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--md-primary); }
+    .about-section { background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 14px; padding: 1.5rem 1.75rem; }
+    .about-section p { font-size: 13px; margin-bottom: 0.75rem; line-height: 1.9; }
+    .about-section p:last-child { margin-bottom: 0; }
+    .about-section a { color: var(--md-primary); text-decoration: underline; text-underline-offset: 2px; }
+
     .footer { padding: 1.75rem 2rem; border-top: 1px solid var(--md-outline-variant); display: flex; align-items: center; justify-content: space-between; background: var(--md-surface-container-low); margin-top: 2rem; }
     .footer-logo { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 15px; color: var(--md-on-surface); }
     .footer-logo .red { color: var(--md-primary); }
@@ -141,58 +125,37 @@
   <div class="breadcrumb">
     <a href="../">HOME</a>
     <span class="breadcrumb-sep">/</span>
-    お問い合わせ
+    運営者について
   </div>
 
   <div class="page-header">
-    <h1 class="page-header-title">お問い合わせ</h1>
-    <p class="page-header-desc">情報提供・修正依頼・その他ご連絡はこちらから。</p>
+    <h1 class="page-header-title">運営者について</h1>
+    <p class="page-header-desc">このサイトを作っている人について、少しだけ紹介します。</p>
   </div>
 
   <div class="content">
 
-    <div class="notice">
-      <div class="notice-title">NOTICE</div>
-      <div class="notice-body">
-        当サイトはKing Gnu非公式のファンサイトです。King Gnu・所属事務所への連絡の取り次ぎは行っておりません。<br>
-        情報の誤りや追加情報のご提供は大歓迎です。いただいた情報は確認の上、サイトに反映いたします。
+    <div>
+      <div class="section-label">運営者</div>
+      <div class="about-section">
+        <p>ただのKing Gnu好きの一般人です。2021年頃からKing Gnuを聴き始め、「雨燦々」を聴いたことをきっかけに本格的に好きになりました。ライブは「King Gnu Dome Tour THE GREATEST UNKNOWN」と「King Gnu CEN+RAL Tour」にしか参加したことがなく、特別な知識や業界とのつながりがあるわけではない、ただの一般人ファンです。</p>
+        <p>サイトを始めたのも、「King Gnuが好き」という気持ちと、サイトを作ってみたかったという単純な理由です。ディスコグラフィーやライブ履歴、統計など、King Gnuに関する情報をまとめて見返せる場所があったら便利だと思ったのがきっかけです。</p>
       </div>
     </div>
 
-    <div id="formWrap">
-      <div class="form-section">
-        <div class="form-head">SEND MESSAGE</div>
-        <div class="form-group">
-          <label class="form-label">お名前<span class="req">*</span></label>
-          <input type="text" class="form-input" id="inputName" placeholder="例：GNUファン" maxlength="50">
-        </div>
-        <div class="form-group">
-          <label class="form-label">メールアドレス</label>
-          <input type="email" class="form-input" id="inputEmail" placeholder="返信が必要な場合はご記入ください">
-        </div>
-        <div class="form-group">
-          <label class="form-label">お問い合わせ種別<span class="req">*</span></label>
-          <select class="form-select" id="inputType">
-            <option value="">選択してください</option>
-            <option value="info">情報提供・追加リクエスト</option>
-            <option value="fix">情報の誤り・修正依頼</option>
-            <option value="rights">著作権・肖像権に関するお申し出</option>
-            <option value="other">その他</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">メッセージ<span class="req">*</span></label>
-          <textarea class="form-textarea" id="inputMessage" placeholder="お気軽にどうぞ。" maxlength="1000"></textarea>
-        </div>
-        <button class="form-submit" id="submitBtn" onclick="handleSubmit()">SEND MESSAGE →</button>
-        <div class="form-error" id="formError"></div>
+    <div>
+      <div class="section-label">情報収集について</div>
+      <div class="about-section">
+        <p>掲載している情報は、インタビュー記事や公式SNSなどの発信を中心に調べてまとめています。個人による調査のため、二次情報や誤りが含まれる可能性があります。詳しくは<a href="../privacy/">プライバシーポリシー</a>もあわせてご確認ください。</p>
+        <p>更新は不定期・まったりペースで行っています。情報の誤りや追加のご提供があれば、<a href="../contact/">お問い合わせフォーム</a>からお気軽にご連絡ください。</p>
       </div>
     </div>
 
-    <div class="thanks" id="thanksMsg">
-      <div class="thanks-icon material-symbols-outlined">check_circle</div>
-      <div class="thanks-title">SENT.</div>
-      <div class="thanks-body">ご連絡ありがとうございます。<br>内容を確認の上、対応いたします。</div>
+    <div>
+      <div class="section-label">SNS</div>
+      <div class="about-section">
+        <p>サイトの更新情報などは、X（旧Twitter）の<a href="https://x.com/FunGNU_info" target="_blank" rel="noopener">@FunGNU_info</a>でお知らせしています。</p>
+      </div>
     </div>
 
   </div>
@@ -200,7 +163,7 @@
   <footer class="footer">
     <a href="../" class="footer-logo">Fun<span class="red">GNU</span>!!!</a>
     <div class="footer-copy">非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>
-      掲載情報はサイト運営者が独自に調べている内容です。二次情報や誤りが含まれている可能性がありますので、あらかじめご了承ください。<br><br><a href="../privacy/">プライバシーポリシー</a> ／ <a href="https://x.com/FunGNU_info" target="_blank" rel="noopener">𝕏：@FunGNU_info</a> ／ © FunGNU!!! Unofficial</div>
+      掲載情報はサイト運営者が独自に調べている内容です。二次情報や誤りが含まれている可能性がありますので、あらかじめご了承ください。<br><br><a href="../privacy/">プライバシーポリシー</a> ／ <a href="../contact/">お問い合わせ</a> ／ <a href="https://x.com/FunGNU_info" target="_blank" rel="noopener">𝕏：@FunGNU_info</a> ／ © FunGNU!!! Unofficial</div>
   </footer>
 
   <nav class="bottom-nav">
@@ -211,55 +174,6 @@
     <a href="../live/" class="bn-item"><span class="bn-icon material-symbols-outlined">mic</span>ライブ</a>
   </nav>
 
-  <script>
-    const WEB3FORMS_ACCESS_KEY = '3380e78e-f5c2-4470-b6a9-94d9a77b6ffb';
-
-    async function handleSubmit() {
-      const name = document.getElementById('inputName').value.trim();
-      const email = document.getElementById('inputEmail').value.trim();
-      const type = document.getElementById('inputType').value;
-      const typeLabel = document.getElementById('inputType').selectedOptions[0]?.textContent || '';
-      const msg = document.getElementById('inputMessage').value.trim();
-      const errorEl = document.getElementById('formError');
-      const btn = document.getElementById('submitBtn');
-      errorEl.style.display = 'none';
-
-      if (!name || !type || !msg) {
-        errorEl.textContent = '※印の項目を入力してください。';
-        errorEl.style.display = 'block';
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = '送信中…';
-
-      try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            access_key: WEB3FORMS_ACCESS_KEY,
-            subject: `[FunGNU!!! お問い合わせ] ${typeLabel}`,
-            name,
-            email: email || '未記入',
-            type: typeLabel,
-            message: msg,
-          }),
-        });
-        const data = await res.json();
-        if (!data.success) throw new Error(data.message || '送信に失敗しました。');
-
-        document.getElementById('formWrap').style.display = 'none';
-        document.getElementById('thanksMsg').style.display = 'block';
-      } catch (err) {
-        console.error(err);
-        errorEl.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
-        errorEl.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'SEND MESSAGE →';
-      }
-    }
-  </script>
   <script>
     (function() {
       var siteMenu = document.getElementById('siteMenu');
