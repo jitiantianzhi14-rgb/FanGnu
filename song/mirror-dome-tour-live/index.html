@@ -65,6 +65,10 @@
     .bn-icon { font-size: 17px; line-height: 1; width: 46px; padding: 3px 0; border-radius: 16px; text-align: center; transition: background 0.15s; }
     .bn-item.active { color: var(--md-on-surface); font-weight: 700; }
     .bn-item.active .bn-icon { background: var(--md-primary-container); }
+    .scroll-top-btn { position: fixed; right: 16px; bottom: 78px; width: 44px; height: 44px; border-radius: 50%; border: none; background: var(--md-primary); color: var(--md-on-primary); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: var(--md-shadow-2); z-index: 250; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s, visibility 0.2s; }
+    .scroll-top-btn.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .scroll-top-btn:hover { box-shadow: var(--md-shadow-1); }
+    .scroll-top-btn .material-symbols-outlined { font-size: 22px; }
 
     .back-link { display: inline-flex; align-items: center; gap: 6px; margin: 1.25rem 2rem 0; padding: 0; background: none; border: none; font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; color: var(--md-on-surface-variant); cursor: pointer; }
     .back-link:hover { color: var(--md-primary); }
@@ -949,6 +953,22 @@
       });
       siteMenu.addEventListener('click', (e) => {
         if (e.target === siteMenu) siteMenu.classList.remove('open');
+      });
+    })();
+  </script>
+
+  <button type="button" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+  <script>
+    (function() {
+      var scrollBtn = document.getElementById('scrollTopBtn');
+      if (!scrollBtn) return;
+      window.addEventListener('scroll', function() {
+        scrollBtn.classList.toggle('visible', window.scrollY > 400);
+      });
+      scrollBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     })();
   </script>
