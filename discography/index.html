@@ -75,7 +75,7 @@
     .page-header-actions { display: flex; gap: 10px; margin-top: 1.25rem; }
     .data-caveat { display: flex; gap: 8px; align-items: flex-start; margin-top: 1.1rem; padding: 0.7rem 0.9rem; border-radius: 12px; background: var(--md-primary-container); font-size: 11px; line-height: 1.7; color: var(--md-on-primary-container); max-width: 640px; }
     .data-caveat-icon { flex-shrink: 0; font-size: 13px; }
-    .header-btn { font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; border: 1px solid var(--md-outline); border-radius: 100px; padding: 9px 20px; background: transparent; color: var(--md-primary); transition: background 0.15s; }
+    .header-btn { font-family: 'Roboto', sans-serif; font-size: 14px; font-weight: 500; border: 1px solid var(--md-outline); border-radius: 100px; padding: 12px 26px; background: transparent; color: var(--md-primary); transition: background 0.15s; }
     .header-btn:hover { background: var(--md-primary-container); border-color: transparent; }
 
     .filter-bar { background: var(--md-surface); border-bottom: 1px solid var(--md-outline-variant); padding: 1.1rem 2rem; display: flex; flex-direction: column; gap: 0.9rem; }
@@ -101,6 +101,9 @@
 
     .disc-card { background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 16px; overflow: hidden; transition: box-shadow 0.15s; }
     .disc-card.hidden, .disc-year-header.hidden { display: none; }
+    .disc-prequel-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 44px; margin-bottom: -20px; }
+    .disc-prequel-actions .action-btn { flex: 1 1 0; min-width: 200px; text-align: center; font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; border-radius: 100px; padding: 1.1rem 1.5rem; background: transparent; color: var(--md-primary); border: 1px solid var(--md-outline); transition: background 0.15s; }
+    .disc-prequel-actions .action-btn:hover { background: var(--md-primary-container); border-color: transparent; }
     .disc-card:hover { box-shadow: var(--md-shadow-1); }
 
     .disc-card-head { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; cursor: pointer; }
@@ -247,6 +250,7 @@
     <a href="../" class="footer-logo">Fun<span class="red">GNU</span>!!!</a>
     <div class="footer-copy">
       非公式ファンサイト。King Gnuおよび関係各社とは一切関係ありません。<br>
+      掲載情報はサイト運営者が独自に調べている内容です。二次情報や誤りが含まれている可能性がありますので、あらかじめご了承ください。<br><br>
       <a href="../privacy/">プライバシーポリシー</a> ／ <a href="../contact/">お問い合わせ</a> ／ <a href="https://x.com/FunGNU_info" target="_blank" rel="noopener">𝕏：@FunGNU_info</a> ／ © FunGNU!!! Unofficial
     </div>
   </footer>
@@ -381,6 +385,12 @@
         lastYear = item.yearKey;
       }
       html += buildCard(item);
+      if (item.slug === 'tokyo-rendez-vous') {
+        html += `<div class="disc-prequel-actions">
+          <a href="../srvvinci-discography/" class="action-btn">King Gnu以前のディスコグラフィー →</a>
+          <a href="../stats/" class="action-btn">ライブ・楽曲統計を見る →</a>
+        </div>`;
+      }
     });
     content.innerHTML = `<div class="disc-grid">${html}</div>`;
 
