@@ -61,7 +61,7 @@
     .breadcrumb a:hover { color: var(--md-primary); }
     .breadcrumb-sep { color: var(--md-outline-variant); }
 
-    .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: var(--md-surface-container-low); box-shadow: 0 -1px 3px rgba(0,0,0,.08); z-index: 200; }
+    .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: var(--md-surface-container-low); box-shadow: 0 -1px 3px rgba(0,0,0,.08); z-index: 950; }
     .bn-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 10px 4px 8px; font-size: 11px; font-weight: 500; color: var(--md-on-surface-variant); transition: color 0.15s; }
     .bn-item:hover { color: var(--md-on-surface); }
     .bn-icon { font-size: 17px; line-height: 1; width: 46px; padding: 3px 0; border-radius: 16px; text-align: center; transition: background 0.15s; }
@@ -138,10 +138,31 @@
     .stack-seg:last-child { border-radius: 0 8px 8px 0; }
     .stack-value { width: 50px; flex-shrink: 0; text-align: right; font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--md-on-surface-variant); }
 
+    .chart-zoom-btn { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; font-family: 'Roboto', sans-serif; font-size: 11px; font-weight: 500; color: var(--md-on-surface-variant); background: none; border: 1px solid var(--md-outline); border-radius: 100px; padding: 5px 12px; cursor: pointer; transition: background 0.15s; }
+    .chart-zoom-btn:hover { background: var(--md-surface-container); }
+    .chart-zoom-btn .material-symbols-outlined { font-size: 15px; }
+    .chart-sub-row { display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
+    .chart-sub-row .chart-sub { margin-bottom: 0; }
+    .chart-zoom-overlay { position: fixed; inset: 0; padding-bottom: 60px; background: rgba(32,26,25,0.5); z-index: 900; display: flex; align-items: flex-end; justify-content: center; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0s linear 0.2s; box-sizing: border-box; }
+    .chart-zoom-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity 0.2s ease, visibility 0s linear 0s; }
+    .chart-zoom-box { width: 100%; max-width: 720px; max-height: 88vh; background: var(--md-surface); border-radius: 20px 20px 0 0; box-shadow: var(--md-shadow-2); display: flex; flex-direction: column; transform: translateY(24px); transition: transform 0.25s ease; }
+    .chart-zoom-overlay.open .chart-zoom-box { transform: translateY(0); }
+    .chart-zoom-head { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; border-bottom: 1px solid var(--md-outline-variant); flex-shrink: 0; }
+    .chart-zoom-title { font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: 700; color: var(--md-on-surface); }
+    .chart-zoom-close { background: none; border: none; font-size: 24px; color: var(--md-on-surface-variant); cursor: pointer; padding: 4px; line-height: 1; }
+    .chart-zoom-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 1.25rem; -webkit-overflow-scrolling: touch; }
+    .chart-zoom-scroll .stack-row { flex-wrap: wrap; row-gap: 6px; padding: 10px 0; }
+    .chart-zoom-scroll .stack-label { order: 1; width: auto; flex: 1 1 auto; white-space: normal; overflow: visible; text-overflow: clip; }
+    .chart-zoom-scroll .stack-value { order: 2; }
+    .chart-zoom-scroll .stack-track-wrap { order: 3; flex: 0 0 100%; width: 100%; }
+    .chart-zoom-scroll .stack-track { height: 22px; max-height: 22px; }
+    .chart-zoom-scroll .stack-seg { height: 22px; }
+    .chart-zoom-scroll .chart-legend { margin-top: 1.5rem; }
+
     .chart-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--md-outline-variant); }
     .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--md-on-surface); }
 
-    .chart-tooltip { position: fixed; z-index: 500; pointer-events: none; background: var(--md-on-surface); color: var(--md-surface); padding: 6px 10px; border-radius: 8px; white-space: nowrap; opacity: 0; transition: opacity 0.06s linear; }
+    .chart-tooltip { position: fixed; z-index: 950; pointer-events: none; background: var(--md-on-surface); color: var(--md-surface); padding: 6px 10px; border-radius: 8px; white-space: nowrap; opacity: 0; transition: opacity 0.06s linear; }
     .chart-tooltip.visible { opacity: 1; }
     .chart-tooltip .tt-value { font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 700; line-height: 1.3; }
     .chart-tooltip .tt-label { font-size: 10px; color: var(--md-outline-variant); line-height: 1.3; }
@@ -185,8 +206,8 @@
       .tab-bar { grid-template-columns: repeat(2, 1fr); }
       .tab-btn { padding: 0.8rem 0.5rem; font-size: 11px; }
       .summary-card { border-bottom: 1px solid rgba(74,36,8,0.15); }
-      .map-section { flex-direction: column; }
-      .openclose-wrap { flex-direction: column; }
+      .map-section { flex-direction: column; align-items: stretch; }
+      .openclose-wrap { flex-direction: column; align-items: stretch; }
       .hbar-label, .stack-label { width: 84px; font-size: 11px; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
@@ -426,12 +447,19 @@
       <div class="map-note">出典: <a href="https://commons.wikimedia.org/wiki/File:Blank_map_of_Japan_new.svg" target="_blank" rel="noopener">Wikimedia Commons</a>（CC BY-SA 3.0）／沖縄県は位置調整のうえ表示</div>
       </div>
     </div>
+    <div style="margin-top: 1.5rem;">
+      <div class="section-label" id="venueRankLabel">会場 訪問ランキング</div>
+      <div class="rank-list rank-scroll" id="venueRankList"><div class="loading">集計中…</div></div>
+    </div>
     </div>
 
     <div class="tab-panel active" data-panel="ranking">
       <div class="map-note" style="text-align:left; margin-bottom: 12px;">※ Srv.Vinci期の公演を含みます（中止公演は除く）。</div>
       <div class="chart-card">
-        <div class="chart-sub">曲別の年別内訳（演奏回数順）</div>
+        <div class="chart-sub-row">
+          <div class="chart-sub">曲別の年別内訳（演奏回数順）</div>
+          <button type="button" class="chart-zoom-btn" id="songYearZoomBtn"><span class="material-symbols-outlined">open_in_full</span>拡大表示</button>
+        </div>
         <div class="filter-chips" id="songYearAlbumChips"></div>
         <div id="songYearChart"><div class="loading">集計中…</div></div>
         <button type="button" class="show-more-btn" id="songYearShowMore" style="display:none;">もっと表示</button>
@@ -450,7 +478,10 @@
     <div class="tab-panel" data-panel="album">
       <div class="map-note" style="text-align:left; margin-bottom: 12px;">※ Srv.Vinci期の公演を含みます（中止公演は除く）。</div>
       <div class="chart-card">
-        <div class="chart-sub">演奏曲がどのリリースに収録された曲かの内訳（全期間＋年別）</div>
+        <div class="chart-sub-row">
+          <div class="chart-sub">演奏曲がどのリリースに収録された曲かの内訳（全期間＋年別）</div>
+          <button type="button" class="chart-zoom-btn" id="albumRatioZoomBtn"><span class="material-symbols-outlined">open_in_full</span>拡大表示</button>
+        </div>
         <div id="albumRatioChart"><div class="loading">集計中…</div></div>
         <div class="chart-legend" id="albumRatioLegend"></div>
       </div>
@@ -652,6 +683,7 @@
     const songCounts = new Map();
     const prefCounts = new Map();
     const countryCounts = new Map();
+    const venueCounts = new Map();
 
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
@@ -673,10 +705,14 @@
           const country = findCountry(show.location, show.venue);
           if (country) countryCounts.set(country, (countryCounts.get(country) || 0) + 1);
         }
+
+        if (show.venue) {
+          venueCounts.set(show.venue, (venueCounts.get(show.venue) || 0) + 1);
+        }
       });
     });
 
-    return { tourCount: allTours.length, showCount, last, songCounts, prefCounts, countryCounts };
+    return { tourCount: allTours.length, showCount, last, songCounts, prefCounts, countryCounts, venueCounts };
   }
 
   function renderSummary(stats) {
@@ -738,9 +774,10 @@
       </div>`).join('');
   }
 
-  function renderLocationRanking(prefCounts, countryCounts) {
+  function renderLocationRanking(prefCounts, countryCounts, venueCounts) {
     renderTopList('domesticRankLabel', 'domesticRankList', '国内 訪問ランキング', prefCounts.entries(), `${prefCounts.size} / 47都道府県`);
     renderTopList('overseasRankLabel', 'overseasRankList', '海外 訪問ランキング', countryCounts.entries(), `${countryCounts.size}ヶ国`);
+    renderTopList('venueRankLabel', 'venueRankList', '会場 訪問ランキング', venueCounts.entries(), `${venueCounts.size}会場`);
   }
 
   // ---- 年別・アルバム別集計 ----
@@ -830,6 +867,8 @@
   let songYearAllYears = [];
   let songYearSongIndex = null;
   let songYearCountsRef = null;
+  let songYearAllEntriesRef = [];
+  let songYearMaxTotalRef = 1;
   let songAlbumRef = null;
 
   function songYearColor(year) {
@@ -879,11 +918,14 @@
       container.innerHTML = '<div class="loading">データがありません。</div>';
       legendEl.innerHTML = '';
       moreBtn.style.display = 'none';
+      songYearAllEntriesRef = [];
       return;
     }
 
     songYearAllYears = [...new Set(allEntries.flatMap(e => [...e.yearMap.keys()]))].sort();
     const maxTotal = allEntries[0].total;
+    songYearAllEntriesRef = allEntries;
+    songYearMaxTotalRef = maxTotal;
     const initial = allEntries.slice(0, SONG_YEAR_INITIAL_COUNT);
     const rest = allEntries.slice(SONG_YEAR_INITIAL_COUNT);
 
@@ -1079,7 +1121,7 @@
     const songIndex = buildSongIndex(kgDisco, svDisco);
     renderSummary(stats);
     renderMap(stats.prefCounts);
-    renderLocationRanking(stats.prefCounts, stats.countryCounts);
+    renderLocationRanking(stats.prefCounts, stats.countryCounts, stats.venueCounts);
 
     const { songYearCounts, yearTotals } = collectYearlyStats(kgLive, svLive);
     const { songAlbum, albumTracks } = buildAlbumMap(kgDisco, svDisco);
@@ -1110,6 +1152,55 @@
     <a href="./" class="bn-item active"><span class="bn-icon material-symbols-outlined">bar_chart</span>統計</a>
     <a href="../live/" class="bn-item"><span class="bn-icon material-symbols-outlined">mic</span>ライブ</a>
   </nav>
+
+  <div class="chart-zoom-overlay" id="chartZoomOverlay">
+    <div class="chart-zoom-box">
+      <div class="chart-zoom-head">
+        <div class="chart-zoom-title" id="chartZoomTitle">曲別の年別内訳（演奏回数順）</div>
+        <button type="button" class="chart-zoom-close material-symbols-outlined" id="chartZoomClose" aria-label="閉じる">close</button>
+      </div>
+      <div class="chart-zoom-scroll" id="chartZoomScroll"></div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var overlay = document.getElementById('chartZoomOverlay');
+      var scrollEl = document.getElementById('chartZoomScroll');
+      var titleEl = document.getElementById('chartZoomTitle');
+      bindTooltips(scrollEl);
+
+      function openZoom(title, html) {
+        titleEl.textContent = title;
+        scrollEl.innerHTML = html;
+        overlay.classList.add('open');
+      }
+
+      document.getElementById('songYearZoomBtn').addEventListener('click', () => {
+        var legendHtml = document.getElementById('songYearLegend').innerHTML;
+        openZoom(
+          '曲別の年別内訳（演奏回数順）',
+          songYearAllEntriesRef.map(e => songYearRowHtml(e, songYearMaxTotalRef)).join('') + `<div class="chart-legend">${legendHtml}</div>`
+        );
+      });
+
+      document.getElementById('albumRatioZoomBtn').addEventListener('click', () => {
+        var chartHtml = document.getElementById('albumRatioChart').innerHTML;
+        var legendHtml = document.getElementById('albumRatioLegend').innerHTML;
+        openZoom(
+          '演奏曲がどのリリースに収録された曲かの内訳（全期間＋年別）',
+          chartHtml + `<div class="chart-legend">${legendHtml}</div>`
+        );
+      });
+
+      document.getElementById('chartZoomClose').addEventListener('click', () => {
+        overlay.classList.remove('open');
+      });
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) overlay.classList.remove('open');
+      });
+    })();
+  </script>
 
   <script>
     (function() {
