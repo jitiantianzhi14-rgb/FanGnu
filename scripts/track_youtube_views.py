@@ -2,11 +2,12 @@
 """
 Daily YouTube view-count tracker.
 
-Reads every video ID referenced in the discography JSON files (the "yt" and
-"yt2" fields), fetches current view counts via the YouTube Data API v3, and
-appends today's snapshot to a year-partitioned history file under
-data/yt-views/<year>.json. Splitting by year keeps each file small so the
-site never has to load more than one year's worth of data at a time.
+Reads the hand-maintained list of video IDs in data/yt-tracked-videos.json
+(add/remove entries there to control exactly what gets tracked), fetches
+current view counts via the YouTube Data API v3, and appends today's
+snapshot to a year-partitioned history file under data/yt-views/<year>.json.
+Splitting by year keeps each file small so the site never has to load more
+than one year's worth of data at a time.
 
 Requires the YOUTUBE_API_KEY environment variable (a free YouTube Data API v3
 key). Safe to re-run multiple times on the same day: it updates today's entry
@@ -14,7 +15,6 @@ in place instead of duplicating it.
 """
 import json
 import os
-import re
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -22,19 +22,15 @@ from datetime import datetime, timedelta, timezone
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
 VIEWS_DIR = os.path.join(DATA_DIR, "yt-views")
+TRACKED_LIST_PATH = os.path.join(DATA_DIR, "yt-tracked-videos.json")
 
 API_KEY = os.environ.get("YOUTUBE_API_KEY")
 
 
 def collect_video_ids():
-    ids = set()
-    for name in ("kinggnu-discography.json", "srvvinci-discography.json"):
-        path = os.path.join(DATA_DIR, name)
-        with open(path, encoding="utf-8") as f:
-            text = f.read()
-        for m in re.finditer(r'"yt2?"\s*:\s*"([a-zA-Z0-9_-]{6,15})"', text):
-            ids.add(m.group(1))
-    return sorted(ids)
+    with open(TRACKED_LIST_PATH, encoding="utf-8") as f:
+        entries = json.load(f)
+    return [e["id"] for e in entries]
 
 
 def fetch_view_counts(video_ids):
@@ -70,7 +66,7 @@ def main():
         raise SystemExit("FATAL: YOUTUBE_API_KEY environment variable is not set")
 
     video_ids = collect_video_ids()
-    print(f"Tracking {len(video_ids)} video IDs")
+    print(f"Tracking {len(video_ids)} video IDs from {TRACKED_LIST_PATH}")
 
     counts = fetch_view_counts(video_ids)
     missing = [vid for vid, c in counts.items() if c is None]
