@@ -125,6 +125,8 @@
     .map-area iframe { width: 100%; aspect-ratio: 4 / 3; height: auto; border: none; display: block; }
 
     .section-label { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin: 2rem 0 1rem; display: flex; align-items: center; gap: 8px; }
+    .live-stats-link { display: table; margin-left: auto; font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--md-on-surface-variant); border-bottom: 1px solid var(--md-outline-variant); padding-bottom: 1px; }
+    .live-stats-link:hover { color: var(--md-primary); border-color: var(--md-primary); }
     .section-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--md-primary); }
     .spotify-embed iframe { width: 100%; border: none; border-radius: 12px; display: block; }
     .setlist-list { list-style: none; background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 14px; overflow: hidden; }
@@ -214,11 +216,11 @@
   <div class="page-header">
     <div class="page-header-inner">
       <div class="page-header-main">
-        <span class="live-badge" id="statusBadge">東京都新宿区歌舞伎町２丁目４５−１</span>
+        <span class="live-badge" id="statusBadge" style="display:none;"></span>
         <div class="page-header-tour" id="tourName">新宿MARZ 14th Anniversary Fabric #37</div>
         <h1 class="page-header-title" id="venueName">新宿MARZ</h1>
         <div class="page-header-date" id="showDate">2015.12.02</div>
-        <div class="detail-address" id="address"></div>
+        <div class="detail-address" id="address">東京都新宿区歌舞伎町２丁目４５−１</div>
         <div class="detail-note" id="noteText" style="display:none;"></div>
       </div>
       <div class="map-area" id="mapArea" style="display:none;"></div>
@@ -249,7 +251,7 @@
   </footer>
 
   <script>
-    const SHOW_DATA = {"isSrvvinci": true, "urlSlug": "2015.12.02-srvvinci", "tour": {"name": "新宿MARZ 14th Anniversary Fabric #37"}, "show": {"date": "2015.12.02", "venue": "新宿MARZ", "location": "", "status": "東京都新宿区歌舞伎町２丁目４５−１", "setlist": []}};
+    const SHOW_DATA = {"isSrvvinci": true, "urlSlug": "2015.12.02-srvvinci", "tour": {"name": "新宿MARZ 14th Anniversary Fabric #37"}, "show": {"date": "2015.12.02", "venue": "新宿MARZ", "location": "東京都新宿区歌舞伎町２丁目４５−１", "status": "", "setlist": []}};
   </script>
   <script>
   function escH(s) {
@@ -622,7 +624,7 @@
     const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
 
     area.innerHTML = `
-      <div class="section-label">アルバム比率</div>
+      <div class="section-label">アルバム比率<a href="../../stats/" class="live-stats-link">統計を見る →</a></div>
       <div class="stack-track">${sorted.map(([label, count], i) => {
         const pct = (count / total) * 100;
         return `<div class="stack-seg" style="width:${pct}%;background:${ALBUM_PALETTE[i % ALBUM_PALETTE.length]}" data-tt-value="${count}曲（${pct.toFixed(1)}%）" data-tt-label="${escH(label)}"></div>`;

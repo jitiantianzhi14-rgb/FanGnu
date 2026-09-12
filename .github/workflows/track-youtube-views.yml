@@ -1,0 +1,32 @@
+name: Track YouTube View Counts
+
+on:
+  schedule:
+    - cron: '0 15 * * *'  # 15:00 UTC = 00:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Fetch view counts
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/track_youtube_views.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/yt-views/
+          git diff --cached --quiet || git commit -m "YouTube再生数を自動記録 ($(date -u +%Y-%m-%d))"
+          git push

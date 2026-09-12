@@ -119,6 +119,8 @@
     .live-venue { font-size: 13px; color: var(--md-on-surface); }
     .live-badge { font-family: 'Roboto Mono', monospace; font-size: 9px; font-weight: 700; padding: 3px 9px; border-radius: 8px; background: var(--md-secondary); color: var(--md-on-secondary); white-space: nowrap; }
     .live-badge.sold { background: var(--md-primary); color: var(--md-on-primary); }
+    .live-badge.muted { background: var(--md-surface-container-high); color: var(--md-on-surface-variant); }
+    .live-badges { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
     .live-arrow { font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--md-on-surface-variant); flex-shrink: 0; }
     .footer { padding: 1.75rem 2rem; border-top: 1px solid var(--md-outline-variant); display: flex; align-items: center; justify-content: space-between; background: var(--md-surface-container-low); margin-top: 2rem; }
     .footer-logo { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 15px; color: var(--md-on-surface); }
@@ -168,7 +170,7 @@
   </div>
 
   <div class="page-header">
-    <h1 class="page-header-title">Live</h1>
+    <h1 class="page-header-title">LIVE</h1>
     <p class="page-header-desc">King Gnuのツアー・ライブ公演やフェスのセトリなどを掲載</p>
     <div class="page-header-actions">
       <a href="../stats/" class="header-btn">ライブ・楽曲統計を見る →</a>
@@ -179,7 +181,7 @@
   <div class="filter-bar">
     <div class="filter-row">
       <div class="filter-label">検索</div>
-      <input type="text" id="searchInput" class="search-input" placeholder="ツアー名・会場名で検索…">
+      <input type="text" id="searchInput" class="search-input" placeholder="ツアー名・会場名・地名で検索…">
     </div>
     <div class="filter-row">
       <div class="filter-label">SCALE</div>
@@ -207,9 +209,14 @@
   }
 
   function buildShow(show) {
-    const badgeHtml = show.status
-      ? `<span class="live-badge${show.status === 'SOLD OUT' ? ' sold' : ''}">${escH(show.status)}</span>`
-      : `<span></span>`;
+    const badges = [];
+    if (show.status) {
+      badges.push(`<span class="live-badge${show.status === 'SOLD OUT' ? ' sold' : ''}">${escH(show.status)}</span>`);
+    }
+    if (!(show.status || '').includes('中止') && (!show.setlist || !show.setlist.length)) {
+      badges.push(`<span class="live-badge muted">セトリ未登録</span>`);
+    }
+    const badgeHtml = badges.length ? `<span class="live-badges">${badges.join('')}</span>` : `<span></span>`;
     return `
       <a class="live-item" href="../live-show/${encodeURIComponent(show.date)}/">
         <div class="live-date">${escH(show.date)}</div>
@@ -220,11 +227,20 @@
   }
 
   function buildTour(tour) {
+    const noSetlistCount = tour.shows.filter(s => !(s.status || '').includes('中止') && (!s.setlist || !s.setlist.length)).length;
+    const validCount = tour.shows.filter(s => !(s.status || '').includes('中止')).length;
+    let setlistBadge = '';
+    if (validCount > 0 && noSetlistCount === validCount) {
+      setlistBadge = `<span class="live-badge muted">セトリ未登録</span>`;
+    } else if (noSetlistCount > 0) {
+      setlistBadge = `<span class="live-badge muted">セトリ一部未登録</span>`;
+    }
     return `
       <div class="tour-block">
         <div class="tour-header">
           <div class="tour-year">${escH(tour.year)}</div>
           <div class="tour-name">${escH(tour.name)}</div>
+          ${setlistBadge}
           <div class="tour-scale">${escH(tour.scale)}</div>
           <span class="tour-toggle">▼</span>
         </div>

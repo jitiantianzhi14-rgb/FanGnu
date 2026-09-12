@@ -218,22 +218,22 @@
       <a href="members/" class="nav-card">
         <div class="nc-icon material-symbols-outlined">group</div>
         <div class="nc-title">メンバー</div>
-        <div class="nc-desc">プロフィール・個人活動</div>
+        <div class="nc-desc">プロフィール・来歴など</div>
       </a>
       <a href="discography/" class="nav-card">
         <div class="nc-icon material-symbols-outlined">album</div>
         <div class="nc-title">ディスコグラフィー</div>
-        <div class="nc-desc">全作品・インディーズ含む</div>
+        <div class="nc-desc">全作品・Srv.Vinciなど含む</div>
       </a>
       <a href="live/" class="nav-card">
         <div class="nc-icon material-symbols-outlined">mic</div>
         <div class="nc-title">ライブ・ツアー</div>
-        <div class="nc-desc">セットリスト・履歴</div>
+        <div class="nc-desc">セットリスト・履歴など</div>
       </a>
-      <a href="gear/" class="nav-card">
+      <a href="gear/" class="nav-card" style="opacity:0.6;">
         <div class="nc-icon material-symbols-outlined">build</div>
         <div class="nc-title">使用機材</div>
-        <div class="nc-desc">メンバー別機材まとめ</div>
+        <div class="nc-desc">準備中</div>
       </a>
       <a href="stats/" class="nav-card">
         <div class="nc-icon material-symbols-outlined">bar_chart</div>
@@ -330,7 +330,7 @@
     const out = [];
     (data.tours || []).forEach(tour => {
       (tour.shows || []).forEach(show => {
-        if (show.status === '中止') return;
+        if ((show.status || '').includes('中止')) return;
         const dt = parseYMD(show.date);
         if (!dt) return;
         const href = isSrvvinci
@@ -404,7 +404,7 @@
     let last = null;
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
-        if (show.status === '中止') return;
+        if ((show.status || '').includes('中止')) return;
         if (!show.date) return;
         if (!last || show.date > last.date) {
           last = { date: show.date, tourName: tour.name, isSrvvinci: svTours.includes(tour) };

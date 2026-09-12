@@ -161,6 +161,8 @@
     .hbar-fill { height: 14px; max-height: 14px; border-radius: 0 8px 8px 0; }
     .hbar-value { width: 42px; flex-shrink: 0; text-align: right; font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--md-on-surface-variant); }
     .live-stat.count .live-stat-unit { font-size: 11px; font-weight: 700; color: rgba(74,36,8,0.65); margin-left: 2px; }
+    .live-stats-link { display: table; margin-left: auto; margin-top: 0.75rem; font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--md-on-surface-variant); border-bottom: 1px solid var(--md-outline-variant); padding-bottom: 1px; }
+    .live-stats-link:hover { color: var(--md-primary); border-color: var(--md-primary); }
 
     .live-history-list { list-style: none; background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 14px; overflow: hidden; }
     .live-history-item { border-bottom: 1px solid var(--md-outline-variant); }
@@ -707,7 +709,8 @@
           <div class="live-stat-label">最終披露</div>
           <div class="live-stat-value">${liveLinkHtml(last)}</div>
         </div>
-      </div>`;
+      </div>
+      <a href="../stats/" class="live-stats-link">統計を見る →</a>`;
   }
 
   function renderLiveYears(history) {
@@ -725,7 +728,7 @@
     const years = [...counts.keys()].sort();
     const max = Math.max(...counts.values());
     area.innerHTML = `
-      <div class="section-label">披露年別回数</div>
+      <div class="section-label">披露年別回数<a href="../stats/" class="live-stats-link">統計を見る →</a></div>
       <div class="chart-card">
         ${years.map(y => {
           const c = counts.get(y);
@@ -763,7 +766,7 @@
     const initial = history.slice(0, LIVE_HISTORY_INITIAL_COUNT);
     const rest = history.slice(LIVE_HISTORY_INITIAL_COUNT);
     area.innerHTML = `
-      <div class="section-label">LIVE HISTORY（全${history.length}回）</div>
+      <div class="section-label">LIVE HISTORY（全${history.length}回）<a href="${isSrvvinci ? '../srvvinci-live/' : '../live/'}" class="live-stats-link">ライブ情報を見る →</a></div>
       <ol class="live-history-list" id="liveHistoryList">${initial.map(liveHistoryItemHtml).join('')}</ol>
       ${rest.length ? `<button type="button" class="show-more-btn" id="liveHistoryShowMore">もっと表示（他${rest.length}件）</button>` : ''}`;
     if (rest.length) {

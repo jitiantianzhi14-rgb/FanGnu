@@ -67,7 +67,7 @@
       { "date": "2016.09.14", "venue": "渋谷clubasia", "location": "東京都渋谷区円山町１−８", "status": "", "setlist": [] }
     ] },
     { "year": "2016", "name": "TOKYO CHAOTIC FESTIVAL 2016", "scale": "FES", "shows": [
-      { "date": "2016.09.02", "venue": "渋谷WWW", "location": "", "status": "東京都渋谷区宇田川町１３−１７ ライズビル 2F", "setlist": ["ロウラヴ", "Vinyl", "Heroine", "PPL", "破裂", "Mommy's Tummy", "Diving To You", "VIVID RED", "サマーレイン・ダイバー", "Vinyl（EN）"] }
+      { "date": "2016.09.02", "venue": "渋谷WWW", "location": "東京都渋谷区宇田川町１３−１７ ライズビル 2F", "status": "", "setlist": ["ロウラヴ", "Vinyl", "Heroine", "PPL", "破裂", "Mommy's Tummy", "Diving To You", "VIVID RED", "サマーレイン・ダイバー", "Vinyl（EN）"] }
     ] },
     { "year": "2016", "name": "Fabric #43", "scale": "LIVE", "shows": [
       { "date": "2016.08.06", "venue": "新宿MARZ", "location": "東京都新宿区歌舞伎町２丁目４５−１ 第一 トキワビル B1", "status": "", "setlist": [] }
@@ -127,7 +127,7 @@
       { "date": "2015.12.17", "venue": "下北沢Basement Bar+Three", "location": "東京都世田谷区代沢５丁目１８−１", "status": "", "setlist": [] }
     ] },
     { "year": "2015", "name": "新宿MARZ 14th Anniversary Fabric #37", "scale": "LIVE", "shows": [
-      { "date": "2015.12.02", "venue": "新宿MARZ", "location": "", "status": "東京都新宿区歌舞伎町２丁目４５−１", "setlist": [] }
+      { "date": "2015.12.02", "venue": "新宿MARZ", "location": "東京都新宿区歌舞伎町２丁目４５−１", "status": "", "setlist": [] }
     ] },
     { "year": "2015", "name": "三角の箱", "scale": "LIVE", "shows": [
       { "date": "2015.11.24", "venue": "高松TOONICE", "location": "香川県高松市亀井町８−８", "status": "", "setlist": [] }

@@ -249,7 +249,7 @@
 
   <div class="page-header">
     <h1 class="page-header-title">ライブ・楽曲統計</h1>
-    <p class="page-header-desc">King Gnu・Srv.Vinci時代などを通算した公演・楽曲記録の統計</p>
+    <p class="page-header-desc">King Gnu・Srv.Vinci時代などを通算したライブ・楽曲記録の統計</p>
   </div>
 
   <div class="content">
@@ -687,7 +687,7 @@
 
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
-        if (show.status === '中止') return; // 中止公演は開催実績として数えない
+        if ((show.status || '').includes('中止')) return; // 中止（または中止/延期未確定）の公演は開催実績として数えない
         showCount++;
         const info = { date: show.date, tourName: tour.name, venue: show.venue, isSrvvinci: (svLive.tours || []).includes(tour) };
         if (!last || show.date > last.date) last = info;
@@ -792,7 +792,7 @@
 
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
-        if (show.status === '中止') return; // 中止公演は開催実績として数えない
+        if ((show.status || '').includes('中止')) return; // 中止（または中止/延期未確定）の公演は開催実績として数えない
         const year = (show.date || '').slice(0, 4);
         if (!year) return;
         const uniqueKeys = new Set();
@@ -1065,7 +1065,7 @@
 
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
-        if (show.status === '中止') return; // 中止公演は開催実績として数えない
+        if ((show.status || '').includes('中止')) return; // 中止（または中止/延期未確定）の公演は開催実績として数えない
         // SE・開会セレモニーなど実在の楽曲ではないセットリスト表記や、インスト曲を除外してから先頭/末尾を判定する
         const songs = (show.setlist || [])
           .map(normalizeTitle)
