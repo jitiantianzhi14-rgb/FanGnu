@@ -188,7 +188,7 @@
         <div class="summary-value" id="statSongs">-</div>
       </div>
       <div class="summary-card">
-        <div class="summary-label">総ツアー数<span class="summary-sub">King Gnu名義のみ／Srv.Vinci期は除く</span></div>
+        <div class="summary-label">総ライブ数<span class="summary-sub">King Gnu名義のみ／Srv.Vinci期は除く</span></div>
         <div class="summary-value" id="statTours">-</div>
       </div>
       <div class="summary-card">
@@ -387,15 +387,50 @@
   }
 
   function countKingGnuSongs(kgDisc) {
-    const seen = new Set();
+    // アルバム収録曲はシングルと同じ曲でも表記違いの別slug・別タイトル表記になっている場合があるため
+    // （例: BOY=boy/boy-album/boy-dome-tour-live、カメレオン=chameleon/CHAMELEON=chameleon-album）、
+    // タイトル一致とYouTube動画ID一致の両方で同一曲をまとめる。discsを持つitem（Blu-ray/DVD等の
+    // 映像商品。PATTERNS.md参照）や、"excludeFromSongCount": true が付いた項目（King Gnuの曲では
+    // ない・別の曲の未発表初期形態など、個別事情で曲数に数えないもの）は曲としてカウントしない
+    // （カバー曲は楽曲としてカウントする）。
+    const entries = [];
     (kgDisc.items || []).forEach(item => {
-      if (item.slug) seen.add(item.slug);
-      if (item.coupling && item.coupling.slug) seen.add(item.coupling.slug);
+      if (!item.discs && !item.excludeFromSongCount) {
+        if (item.title) entries.push({ title: item.title.trim(), yt: item.yt || '' });
+      }
+      const c = item.coupling;
+      if (c && c.title && !c.excludeFromSongCount) {
+        entries.push({ title: c.title.trim(), yt: c.yt || '' });
+      }
     });
     (kgDisc.albums || []).forEach(album => {
-      (album.tracks || []).forEach(t => { if (t.slug) seen.add(t.slug); });
+      (album.tracks || []).forEach(t => {
+        if (t.title && !t.excludeFromSongCount) {
+          entries.push({ title: t.title.trim(), yt: t.yt || '' });
+        }
+      });
     });
-    return seen.size;
+
+    const parent = entries.map((_, i) => i);
+    const find = (x) => { while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; } return x; };
+    const union = (a, b) => { const ra = find(a), rb = find(b); if (ra !== rb) parent[ra] = rb; };
+
+    const byTitle = new Map();
+    const byYt = new Map();
+    entries.forEach((e, i) => {
+      if (!byTitle.has(e.title)) byTitle.set(e.title, []);
+      byTitle.get(e.title).push(i);
+      if (e.yt) {
+        if (!byYt.has(e.yt)) byYt.set(e.yt, []);
+        byYt.get(e.yt).push(i);
+      }
+    });
+    [...byTitle.values(), ...byYt.values()].forEach(idxs => {
+      idxs.forEach(i => union(idxs[0], i));
+    });
+
+    const roots = new Set(entries.map((_, i) => find(i)));
+    return roots.size;
   }
 
   function findLastShow(kgLive, svLive) {

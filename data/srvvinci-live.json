@@ -46,7 +46,7 @@
       { "date": "2016.12.16", "venue": "新宿LOFT HALL&BAR2ステージ", "location": "東京都新宿区歌舞伎町１丁目１２−９ タテハナビル", "status": "", "setlist": [] }
     ] },
     { "year": "2016", "name": "TRIGGER FES'16", "scale": "FES", "shows": [
-      { "date": "2016.12.14", "venue": "渋谷club QUATTRO", "location": "東京都渋谷区宇田川町３２−１３ 4・5F", "status": "", "setlist": [] }
+      { "date": "2016.12.14", "venue": "渋谷CLUB QUATTRO", "location": "東京都渋谷区宇田川町３２−１３ 4・5F", "status": "", "setlist": [] }
     ] },
     { "year": "2016", "name": "「TOUCH THE FEVER」", "scale": "LIVE", "shows": [
       { "date": "2016.11.25", "venue": "新宿MARZ", "location": "東京都新宿区歌舞伎町２丁目４５−１ 第一 トキワビル B1", "status": "", "setlist": [] }
@@ -199,7 +199,7 @@
       { "date": "2015.04.01", "venue": "新宿", "location": "", "status": "", "setlist": [] }
     ] },
     { "year": "2015", "name": "TOKYO JAZZ PUNX Vol.2", "scale": "LIVE", "shows": [
-      { "date": "2015.03.12", "venue": "渋谷theRoom", "location": "東京都渋谷区桜丘町15−１９ 第八東都ビル", "status": "", "setlist": [] }
+      { "date": "2015.03.12", "venue": "渋谷The Room", "location": "東京都渋谷区桜丘町15−１９ 第八東都ビル", "status": "", "setlist": [] }
     ] },
     { "year": "2013", "name": "Mrs.Vinci", "scale": "LIVE", "shows": [
       { "date": "2013.12.14", "venue": "六本木エレクトリック神社", "location": "東京都港区六本木５丁目９−２２ 第２千陽ビル 第二千陽ビルB1", "status": "", "note": "Mrs.Vinci名義", "setlist": [] }
