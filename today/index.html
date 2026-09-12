@@ -76,19 +76,13 @@
 
     .content { max-width: 760px; margin: 0 auto; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 2rem; }
 
-    .day-nav { display: flex; align-items: center; justify-content: space-between; }
-    .day-nav-btn { font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; color: var(--md-primary); display: flex; align-items: center; gap: 4px; }
-    .day-nav-btn:hover { text-decoration: underline; }
-
     .calendar { background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant); border-radius: 16px; padding: 1.5rem; }
     .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
     .cal-head-title { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 16px; color: var(--md-on-surface); }
     .cal-nav-btn { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--md-outline); background: var(--md-surface); color: var(--md-on-surface); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
     .cal-nav-btn:hover { background: var(--md-surface-container); }
     .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
-    .cal-weekday { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; color: var(--md-on-surface-variant); text-align: center; padding-bottom: 6px; }
     .cal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 700; color: var(--md-on-surface); border: 1px solid transparent; }
-    .cal-day.empty { visibility: hidden; }
     .cal-day.has-event { border-color: var(--md-primary); color: var(--md-primary); }
     .cal-day.has-event:hover { background: var(--md-primary-container); }
     .cal-day.selected { background: var(--md-primary); border-color: var(--md-primary); color: var(--md-on-primary); }
@@ -157,11 +151,6 @@
   </div>
 
   <div class="content">
-    <div class="day-nav">
-      <a href="#" class="day-nav-btn" id="prevDayBtn">← <span id="prevDayLabel">前日</span></a>
-      <a href="#" class="day-nav-btn" id="nextDayBtn"><span id="nextDayLabel">翌日</span> →</a>
-    </div>
-
     <div class="calendar">
       <div class="cal-head">
         <button type="button" class="cal-nav-btn" id="prevMonthBtn" aria-label="前の月">‹</button>
@@ -267,7 +256,6 @@
   }
 
   const MONTH_DAYS = [31,29,31,30,31,30,31,31,30,31,30,31]; // 閏年基準（2月29日まで許容）
-  const WEEKDAYS = ['日','月','火','水','木','金','土'];
 
   let ALL_EVENTS = [];
 
@@ -286,21 +274,12 @@
     return { month, day };
   }
 
-  function shiftDay(month, day, delta) {
-    // 2024年（閏年）を計算用の仮の年として使い、月日だけのシフトを行う
-    const d = new Date(2024, month - 1, day);
-    d.setDate(d.getDate() + delta);
-    return { month: d.getMonth() + 1, day: d.getDate() };
-  }
-
   function renderCalendar(month, selectedDay, eventDaysSet) {
     document.getElementById('calMonthLabel').textContent = `${month}月`;
     const grid = document.getElementById('calGrid');
-    const firstWeekday = new Date(2024, month - 1, 1).getDay();
     const daysInMonth = MONTH_DAYS[month - 1];
 
-    let html = WEEKDAYS.map(w => `<div class="cal-weekday">${w}</div>`).join('');
-    for (let i = 0; i < firstWeekday; i++) html += `<div class="cal-day empty"></div>`;
+    let html = '';
     for (let d = 1; d <= daysInMonth; d++) {
       const hasEvent = eventDaysSet.has(d);
       const isSelected = d === selectedDay;
@@ -359,17 +338,6 @@
     document.getElementById('pageTitle').textContent = `${month}月${day}日は何の日`;
     document.getElementById('pageDesc').textContent = `King Gnu・Srv.Vinciのリリース・ライブ公演、メンバーの誕生日などから、${month}月${day}日に起きた出来事を年代順にまとめています。`;
 
-    const prev = shiftDay(month, day, -1);
-    const next = shiftDay(month, day, 1);
-    document.getElementById('prevDayBtn').href = `?month=${prev.month}&day=${prev.day}`;
-    document.getElementById('nextDayBtn').href = `?month=${next.month}&day=${next.day}`;
-    document.getElementById('prevDayLabel').textContent = `${prev.month}月${prev.day}日`;
-    document.getElementById('nextDayLabel').textContent = `${next.month}月${next.day}日`;
-    document.getElementById('prevDayBtn').dataset.month = prev.month;
-    document.getElementById('prevDayBtn').dataset.day = prev.day;
-    document.getElementById('nextDayBtn').dataset.month = next.month;
-    document.getElementById('nextDayBtn').dataset.day = next.day;
-
     renderCalendar(month, day, eventDaysInMonth(month));
     renderDayEvents(month, day);
 
@@ -392,18 +360,6 @@
     if (!link || !isPlainClick(e)) return;
     e.preventDefault();
     navigateTo(+link.dataset.month, +link.dataset.day);
-  });
-
-  document.getElementById('prevDayBtn').addEventListener('click', (e) => {
-    if (!isPlainClick(e)) return;
-    e.preventDefault();
-    navigateTo(+e.currentTarget.dataset.month, +e.currentTarget.dataset.day);
-  });
-
-  document.getElementById('nextDayBtn').addEventListener('click', (e) => {
-    if (!isPlainClick(e)) return;
-    e.preventDefault();
-    navigateTo(+e.currentTarget.dataset.month, +e.currentTarget.dataset.day);
   });
 
   window.addEventListener('popstate', render);
