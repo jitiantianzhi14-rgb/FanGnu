@@ -469,7 +469,7 @@
       </div>
     </div>
     <div style="margin-top: 1.5rem;">
-      <div class="section-label" id="venueRankLabel">会場 訪問ランキング</div>
+      <div class="section-label" id="venueRankLabel">会場 公演回数ランキング</div>
       <div class="rank-list rank-scroll" id="venueRankList"><div class="loading">集計中…</div></div>
     </div>
     </div>
@@ -814,9 +814,9 @@
   }
 
   function renderLocationRanking(prefCounts, countryCounts, venueCounts) {
-    renderTopList('domesticRankLabel', 'domesticRankList', '国内 訪問ランキング', prefCounts.entries(), `${prefCounts.size} / 47都道府県`);
-    renderTopList('overseasRankLabel', 'overseasRankList', '海外 訪問ランキング', countryCounts.entries(), `${countryCounts.size}ヶ国`);
-    renderTopList('venueRankLabel', 'venueRankList', '会場 訪問ランキング', venueCounts.entries(), `${venueCounts.size}会場`);
+    renderTopList('domesticRankLabel', 'domesticRankList', '国内 公演回数ランキング', prefCounts.entries(), `${prefCounts.size} / 47都道府県`);
+    renderTopList('overseasRankLabel', 'overseasRankList', '海外 公演回数ランキング', countryCounts.entries(), `${countryCounts.size}ヶ国`);
+    renderTopList('venueRankLabel', 'venueRankList', '会場 公演回数ランキング', venueCounts.entries(), `${venueCounts.size}会場`);
   }
 
   // ---- 年別・アルバム別集計 ----
@@ -1195,6 +1195,13 @@
     }
   }
 
+  function ytCounts(entry) {
+    // Each video's value is {label, counts}; older files may still have a
+    // bare counts array. Normalize to a plain array either way.
+    if (!entry) return null;
+    return Array.isArray(entry) ? entry : entry.counts;
+  }
+
   async function loadYtViewHistory() {
     const thisYear = new Date().getFullYear();
     const [prev, curr] = await Promise.all([
@@ -1210,8 +1217,8 @@
     ]);
     const views = {};
     ids.forEach(vid => {
-      const p = (prev && prev.views[vid]) || new Array(prevDates.length).fill(null);
-      const c = (curr && curr.views[vid]) || new Array(currDates.length).fill(null);
+      const p = (prev && ytCounts(prev.views[vid])) || new Array(prevDates.length).fill(null);
+      const c = (curr && ytCounts(curr.views[vid])) || new Array(currDates.length).fill(null);
       views[vid] = [...p, ...c];
     });
     return { dates, views };
@@ -1292,7 +1299,7 @@
       return;
     }
 
-    const W = 600, H = 220, PAD_L = 54, PAD_R = 16, PAD_T = 16, PAD_B = 14;
+    const W = 600, H = 220, PAD_L = 54, PAD_R = 16, PAD_T = 16, PAD_B = 26;
     const minV = Math.min(...points.map(p => p.value));
     const maxV = Math.max(...points.map(p => p.value));
     const spanV = (maxV - minV) || 1;
@@ -1314,14 +1321,29 @@
         data-tt-value="${p.value.toLocaleString()}回" data-tt-label="${escH(p.date)}"></circle>
       <circle cx="${xPos(i).toFixed(1)}" cy="${yPos(p.value).toFixed(1)}" r="3" fill="var(--md-primary)" pointer-events="none"></circle>`).join('');
 
+    const xAxisIdx = points.length >= 3
+      ? [0, Math.round((points.length - 1) / 2), points.length - 1]
+      : [0, points.length - 1];
+    const xAxisY = H - PAD_B + 14;
+    const xAxisLabels = [...new Set(xAxisIdx)].map(i => {
+      const anchor = i === 0 ? 'start' : i === points.length - 1 ? 'end' : 'middle';
+      return `<text x="${xPos(i).toFixed(1)}" y="${xAxisY}" text-anchor="${anchor}" font-size="9" fill="var(--md-on-surface-variant)" font-family="'Roboto Mono',monospace">${escH(points[i].date)}</text>`;
+    }).join('');
+
     svg.innerHTML = `
       ${gridLines}
       <path d="${pathD}" fill="none" stroke="var(--md-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      ${dots}`;
+      ${dots}
+      ${xAxisLabels}`;
 
     const diff = latest - points[0].value;
     const diffLabel = diff >= 0 ? `+${diff.toLocaleString()}` : diff.toLocaleString();
-    noteEl.textContent = `${points[0].date} 〜 ${points[points.length - 1].date}（${diffLabel}回）`;
+
+    const prevPoint = points[points.length - 2];
+    const dailyDiff = latest - prevPoint.value;
+    const dailyDiffLabel = dailyDiff >= 0 ? `+${dailyDiff.toLocaleString()}` : dailyDiff.toLocaleString();
+
+    noteEl.innerHTML = `前日比（${escH(prevPoint.date)} → ${escH(points[points.length - 1].date)}）: ${dailyDiffLabel}回<br>${points[0].date} 〜 ${points[points.length - 1].date}（${diffLabel}回）`;
   }
 
   (async function initYtViews() {

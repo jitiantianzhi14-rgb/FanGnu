@@ -824,7 +824,7 @@
       "name": "NIIGATA RAINBOW ROCK FESTIVAL",
       "scale": "FES",
       "shows": [
-        { "date": "2018.05.04", "venue": "NEXS NIIGATA", "location": "", "status": "", "setlist": [] }
+        { "date": "2018.05.04", "venue": "NEXS NIIGATA", "location": "新潟県新潟市中央区万代1-3-1 万代シネモールビルB1", "status": "", "setlist": [] }
       ]
     },
     {
@@ -1032,7 +1032,7 @@
       "name": "Eggs presents FM802 MINAMI WHEEL 2017",
       "scale": "FES",
       "shows": [
-        { "date": "2017.10.09", "venue": "MINAMI WHEEL", "location": "", "status": "", "setlist": [] }
+        { "date": "2017.10.09", "venue": "MINAMI WHEEL", "location": "大阪府大阪市中央区", "status": "", "setlist": [] }
       ]
     },
     {
@@ -1072,7 +1072,7 @@
       "name": "RISING SUN ROCK FES' 2017 in EZO",
       "scale": "FES",
       "shows": [
-        { "date": "2017.08.12", "venue": "石狩湾新港樽川ふ頭横野外特設ステージ", "location": "", "status": "", "setlist": [] }
+        { "date": "2017.08.12", "venue": "石狩湾新港樽川ふ頭横野外特設ステージ", "location": "北海道石狩市新港中央1丁目", "status": "", "setlist": [] }
       ]
     },
     {

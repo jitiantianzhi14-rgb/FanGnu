@@ -33,6 +33,12 @@ def collect_video_ids():
     return [e["id"] for e in entries]
 
 
+def build_title_map():
+    """id -> human-readable label, for annotating the history file."""
+    with open(TRACKED_LIST_PATH, encoding="utf-8") as f:
+        return {e["id"]: e["label"] for e in json.load(f)}
+
+
 def fetch_view_counts(video_ids):
     """Returns {video_id: view_count_int_or_None}."""
     results = {}
@@ -61,6 +67,34 @@ def today_jst():
     return (datetime.now(timezone.utc) + timedelta(hours=9)).strftime("%Y-%m-%d")
 
 
+def format_history(history, titles=None):
+    """Serialize with one video per line, label right next to its counts, so
+    a human can tell what a line is about without cross-referencing anything.
+
+    Each video's value is {"label": "...", "counts": [...]} instead of a bare
+    array. The counts array itself stays compact (no per-number
+    indentation) to keep file size in check.
+    """
+    titles = titles or {}
+    dates_json = json.dumps(history["dates"], ensure_ascii=False, separators=(",", ":"))
+
+    view_lines = []
+    for vid, arr in history["views"].items():
+        vid_json = json.dumps(vid, ensure_ascii=False)
+        label_json = json.dumps(titles.get(vid, vid), ensure_ascii=False)
+        arr_json = json.dumps(arr, ensure_ascii=False, separators=(",", ":"))
+        view_lines.append(f'    {vid_json}:{{"label":{label_json},"counts":{arr_json}}}')
+    views_body = ",\n".join(view_lines)
+    return (
+        "{\n"
+        f'  "dates":{dates_json},\n'
+        '  "views":{\n'
+        f"{views_body}\n"
+        "  }\n"
+        "}\n"
+    )
+
+
 def main():
     if not API_KEY:
         raise SystemExit("FATAL: YOUTUBE_API_KEY environment variable is not set")
@@ -81,6 +115,13 @@ def main():
     if os.path.isfile(path):
         with open(path, encoding="utf-8") as f:
             history = json.load(f)
+        # Normalize back to plain {id: [counts]} for in-memory use, regardless
+        # of whether the file on disk has the old bare-array shape or the
+        # current {"label", "counts"} shape.
+        history["views"] = {
+            vid: (val["counts"] if isinstance(val, dict) else val)
+            for vid, val in history["views"].items()
+        }
     else:
         history = {"dates": [], "views": {}}
 
@@ -97,8 +138,17 @@ def main():
             arr.append(None)
         arr[idx] = counts.get(vid)
 
+    # Drop history for any video no longer in the tracked list, so the file
+    # only ever holds data for what's currently being tracked.
+    dropped = set(history["views"]) - set(video_ids)
+    if dropped:
+        print(f"Dropping {len(dropped)} untracked video(s) from history: {sorted(dropped)}")
+        for vid in dropped:
+            del history["views"][vid]
+
+    titles = build_title_map()
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(history, f, ensure_ascii=False, separators=(",", ":"))
+        f.write(format_history(history, titles))
 
     print(f"Wrote {path} ({os.path.getsize(path)} bytes)")
 
