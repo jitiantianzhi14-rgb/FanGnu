@@ -1,5 +1,8 @@
 {
   "tours": [
+    { "year": "2017", "name": "「水曜日は無料ライブの日」", "scale": "LIVE", "shows": [
+      { "date": "2017.10.05", "venue": "渋谷CHELSEA HOTEL", "location": "東京都渋谷区宇田川町４−７ トウセン宇田川町ビル B1", "status": "", "setlist": [] }
+    ] },
     { "year": "2017", "name": "mandala×DaisyBar pre. 2nd demo release event ～rough～", "scale": "LIVE", "shows": [
       { "date": "2017.04.17", "venue": "下北沢DaisyBar", "location": "東京都世田谷区北沢２丁目２−３ エルサント北沢 地下1階", "status": "", "note": "ラストライブ／常田大希インフルエンザ", "setlist": [] }
     ] },
@@ -48,16 +51,13 @@
     { "year": "2016", "name": "LEO今井ソロライブ「TOKYO LIGHT」", "scale": "LIVE", "shows": [
       { "date": "2016.11.05", "venue": "恵比寿BATICA", "location": "東京都渋谷区恵比寿南３丁目１−２５", "status": "", "setlist": [] }
     ] },
-    { "year": "2016", "name": "「水曜日は無料ライブの日」", "scale": "LIVE", "shows": [
-      { "date": "2016.10.05", "venue": "渋谷CHELSEA HOTEL", "location": "東京都渋谷区宇田川町４−７ トウセン宇田川町ビル B1", "status": "", "setlist": [] }
-    ] },
     { "year": "2016", "name": "「グランプリ、いきなり米国フェス出演オーディション2016」3次最終ライブ審査", "scale": "LIVE", "shows": [
       { "date": "2016.10.04", "venue": "新代田FEVER", "location": "東京都世田谷区羽根木１丁目１−１４ 新代田ビル 1F", "status": "", "setlist": [] }
     ] },
     { "year": "2016", "name": "Ajam(#5)", "scale": "LIVE", "shows": [
       { "date": "2016.09.14", "venue": "渋谷clubasia", "location": "東京都渋谷区円山町１−８", "status": "", "setlist": [] }
     ] },
-    { "year": "2016", "name": "TOKYO CHAOTIC FESTIVAL 2016", "scale": "FES", "shows": [
+    { "year": "2016", "name": "Srv.Vinci New Album Release Party", "scale": "FES", "shows": [
       { "date": "2016.09.02", "venue": "渋谷WWW", "location": "東京都渋谷区宇田川町１３−１７ ライズビル 2F", "status": "", "setlist": ["ロウラヴ", "Vinyl", "Heroine", "PPL", "破裂", "Mommy's Tummy", "Diving To You", "VIVID RED", "サマーレイン・ダイバー", "Vinyl（EN）"] }
     ] },
     { "year": "2016", "name": "Fabric #43", "scale": "LIVE", "shows": [
@@ -93,7 +93,7 @@
     { "year": "2016", "name": "TOKYO UNDER GROUND", "scale": "LIVE", "shows": [
       { "date": "2016.03.04", "venue": "渋谷milkyway", "location": "東京都渋谷区宇田川町４−７ トウセン宇田川町ビル 3F", "status": "", "setlist": [] }
     ] },
-    { "year": "2016", "name": "みんなの戦艦2016", "scale": "LIVE", "shows": [
+    { "year": "2016", "name": "みんなの戦艦2016 戦艦と艦長がダブルで生誕10周年祭", "scale": "LIVE", "shows": [
       { "date": "2016.02.28", "venue": "渋谷O-nest", "location": "東京都渋谷区円山町２−３ O-WESTビル 6F", "status": "", "setlist": [] }
     ] },
     { "year": "2016", "name": "BeatHappening！渋谷に於ける激POP感覚！", "scale": "LIVE", "shows": [
@@ -108,7 +108,7 @@
     { "year": "2016", "name": "Beat Happening！下北沢R&R PANIC！", "scale": "LIVE", "shows": [
       { "date": "2016.01.29", "venue": "下北沢Basement Bar", "location": "東京都世田谷区代沢５丁目１８−１", "status": "", "setlist": [] }
     ] },
-    { "year": "2016", "name": "”ATOM”Release Tour", "scale": "LIVE", "shows": [
+    { "year": "2016", "name": " ROT BART BARON ”ATOM” TOUR", "scale": "LIVE", "shows": [
       { "date": "2016.01.23", "venue": "札幌PROVO", "location": "北海道札幌市中央区南６条東１丁目２", "status": "", "setlist": [] }
     ] },
     { "year": "2015", "name": "BeatHappening！FUTURE FRIDAY！", "scale": "LIVE", "shows": [
@@ -120,10 +120,10 @@
     { "year": "2015", "name": "新宿MARZ 14th Anniversary Fabric #37", "scale": "LIVE", "shows": [
       { "date": "2015.12.02", "venue": "新宿MARZ", "location": "東京都新宿区歌舞伎町２丁目４５−１", "status": "", "setlist": [] }
     ] },
-    { "year": "2015", "name": "三角の箱", "scale": "LIVE", "shows": [
+    { "year": "2015", "name": "グッドネーム presents『三角の箱 3MAN LIVE』", "scale": "LIVE", "shows": [
       { "date": "2015.11.24", "venue": "高松TOONICE", "location": "香川県高松市亀井町８−８", "status": "", "setlist": [] }
     ] },
-    { "year": "2015", "name": "”魔女の一劇 #XX -Srv.Vinci Release Tour-”", "scale": "LIVE", "shows": [
+    { "year": "2015", "name": "マエチャンxジャスティス長谷川 presents『魔女の一劇#XX』", "scale": "LIVE", "shows": [
       { "date": "2015.11.23", "venue": "徳島GRINDHOUSE", "location": "徳島県徳島市秋田町２丁目２３ ジョイフルビル 3階", "status": "", "setlist": [] }
     ] },
     { "year": "2015", "name": "Beat Happening！渋谷R&R PANIC！", "scale": "LIVE", "shows": [
@@ -132,7 +132,7 @@
     { "year": "2015", "name": "SHIMOKITA SOUL TRAIN", "scale": "LIVE", "shows": [
       { "date": "2015.10.21", "venue": "下北沢Basement Bar", "location": "東京都世田谷区代沢５丁目１８−１", "status": "", "setlist": [] }
     ] },
-    { "year": "2015", "name": "第四回ああ素晴らしき音楽祭", "scale": "FES", "shows": [
+    { "year": "2015", "name": "FIGHT CLUB 2nd", "scale": "FES", "shows": [
       { "date": "2015.10.10", "venue": "神戸チキンジョージ", "location": "兵庫県神戸市中央区下山手通２丁目１７−２", "status": "", "setlist": [] }
     ] },
     { "year": "2015", "name": "ANML vol.1", "scale": "LIVE", "shows": [
@@ -141,19 +141,19 @@
     { "year": "2015", "name": "G.O.A.T(citizen)", "scale": "LIVE", "shows": [
       { "date": "2015.10.03", "venue": "難波Artyard Studio", "location": "大阪府大阪市浪速区元町１丁目２−２５", "status": "", "setlist": [] }
     ] },
-    { "year": "2015", "name": "Beat Happening！", "scale": "LIVE", "shows": [
+    { "year": "2015", "name": "Beat Happening presents『下北沢MIDNIGHT PANIC!!!』", "scale": "LIVE", "shows": [
       { "date": "2015.09.25", "venue": "下北沢Basement Bar", "location": "東京都世田谷区代沢５丁目１８−１", "status": "", "setlist": [] }
     ] },
-    { "year": "2015", "name": "Srv.Vinci feat.Ryuki Maeda", "scale": "LIVE", "shows": [
+    { "year": "2015", "name": "CLASSIX", "scale": "LIVE", "shows": [
       { "date": "2015.09.11", "venue": "ANCE", "location": "東京都渋谷区代々木1-45-4 代々木山陽ビルB2", "status": "", "setlist": [] }
     ] },
-    { "year": "2015", "name": "勢喜遊誕生祭", "scale": "LIVE", "shows": [
+    { "year": "2015", "name": "勢喜遊 presents『ROCK DELIGHT』", "scale": "LIVE", "shows": [
       { "date": "2015.09.01", "venue": "渋谷The Room", "location": "東京都渋谷区桜丘町15−１９ 第八東都ビル", "status": "", "setlist": [] }
     ] },
-    { "year": "2015", "name": "JAZZ SUMMIT TOKYO", "scale": "FES", "shows": [
+    { "year": "2015", "name": "JAZZ SUMMIT TOKYO SUMMER FESTIVAL 2015!!", "scale": "FES", "shows": [
       { "date": "2015.08.29", "venue": "Super Deluxe（六本木）", "location": "東京都港区西麻布3-1-25 金谷ホテルマンションB1F", "status": "", "setlist": [] }
     ] },
-    { "year": "2015", "name": "新月からの侵略者vol.2", "scale": "LIVE", "shows": [
+    { "year": "2015", "name": "新月からの侵略", "scale": "LIVE", "shows": [
       { "date": "2015.08.25", "venue": "青山 月見ル君想フ", "location": "東京都港区南青山４丁目９−１ シンプル青山ビル 地下1階", "status": "", "setlist": [] }
     ] },
     { "year": "2015", "name": "SHIMOKITA SOUL TRAIN", "scale": "LIVE", "shows": [
@@ -189,7 +189,7 @@
     { "year": "2015", "name": "路上LIVE", "scale": "LIVE", "shows": [
       { "date": "2015.04.01", "venue": "新宿", "location": "東京都新宿区", "status": "", "setlist": [] }
     ] },
-    { "year": "2015", "name": "TOKYO JAZZ PUNX Vol.2", "scale": "LIVE", "shows": [
+    { "year": "2015", "name": "TOKYO JAZZ PUNX!!!", "scale": "LIVE", "shows": [
       { "date": "2015.03.12", "venue": "渋谷The Room", "location": "東京都渋谷区桜丘町15−１９ 第八東都ビル", "status": "", "setlist": [] }
     ] },
     { "year": "2013", "name": "Mrs.Vinci", "scale": "LIVE", "shows": [
