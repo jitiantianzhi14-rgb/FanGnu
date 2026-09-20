@@ -75,6 +75,8 @@
     .page-header-title { font-family: 'Roboto', sans-serif; font-weight: 900; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em; color: var(--md-on-surface); }
     .page-header-title .red { color: var(--md-primary); }
     .page-header-desc { font-size: 13px; color: var(--md-on-surface-variant); margin-top: 1rem; }
+    .data-caveat { display: flex; gap: 8px; align-items: flex-start; margin-top: 1.1rem; padding: 0.7rem 0.9rem; border-radius: 12px; background: var(--md-primary-container); font-size: 11px; line-height: 1.7; color: var(--md-on-primary-container); max-width: 640px; }
+    .data-caveat-icon { flex-shrink: 0; font-size: 13px; }
     .page-header-actions { display: flex; gap: 10px; margin-top: 1.25rem; }
     .header-btn { font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; border: 1px solid var(--md-outline); border-radius: 100px; padding: 9px 20px; background: transparent; color: var(--md-primary); transition: background 0.15s; }
     .header-btn:hover { background: var(--md-primary-container); border-color: transparent; }
@@ -172,6 +174,7 @@
   <div class="page-header">
     <h1 class="page-header-title">Srv.Vinciなどライブ</h1>
     <p class="page-header-desc">King Gnu 結成以前のライブの記録を掲載</p>
+    <div class="data-caveat"><span class="data-caveat-icon material-symbols-outlined">warning</span><span>掲載情報は運営者による情報収集の途中段階です。二次情報や誤りが含まれている可能性がありますので、あらかじめご了承ください。</span></div>
     <div class="page-header-actions">
       <a href="../live/" class="header-btn">← King Gnu ライブ</a>
     </div>
