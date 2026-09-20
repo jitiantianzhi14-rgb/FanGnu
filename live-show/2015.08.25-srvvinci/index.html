@@ -15,12 +15,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
   <title>青山 月見ル君想フ — 公演詳細 — FunGNU!!!</title>
-  <meta name="description" content="2015.08.25 新月からの侵略者vol.2（青山 月見ル君想フ）の公演詳細。セットリストなどをまとめて掲載。">
+  <meta name="description" content="2015.08.25 新月からの侵略（青山 月見ル君想フ）の公演詳細。セットリストなどをまとめて掲載。">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FunGNU!!!">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:title" content="青山 月見ル君想フ — 公演詳細 — FunGNU!!!">
-  <meta property="og:description" content="2015.08.25 新月からの侵略者vol.2（青山 月見ル君想フ）の公演詳細。セットリストなどをまとめて掲載。">
+  <meta property="og:description" content="2015.08.25 新月からの侵略（青山 月見ル君想フ）の公演詳細。セットリストなどをまとめて掲載。">
   <meta property="og:url" content="https://fungnu.com/live-show/2015.08.25-srvvinci/">
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://fungnu.com/live-show/2015.08.25-srvvinci/">
@@ -140,6 +140,13 @@
     .setlist-detail-btn { width: 24px; height: 24px; background: var(--md-primary); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--md-on-primary); }
     .no-setlist { font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--md-on-surface-variant); padding: 2rem 0; text-align: center; border: 1px dashed var(--md-outline-variant); border-radius: 14px; margin-top: 2rem; }
 
+    .source-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
+    .source-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--md-outline-variant); border-radius: 999px; font-size: 12px; color: var(--md-on-surface-variant); background: var(--md-surface-container-low); transition: color 0.15s, border-color 0.15s; }
+    .source-link:hover { color: var(--md-primary); border-color: var(--md-primary); }
+    .source-link .material-symbols-outlined { font-size: 14px; }
+    .source-tweet { display: flex; justify-content: center; margin-bottom: 1rem; }
+    .source-tweet .twitter-tweet { margin: 0 auto; }
+
     .stack-track { height: 20px; max-height: 20px; display: flex; gap: 2px; }
     .stack-seg { height: 20px; }
     .stack-seg:last-child { border-radius: 0 8px 8px 0; }
@@ -217,7 +224,7 @@
     <div class="page-header-inner">
       <div class="page-header-main">
         <span class="live-badge" id="statusBadge" style="display:none;"></span>
-        <div class="page-header-tour" id="tourName">新月からの侵略者vol.2</div>
+        <div class="page-header-tour" id="tourName">新月からの侵略</div>
         <h1 class="page-header-title" id="venueName">青山 月見ル君想フ</h1>
         <div class="page-header-date" id="showDate">2015.08.25</div>
         <div class="detail-address" id="address">東京都港区南青山４丁目９−１ シンプル青山ビル 地下1階</div>
@@ -234,6 +241,7 @@
     <div id="spotifyArea"></div>
     <div id="setlistArea"></div>
     <div id="albumRatioArea"></div>
+    <div id="sourceArea"></div>
 
     <div class="action-buttons">
       <a href="#" id="archiveLink" class="header-btn outline">← ライブアーカイブに戻る</a>
@@ -251,7 +259,7 @@
   </footer>
 
   <script>
-    const SHOW_DATA = {"isSrvvinci": true, "urlSlug": "2015.08.25-srvvinci", "tour": {"name": "新月からの侵略者vol.2"}, "show": {"date": "2015.08.25", "venue": "青山 月見ル君想フ", "location": "東京都港区南青山４丁目９−１ シンプル青山ビル 地下1階", "status": "", "setlist": []}};
+    const SHOW_DATA = {"isSrvvinci": true, "urlSlug": "2015.08.25-srvvinci", "tour": {"name": "新月からの侵略"}, "show": {"date": "2015.08.25", "venue": "青山 月見ル君想フ", "location": "東京都港区南青山４丁目９−１ シンプル青山ビル 地下1階", "status": "", "setlist": [], "source": "https://www.facebook.com/photo?fbid=435820623288508&set=a.325622992284133&locale=pt_BR"}};
   </script>
   <script>
   function escH(s) {
@@ -636,6 +644,54 @@
     bindTooltips(area);
   }
 
+  // ---- 出典（source）: 通常のURLはリンク、X(Twitter)の投稿は埋め込み ----
+  function toSourceUrls(source) {
+    return (Array.isArray(source) ? source : [source])
+      .map(s => (typeof s === 'string' ? s.trim() : ''))
+      .filter(Boolean)
+      .map(s => { try { return new URL(s); } catch (e) { return null; } })
+      .filter(u => u && (u.protocol === 'https:' || u.protocol === 'http:'));
+  }
+
+  function tweetUrl(u) {
+    const host = u.hostname.replace(/^(www\.|mobile\.)/, '');
+    if (host !== 'x.com' && host !== 'twitter.com') return null;
+    const m = u.pathname.match(/^\/([^/]+)\/status\/(\d+)/);
+    return m ? `https://twitter.com/${m[1]}/status/${m[2]}` : null;
+  }
+
+  function renderSources(source) {
+    const area = document.getElementById('sourceArea');
+    const urls = toSourceUrls(source);
+    if (!urls.length) {
+      area.innerHTML = '';
+      return;
+    }
+
+    const links = [];
+    const tweets = [];
+    urls.forEach(u => {
+      const t = tweetUrl(u);
+      if (t) tweets.push(t);
+      else links.push(u);
+    });
+
+    const linkHtml = links.length ? `<ul class="source-list">${links.map(u => `
+      <li><a class="source-link" href="${escH(u.href)}" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>${escH(u.hostname.replace(/^www\./, ''))}</a></li>`).join('')}</ul>` : '';
+    const tweetHtml = tweets.map(t => `
+      <div class="source-tweet"><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="${escH(t)}">X の投稿を見る</a></blockquote></div>`).join('');
+
+    area.innerHTML = `<div class="section-label">出典</div>${linkHtml}${tweetHtml}`;
+
+    if (tweets.length) {
+      const s = document.createElement('script');
+      s.src = 'https://platform.twitter.com/widgets.js';
+      s.async = true;
+      s.charset = 'utf-8';
+      document.body.appendChild(s);
+    }
+  }
+
   function setMetaContent(selector, content) {
     const el = document.querySelector(selector);
     if (el) el.setAttribute('content', content);
@@ -686,6 +742,7 @@
     renderSpotifyPlaylist(show.spotifyPlaylist);
     renderSetlist(show.setlist, songIndex);
     renderAlbumRatio(show.setlist, songAlbum);
+    renderSources(show.source);
   }
 
   function renderNotFound() {

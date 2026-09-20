@@ -557,7 +557,7 @@
       "name": "ROCK AX vol.1",
       "scale": "LIVE",
       "shows": [
-        { "date": "2019.01.22", "venue": "TOKYO DOME CITY HALL", "location": "東京都文京区後楽1-3-61", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2OXuG9rtLI3mMgP0yq919M", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "It's a small world", "Slumberland", "あなたは蜃気楼", "ロウラヴ", "NIGHT POOL", "Prayer X", "Vinyl"] }
+        { "date": "2019.01.22", "venue": "TOKYO DOME CITY HALL", "location": "東京都文京区後楽1-3-61", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2OXuG9rtLI3mMgP0yq919M", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "It's a small world", "Slumberland", "あなたは蜃気楼", "ロウラヴ", "NIGHT POOL", "Prayer X", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/1060862883079180288"}
       ]
     },
     {
@@ -573,7 +573,7 @@
       "name": "Date fm RADIO GIGA",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.12.29", "venue": "仙台PIT", "location": "宮城県仙台市太白区あすと長町２丁目２−５０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3xr4138rk5oq81XbRGuQEI", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "Slumberland", "ロウラヴ", "Prayer X", "Vinyl"] }
+        { "date": "2018.12.29", "venue": "仙台PIT", "location": "宮城県仙台市太白区あすと長町２丁目２−５０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3xr4138rk5oq81XbRGuQEI", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "Slumberland", "ロウラヴ", "Prayer X", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/1078826047687270401"}
       ]
     },
     {
@@ -581,7 +581,7 @@
       "name": "COUNTDOWN JAPAN 18/19",
       "scale": "FES",
       "shows": [
-        { "date": "2018.12.28", "venue": "幕張メッセ国際展示場 ASTRO ARENA", "location": "千葉県千葉市美浜区中瀬２丁目１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2HODtI2XylKQOK5AXlBU8a", "setlist": ["It's a small world", "あなたは蜃気楼", "Flash!!!", "Tokyo Rendez-Vous", "Slumberland", "ロウラヴ", "Prayer X", "Vinyl"] }
+        { "date": "2018.12.28", "venue": "幕張メッセ国際展示場 ASTRO ARENA", "location": "千葉県千葉市美浜区中瀬２丁目１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2HODtI2XylKQOK5AXlBU8a", "setlist": ["It's a small world", "あなたは蜃気楼", "Flash!!!", "Tokyo Rendez-Vous", "Slumberland", "ロウラヴ", "Prayer X", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/1078483702642925568"}
       ]
     },
     {
@@ -589,7 +589,7 @@
       "name": "FM802 ROCK FESTIVAL RADIO CRAZY 2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.12.27", "venue": "インテックス大阪", "location": "大阪府大阪市住之江区南港北１丁目５−１０２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1WvWwxPPU8DHvSdEvLB5DZ", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "It's a small world", "Slumberland", "ロウラヴ", "Prayer X", "Vinyl"] }
+        { "date": "2018.12.27", "venue": "インテックス大阪", "location": "大阪府大阪市住之江区南港北１丁目５−１０２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1WvWwxPPU8DHvSdEvLB5DZ", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "It's a small world", "Slumberland", "ロウラヴ", "Prayer X", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/1078129665242349568"}
       ]
     },
     {
@@ -597,7 +597,7 @@
       "name": "CROSS FM 25th Anniversary MUSIC JUNCTION 2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.12.26", "venue": "福岡国際センター", "location": "福岡県福岡市博多区築港本町２−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0phqDImKR38rBeVDZDULuA", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "It's a small world", "Slumberland", "ロウラヴ", "Prayer X", "Vinyl"] }
+        { "date": "2018.12.26", "venue": "福岡国際センター", "location": "福岡県福岡市博多区築港本町２−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0phqDImKR38rBeVDZDULuA", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "It's a small world", "Slumberland", "ロウラヴ", "Prayer X", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/1077755279956033536"}
       ]
     },
     {
@@ -605,7 +605,7 @@
       "name": "年末調整GIG 2018",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.12.23", "venue": "名古屋ダイヤモンドホール", "location": "愛知県名古屋市中区新栄２丁目１−９ 雲竜フレックスビル西館 5F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7EFuFShgxTkLAMKoZvYh1g", "setlist": ["サマーレイン・ダイバー", "Sorrows", "Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "It's a small world", "Slumberland", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "Vinyl"] }
+        { "date": "2018.12.23", "venue": "名古屋ダイヤモンドホール", "location": "愛知県名古屋市中区新栄２丁目１−９ 雲竜フレックスビル西館 5F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7EFuFShgxTkLAMKoZvYh1g", "setlist": ["サマーレイン・ダイバー", "Sorrows", "Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "It's a small world", "Slumberland", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/1076712469190471680"}
       ]
     },
     {
@@ -613,7 +613,7 @@
       "name": "VS SANABAGUN.",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.12.15", "venue": "梅田CLUB QUATTRO", "location": "大阪府大阪市北区太融寺町８−１７ プラザ梅田 10F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/38tWLlvpTQz09oMSAImSWR", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "It's a small world", "ロウラヴ", "Hitman", "VIVID RED", "NIGHT POOL", "あなたは蜃気楼", "Prayer X", "Vinyl", "Slumberland"] }
+        { "date": "2018.12.15", "venue": "梅田CLUB QUATTRO", "location": "大阪府大阪市北区太融寺町８−１７ プラザ梅田 10F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/38tWLlvpTQz09oMSAImSWR", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "It's a small world", "ロウラヴ", "Hitman", "VIVID RED", "NIGHT POOL", "あなたは蜃気楼", "Prayer X", "Vinyl", "Slumberland"] , "source": "https://x.com/KingGnu_JP/status/1057560010773848065"}
       ]
     },
     {
@@ -621,9 +621,9 @@
       "name": "King Gnu One-Man Live 2018 AW",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.11.07", "venue": "名古屋CLUB QUATTRO", "location": "愛知県名古屋市中区栄３丁目２９−１ 名古屋 PARCO 東館 8・9F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7kWV8vNxEuoBz3qxTGef89", "setlist": ["破裂", "Flash!!!", "Vinyl", "Diving To You", "NIGHT POOL", "Slumberland", "あなたは蜃気楼", "Sympa", "Hitman", "VIVID RED", "Don't Stop the Clocks", "It's a small world", "McDonald Romance", "Prayer X", "Sorrows", "Bedtown", "ロウラヴ", "Teenager Forever", "サマーレイン・ダイバー", "Tokyo Rendez-Vous（EN）"] },
-        { "date": "2018.11.08", "venue": "梅田CLUB QUATTRO", "location": "大阪府大阪市北区太融寺町８−１７ プラザ梅田 10F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0ZmvP1nRY7Xe3MpSswoxE2", "setlist": ["VIVID RED", "NIGHT POOL", "あなたは蜃気楼", "Flash!!!", "Diving To You", "Sympa", "Vinyl", "破裂", "Hitman", "Slumberland", "Don't Stop the Clocks", "It's a small world", "McDonald Romance", "Prayer X", "Sorrows", "Bedtown", "ロウラヴ", "Teenager Forever", "サマーレイン・ダイバー", "Tokyo Rendez-Vous（EN）"] },
-        { "date": "2018.11.20", "venue": "マイナビBLITZ赤坂", "location": "東京都港区赤坂５丁目３−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5lrQAU1e8co80PxPZlLRkI", "setlist": ["破裂", "Flash!!!", "Vinyl", "Diving To You", "NIGHT POOL", "Slumberland", "あなたは蜃気楼", "Sympa", "Hitman", "VIVID RED", "Don't Stop the Clocks", "It's a small world", "McDonald Romance", "Prayer X", "Sorrows", "Bedtown", "ロウラヴ", "Teenager Forever", "サマーレイン・ダイバー", "Tokyo Rendez-Vous（EN）"] }
+        { "date": "2018.11.07", "venue": "名古屋CLUB QUATTRO", "location": "愛知県名古屋市中区栄３丁目２９−１ 名古屋 PARCO 東館 8・9F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7kWV8vNxEuoBz3qxTGef89", "setlist": ["破裂", "Flash!!!", "Vinyl", "Diving To You", "NIGHT POOL", "Slumberland", "あなたは蜃気楼", "Sympa", "Hitman", "VIVID RED", "Don't Stop the Clocks", "It's a small world", "McDonald Romance", "Prayer X", "Sorrows", "Bedtown", "ロウラヴ", "Teenager Forever", "サマーレイン・ダイバー", "Tokyo Rendez-Vous（EN）"] , "source": "https://x.com/KingGnu_JP/status/1040526137011531778"},
+        { "date": "2018.11.08", "venue": "梅田CLUB QUATTRO", "location": "大阪府大阪市北区太融寺町８−１７ プラザ梅田 10F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0ZmvP1nRY7Xe3MpSswoxE2", "setlist": ["VIVID RED", "NIGHT POOL", "あなたは蜃気楼", "Flash!!!", "Diving To You", "Sympa", "Vinyl", "破裂", "Hitman", "Slumberland", "Don't Stop the Clocks", "It's a small world", "McDonald Romance", "Prayer X", "Sorrows", "Bedtown", "ロウラヴ", "Teenager Forever", "サマーレイン・ダイバー", "Tokyo Rendez-Vous（EN）"] , "source": "https://x.com/KingGnu_JP/status/1040526137011531778"},
+        { "date": "2018.11.20", "venue": "マイナビBLITZ赤坂", "location": "東京都港区赤坂５丁目３−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5lrQAU1e8co80PxPZlLRkI", "setlist": ["破裂", "Flash!!!", "Vinyl", "Diving To You", "NIGHT POOL", "Slumberland", "あなたは蜃気楼", "Sympa", "Hitman", "VIVID RED", "Don't Stop the Clocks", "It's a small world", "McDonald Romance", "Prayer X", "Sorrows", "Bedtown", "ロウラヴ", "Teenager Forever", "サマーレイン・ダイバー", "Tokyo Rendez-Vous（EN）"] , "source": "https://x.com/KingGnu_JP/status/1040526137011531778"}
       ]
     },
     {
@@ -631,7 +631,7 @@
       "name": "Scramble Fes 2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.11.04", "venue": "TSUTAYA O-EAST", "location": "東京都渋谷区道玄坂２丁目１４−８", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1weUpVaggPCvheRIARZCbk", "setlist": ["NIGHT POOL", "Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "あなたは蜃気楼", "It's a small world", "Prayer X", "Vinyl", "サマーレイン・ダイバー", "ロウラヴ"] }
+        { "date": "2018.11.04", "venue": "TSUTAYA O-EAST", "location": "東京都渋谷区道玄坂２丁目１４−８", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1weUpVaggPCvheRIARZCbk", "setlist": ["NIGHT POOL", "Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "あなたは蜃気楼", "It's a small world", "Prayer X", "Vinyl", "サマーレイン・ダイバー", "ロウラヴ"] , "source": "https://x.com/KingGnu_JP/status/1058637206980517889"}
       ]
     },
     {
@@ -639,7 +639,7 @@
       "name": "Hot Stuff Promotion 40th Anniversary MASAKA Chaos Rocks",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.10.28", "venue": "日本武道館", "location": "東京都千代田区北の丸公園２−３", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6wcGUiwPbf3SdJG9zqVdFV", "setlist": ["PPL", "Flash!!!", "McDonald Romance", "あなたは蜃気楼", "Tokyo Rendez-Vous", "Prayer X", "Vinyl", "サマーレイン・ダイバー", "ロウラヴ"] }
+        { "date": "2018.10.28", "venue": "日本武道館", "location": "東京都千代田区北の丸公園２−３", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6wcGUiwPbf3SdJG9zqVdFV", "setlist": ["PPL", "Flash!!!", "McDonald Romance", "あなたは蜃気楼", "Tokyo Rendez-Vous", "Prayer X", "Vinyl", "サマーレイン・ダイバー", "ロウラヴ"] , "source": "https://x.com/KingGnu_JP/status/1056099783549448192"}
       ]
     },
     {
@@ -647,7 +647,7 @@
       "name": "ボロフェスタ2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.10.26", "venue": "KBSホール クイーンステージ", "location": "京都府京都市上京区上長者町６００−１ 1F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7LW9WxHPtLHblwt51EFZFV", "setlist": ["NIGHT POOL", "PPL", "Flash!!!", "McDonald Romance", "あなたは蜃気楼", "Tokyo Rendez-Vous", "Prayer X", "Vinyl", "ロウラヴ"] }
+        { "date": "2018.10.26", "venue": "KBSホール クイーンステージ", "location": "京都府京都市上京区上長者町６００−１ 1F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7LW9WxHPtLHblwt51EFZFV", "setlist": ["NIGHT POOL", "PPL", "Flash!!!", "McDonald Romance", "あなたは蜃気楼", "Tokyo Rendez-Vous", "Prayer X", "Vinyl", "ロウラヴ"] , "source": "https://x.com/KingGnu_JP/status/1055654112707076096"}
       ]
     },
     {
@@ -655,7 +655,7 @@
       "name": "InterFM897 Tokyo Scene LIVE vol.2",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.10.22", "venue": "恵比寿LIQUIDROOM", "location": "東京都渋谷区東３丁目１６−６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5NTPWP1n5tj4z0CtX2BZgP", "setlist": ["PPL", "Flash!!!", "McDonald Romance", "あなたは蜃気楼", "Tokyo Rendez-Vous", "Prayer X", "Vinyl", "ロウラヴ"] }
+        { "date": "2018.10.22", "venue": "恵比寿LIQUIDROOM", "location": "東京都渋谷区東３丁目１６−６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5NTPWP1n5tj4z0CtX2BZgP", "setlist": ["PPL", "Flash!!!", "McDonald Romance", "あなたは蜃気楼", "Tokyo Rendez-Vous", "Prayer X", "Vinyl", "ロウラヴ"] , "source": "https://x.com/KingGnu_JP/status/1054301658157477888"}
       ]
     },
     {
@@ -663,7 +663,7 @@
       "name": "FM802 MINAMI WHEEL 2018 ～20th Anniversery～",
       "scale": "FES",
       "shows": [
-        { "date": "2018.10.08", "venue": "-Eggs STAGE- BIGCAT", "location": "大阪府大阪市中央区西心斎橋１丁目６−１４ BIGSTEP 4F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3m80YHiNoyI4EjnoKRBSQl", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "PPL", "Hitman", "Vinyl", "ロウラヴ", "サマーレイン・ダイバー"] }
+        { "date": "2018.10.08", "venue": "-Eggs STAGE- BIGCAT", "location": "大阪府大阪市中央区西心斎橋１丁目６−１４ BIGSTEP 4F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3m80YHiNoyI4EjnoKRBSQl", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "PPL", "Hitman", "Vinyl", "ロウラヴ", "サマーレイン・ダイバー"] , "source": "https://x.com/KingGnu_JP/status/1048865898889601024"}
       ]
     },
     {
@@ -671,7 +671,7 @@
       "name": "PIA MUSIC COMPLEX 2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.09.29", "venue": "若洲公園", "location": "東京都江東区若洲３丁目２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6KT9ziu39sJRIp2mT1Uc1b", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "Prayer X", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.09.29", "venue": "若洲公園", "location": "東京都江東区若洲３丁目２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6KT9ziu39sJRIp2mT1Uc1b", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "Prayer X", "Vinyl", "サマーレイン・ダイバー"] , "source": "https://x.com/KingGnu_JP/status/1045867815599693825"}
       ]
     },
     {
@@ -679,7 +679,7 @@
       "name": "ツーマン・ツアー ”ベッドルーム・シェイク・ツアー”",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.09.25", "venue": "Music Club JANUS", "location": "大阪府大阪市中央区東心斎橋２丁目４−３０ グランドジャニスビル 5F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5GPB8dmCVFI4ZaIRuALoEK", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "PPL", "Hitman", "Vinyl", "ロウラヴ", "サマーレイン・ダイバー"] }
+        { "date": "2018.09.25", "venue": "Music Club JANUS", "location": "大阪府大阪市中央区東心斎橋２丁目４−３０ グランドジャニスビル 5F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5GPB8dmCVFI4ZaIRuALoEK", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "PPL", "Hitman", "Vinyl", "ロウラヴ", "サマーレイン・ダイバー"] , "source": "https://x.com/KingGnu_JP/status/1044877413983965185"}
       ]
     },
     {
@@ -687,7 +687,7 @@
       "name": "りんご音楽祭2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.09.22", "venue": "松本アルプス公園", "location": "長野県松本市蟻ケ崎２４５５−１１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6t92xFnOrMbvnLF6co1LU2", "setlist": ["NIGHT POOL", "Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "Prayer X", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.09.22", "venue": "松本アルプス公園", "location": "長野県松本市蟻ケ崎２４５５−１１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6t92xFnOrMbvnLF6co1LU2", "setlist": ["NIGHT POOL", "Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "Prayer X", "Vinyl", "サマーレイン・ダイバー"] , "source": "https://x.com/KingGnu_JP/status/1043344036214366209"}
       ]
     },
     {
@@ -695,7 +695,7 @@
       "name": "LIQUIDROOM 14th Anniversary PAELLAS×King Gnu",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.09.19", "venue": "恵比寿LIQUIDROOM", "location": "東京都渋谷区東３丁目１６−６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6PoQoXBqtKx6TEy8hzEhXq", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "Heroine", "PPL", "Hitman", "Vinyl", "サマーレイン・ダイバー", "ロウラヴ"] }
+        { "date": "2018.09.19", "venue": "恵比寿LIQUIDROOM", "location": "東京都渋谷区東３丁目１６−６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6PoQoXBqtKx6TEy8hzEhXq", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "Heroine", "PPL", "Hitman", "Vinyl", "サマーレイン・ダイバー", "ロウラヴ"] , "source": "https://x.com/KingGnu_JP/status/1028931183910866944"}
       ]
     },
     {
@@ -703,7 +703,7 @@
       "name": "ZIMA MUSIC FIGHTERS meets ライブナタリー",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.09.16", "venue": "北海道DUCE", "location": "北海道札幌市中央区南8条西4丁目422 オリエンタルホテルB1F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2J7nu2V6Xut3CO6VFsf0el", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "Heroine", "PPL", "Vinyl", "サマーレイン・ダイバー", "ロウラヴ"] }
+        { "date": "2018.09.16", "venue": "北海道DUCE", "location": "北海道札幌市中央区南8条西4丁目422 オリエンタルホテルB1F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2J7nu2V6Xut3CO6VFsf0el", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "Heroine", "PPL", "Vinyl", "サマーレイン・ダイバー", "ロウラヴ"] , "source": "https://x.com/KingGnu_JP/status/1041168998010744833"}
       ]
     },
     {
@@ -711,7 +711,7 @@
       "name": "Sunset Live 2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.09.01", "venue": "芥屋キャンプ場 特設ステージ Beach st.", "location": "福岡県糸島市志摩芥屋2589", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6IbozqvwaCEOsLzjVI2X74", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "NIGHT POOL", "McDonald Romance", "あなたは蜃気楼", "Prayer X", "Vinyl", "サマーレイン・ダイバー", "ロウラヴ"] }
+        { "date": "2018.09.01", "venue": "芥屋キャンプ場 特設ステージ Beach st.", "location": "福岡県糸島市志摩芥屋2589", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6IbozqvwaCEOsLzjVI2X74", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "NIGHT POOL", "McDonald Romance", "あなたは蜃気楼", "Prayer X", "Vinyl", "サマーレイン・ダイバー", "ロウラヴ"] , "source": "https://x.com/KingGnu_JP/status/1035459200845922306"}
       ]
     },
     {
@@ -719,7 +719,7 @@
       "name": "SWEET LOVE SHOWER 2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.08.31", "venue": "山中湖交流プラザきらら FOREST STAGE", "location": "山梨県南都留郡山中湖村平野４７９−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0mJQkYYWGrYKuErcD8pOtA", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "Prayer X", "Vinyl"] }
+        { "date": "2018.08.31", "venue": "山中湖交流プラザきらら FOREST STAGE", "location": "山梨県南都留郡山中湖村平野４７９−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0mJQkYYWGrYKuErcD8pOtA", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "Prayer X", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/1035092557582094336"}
       ]
     },
     {
@@ -727,7 +727,7 @@
       "name": "FIND OUT presents MUST GO-GO Vol.2",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.08.22", "venue": "名古屋CLUB QUATTRO", "location": "愛知県名古屋市中区栄３丁目２９−１ 名古屋 PARCO 東館 8・9F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2SUbSZ1TgjwgpEXW6IZCUh", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "Vinyl", "サマーレイン・ダイバー（EN）", "ロウラヴ（EN）"] }
+        { "date": "2018.08.22", "venue": "名古屋CLUB QUATTRO", "location": "愛知県名古屋市中区栄３丁目２９−１ 名古屋 PARCO 東館 8・9F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2SUbSZ1TgjwgpEXW6IZCUh", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "Vinyl", "サマーレイン・ダイバー（EN）", "ロウラヴ（EN）"] , "source": "https://x.com/KingGnu_JP/status/997404612280795136"}
       ]
     },
     {
@@ -735,7 +735,7 @@
       "name": "RISING SUN ROCK FESTIVAL 2018 in EZO",
       "scale": "FES",
       "shows": [
-        { "date": "2018.08.11", "venue": "石狩湾新港樽川ふ頭横野外特設ステージ", "location": "北海道石狩市新港中央1丁目 / 小樽市銭函5丁目", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4SPEqOOiSWdSh1etaNOXVB", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "NIGHT POOL", "Prayer X", "Vinyl"] }
+        { "date": "2018.08.11", "venue": "石狩湾新港樽川ふ頭横野外特設ステージ", "location": "北海道石狩市新港中央1丁目 / 小樽市銭函5丁目", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4SPEqOOiSWdSh1etaNOXVB", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "NIGHT POOL", "Prayer X", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/1028225444628197379"}
       ]
     },
     {
@@ -743,7 +743,7 @@
       "name": "ホットフィールド2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.08.05", "venue": "宮野運動公園Stage Of Green", "location": "富山県黒部市宮野４４番地", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6wlsSrekVcmyGJsprkx6mX", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "ロウラヴ", "NIGHT POOL", "Prayer X", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.08.05", "venue": "宮野運動公園Stage Of Green", "location": "富山県黒部市宮野４４番地", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6wlsSrekVcmyGJsprkx6mX", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "ロウラヴ", "NIGHT POOL", "Prayer X", "Vinyl", "サマーレイン・ダイバー"] , "source": "https://x.com/KingGnu_JP/status/1025682350888251392"}
       ]
     },
     {
@@ -751,7 +751,7 @@
       "name": "FUJI ROCK FESTIVAL'2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.07.29", "venue": "苗場スキー場RED MARQUEE", "location": "新潟県南魚沼郡湯沢町大字三国202", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1Nfj7fnHe4czqRwuVv49Y1", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "PPL", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.07.29", "venue": "苗場スキー場RED MARQUEE", "location": "新潟県南魚沼郡湯沢町大字三国202", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1Nfj7fnHe4czqRwuVv49Y1", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "NIGHT POOL", "Prayer X", "PPL", "Vinyl", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1026393287022673920", "https://x.com/KingGnu_JP/status/1023539855928643585", "https://x.com/KingGnu_JP/status/1023143068038381568"]}
       ]
     },
     {
@@ -759,8 +759,8 @@
       "name": "King Gnu One-Man Live “Flash!!!”",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.07.13", "venue": "恵比寿LIQUIDROOM", "location": "東京都渋谷区東３丁目１６−６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2THpLJFQJwArwtP49s66lK", "setlist": ["PPL", "ロウラヴ", "NIGHT POOL", "あなたは蜃気楼", "Catch!!!", "Heroine", "Hitman", "Prayer X", "Vinyl", "TIME（Acoustic ver.）", "It's a small world（Acoustic ver.）", "Jump Around（feat. 呂布）", "McDonald Romance（ゲスト：呂布）", "Tokyo Rendez-Vous", "破裂", "Teenager Forever", "サマーレイン・ダイバー", "Flash!!!"] },
-        { "date": "2018.07.16", "venue": "大阪Shangri-La", "location": "大阪府大阪市北区大淀南１丁目１−１４", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/51eEronUcLV4CeQ89lLYyx", "setlist": ["PPL", "ロウラヴ", "NIGHT POOL", "あなたは蜃気楼", "Catch!!!", "Heroine", "Hitman", "Prayer X", "Vinyl", "TIME（Acoustic ver.）", "It's a small world（Acoustic ver.）", "破裂", "McDonald Romance", "Tokyo Rendez-Vous", "Teenager Forever", "サマーレイン・ダイバー", "Flash!!!"] }
+        { "date": "2018.07.13", "venue": "恵比寿LIQUIDROOM", "location": "東京都渋谷区東３丁目１６−６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2THpLJFQJwArwtP49s66lK", "setlist": ["PPL", "ロウラヴ", "NIGHT POOL", "あなたは蜃気楼", "Catch!!!", "Heroine", "Hitman", "Prayer X", "Vinyl", "TIME（Acoustic ver.）", "It's a small world（Acoustic ver.）", "Jump Around（feat. 呂布）", "McDonald Romance（ゲスト：呂布）", "Tokyo Rendez-Vous", "破裂", "Teenager Forever", "サマーレイン・ダイバー", "Flash!!!"] , "source": ["https://x.com/KingGnu_JP/status/1018407434228920320", "https://x.com/KingGnu_JP/status/1020946445963161600"]},
+        { "date": "2018.07.16", "venue": "大阪Shangri-La", "location": "大阪府大阪市北区大淀南１丁目１−１４", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/51eEronUcLV4CeQ89lLYyx", "setlist": ["PPL", "ロウラヴ", "NIGHT POOL", "あなたは蜃気楼", "Catch!!!", "Heroine", "Hitman", "Prayer X", "Vinyl", "TIME（Acoustic ver.）", "It's a small world（Acoustic ver.）", "破裂", "McDonald Romance", "Tokyo Rendez-Vous", "Teenager Forever", "サマーレイン・ダイバー", "Flash!!!"] , "source": ["https://x.com/KingGnu_JP/status/1019149097872154625", "https://x.com/KingGnu_JP/status/1020946445963161600"]}
       ]
     },
     {
@@ -768,7 +768,7 @@
       "name": "FUJI ROCK FESTIVAL ’18 PRE-FESTIVAL PARTY",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.06.23", "venue": "渋谷CLUB QUATTRO", "location": "東京都渋谷区宇田川町３２−１３ 4・5F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2GwJbkXWCw2Nbm4RhSTxok", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "TIME", "ロウラヴ", "Vinyl"] }
+        { "date": "2018.06.23", "venue": "渋谷CLUB QUATTRO", "location": "東京都渋谷区宇田川町３２−１３ 4・5F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2GwJbkXWCw2Nbm4RhSTxok", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "TIME", "ロウラヴ", "Vinyl"] , "source": ["https://x.com/KingGnu_JP/status/1010580033268637696"]}
       ]
     },
     {
@@ -776,7 +776,7 @@
       "name": "BEACH TOMATO NOODLE",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.06.09", "venue": "白浜フラワーパーク", "location": "千葉県南房総市白浜町根本１４５４", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1n51ildfXutTKB48wqbCPj", "setlist": ["Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "あなたは蜃気楼", "PPL", "VIVID RED", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.06.09", "venue": "白浜フラワーパーク", "location": "千葉県南房総市白浜町根本１４５４", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1n51ildfXutTKB48wqbCPj", "setlist": ["Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "あなたは蜃気楼", "PPL", "VIVID RED", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1006440669190078464", "https://x.com/KingGnu_JP/status/1005327374429196288"]}
       ]
     },
     {
@@ -784,7 +784,7 @@
       "name": "METROCK 2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.05.27", "venue": "若洲公園 NEW BEAT SQUARE", "location": "東京都江東区若洲３丁目２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/60MsFTTouzCqvg3thqtuX8", "setlist": ["Catch!!!", "Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.05.27", "venue": "若洲公園 NEW BEAT SQUARE", "location": "東京都江東区若洲３丁目２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/60MsFTTouzCqvg3thqtuX8", "setlist": ["Catch!!!", "Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/964062781979807745", "https://x.com/KingGnu_JP/status/1001036791028183040", "https://x.com/KingGnu_JP/status/1000362213511544833"]}
       ]
     },
     {
@@ -792,7 +792,7 @@
       "name": "GREEN ROOM FESTIVAL'18",
       "scale": "FES",
       "shows": [
-        { "date": "2018.05.26", "venue": "GALLERY STAGE", "location": "神奈川県横浜市中区新港1-1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1ORy0kkj4HRxbKsBpAG0Gj", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "PPL", "Hitman", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.05.26", "venue": "GALLERY STAGE", "location": "神奈川県横浜市中区新港1-1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1ORy0kkj4HRxbKsBpAG0Gj", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "PPL", "Hitman", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/958599919543009280", "https://x.com/KingGnu_JP/status/999871189534236675"]}
       ]
     },
     {
@@ -800,7 +800,7 @@
       "name": "CONNECT歌舞伎町MUSIC FESTIVAL 2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.05.13", "venue": "新宿LOFT", "location": "東京都新宿区歌舞伎町１丁目１２−９ タテハナビル", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5CRqBg5iRwiqW5ayjdcihR", "setlist": ["ロウラヴ", "McDonald Romance", "あなたは蜃気楼", "Tokyo Rendez-Vous", "Flash!!!", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.05.13", "venue": "新宿LOFT", "location": "東京都新宿区歌舞伎町１丁目１２−９ タテハナビル", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5CRqBg5iRwiqW5ayjdcihR", "setlist": ["ロウラヴ", "McDonald Romance", "あなたは蜃気楼", "Tokyo Rendez-Vous", "Flash!!!", "Vinyl", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/958957913468420097", "https://x.com/KingGnu_JP/status/990147044575559680"]}
       ]
     },
     {
@@ -808,7 +808,7 @@
       "name": "エレキレストラン111 ～スペシャルツーマン!! ～",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.05.11", "venue": "京都MOJO", "location": "京都府京都市下京区四条通新町東入月鉾町３９−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7b1hiyyFxcFyxruntY1AYQ", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "PPL", "Hitman", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー（EN）"] }
+        { "date": "2018.05.11", "venue": "京都MOJO", "location": "京都府京都市下京区四条通新町東入月鉾町３９−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7b1hiyyFxcFyxruntY1AYQ", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "PPL", "Hitman", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー（EN）"] , "source": "https://x.com/KingGnu_JP/status/994184273400754177"}
       ]
     },
     {
@@ -816,7 +816,7 @@
       "name": "J-WAVE & Roppongi Hills present TOKYO M.A.P.S",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.05.06", "venue": "六本木ヒルズアリーナ", "location": "東京都港区六本木６丁目１０−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5gfbOFCIcGUrhgQyYxgfBx", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.05.06", "venue": "六本木ヒルズアリーナ", "location": "東京都港区六本木６丁目１０−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5gfbOFCIcGUrhgQyYxgfBx", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/990147044575559680", "https://x.com/KingGnu_JP/status/987622609268260864"]}
       ]
     },
     {
@@ -824,7 +824,7 @@
       "name": "NIIGATA RAINBOW ROCK FESTIVAL",
       "scale": "FES",
       "shows": [
-        { "date": "2018.05.04", "venue": "NEXS NIIGATA", "location": "新潟県新潟市中央区万代1-3-1 万代シネモールビルB1", "status": "", "setlist": [] }
+        { "date": "2018.05.04", "venue": "NEXS NIIGATA", "location": "新潟県新潟市中央区万代1-3-1 万代シネモールビルB1", "status": "", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/992052593894436865"}
       ]
     },
     {
@@ -832,7 +832,7 @@
       "name": "VIVA LA ROCK 2018",
       "scale": "FES",
       "shows": [
-        { "date": "2018.05.03", "venue": "CAVE STAGE", "location": "埼玉県さいたま市中央区新都心８", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2YFZNPHwJbrBFdI9X2VMFf", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.05.03", "venue": "CAVE STAGE", "location": "埼玉県さいたま市中央区新都心８", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2YFZNPHwJbrBFdI9X2VMFf", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/993416601222316033", "https://x.com/KingGnu_JP/status/992011405204176896"]}
       ]
     },
     {
@@ -840,7 +840,7 @@
       "name": "CROSSING CARNIVAL'18",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.04.22", "venue": "TSUTAYA O-west", "location": "東京都渋谷区円山町２−３ 2F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7mb11YZMWTQ2iQbjIbOyR3", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Jump Around（feat. 呂布）", "McDonald Romance（feat. 呂布）", "?????（feat. 呂布）", "Vinyl"] }
+        { "date": "2018.04.22", "venue": "TSUTAYA O-west", "location": "東京都渋谷区円山町２−３ 2F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7mb11YZMWTQ2iQbjIbOyR3", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Jump Around（feat. 呂布）", "McDonald Romance（feat. 呂布）", "?????（feat. 呂布）", "Vinyl"] , "source": ["https://x.com/KingGnu_JP/status/987960542873571328", "https://x.com/KingGnu_JP/status/984343143242915840", "https://x.com/KingGnu_JP/status/970954489724248064"]}
       ]
     },
     {
@@ -848,7 +848,7 @@
       "name": "DAOKO presents「チャームポイント」",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.04.10", "venue": "恵比寿LIQUIDROOM", "location": "東京都渋谷区東３丁目１６−６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3Jl3UmVuSyLdt2zFNt4aJO", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl"] }
+        { "date": "2018.04.10", "venue": "恵比寿LIQUIDROOM", "location": "東京都渋谷区東３丁目１６−６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3Jl3UmVuSyLdt2zFNt4aJO", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl"] , "source": ["https://x.com/KingGnu_JP/status/966233090786914305", "https://x.com/KingGnu_JP/status/983544011351666690"]}
       ]
     },
     {
@@ -856,7 +856,7 @@
       "name": "SYNCHRONICITY'18",
       "scale": "FES",
       "shows": [
-        { "date": "2018.04.07", "venue": "TSUTAYA O-nest", "location": "東京都渋谷区円山町２−３ O-WESTビル 6F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2w0rM3E2bDCA5KW4ipwUI2", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.04.07", "venue": "TSUTAYA O-nest", "location": "東京都渋谷区円山町２−３ O-WESTビル 6F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2w0rM3E2bDCA5KW4ipwUI2", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/958996019152224256", "https://x.com/KingGnu_JP/status/982452927355699201"]}
       ]
     },
     {
@@ -864,7 +864,7 @@
       "name": "Talking Rock! Presents「ニューロック計画！2018」",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.03.31", "venue": "umeda TRAD", "location": "大阪府大阪市北区堂山町１６−３", "status": "", "setlist": [] }
+        { "date": "2018.03.31", "venue": "umeda TRAD", "location": "大阪府大阪市北区堂山町１６−３", "status": "", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/979648129036201984"}
       ]
     },
     {
@@ -872,7 +872,7 @@
       "name": "King Gnu One-Man Live “Tokyo Rendez-Vous X”",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.03.23", "venue": "渋谷WWW X", "location": "東京都渋谷区宇田川町１３−１７ ライズビル 2F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2N5RfQH3cNtD3bnqAd9vzw", "note": "1月28日ワンマンライブの追加公演", "setlist": ["Intro", "Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "PPL", "VIVID RED", "Hitman", "It's a small world（Acoustic ver.）", "Diving To You（Acoustic ver.）", "破裂（Acoustic ver.）", "ロウラヴ", "Teenager Forever", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.03.23", "venue": "渋谷WWW X", "location": "東京都渋谷区宇田川町１３−１７ ライズビル 2F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2N5RfQH3cNtD3bnqAd9vzw", "note": "1月28日ワンマンライブの追加公演", "setlist": ["Intro", "Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "PPL", "VIVID RED", "Hitman", "It's a small world（Acoustic ver.）", "Diving To You（Acoustic ver.）", "破裂（Acoustic ver.）", "ロウラヴ", "Teenager Forever", "Vinyl", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/977836502443937793","https://x.com/KingGnu_JP/status/976402835842543616"]}
       ]
     },
     {
@@ -880,7 +880,7 @@
       "name": "RIPPLES ~1990-199x~",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.03.21", "venue": "新木場STUDIO COAST", "location": "東京都江東区新木場2-2-10", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3TsHaba9zpKeQpLC35BzSu", "setlist": ["Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2018.03.21", "venue": "新木場STUDIO COAST", "location": "東京都江東区新木場2-2-10", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3TsHaba9zpKeQpLC35BzSu", "setlist": ["Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/976418815155175424", "https://x.com/KingGnu_JP/status/975279331378253824", "https://x.com/KingGnu_JP/status/968803395929714688"]}
       ]
     },
     {
@@ -888,7 +888,7 @@
       "name": "MbS×I♡RADIO 786「SANUKI ROCK COLOSSEUM～BUSTA CUP 9th round～」",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.03.17", "venue": "高松MONSTER", "location": "香川県高松市瓦町２丁目６−１４", "status": "", "setlist": [] }
+        { "date": "2018.03.17", "venue": "高松MONSTER", "location": "香川県高松市瓦町２丁目６−１４", "status": "", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/974984910984249346"}
       ]
     },
     {
@@ -896,7 +896,7 @@
       "name": "HOPE!",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.03.16", "venue": "大阪BIGCAT", "location": "大阪府大阪市中央区西心斎橋１丁目６−１４ BIGSTEP 4F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6wNZyHFTGW7gAHUGh5wn8k", "setlist": ["Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "Vinyl"] }
+        { "date": "2018.03.16", "venue": "大阪BIGCAT", "location": "大阪府大阪市中央区西心斎橋１丁目６−１４ BIGSTEP 4F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6wNZyHFTGW7gAHUGh5wn8k", "setlist": ["Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "Vinyl"] , "source": ["https://x.com/KingGnu_JP/status/974842146887880705","https://x.com/KingGnu_JP/status/939042280454832129"]}
       ]
     },
     {
@@ -904,7 +904,7 @@
       "name": "odol LIVE 2018 “O/g”",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.03.14", "venue": "INSA", "location": "福岡県福岡市中央区春吉３丁目５−７", "status": "", "setlist": [] }
+        { "date": "2018.03.14", "venue": "INSA", "location": "福岡県福岡市中央区春吉３丁目５−７", "status": "", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/973931059904618496"}
       ]
     },
     {
@@ -912,7 +912,7 @@
       "name": "HIROSHIMA MUSIC STADIUM -ハルバン’18-",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.03.11", "venue": "SECOND CRUTCH", "location": "広島県広島市中区堀川町４−２０ ４階", "status": "", "setlist": [] }
+        { "date": "2018.03.11", "venue": "SECOND CRUTCH", "location": "広島県広島市中区堀川町４−２０ ４階", "status": "", "setlist": [] , "source": ["https://x.com/KingGnu_JP/status/972783720699539456","https://x.com/KingGnu_JP/status/972669481322344448","https://x.com/KingGnu_JP/status/958542556685467649"]}
       ]
     },
     {
@@ -920,7 +920,7 @@
       "name": "Snow Light Festival",
       "scale": "FES",
       "shows": [
-        { "date": "2018.03.10", "venue": "苗場スキー場特設会場 DIAMOND STAGE", "location": "新潟県南魚沼郡湯沢町大字三国202", "status": "", "setlist": [] }
+        { "date": "2018.03.10", "venue": "苗場スキー場特設会場 DIAMOND STAGE", "location": "新潟県南魚沼郡湯沢町大字三国202", "status": "", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/967682297410461696"}
       ]
     },
     {
@@ -928,7 +928,7 @@
       "name": "CRCK/LCKS「春のパパパ１ツアー」",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.03.07", "venue": "新宿MARZ", "location": "東京都新宿区歌舞伎町２丁目４５−１ 第一 トキワビル B1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5FucUVqXq9EwahIYxgrCfH", "setlist": ["Tokyo Rendez-Vous", "Flash!!!（サビ追加）", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "Heroine", "PPL", "Hitman", "ロウラヴ", "Vinyl", "Teenager Forever"] }
+        { "date": "2018.03.07", "venue": "新宿MARZ", "location": "東京都新宿区歌舞伎町２丁目４５−１ 第一 トキワビル B1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5FucUVqXq9EwahIYxgrCfH", "setlist": ["Tokyo Rendez-Vous", "Flash!!!（サビ追加）", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "Heroine", "PPL", "Hitman", "ロウラヴ", "Vinyl", "Teenager Forever"] , "source": "https://x.com/KingGnu_JP/status/969134293330026498"}
       ]
     },
     {
@@ -936,7 +936,7 @@
       "name": "グランドスラム2018",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.03.03", "venue": "渋谷WWW", "location": "東京都渋谷区宇田川町１３−１７ シネマライズビル B1F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/59nBgPG7WHryIb8U8Tz75T", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl"] }
+        { "date": "2018.03.03", "venue": "渋谷WWW", "location": "東京都渋谷区宇田川町１３−１７ シネマライズビル B1F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/59nBgPG7WHryIb8U8Tz75T", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/969763829184741376"}
       ]
     },
     {
@@ -944,7 +944,7 @@
       "name": "DR.MARTENS PRESENTS STAND FOR SOMETHING LIVE STYLE OF TOKYO VOL.03",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.02.27", "venue": "表参道WALL&WALL", "location": "東京都港区南青山３丁目１８−１９ フェスタ表参道ビルB1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/50mqaRjtOaggA5UzMj6pt0", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "Vinyl"] }
+        { "date": "2018.02.27", "venue": "表参道WALL&WALL", "location": "東京都港区南青山３丁目１８−１９ フェスタ表参道ビルB1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/50mqaRjtOaggA5UzMj6pt0", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/968391453352382464"}
       ]
     },
     {
@@ -952,7 +952,7 @@
       "name": "Flying Flags Vol.3",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.02.24", "venue": "仙台darwin", "location": "宮城県仙台市青葉区一番町３丁目９−１３ DATEONEビル B1F", "status": "", "setlist": [] }
+        { "date": "2018.02.24", "venue": "仙台darwin", "location": "宮城県仙台市青葉区一番町３丁目９−１３ DATEONEビル B1F", "status": "", "setlist": [] , "source": ["https://x.com/KingGnu_JP/status/967350669769285632", "https://x.com/KingGnu_JP/status/964428717396119554"]}
       ]
     },
     {
@@ -960,7 +960,7 @@
       "name": "sora tobu sakana presents「天体の音楽会」",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.02.12", "venue": "中野サンプラザホール", "location": "東京都中野区中野４丁目１−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2bcf9M9x1LtVBofNyYIP9p", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "Teenager Forever"] }
+        { "date": "2018.02.12", "venue": "中野サンプラザホール", "location": "東京都中野区中野４丁目１−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2bcf9M9x1LtVBofNyYIP9p", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "ロウラヴ", "Vinyl", "Teenager Forever"] , "source": ["https://x.com/KingGnu_JP/status/961166494993301506", "https://x.com/KingGnu_JP/status/960784667803709440"]}
       ]
     },
     {
@@ -968,7 +968,7 @@
       "name": "King Gnu 1st One-Man Live “Tokyo Rendez-Vous”",
       "scale": "LIVE",
       "shows": [
-        { "date": "2018.01.28", "venue": "渋谷WWW", "location": "東京都渋谷区宇田川町１３−１７ ライズビル 2F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0kkKLjthdm5cXQ1Q36eUUX", "note": "初のワンマン公演。2ndアルバム『Sympa』初回限定盤DVDに一部収録", "setlist": ["オープニング", "Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "Heroine", "PPL", "Hitman", "It's a small world", "Diving To You", "破裂", "ロウラヴ", "Teenager Forever", "サマーレイン・ダイバー", "Vinyl"] }
+        { "date": "2018.01.28", "venue": "渋谷WWW", "location": "東京都渋谷区宇田川町１３−１７ ライズビル 2F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0kkKLjthdm5cXQ1Q36eUUX", "note": "初のワンマン公演。2ndアルバム『Sympa』初回限定盤DVDに一部収録", "setlist": ["オープニング", "Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "Catch!!!", "あなたは蜃気楼", "Heroine", "PPL", "Hitman", "It's a small world", "Diving To You", "破裂", "ロウラヴ", "Teenager Forever", "サマーレイン・ダイバー", "Vinyl"] , "source": ["https://x.com/KingGnu_JP/status/965508308575469568", "https://www.facebook.com/KingGnu/videos/765851293618771?locale=pt_BR"]}
       ]
     },
     {
@@ -976,7 +976,7 @@
       "name": "SHINJUKU MARZ 16th Anniversary !!",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.12.29", "venue": "新宿MARZ", "location": "東京都新宿区歌舞伎町２丁目４５−１ 第一 トキワビル B1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1OzISMezIPJ5WJPk83VtlS", "setlist": ["Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "Catch!!!", "ロウラヴ", "Vinyl", "あなたは蜃気楼"] }
+        { "date": "2017.12.29", "venue": "新宿MARZ", "location": "東京都新宿区歌舞伎町２丁目４５−１ 第一 トキワビル B1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1OzISMezIPJ5WJPk83VtlS", "setlist": ["Tokyo Rendez-Vous", "Flash!!!", "McDonald Romance", "Catch!!!", "ロウラヴ", "Vinyl", "あなたは蜃気楼"] , "source": "https://x.com/KingGnu_JP/status/937623704283987968"}
       ]
     },
     {
@@ -984,15 +984,15 @@
       "name": "HOT STUFF presents Ruby Tuesday 27",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.12.12", "venue": "渋谷WWW", "location": "東京都渋谷区宇田川町１３−１７ ライズビル 2F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2U0NdYmY7ITwKvd6GGdW6U", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "Vinyl", "McDonald Romance", "Catch!!!", "ロウラヴ", "あなたは蜃気楼", "サマーレイン・ダイバー"] }
+        { "date": "2017.12.12", "venue": "渋谷WWW", "location": "東京都渋谷区宇田川町１３−１７ ライズビル 2F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2U0NdYmY7ITwKvd6GGdW6U", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "Vinyl", "McDonald Romance", "Catch!!!", "ロウラヴ", "あなたは蜃気楼", "サマーレイン・ダイバー"] , "source": "https://x.com/KingGnu_JP/status/919111292786417665"}
       ]
     },
     {
       "year": "2017",
-      "name": "not forget pleasure 7",
+      "name": "あらかじめ決められた恋人たちへ 20th Final ワンマンライブ大阪",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.12.07", "venue": "心斎橋CLAPPER", "location": "大阪府大阪市中央区東心斎橋１丁目１２−１７", "status": "", "setlist": [] }
+        { "date": "2017.12.07", "venue": "心斎橋CLAPPER", "location": "大阪府大阪市中央区東心斎橋１丁目１２−１７", "status": "", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/937969411754934272"}
       ]
     },
     {
@@ -1000,7 +1000,7 @@
       "name": "“SPIN.DISCOVERY vol.05”",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.12.03", "venue": "表参道WALL&WALL", "location": "東京都港区南青山３丁目１８−１９ フェスタ表参道ビルB1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0IdQUoqHxNPn8Sh3jqDcWG", "setlist": ["Tokyo Rendez-Vous", "Vinyl", "破裂", "Catch!!!", "ロウラヴ", "あなたは蜃気楼", "サマーレイン・ダイバー"] }
+        { "date": "2017.12.03", "venue": "表参道WALL&WALL", "location": "東京都港区南青山３丁目１８−１９ フェスタ表参道ビルB1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0IdQUoqHxNPn8Sh3jqDcWG", "setlist": ["Tokyo Rendez-Vous", "Vinyl", "破裂", "Catch!!!", "ロウラヴ", "あなたは蜃気楼", "サマーレイン・ダイバー"] , "source": "https://x.com/KingGnu_JP/status/928216275716734976"}
       ]
     },
     {
@@ -1008,7 +1008,7 @@
       "name": "exPoP!!!!! vol.103",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.11.30", "venue": "TSUTAYA O-nest", "location": "東京都渋谷区円山町２−３ O-WESTビル 6F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6LvnlMx6ZIaVUF5pnrqEhg", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "Vinyl", "McDonald Romance", "ロウラヴ", "あなたは蜃気楼", "サマーレイン・ダイバー", "Catch!!!（EN）"] }
+        { "date": "2017.11.30", "venue": "TSUTAYA O-nest", "location": "東京都渋谷区円山町２−３ O-WESTビル 6F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6LvnlMx6ZIaVUF5pnrqEhg", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "Vinyl", "McDonald Romance", "ロウラヴ", "あなたは蜃気楼", "サマーレイン・ダイバー", "Catch!!!（EN）"] , "source": "https://x.com/KingGnu_JP/status/933592855754416128"}
       ]
     },
     {
@@ -1016,7 +1016,7 @@
       "name": "odol TOUR 2017 “視線” <guest King Gnu>",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.11.10", "venue": "池下CLUB UPSET", "location": "愛知県名古屋市千種区池下１丁目４−２３ アミュゾン池下ビル 5F", "status": "", "setlist": [] }
+        { "date": "2017.11.10", "venue": "池下CLUB UPSET", "location": "愛知県名古屋市千種区池下１丁目４−２３ アミュゾン池下ビル 5F", "status": "", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/928992659154206720"}
       ]
     },
     {
@@ -1024,7 +1024,7 @@
       "name": "インストアライブ",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.10.29", "venue": "タワーレコード横浜ビブレ店", "location": "神奈川県横浜市西区南幸２丁目１５−１３ 横浜ビブレ 7F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1Y6lT22BFHnHmsc1bDVf8z", "note": "台風により King Gnu『Tokyo Rendez-Vous』発売記念FREE LIVE（横浜VIVRE前特設ステージ）を中止し、インストアライブへ変更", "setlist": ["McDonald Romance", "あなたは蜃気楼", "破裂", "Vinyl", "サマーレイン・ダイバー"] }
+        { "date": "2017.10.29", "venue": "タワーレコード横浜ビブレ店", "location": "神奈川県横浜市西区南幸２丁目１５−１３ 横浜ビブレ 7F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1Y6lT22BFHnHmsc1bDVf8z", "note": "台風により King Gnu『Tokyo Rendez-Vous』発売記念FREE LIVE（横浜VIVRE前特設ステージ）を中止し、インストアライブへ変更", "setlist": ["McDonald Romance", "あなたは蜃気楼", "破裂", "Vinyl", "サマーレイン・ダイバー"] , "source": "https://x.com/KingGnu_JP/status/920567750837157888"}
       ]
     },
     {
@@ -1032,7 +1032,7 @@
       "name": "Eggs presents FM802 MINAMI WHEEL 2017",
       "scale": "FES",
       "shows": [
-        { "date": "2017.10.09", "venue": "MINAMI WHEEL", "location": "大阪府大阪市中央区", "status": "", "setlist": [] }
+        { "date": "2017.10.09", "venue": "MINAMI WHEEL", "location": "大阪府大阪市中央区", "status": "", "setlist": [] , "source": "https://www.facebook.com/KingGnu/posts/pfbid02Ly2di3soaev7yePuBkWvPa7t8NBGj1buQBk38u4Lr4unVPfrH6QkfuQo4EZ71eYQl?locale=pt_BR"}
       ]
     },
     {
@@ -1040,7 +1040,7 @@
       "name": "LIQUIDROOM&BOY presents Song For Future Generation",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.09.22", "venue": "恵比寿LIQUIDROOM", "location": "東京都渋谷区東３丁目１６−６", "status": "", "setlist": [] }
+        { "date": "2017.09.22", "venue": "恵比寿LIQUIDROOM", "location": "東京都渋谷区東３丁目１６−６", "status": "", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/902831993716477952"}
       ]
     },
     {
@@ -1048,7 +1048,7 @@
       "name": "DALLJUB STEP CLUBリリースツアー",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.09.14", "venue": "F.A.D横浜", "location": "神奈川県横浜市中区山下町168 1 レイトンハウス横浜 1F", "status": "", "setlist": [] }
+        { "date": "2017.09.14", "venue": "F.A.D横浜", "location": "神奈川県横浜市中区山下町168 1 レイトンハウス横浜 1F", "status": "", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/908158051252711424"}
       ]
     },
     {
@@ -1072,7 +1072,7 @@
       "name": "RISING SUN ROCK FES' 2017 in EZO",
       "scale": "FES",
       "shows": [
-        { "date": "2017.08.12", "venue": "石狩湾新港樽川ふ頭横野外特設ステージ", "location": "北海道石狩市新港中央1丁目", "status": "", "setlist": [] }
+        { "date": "2017.08.12", "venue": "石狩湾新港樽川ふ頭横野外特設ステージ", "location": "北海道石狩市新港中央1丁目", "status": "", "setlist": [] , "source": "https://www.facebook.com/KingGnu/posts/pfbid028GdDTThVaoYzRkjL1pTEAfD1EJB8XYSer1PsLCiZihrYSpWPqgo3RKXJ2koYY1ewl?locale=pt_BR"}
       ]
     },
     {
@@ -1080,7 +1080,7 @@
       "name": "FUJI ROCK FESTIVAL '17 “ROOKIE A GO-GO”",
       "scale": "FES",
       "shows": [
-        { "date": "2017.07.30", "venue": "苗場スキー場", "location": "新潟県南魚沼郡湯沢町大字三国202", "status": "", "setlist": [] }
+        { "date": "2017.07.30", "venue": "苗場スキー場", "location": "新潟県南魚沼郡湯沢町大字三国202", "status": "", "setlist": [] , "source": "https://www.facebook.com/KingGnu/posts/pfbid02SZpWAnTYYwsgZYTFsfDQtrPURQ6fZMDgjXwsbnJ4ZgXciJFzwjsjVEDDMGozQT65l?locale=pt_BR"}
       ]
     },
     {
@@ -1088,7 +1088,7 @@
       "name": "MAGICAL COLORS",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.07.19", "venue": "新宿LOFT", "location": "東京都新宿区歌舞伎町１丁目１２−９ タテハナビル", "status": "", "setlist": [] }
+        { "date": "2017.07.19", "venue": "新宿LOFT", "location": "東京都新宿区歌舞伎町１丁目１２−９ タテハナビル", "status": "", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/881484842906435584"}
       ]
     },
     {
@@ -1120,7 +1120,7 @@
       "name": "INDEEA presents SIRI PAILIN",
       "scale": "LIVE",
       "shows": [
-        { "date": "2017.05.12", "venue": "六本木Varit", "location": "東京都港区六本木５丁目１８−２ 大昌第二ビル B1", "status": "", "setlist": [] }
+        { "date": "2017.05.12", "venue": "六本木Varit", "location": "東京都港区六本木５丁目１８−２ 大昌第二ビル B1", "status": "", "setlist": [] , "source": "https://www.facebook.com/KingGnu/videos/692237384313496?locale=pt_BR"}
       ]
     }
   ]
