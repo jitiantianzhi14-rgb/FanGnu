@@ -754,7 +754,8 @@
       });
     });
 
-    return { tourCount: allTours.length, showCount, last, songCounts, prefCounts, countryCounts, venueCounts };
+    const tourCount = allTours.filter(tour => (tour.shows || []).some(show => !(show.status || '').includes('中止'))).length; // 開催された公演が1件もないツアーは数えない
+    return { tourCount, showCount, last, songCounts, prefCounts, countryCounts, venueCounts };
   }
 
   function renderSummary(stats) {
@@ -769,7 +770,7 @@
         <div class="summary-value">${stats.showCount}<span class="summary-unit">回</span></div>
       </div>
       <div class="summary-card">
-        <div class="summary-label">総ツアー/イベント数<span class="summary-sub">Srv.Vinci期含む</span></div>
+        <div class="summary-label">総ツアー/イベント数<span class="summary-sub">Srv.Vinci期含む／中止は除く</span></div>
         <div class="summary-value">${stats.tourCount}<span class="summary-unit">件</span></div>
       </div>
       <div class="summary-card">
