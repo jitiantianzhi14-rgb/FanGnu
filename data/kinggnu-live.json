@@ -256,6 +256,14 @@
     },
     {
       "year": "2020",
+      "name": "COUNTDOWN JAPAN 20/21",
+      "scale": "FES",
+      "shows": [
+        { "date": "2020.12.27", "venue": "幕張メッセ国際展示場1～11ホール、イベントホール", "location": "千葉県千葉市美浜区中瀬２丁目２−１", "status": "中止または延期", "spotifyPlaylist": "", "setlist": [],  "source": "https://x.com/KingGnu_JP/status/1333606746363924485"}
+      ]
+    },
+    {
+      "year": "2020",
       "name": "King Gnu Live Tour 2020 AW CEREMONY",
       "scale": "LIVE",
       "shows": [
@@ -275,7 +283,7 @@
       "name": "King Gnu Streaming Live",
       "scale": "LIVE",
       "shows": [
-        { "date": "2020.08.30", "venue": "streaming", "location": "ONLINE", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0tkMfEev4uMDtaIx7ZX4nf", "videos": [ { "songs": "飛行艇", "yt": "IPzOxKW3fSA" } ], "setlist": ["Flash!!!", "Sorrows", "Vinyl", "傘", "It's a small world", "Overflow", "白日", "Prayer X", "Hitman", "The hole", "Slumberland", "飛行艇", "どろん", "Teenager Forever"] }
+        { "date": "2020.08.30", "venue": "streaming", "location": "ONLINE", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0tkMfEev4uMDtaIx7ZX4nf", "videos": [ { "songs": "飛行艇", "yt": "IPzOxKW3fSA" } ], "setlist": ["Flash!!!", "Sorrows", "Vinyl", "傘", "It's a small world", "Overflow", "白日", "Prayer X", "Hitman", "The hole", "Slumberland", "飛行艇", "どろん", "Teenager Forever"] , "source": "https://x.com/KingGnu_JP/status/1299939224611819521"}
       ]
     },
     {
@@ -340,7 +348,7 @@
       "name": "COUNTDOWN JAPAN 19/20",
       "scale": "FES",
       "shows": [
-        { "date": "2019.12.28", "venue": "幕張メッセ EARTH STAGE", "location": "千葉県千葉市美浜区中瀬２丁目１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/33vNFdrvOeqjZfcV6tEm45", "setlist": ["飛行艇", "Sorrows", "It's a small world", "傘", "白日", "Prayer X", "Slumberland", "The hole", "Flash!!!", "Teenager Forever"] }
+        { "date": "2019.12.28", "venue": "幕張メッセ EARTH STAGE", "location": "千葉県千葉市美浜区中瀬２丁目１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/33vNFdrvOeqjZfcV6tEm45", "setlist": ["飛行艇", "Sorrows", "It's a small world", "傘", "白日", "Prayer X", "Slumberland", "The hole", "Flash!!!", "Teenager Forever"] , "source": ["https://x.com/KingGnu_JP/status/1210736557784616960","https://x.com/KingGnu_JP/status/1210604095834218496"] }
       ]
     },
     {
@@ -348,7 +356,7 @@
       "name": "FM802 30PARTY FM802 ROCK FESTIVAL RADIO CRAZY 2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.12.25", "venue": "インデックス大阪", "location": "大阪府大阪市住之江区南港北１丁目５−１０２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6MCrow8eYOViRAqaS9B0xi", "setlist": ["飛行艇", "Sorrows", "傘", "白日", "Prayer X", "Slumberland", "The hole", "Flash!!!", "Teenager Forever"] }
+        { "date": "2019.12.25", "venue": "インデックス大阪", "location": "大阪府大阪市住之江区南港北１丁目５−１０２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6MCrow8eYOViRAqaS9B0xi", "setlist": ["飛行艇", "Sorrows", "傘", "白日", "Prayer X", "Slumberland", "The hole", "Flash!!!", "Teenager Forever"] , "source": ["https://x.com/KingGnu_JP/status/1209653544275415041","https://x.com/KingGnu_JP/status/1209342336448090112"] }
       ]
     },
     {
@@ -356,19 +364,19 @@
       "name": "King Gnu Live Tour 2019 AW",
       "scale": "LIVE",
       "shows": [
-        { "date": "2019.10.14", "venue": "仙台GIGS", "location": "宮城県仙台市若林区荒井東１丁目４−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/58DjqxQtWme9xTa83Nf7zE", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic ver.）", "McDonald Romance（Acoustic ver.）", "Bedtown（Acoustic ver.）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.10.20", "venue": "京都KBS HALL", "location": "京都府京都市上京区上長者町６００−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6fa5Hy7OILbvXHUf3CaYED", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.10.22", "venue": "日比谷野外大音楽堂", "location": "東京都千代田区日比谷公園１−５", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0BfHckp4RJqI1farOa4O1c", "note": "WOWOW放送", "setlist": ["Vinyl", "白日", "ロウラヴ", "あなたは蜃気楼", "It's a small world", "飛行艇", "Overflow", "NIGHT POOL", "Sorrows", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.10.27", "venue": "Zepp Sapporo", "location": "北海道札幌市中央区南９条西４丁目４", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4s4zm8tKu33ge9VfuubjQI", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.10.31", "venue": "Zepp Nagoya", "location": "愛知県名古屋市中村区平池町４丁目６０−７", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2inHrzNo6s0VGj4gvLTukL", "note": "メンバー誕生日サプライズあり", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Happy Birthday to You", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.11.01", "venue": "Zepp Fukuoka", "location": "福岡県福岡市中央区地行浜２丁目２−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0dLTmwr9WZvuROIlb9fuvh", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.11.03", "venue": "BLUE LIVE HIROSHIMA", "location": "広島県広島市南区宇品海岸３丁目１２−６９", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5cGaBQzSLZY2PHVQLsd5Ce", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic ver.）", "McDonald Romance（Acoustic ver.）", "Bedtown（Acoustic ver.）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.11.04", "venue": "高松festhalle", "location": "香川県高松市常磐町１丁目３−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2ddsDFo8fxIs45qzUyRaJV", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic ver.）", "McDonald Romance（Acoustic ver.）", "Bedtown（Acoustic ver.）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.11.06", "venue": "Zepp Osaka Bayside", "location": "大阪府大阪市此花区桜島１丁目１−６１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0RBm4DUlUuTtQ3D6rE5ES9", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.11.07", "venue": "Zepp Osaka Bayside", "location": "大阪府大阪市此花区桜島１丁目１−６１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3ESOTN3bdXIAmsY9wNIo35", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic ver.）", "McDonald Romance（Acoustic ver.）", "Bedtown（Acoustic ver.）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.11.16", "venue": "Zepp DiverCity TOKYO", "location": "東京都江東区青海１丁目１−１０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3Hymhu2gYsHN3XqZVT0dkN", "setlist": ["Vinyl", "白日", "ロウラヴ", "あなたは蜃気楼", "It's a small world", "飛行艇", "Overflow", "NIGHT POOL", "Sorrows", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.11.17", "venue": "Zepp DiverCity TOKYO", "location": "東京都江東区青海１丁目１−１０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1wftxzYwVoQT7cmhq0ZhR0", "setlist": ["Vinyl", "Sorrows", "Overflow", "It's a small world", "ロウラヴ", "飛行艇", "あなたは蜃気楼", "NIGHT POOL", "白日", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] },
-        { "date": "2019.11.26", "venue": "Zepp Tokyo", "location": "東京都江東区青海1-3-11", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5MGi73iMIqNb4fuqkzgaRZ", "note": "ツアーファイナル,WOWOW放送,ライブ終了後にアルバム『CEREMONY』リリース&同名ツアー開催を発表", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] }
+        { "date": "2019.10.14", "venue": "仙台GIGS", "location": "宮城県仙台市若林区荒井東１丁目４−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/58DjqxQtWme9xTa83Nf7zE", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic ver.）", "McDonald Romance（Acoustic ver.）", "Bedtown（Acoustic ver.）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.10.20", "venue": "京都KBS HALL", "location": "京都府京都市上京区上長者町６００−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6fa5Hy7OILbvXHUf3CaYED", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.10.22", "venue": "日比谷野外大音楽堂", "location": "東京都千代田区日比谷公園１−５", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0BfHckp4RJqI1farOa4O1c", "note": "WOWOW放送", "setlist": ["Vinyl", "白日", "ロウラヴ", "あなたは蜃気楼", "It's a small world", "飛行艇", "Overflow", "NIGHT POOL", "Sorrows", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.10.27", "venue": "Zepp Sapporo", "location": "北海道札幌市中央区南９条西４丁目４", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4s4zm8tKu33ge9VfuubjQI", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.10.31", "venue": "Zepp Nagoya", "location": "愛知県名古屋市中村区平池町４丁目６０−７", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2inHrzNo6s0VGj4gvLTukL", "note": "メンバー誕生日サプライズあり", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Happy Birthday to You", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.11.01", "venue": "Zepp Fukuoka", "location": "福岡県福岡市中央区地行浜２丁目２−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0dLTmwr9WZvuROIlb9fuvh", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.11.03", "venue": "BLUE LIVE HIROSHIMA", "location": "広島県広島市南区宇品海岸３丁目１２−６９", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5cGaBQzSLZY2PHVQLsd5Ce", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic ver.）", "McDonald Romance（Acoustic ver.）", "Bedtown（Acoustic ver.）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.11.04", "venue": "高松festhalle", "location": "香川県高松市常磐町１丁目３−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2ddsDFo8fxIs45qzUyRaJV", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic ver.）", "McDonald Romance（Acoustic ver.）", "Bedtown（Acoustic ver.）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.11.06", "venue": "Zepp Osaka Bayside", "location": "大阪府大阪市此花区桜島１丁目１−６１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0RBm4DUlUuTtQ3D6rE5ES9", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.11.07", "venue": "Zepp Osaka Bayside", "location": "大阪府大阪市此花区桜島１丁目１−６１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3ESOTN3bdXIAmsY9wNIo35", "setlist": ["白日", "Sorrows", "It's a small world", "ロウラヴ", "あなたは蜃気楼", "NIGHT POOL", "Overflow", "Vinyl", "飛行艇", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks（Acoustic ver.）", "McDonald Romance（Acoustic ver.）", "Bedtown（Acoustic ver.）", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.11.16", "venue": "Zepp DiverCity TOKYO", "location": "東京都江東区青海１丁目１−１０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3Hymhu2gYsHN3XqZVT0dkN", "setlist": ["Vinyl", "白日", "ロウラヴ", "あなたは蜃気楼", "It's a small world", "飛行艇", "Overflow", "NIGHT POOL", "Sorrows", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.11.17", "venue": "Zepp DiverCity TOKYO", "location": "東京都江東区青海１丁目１−１０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1wftxzYwVoQT7cmhq0ZhR0", "setlist": ["Vinyl", "Sorrows", "Overflow", "It's a small world", "ロウラヴ", "飛行艇", "あなたは蜃気楼", "NIGHT POOL", "白日", "Slumberland", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]},
+        { "date": "2019.11.26", "venue": "Zepp Tokyo", "location": "東京都江東区青海1-3-11", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5MGi73iMIqNb4fuqkzgaRZ", "note": "ツアーファイナル,WOWOW放送,ライブ終了後にアルバム『CEREMONY』リリース&同名ツアー開催を発表", "setlist": ["Slumberland", "ロウラヴ", "あなたは蜃気楼", "Sorrows", "It's a small world", "NIGHT POOL", "Overflow", "Vinyl", "白日", "飛行艇", "VIVID RED", "Hitman", "The hole", "Don't Stop the Clocks", "McDonald Romance", "Bedtown", "Tokyo Rendez-Vous", "Prayer X", "Flash!!!", "Teenager Forever", "傘", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1159660814430691328", "https://x.com/KingGnu_JP/status/1182628465545080832"]}
       ]
     },
     {
@@ -376,15 +384,15 @@
       "name": "バズリズム LIVE 2019",
       "scale": "LIVE",
       "shows": [
-        { "date": "2019.11.10", "venue": "横浜アリーナ", "location": "神奈川県横浜市港北区新横浜３丁目１０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3ZV39x68dr838WqcXgHr1D", "setlist": ["飛行艇", "Sorrows", "白日", "The hole", "Slumberland", "Flash!!!"] }
+        { "date": "2019.11.10", "venue": "横浜アリーナ", "location": "神奈川県横浜市港北区新横浜３丁目１０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3ZV39x68dr838WqcXgHr1D", "setlist": ["飛行艇", "Sorrows", "白日", "The hole", "Slumberland", "Flash!!!"] , "source": "https://x.com/KingGnu_JP/status/1172354432127733760"}
       ]
     },
     {
       "year": "2019",
-      "name": "氣志團万博2019",
+      "name": "シミズオクト Presents 氣志團万博2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.09.14", "venue": "袖ケ浦海浜公園", "location": "千葉県袖ケ浦市南袖３６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2DxCxrP6uAX3BD96IUrRSa", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "白日", "飛行艇", "Flash!!!"] }
+        { "date": "2019.09.14", "venue": "袖ケ浦海浜公園", "location": "千葉県袖ケ浦市南袖３６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2DxCxrP6uAX3BD96IUrRSa", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "白日", "飛行艇", "Flash!!!"] , "source": "https://x.com/KingGnu_JP/status/1172353182522998785"}
       ]
     },
     {
@@ -392,7 +400,7 @@
       "name": "WIRED MUSIC FESTIVAL’19",
       "scale": "FES",
       "shows": [
-        { "date": "2019.09.08", "venue": "AICHI SKY EXPO WIRED STAGE", "location": "愛知県常滑市セントレア５丁目１０番１号", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4gozoSKX8DxOVtOg5cBZ5z", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "It's a small world", "Prayer X", "白日", "The hole", "飛行艇", "Flash!!!"] }
+        { "date": "2019.09.08", "venue": "AICHI SKY EXPO WIRED STAGE", "location": "愛知県常滑市セントレア５丁目１０番１号", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4gozoSKX8DxOVtOg5cBZ5z", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "It's a small world", "Prayer X", "白日", "The hole", "飛行艇", "Flash!!!"] , "source": "https://x.com/KingGnu_JP/status/1169575876826025985"}
       ]
     },
     {
@@ -400,7 +408,7 @@
       "name": "27th Sunset Live 2019 -Love&Unity-",
       "scale": "FES",
       "shows": [
-        { "date": "2019.09.07", "venue": "茶屋海水浴場・キャンプ場", "location": "福岡県糸島市志摩芥屋2589", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/53G6gsd7QP23I0yWyKjptV", "setlist": ["Slumberland", "Sorrows", "Vinyl", "McDonald Romance", "It's a small world", "Prayer X", "白日", "The hole", "飛行艇", "Flash!!!"] }
+        { "date": "2019.09.07", "venue": "茶屋海水浴場・キャンプ場", "location": "福岡県糸島市志摩芥屋2589", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/53G6gsd7QP23I0yWyKjptV", "setlist": ["Slumberland", "Sorrows", "Vinyl", "McDonald Romance", "It's a small world", "Prayer X", "白日", "The hole", "飛行艇", "Flash!!!"] , "source": "https://x.com/KingGnu_JP/status/1169576188219514880"}
       ]
     },
     {
@@ -408,7 +416,7 @@
       "name": "SWEET LOVE SHOWER 2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.09.01", "venue": "山中湖交流プラザ きらら", "location": "山梨県南都留郡山中湖村平野４７９−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/63iKvfCa7GmoWMGfsM4YEo", "setlist": ["Tokyo Rendez-Vous", "Slumberland", "Sorrows", "Vinyl", "Prayer X", "白日", "飛行艇", "Flash!!!"] }
+        { "date": "2019.09.01", "venue": "山中湖交流プラザ きらら", "location": "山梨県南都留郡山中湖村平野４７９−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/63iKvfCa7GmoWMGfsM4YEo", "setlist": ["Tokyo Rendez-Vous", "Slumberland", "Sorrows", "Vinyl", "Prayer X", "白日", "飛行艇", "Flash!!!"] , "source": "https://x.com/KingGnu_JP/status/1167715706693046272"}
       ]
     },
     {
@@ -416,7 +424,7 @@
       "name": "音楽と髭達2019-最後の花火-",
       "scale": "FES",
       "shows": [
-        { "date": "2019.08.31", "venue": "HARD OFF ECOスタジアム新潟", "location": "新潟県新潟市中央区長潟５７０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7rwxBOdKldxYHmJfeMmWHp", "setlist": ["It's a small world", "Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "Prayer X", "白日", "The hole", "飛行艇", "Flash!!!"] }
+        { "date": "2019.08.31", "venue": "HARD OFF ECOスタジアム新潟", "location": "新潟県新潟市中央区長潟５７０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7rwxBOdKldxYHmJfeMmWHp", "setlist": ["It's a small world", "Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "Prayer X", "白日", "The hole", "飛行艇", "Flash!!!"] , "source": "https://x.com/KingGnu_JP/status/1167366584756658178"}
       ]
     },
     {
@@ -424,7 +432,7 @@
       "name": "WILD BUNCH FEST. 2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.08.25", "venue": "山口きらら博記念公園", "location": "山口県山口市阿知須１０５０９−５０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1yIwo91UbB1JyETB2IZ8kS", "setlist": ["Slumberland", "Sorrows", "Vinyl", "Prayer X", "白日", "飛行艇", "Flash!!!"] }
+        { "date": "2019.08.25", "venue": "山口きらら博記念公園", "location": "山口県山口市阿知須１０５０９−５０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1yIwo91UbB1JyETB2IZ8kS", "setlist": ["Slumberland", "Sorrows", "Vinyl", "Prayer X", "白日", "飛行艇", "Flash!!!"] , "source": "https://x.com/KingGnu_JP/status/1164925020960784385"}
       ]
     },
     {
@@ -432,7 +440,7 @@
       "name": "MONSTER baSH 2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.08.24", "venue": "国営讃岐まんのう公園", "location": "香川県仲多度郡まんのう町吉野４２４３−１２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/17ja4awIq66s6XsHhDztHM", "setlist": ["飛行艇", "Sorrows", "白日", "The hole", "Slumberland", "Flash!!!"] }
+        { "date": "2019.08.24", "venue": "国営讃岐まんのう公園", "location": "香川県仲多度郡まんのう町吉野４２４３−１２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/17ja4awIq66s6XsHhDztHM", "setlist": ["飛行艇", "Sorrows", "白日", "The hole", "Slumberland", "Flash!!!"] , "source": "https://x.com/KingGnu_JP/status/1164924579808079872"}
       ]
     },
     {
@@ -440,7 +448,7 @@
       "name": "SUMMER SONIC 2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.08.18", "venue": "幕張メッセ SONIC STAGE", "location": "千葉県千葉市美浜区中瀬２丁目１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3J2wuaTkCMb4baTUeXIFUK", "setlist": ["It's a small world", "Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "Tokyo Rendez-Vous", "Prayer X", "白日", "The hole", "飛行艇", "Flash!!!"] }
+        { "date": "2019.08.18", "venue": "幕張メッセ SONIC STAGE", "location": "千葉県千葉市美浜区中瀬２丁目１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3J2wuaTkCMb4baTUeXIFUK", "setlist": ["It's a small world", "Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "Tokyo Rendez-Vous", "Prayer X", "白日", "The hole", "飛行艇", "Flash!!!"] , "source": ["https://x.com/KingGnu_JP/status/1162597778414956544", "https://x.com/KingGnu_JP/status/1161894746903609344"] }
       ]
     },
     {
@@ -448,7 +456,7 @@
       "name": "RISING SUN ROCK FESTIVAL 2019 in EZO",
       "scale": "FES",
       "shows": [
-        { "date": "2019.08.16", "venue": "石狩湾新港樽川ふ頭横野外特設ステージ RED STAR FIELD", "location": "北海道石狩市新港中央1丁目", "status": "中止", "setlist": [] }
+        { "date": "2019.08.16", "venue": "石狩湾新港樽川ふ頭横野外特設ステージ RED STAR FIELD", "location": "北海道石狩市新港中央1丁目", "status": "中止", "setlist": [] , "source": "https://x.com/KingGnu_JP/status/1161894610123153408"}
       ]
     },
     {
@@ -456,7 +464,7 @@
       "name": "ROCK IN JAPAN FESTIVAL 2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.08.04", "venue": "国営ひたち海浜公園 PARK STAGE", "location": "茨城県ひたちなか市馬渡 字大沼605-4", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4akrSw4ijcD5e2y7GUAF8c", "setlist": ["Vinyl", "Sorrows", "It's a small world", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "白日", "飛行艇", "Flash!!!"] }
+        { "date": "2019.08.04", "venue": "国営ひたち海浜公園 PARK STAGE", "location": "茨城県ひたちなか市馬渡 字大沼605-4", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4akrSw4ijcD5e2y7GUAF8c", "setlist": ["Vinyl", "Sorrows", "It's a small world", "Prayer X", "Tokyo Rendez-Vous", "Slumberland", "白日", "飛行艇", "Flash!!!"] , "source": ["https://x.com/KingGnu_JP/status/1157255035337637888", "https://x.com/KingGnu_JP/status/1157877856522784769"] }
       ]
     },
     {
@@ -464,7 +472,7 @@
       "name": "NUMBER SHOT2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.07.21", "venue": "海の中道海浜公園 野外劇場", "location": "福岡県福岡市東区西戸崎１８−２５", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1h9hxHS0OWKKNNM3dhil9Z", "setlist": ["Vinyl", "Sorrows", "Prayer X", "Slumberland", "白日", "Flash!!!"] }
+        { "date": "2019.07.21", "venue": "海の中道海浜公園 野外劇場", "location": "福岡県福岡市東区西戸崎１８−２５", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1h9hxHS0OWKKNNM3dhil9Z", "setlist": ["Vinyl", "Sorrows", "Prayer X", "Slumberland", "白日", "Flash!!!"] , "source": "https://x.com/KingGnu_JP/status/1152413951268777984"}
       ]
     },
     {
@@ -472,7 +480,7 @@
       "name": "森、道、市場2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.06.02", "venue": "ラグーナビーチ＆遊園地ラグナシア", "location": "愛知県蒲郡市海陽町２丁目３", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4qKMuFJKWNSJdHxFICnWTr", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "McDonald Romance", "It's a small world", "NIGHT POOL", "白日", "ロウラヴ", "Prayer X", "あなたは蜃気楼", "The hole", "Tokyo Rendez-Vous", "Flash!!!", "サマーレイン・ダイバー"] }
+        { "date": "2019.06.02", "venue": "ラグーナビーチ＆遊園地ラグナシア", "location": "愛知県蒲郡市海陽町２丁目３", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4qKMuFJKWNSJdHxFICnWTr", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "McDonald Romance", "It's a small world", "NIGHT POOL", "白日", "ロウラヴ", "Prayer X", "あなたは蜃気楼", "The hole", "Tokyo Rendez-Vous", "Flash!!!", "サマーレイン・ダイバー"] , "source": "https://x.com/KingGnu_JP/status/1135048188400771072"}
       ]
     },
     {
@@ -480,7 +488,7 @@
       "name": "頂 -ITADAKI- 2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.06.01", "venue": "吉田公園特設ステージ", "location": "静岡県榛原郡吉田町川尻４０３６−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4r8UMLOQXZYY98N514SN0T", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "It's a small world", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous"] }
+        { "date": "2019.06.01", "venue": "吉田公園特設ステージ", "location": "静岡県榛原郡吉田町川尻４０３６−２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4r8UMLOQXZYY98N514SN0T", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "It's a small world", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous"] , "source": "https://x.com/KingGnu_JP/status/1134649922400051200"}
       ]
     },
     {
@@ -488,7 +496,7 @@
       "name": "METROCK 2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.05.19", "venue": "海とのふれあい広場 GREEN HILL", "location": "大阪府堺市堺区匠町６−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5AL4EliKAd2XmxM657WEyO", "setlist": ["It's a small world", "あなたは蜃気楼", "Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous"] },
+        { "date": "2019.05.19", "venue": "海とのふれあい広場 GREEN HILL", "location": "大阪府堺市堺区匠町６−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5AL4EliKAd2XmxM657WEyO", "setlist": ["It's a small world", "あなたは蜃気楼", "Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous"] , "source": ["https://x.com/KingGnu_JP/status/1130333779690606595", "https://x.com/KingGnu_JP/status/1129967399757701120"]},
         { "date": "2019.05.26", "venue": "若洲公園", "location": "東京都江東区若洲３丁目２", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6RkqVmRiRCTExNXlC4Bxc2", "setlist": ["McDonald Romance", "あなたは蜃気楼", "Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "McDonald Romance", "It's a small world", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous"] }
       ]
     },
@@ -497,7 +505,7 @@
       "name": "GREEN ROOM FESTIVAL",
       "scale": "FES",
       "shows": [
-        { "date": "2019.05.25", "venue": "横浜赤レンガ地区野外特設会場", "location": "神奈川県横浜市中区新港1-1-1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/75791W7YD1PnBUb5F3zqGJ", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "McDonald Romance", "It's a small world", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous"] }
+        { "date": "2019.05.25", "venue": "横浜赤レンガ地区野外特設会場", "location": "神奈川県横浜市中区新港1-1-1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/75791W7YD1PnBUb5F3zqGJ", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "McDonald Romance", "It's a small world", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous"] , "source": "https://x.com/KingGnu_JP/status/1132065400332595200"}
       ]
     },
     {
@@ -505,7 +513,7 @@
       "name": "FM802 30PARTY Rockin’Radio! -OSAKA JO YAON-",
       "scale": "FES",
       "shows": [
-        { "date": "2019.05.11", "venue": "大阪城野外音楽堂", "location": "大阪府大阪市中央区大阪城３−１１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3uGwI8YmU5mlw1PnkaXA5r", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous", "サマーレイン・ダイバー（EN）"] }
+        { "date": "2019.05.11", "venue": "大阪城野外音楽堂", "location": "大阪府大阪市中央区大阪城３−１１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3uGwI8YmU5mlw1PnkaXA5r", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous", "サマーレイン・ダイバー（EN）"] , "source": "https://www.billboard-japan.com/d_news/detail/73508/2"}
       ]
     },
     {
@@ -513,7 +521,7 @@
       "name": "VIVA LA ROCK 2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.05.04", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市中央区新都心８", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1du5v7Nm4a7dABLR2nXe82", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous"] }
+        { "date": "2019.05.04", "venue": "さいたまスーパーアリーナ", "location": "埼玉県さいたま市中央区新都心８", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1du5v7Nm4a7dABLR2nXe82", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "白日", "Flash!!!", "Prayer X", "The hole", "Tokyo Rendez-Vous"] , "source": "https://x.com/KingGnu_JP/status/1124488795477368833"}
       ]
     },
     {
@@ -521,7 +529,7 @@
       "name": "紀陽銀行 presents REQUESTAGE 2019",
       "scale": "FES",
       "shows": [
-        { "date": "2019.04.29", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5db9XUvKNRuxLjwp6XR8xx", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Vinyl", "白日", "Flash!!!", "Prayer X", "Tokyo Rendez-Vous"] }
+        { "date": "2019.04.29", "venue": "大阪城ホール", "location": "大阪府大阪市中央区大阪城３−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5db9XUvKNRuxLjwp6XR8xx", "setlist": ["Sympa Ⅰ（SE）", "Slumberland", "Vinyl", "白日", "Flash!!!", "Prayer X", "Tokyo Rendez-Vous"] , "source": "https://x.com/KingGnu_JP/status/1095610676947562497"}
       ]
     },
     {
@@ -529,7 +537,7 @@
       "name": "ARABAKI ROCK FEST.19",
       "scale": "FES",
       "shows": [
-        { "date": "2019.04.28", "venue": "エコキャンプみちのく", "location": "宮城県柴田郡川崎町大字川内向原２５４", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3OIJXniDb2Wsdq3HiktldC", "setlist": ["McDonald Romance（RH）", "Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "白日", "Flash!!!", "Prayer X", "Tokyo Rendez-Vous"] }
+        { "date": "2019.04.28", "venue": "エコキャンプみちのく", "location": "宮城県柴田郡川崎町大字川内向原２５４", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3OIJXniDb2Wsdq3HiktldC", "setlist": ["McDonald Romance（RH）", "Sympa Ⅰ（SE）", "Slumberland", "Sorrows", "Vinyl", "白日", "Flash!!!", "Prayer X", "Tokyo Rendez-Vous"] , "source": ["https://x.com/KingGnu_JP/status/1122312941502484483", "https://x.com/KingGnu_JP/status/1122417989687472128"]}
       ]
     },
     {
@@ -537,8 +545,8 @@
       "name": "King Gnu One-Man Live Tour 2019 ”Sympa”",
       "scale": "LIVE",
       "shows": [
-        { "date": "2019.03.03", "venue": "STUDIO COAST", "location": "東京都江東区新木場2-2-10", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4HZNtOjIBg52O8vLw3uJoz", "note": "OPEN 17:00 / START 18:00,ツアー初日", "videos": [ { "yt": "rALperYjwMQ" } ], "setlist": ["VIVID RED", "McDonald Romance", "Vinyl", "Sorrows", "ロウラヴ", "白日", "NIGHT POOL", "Bedtown", "Hitman", "Slumberland", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager Forever", "The hole", "サマーレイン・ダイバー"] },
-        { "date": "2019.03.07", "venue": "DIAMOND HALL", "location": "愛知県名古屋市中区新栄２丁目１−９ 雲竜フレックスビル西館 5F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0eeRSbCJ0gWfwgemRAWuai", "note": "OPEN 19:00 / START 20:00", "setlist": ["McDonald Romance", "白日", "VIVID RED", "Slumberland", "ロウラヴ", "Bedtown", "NIGHT POOL", "Sorrows", "Hitman", "Vinyl", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager Forever", "The hole", "サマーレイン・ダイバー"] },
+        { "date": "2019.03.03", "venue": "STUDIO COAST", "location": "東京都江東区新木場2-2-10", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4HZNtOjIBg52O8vLw3uJoz", "note": "OPEN 17:00 / START 18:00,ツアー初日", "videos": [ { "yt": "rALperYjwMQ" } ], "setlist": ["VIVID RED", "McDonald Romance", "Vinyl", "Sorrows", "ロウラヴ", "白日", "NIGHT POOL", "Bedtown", "Hitman", "Slumberland", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager Forever", "The hole", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1102189169932099584"]},
+        { "date": "2019.03.07", "venue": "DIAMOND HALL", "location": "愛知県名古屋市中区新栄２丁目１−９ 雲竜フレックスビル西館 5F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/0eeRSbCJ0gWfwgemRAWuai", "note": "OPEN 19:00 / START 20:00", "setlist": ["McDonald Romance", "白日", "VIVID RED", "Slumberland", "ロウラヴ", "Bedtown", "NIGHT POOL", "Sorrows", "Hitman", "Vinyl", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager Forever", "The hole", "サマーレイン・ダイバー"] , "source": ["https://x.com/KingGnu_JP/status/1103657414757277696"]},
         { "date": "2019.03.09", "venue": "DRUM LOGOS", "location": "福岡県福岡市中央区舞鶴１丁目８−２５", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5LXtHReDVcpfuL5rPavPyn", "note": "OPEN 17:00 / START 18:00", "setlist": ["Hitman", "Sorrows", "ロウラヴ", "McDonald Romance", "Vinyl", "白日", "NIGHT POOL", "Bedtown", "Slumberland", "VIVID RED", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager Forever", "The hole", "サマーレイン・ダイバー"] },
         { "date": "2019.03.17", "venue": "BIGCAT", "location": "大阪府大阪市中央区西心斎橋１丁目６−１４ BIGSTEP 4F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/3Sr3OB6JyvcePgxHAUMPdJ", "note": "OPEN 17:00 / START 18:00", "setlist": ["McDonald Romance", "白日", "VIVID RED", "Slumberland", "ロウラヴ", "Bedtown", "NIGHT POOL", "Sorrows", "Hitman", "Vinyl", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager Forever", "The hole", "サマーレイン・ダイバー"] },
         { "date": "2019.03.18", "venue": "BIGCAT", "location": "大阪府大阪市中央区西心斎橋１丁目６−１４ BIGSTEP 4F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/5FDesOXZMqoLzpYPQvuqNQ", "note": "OPEN 19:00 / START 20:00", "setlist": ["VIVID RED", "McDonald Romance", "Vinyl", "Sorrows", "ロウラヴ", "白日", "NIGHT POOL", "Bedtown", "Hitman", "Slumberland", "Flash!!!", "Don't Stop the Clocks（Acoustic ver.）", "It's a small world（Acoustic ver.）", "破裂（Acoustic ver.）", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager Forever", "The hole", "サマーレイン・ダイバー"] },
@@ -548,8 +556,8 @@
         { "date": "2019.03.31", "venue": "cube garden", "location": "北海道札幌市中央区北２条東３丁目２−５", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/6cQGs4z0Xi3XTL5JkiSqSt", "note": "OPEN 17:00 / START 18:00", "setlist": ["Bedtown", "Hitman", "McDonald Romance", "Vinyl", "ロウラヴ", "Slumberland", "NIGHT POOL", "白日", "Sorrows", "VIVID RED", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager Forever", "The hole", "サマーレイン・ダイバー"] },
         { "date": "2019.04.05", "venue": "Rensa", "location": "宮城県仙台市青葉区一番町４丁目９−１８ Ticビル 7F", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1jzJGkz7AYy5SzH19ipKc5", "note": "OPEN 19:00 / START 20:00", "setlist": ["Hitman", "Sorrows", "ロウラヴ", "McDonald Romance", "Vinyl", "白日", "NIGHT POOL", "Bedtown", "Slumberland", "VIVID RED", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "あなたは蜃気楼", "Prayer X", "Teenager Forever", "The hole", "サマーレイン・ダイバー"] },
         { "date": "2019.04.12", "venue": "STUDIO COAST", "location": "東京都江東区新木場2-2-10", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7GIooeXifezNwBhcGaPDZB", "note": "OPEN 17:30 / START 18:30", "setlist": ["Hitman", "Sorrows", "ロウラヴ", "McDonald Romance", "Vinyl", "白日", "NIGHT POOL", "Bedtown", "Slumberland", "VIVID RED", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Tokyo Rendez-Vous", "Prayer X", "あなたは蜃気楼", "Teenager Forever", "The hole", "サマーレイン・ダイバー"] },
-        { "date": "2019.04.15", "venue": "なんばHatch", "location": "大阪府大阪市浪速区湊町１丁目３−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1AIeWJuMn1ogP6lpLuiDM8", "note": "追加公演", "setlist": ["Bedtown", "Hitman", "McDonald Romance", "Vinyl", "ロウラヴ", "Slumberland", "NIGHT POOL", "白日", "Sorrows", "VIVID RED", "Flash!!!", "Don't Stop the Clocks（Acoustic ver.）", "It's a small world（Acoustic ver.）", "破裂（Acoustic ver.）", "Prayer X", "あなたは蜃気楼", "Teenager Forever", "The hole", "サマーレイン・ダイバー", "Tokyo Rendez-Vous"] },
-        { "date": "2019.04.21", "venue": "Zepp DiverCity", "location": "東京都江東区青海１丁目１−１０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7e5OOdVjKWn1kKko1MCbHh", "note": "追加公演,ツアー最終公演", "setlist": ["Hitman", "Sorrows", "ロウラヴ", "McDonald Romance", "Vinyl", "白日", "NIGHT POOL", "Bedtown", "Slumberland", "VIVID RED", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Prayer X", "あなたは蜃気楼", "Teenager Forever", "The hole", "サマーレイン・ダイバー", "Tokyo Rendez-Vous"] }
+        { "date": "2019.04.15", "venue": "なんばHatch", "location": "大阪府大阪市浪速区湊町１丁目３−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/1AIeWJuMn1ogP6lpLuiDM8", "note": "追加公演", "setlist": ["Bedtown", "Hitman", "McDonald Romance", "Vinyl", "ロウラヴ", "Slumberland", "NIGHT POOL", "白日", "Sorrows", "VIVID RED", "Flash!!!", "Don't Stop the Clocks（Acoustic ver.）", "It's a small world（Acoustic ver.）", "破裂（Acoustic ver.）", "Prayer X", "あなたは蜃気楼", "Teenager Forever", "The hole", "サマーレイン・ダイバー", "Tokyo Rendez-Vous"] , "source": ["https://x.com/KingGnu_JP/status/1111559872787537921"]},
+        { "date": "2019.04.21", "venue": "Zepp DiverCity", "location": "東京都江東区青海１丁目１−１０", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/7e5OOdVjKWn1kKko1MCbHh", "note": "追加公演,ツアー最終公演", "setlist": ["Hitman", "Sorrows", "ロウラヴ", "McDonald Romance", "Vinyl", "白日", "NIGHT POOL", "Bedtown", "Slumberland", "VIVID RED", "Flash!!!", "Don't Stop the Clocks", "It's a small world", "破裂", "Prayer X", "あなたは蜃気楼", "Teenager Forever", "The hole", "サマーレイン・ダイバー", "Tokyo Rendez-Vous"] , "source": ["https://x.com/KingGnu_JP/status/1111559872787537921"]}
       ]
     },
     {
@@ -557,7 +565,7 @@
       "name": "ROCK AX vol.1",
       "scale": "LIVE",
       "shows": [
-        { "date": "2019.01.22", "venue": "TOKYO DOME CITY HALL", "location": "東京都文京区後楽1-3-61", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2OXuG9rtLI3mMgP0yq919M", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "It's a small world", "Slumberland", "あなたは蜃気楼", "ロウラヴ", "NIGHT POOL", "Prayer X", "Vinyl"] , "source": "https://x.com/KingGnu_JP/status/1060862883079180288"}
+        { "date": "2019.01.22", "venue": "TOKYO DOME CITY HALL", "location": "東京都文京区後楽1-3-61", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/2OXuG9rtLI3mMgP0yq919M", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "McDonald Romance", "It's a small world", "Slumberland", "あなたは蜃気楼", "ロウラヴ", "NIGHT POOL", "Prayer X", "Vinyl"] , "source": ["https://x.com/KingGnu_JP/status/1060862883079180288", "https://x.com/KingGnu_JP/status/1085832991186665472"]}
       ]
     },
     {
@@ -565,7 +573,7 @@
       "name": "King Gnu 『Sympa』発売記念スペシャルLIVE",
       "scale": "LIVE",
       "shows": [
-        { "date": "2019.01.16", "venue": "Ginza Sony Park", "location": "東京都中央区銀座５丁目３−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/629NXKfPLmsOR0CdHNY4bY", "note": "同時生配信が行われた（現在非公開）", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "It's a small world", "Vinyl", "NIGHT POOL", "Prayer X", "Slumberland", "あなたは蜃気楼（EN）", "ロウラヴ（EN）"] }
+        { "date": "2019.01.16", "venue": "Ginza Sony Park", "location": "東京都中央区銀座５丁目３−１", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/629NXKfPLmsOR0CdHNY4bY", "note": "同時生配信が行われた（現在非公開）", "setlist": ["Flash!!!", "Tokyo Rendez-Vous", "It's a small world", "Vinyl", "NIGHT POOL", "Prayer X", "Slumberland", "あなたは蜃気楼（EN）", "ロウラヴ（EN）"] , "source": ["https://x.com/KingGnu_JP/status/1085341295680208896", "https://x.com/KingGnu_JP/status/1085104177468960770"]}
       ]
     },
     {
