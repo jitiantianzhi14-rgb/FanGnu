@@ -13,8 +13,8 @@
             { "num": 4, "title": "Cheap Transistor", "slug": "cheap-transistor", "externalVideo": "https://www.youtube.com/watch?v=dlS18oUHw4o", "hideVideo": true, "note": "", "extra": "【概要】\n・[Srv.Vinci 1st demo](../srvvinci-discography/?album=1st%20demo)の4曲目である．\n・表記揺れでCheap Transistorが「チープトランジスタ」とCD内の表記情報にあるそうだ．[（参考）](https://gethighwithme.memo.wiki/d/http%3a//)\n・[Diddy's Underground JamのHello from underground](../srvvinci-discography/?album=Hello%20from%20underground%EF%BC%88Diddy's%20Underground%20Jam%20%E7%89%88%EF%BC%89)に収録される「チープなメディア」と関連している．", "spotify": "", "lyrics": "" }
           ]
         },
-        { "title": "NUMÉRO × THE ROOTS OF BLOOD", "slug": "numero-roots-of-blood", "yt": null, "lyrics": "" },
-        { "title": "Re:", "slug": "re", "yt": null, "lyrics": "" }
+        { "title": "NUMÉRO × THE ROOTS OF BLOOD", "slug": "numero-roots-of-blood", "yt": null, "extra": "【リンク】\n・[音源年表-gnumania](https://gnumania.blog.fc2.com/blog-entry-2.html)", "lyrics": "" },
+        { "title": "Re:", "slug": "re", "yt": null, "lyrics": "", "hidden": true }
       ],
       "singles": [
         { "title": "都", "slug": "miyako", "externalVideo": "https://www.youtube.com/watch?v=mIdXhe-p-ow", "hideVideo": true, "year": "2016.05.05", "type": "配信SG", "extra": "【概要】\n・音楽配信サイトmoraと手を組んだ，2か月連続ハイレゾ音源配信企画の一環で配信された．\n・1か月目が[「ロウラブ」](../song/ro-love-single/)で，2か月目が「都」である．\n・「Re:」[「PPL」](../song/ppl/)からリアレンジされた楽曲である．後に[King Gnu 2nd Album「Sympa」](../discography/?album=Sympa)に収録される[「Slumberland」](../song/slumberland/)にリアレンジされる．\n\n【リンク】\n・[鬼才集団Srv.Vinciのハイレゾ限定無料配信が決定!!新しい才能Srv.Vinciが打ち出す、進化する次世代ポップ・サウンドの登場!-Dreamnews](https://www.dreamnews.jp/press/0000129561)\n・[King Gnu公式X（配信告知）](https://x.com/KingGnu_JP/status/728181995122003970)", "lyrics": "https://gethighwithme.memo.wiki/d/%C5%D4" },
@@ -53,7 +53,7 @@
       "singles": [
         { "title": "In Tokyo", "slug": "in-tokyo", "yt": "GXk_ANNlXEU", "extra": "【概要】\n・[King Gnu 3rd ALBUM「CEREMONY」](../discography/?album=CEREMONY)の[開会式](../song/kaikaishiki/)，[幕間](../song/makuai/)，[閉会式](../song/heikaishiki/)としてリアレンジされた．\n・ディディーの地下室の[「hello from underground」](../srvvinci-discography/?album=hello%20from%20underground%EF%BC%88%E3%83%87%E3%82%A3%E3%83%87%E3%82%A3%E3%83%BC%E3%81%AE%E5%9C%B0%E4%B8%8B%E5%AE%A4%20%E7%89%88%EF%BC%89)に収録されている「東京」のアレンジである．\n・L.ベルリオーズ幻想交響曲第4楽章が使用されているそうだ．またDTMP「http://」に収録されているWWWにも同様に使用されているそうだ．[（参考）](https://gethighwithme.memo.wiki/d/In%20Tokyo)\n\n【リンク】\n・[In Tokyo-Vimeo](https://vimeo.com/69160735)", "lyrics": "" },
         { "title": "In Rose", "slug": "in-rose", "yt": "YZLNZ7lfd_s", "yt2": "nwotP3Wbcbs", "extra": "【概要】\n・Gutte solo in Rose，Guitar in Rose，Session in Roseといくつか表記の仕方がある．\n・上記のようにネット上には3種類存在するが，Guitar in Roseは他の二つとはマスタリングや後奏に違いがある．\n\n【リンク】\n・[In Rose-Vimeo](https://vimeo.com/69170962)", "lyrics": "" },
-        { "title": "SOUND CLOUD", "slug": "soundcloud", "year": "2013.08.31", "externalVideo": "https://x.com/vinyl_king0218/status/2076630789740261688", "hideVideo": true, "extra": "【概要】\n・曲の長さは3分46秒である．\n・SOUND CLOUDの映像が[McDonald Romance](../song/mcdonald-romance/)のMVに使われたそうだ．[（参考）](https://gethighwithme.memo.wiki/d/SOUND%20CLOUD)", "lyrics": "" }
+        { "title": "SOUND CLOUD", "slug": "soundcloud", "externalVideo": "https://x.com/vinyl_king0218/status/2076630789740261688", "hideVideo": true, "extra": "【概要】\n・曲の長さは3分46秒である．\n・SOUND CLOUDの映像が[McDonald Romance](../song/mcdonald-romance/)のMVに使われたそうだ．[（参考）](https://gethighwithme.memo.wiki/d/SOUND%20CLOUD)", "lyrics": "" }
       ]
     },
     {
@@ -61,13 +61,13 @@
       "desc": "同一人物による複数の別名義。Hello From Underground シリーズ各バージョン",
       "albums": [
         {
-          "title": "Hello From Underground（Diddi's Asianground Jam 版）", "slug": "hello-from-underground-diddis-asianground-jam-srvvinci", "year": "", "note": "", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
+          "title": "Hello From Underground（Diddi's Asianground Jam 版）", "slug": "hello-from-underground-diddis-asianground-jam-srvvinci", "year": "", "note": "", "type": "DEMO", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
           "tracks": [
             { "num": 1, "title": "前触", "slug": "maebure", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは1分45秒である．\n・インスト曲である．", "spotify": "", "lyrics": "" }
           ]
         },
         {
-          "title": "Hello from underground（Diddy's Underground Jam 版）", "slug": "hello-from-underground-diddys-underground-jam-srvvinci", "year": "", "note": "", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
+          "title": "Hello from underground（Diddy's Underground Jam 版）", "slug": "hello-from-underground-diddys-underground-jam-srvvinci", "year": "", "note": "", "type": "DEMO", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
           "tracks": [
             { "num": 1, "title": "チープなメディア", "slug": "cheap-media", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは3分17秒である．\n・後に[Srv.Vinci 1st demo](../srvvinci-discography/?album=1st%20demo)の[「Cheap Transistor」](../song/cheap-transistor/)としてアレンジされる．\n・常田大希がボーカルを務める．", "spotify": "", "lyrics": "" },
             { "num": 2, "title": "アンダーグラウンド", "slug": "underground", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは2分49秒である．\n・インスト曲である．", "spotify": "", "lyrics": "" },
@@ -75,7 +75,7 @@
           ]
         },
         {
-          "title": "hello from underground（ディディーの地下室 版）", "slug": "hello-from-underground-chikashitsu-srvvinci", "year": "", "note": "", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
+          "title": "hello from underground（ディディーの地下室 版）", "slug": "hello-from-underground-chikashitsu-srvvinci", "year": "", "note": "", "type": "DEMO", "extra": "【概要】\n・2012にDiddi's Asianground Jam / Diddy's Underground Jam / ディディーの地下室から配信されたアルバムである．\n・2011.10.16 Live Hall Aubeで行われたライブと2012.02.05 渋谷eggmanで行われたライブで「Didi's Asianground Jam」として参加している．\n\n【リンク】\n・[2011.10.16 Live Hall Aube公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13984&idedizione=2)\n・[2012.02.05 渋谷eggman公演-emergenza.net](https://www.emergenza.net/default.aspx?pag=844&nav=JP&lng=ja-JP&idconcerto=13925&idedizione=2)",
           "tracks": [
             { "num": 1, "title": "新宿メトロライン", "slug": "shinjuku-metro-line-chikashitsu", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは5分29秒である．\n・常田大希がボーカルを務める．", "spotify": "", "lyrics": "" },
             { "num": 2, "title": "東京", "slug": "tokyo-diddis", "yt": "", "note": "", "extra": "【概要】\n・曲の長さは5分7秒である．\n・後にMrs.Vinciの[「In Tokyo」](../song/in-tokyo/)，[King Gnu 3rd ALBUM「CEREMONY」](../discography/?album=CEREMONY)の[「開会式」](../song/kaikaishiki/)[「幕間」](../song/makuai/)[「閉会式」](../song/heikaishiki/)としてリアレンジされた．\n・常田大希がボーカルを務める．", "spotify": "", "lyrics": "" },
