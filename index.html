@@ -162,6 +162,7 @@
         <a href="./contact/">お問い合わせ</a>
         <a href="./privacy/">プライバシーポリシー</a>
         <a href="./about/">運営者について</a>
+        <a href="./methodology/">集計方法について</a>
       </div>
     </div>
   </div>
@@ -452,7 +453,8 @@
   function renderStats(kgLive, svLive, kgDisc) {
     document.getElementById('statDays').innerHTML = `${daysSinceRename()}<span class="summary-unit">日</span>`;
     document.getElementById('statSongs').innerHTML = `${countKingGnuSongs(kgDisc)}<span class="summary-unit">曲</span>`;
-    document.getElementById('statTours').innerHTML = `${(kgLive.tours || []).length}<span class="summary-unit">件</span>`;
+    const heldTourCount = (kgLive.tours || []).filter(tour => (tour.shows || []).some(show => !(show.status || '').includes('中止'))).length; // 開催された公演が1件もないツアーは数えない
+    document.getElementById('statTours').innerHTML = `${heldTourCount}<span class="summary-unit">件</span>`;
     const last = findLastShow(kgLive, svLive);
     document.getElementById('statLast').innerHTML = last
       ? `<a href="live-show/${encodeURIComponent(last.date)}${last.isSrvvinci ? '-srvvinci' : ''}/">${escH(last.date)}<br>${escH(last.tourName)}</a>`
