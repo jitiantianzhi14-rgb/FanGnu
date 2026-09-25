@@ -126,6 +126,10 @@
 
     .tweet-carousel { margin: 14px 0; }
     .tweet-carousel .shorts-controls { margin-top: 10px; }
+    .sns-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; align-items: start; }
+    .sns-item { display: flex; justify-content: center; min-width: 0; }
+    .sns-item .twitter-tweet { margin: 0 auto; }
+    @media (max-width: 768px) { .sns-grid { grid-template-columns: minmax(0, 1fr); } }
 
     .no-video { font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--md-on-surface-variant); padding: 3rem 0; text-align: center; border: 1px dashed var(--md-outline-variant); border-radius: 14px; }
 
@@ -205,6 +209,14 @@
       .live-stat.count .live-stat-value { font-size: 26px; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
+      /* ページ内目次 */
+    html { scroll-behavior: smooth; }
+    .section-label, .sec-label { scroll-margin-top: 72px; }
+    .page-toc { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .page-toc-title { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin-right: 4px; }
+    .page-toc a { display: inline-flex; align-items: center; padding: 6px 14px; border: 1px solid var(--md-outline-variant); border-radius: 999px; font-size: 12px; color: var(--md-on-surface-variant); background: var(--md-surface-container-low); transition: color 0.15s, border-color 0.15s; }
+    .page-toc a:hover { color: var(--md-primary); border-color: var(--md-primary); }
+    @media (max-width: 600px) { .page-toc { flex-wrap: nowrap; overflow-x: auto; margin: 0 -2rem; padding: 0 2rem 4px; scrollbar-width: none; } .page-toc::-webkit-scrollbar { display: none; } .page-toc a, .page-toc-title { flex: none; } }
   </style>
 </head>
 <body>
@@ -295,6 +307,7 @@
 
     <div id="liveYearsArea"></div>
     <div id="liveHistoryArea"></div>
+    <div id="snsArea"></div>
 
     <div class="action-buttons">
       <a href="#" id="discographyLink" class="action-btn outline">← ディスコグラフィーに戻る</a>
@@ -313,7 +326,7 @@
   </footer>
 
   <script>
-    const SONG_DATA = {"isSrvvinci": false, "type": "CDSG", "title": "AIZO", "liveTitle": "", "year": "2026.01.09", "note": "TVアニメ『呪術廻戦』「死滅回游 前編」オープニングテーマ", "extra": "【概要】\n・King Gnuにとって8th CD Single\n・MVは2026.01.16に公開，CDは2026.02.11に発売\n・初回生産限定盤，期間生産限定盤，通常盤が発売された．\n・初回生産限定盤には[「KING GNU LIVEHOUSE TOUR 2025 CLUB GNU EDITION」](../../live/)のBlu-rayが付属．\n・期間生産限定盤は芥見下々氏描き下ろしイラスト12インチLPサイズスペシャルパッケージ仕様となっている．\n・期間生産限定盤と通常盤にはCDに「SPECIALZ (King Gnu Asia Tour 「THE GREATEST UNKNOWN」in SEOUL)」「一途 (King Gnu Asia Tour 「THE GREATEST UNKNOWN」in SEOUL)」「逆夢 (King Gnu Asia Tour 「THE GREATEST UNKNOWN」in SEOUL)」が収録されている．\n・期間生産限定盤は2026年8月末日までの生産\n・すべてに[「King Gnu CEN+RAL Tour 2026」追加公演](../../live/)（2026/7/14-15@横浜アリーナ）CD購入者限定チケット先行受付シリアルコードが付属．\n・[対象店舗で購入すると特典がある．](https://kinggnu.jp/shoplist/260211/)\n\n[Blu-ray] KING GNU LIVEHOUSE TOUR 2025 CLUB GNU EDITION\n):阿修羅:(\nFlash!!!\nあなたは蜃気楼\nねっこ\nHitman\nPrayer X\nTokyo Rendez-Vous\nSPECIALZ\n一途\nMASCARA\nSUNNY SIDE UP\n雨燦々\n\n\n【情報欄】\n・2025年11月ごろにMV撮影のためにOSRINよりKing Gnuの名前は伏せて坊主のエキストラ募集があった．\n・同楽曲ではドラムは完全に打ち込みであり，King Gnuとしてここまでのドラムンベースは初である．\n・笙や三味線などの和楽器が入っており，三味線は勢喜遊の奥さんが弾いている．\n・常田は，自身も制作陣の一員でありながら米津玄師「KICK BACK」の完成度に悔しさを覚え，その「欲しい」という対抗心がこの曲の制作初動につながったという．\n・MVではメンバー4人が3DCGで再現されている．それぞれ「呪術廻戦『死滅回游 前編』」に登場するキャラクターをモチーフにしている．\n　　「AMBIVALENT TSUNETA（常田大希）」：両面宿儺\n　　「ゴキナイトイグチ（井口理）」：黒漆死\n　　「愛羅武遊（勢喜遊）」：石流龍\n　　「SAMURAI ARAI（新井和輝）」：禪院扇\n・SAMURAI ARAI（新井和輝）は[「King Gnu CEN+RAL Tour 2026」](../../live/)の開演前のアナウンスでも登場している．\n・「AMBIVALENT TSUNETA（常田大希）」のイメージについて，インタビュー内では「AMBIVALENT TSUNETAは、音楽へのこだわりと締め切りに挟まれて自己葛藤している存在という説明を受けました」と語られている．\n・「ゴキナイトイグチ（井口理）」の首元のペンダントのデザインには井口の出身地である伊那市の顔面付釣手形土器のデザインが入れられている．また，ゴキナイトイグチのシーンは町中の自販機の下という設定である．\n\n\n【リンク】\n・[King Gnu『AIZO』MV｜一線級のアーティストたちがガチンコで競い合って、極上のカオスを創出！-CGWORLD.jp](https://cgworld.jp/regular/202604-KingGnu-AIZO.html)\n・[【インタビュー】原点回帰、初期衝動──King Gnu、新曲“AIZO”をメンバー全員が語るWEB特別編集版インタビュー-rockinon.com](https://rockinon.com/interview/detail/214183)\n", "yt": "zz2a9Q2Wru0", "yt2": "mcsB7sG43GE", "tweets": [], "spotify": "https://open.spotify.com/intl-ja/album/7BAFUXup2XFZpcnCmLjXmM", "externalVideo": "", "hideVideo": false, "lyrics": "https://www.uta-net.com/song/386031/", "shorts": ["ukIv6vuVtZ4"], "album": null, "isAlbumTrack": false, "albumText": "", "slug": "aizo", "appleMusic": ""};
+    const SONG_DATA = {"isSrvvinci": false, "type": "CDSG", "title": "AIZO", "liveTitle": "", "year": "2026.01.09", "note": "TVアニメ『呪術廻戦』「死滅回游 前編」オープニングテーマ", "extra": "【概要】\n・King Gnuにとって8th CD Single\n・MVは2026.01.16に公開，CDは2026.02.11に発売\n・初回生産限定盤，期間生産限定盤，通常盤が発売された．\n・初回生産限定盤には[「KING GNU LIVEHOUSE TOUR 2025 CLUB GNU EDITION」](../../live/)のBlu-rayが付属．\n・期間生産限定盤は芥見下々氏描き下ろしイラスト12インチLPサイズスペシャルパッケージ仕様となっている．\n・期間生産限定盤と通常盤にはCDに「SPECIALZ (King Gnu Asia Tour 「THE GREATEST UNKNOWN」in SEOUL)」「一途 (King Gnu Asia Tour 「THE GREATEST UNKNOWN」in SEOUL)」「逆夢 (King Gnu Asia Tour 「THE GREATEST UNKNOWN」in SEOUL)」が収録されている．\n・期間生産限定盤は2026年8月末日までの生産\n・すべてに[「King Gnu CEN+RAL Tour 2026」追加公演](../../live/)（2026/7/14-15@横浜アリーナ）CD購入者限定チケット先行受付シリアルコードが付属．\n・[対象店舗で購入すると特典がある．](https://kinggnu.jp/shoplist/260211/)\n\n[Blu-ray] KING GNU LIVEHOUSE TOUR 2025 CLUB GNU EDITION\n):阿修羅:(\nFlash!!!\nあなたは蜃気楼\nねっこ\nHitman\nPrayer X\nTokyo Rendez-Vous\nSPECIALZ\n一途\nMASCARA\nSUNNY SIDE UP\n雨燦々\n\n\n【情報欄】\n・2025年11月ごろにMV撮影のためにOSRINよりKing Gnuの名前は伏せて坊主のエキストラ募集があった．\n・同楽曲ではドラムは完全に打ち込みであり，King Gnuとしてここまでのドラムンベースは初である．\n・笙や三味線などの和楽器が入っており，三味線は勢喜遊の奥さんが弾いている．\n・常田は，自身も制作陣の一員でありながら米津玄師「KICK BACK」の完成度に悔しさを覚え，その「欲しい」という対抗心がこの曲の制作初動につながったという．\n・MVではメンバー4人が3DCGで再現されている．それぞれ「呪術廻戦『死滅回游 前編』」に登場するキャラクターをモチーフにしている．\n　　「AMBIVALENT TSUNETA（常田大希）」：両面宿儺\n　　「ゴキナイトイグチ（井口理）」：黒漆死\n　　「愛羅武遊（勢喜遊）」：石流龍\n　　「SAMURAI ARAI（新井和輝）」：禪院扇\n・SAMURAI ARAI（新井和輝）は[「King Gnu CEN+RAL Tour 2026」](../../live/)の開演前のアナウンスでも登場している．\n・「AMBIVALENT TSUNETA（常田大希）」のイメージについて，インタビュー内では「AMBIVALENT TSUNETAは、音楽へのこだわりと締め切りに挟まれて自己葛藤している存在という説明を受けました」と語られている．\n・「ゴキナイトイグチ（井口理）」の首元のペンダントのデザインには井口の出身地である伊那市の顔面付釣手形土器のデザインが入れられている．また，ゴキナイトイグチのシーンは町中の自販機の下という設定である．\n\n\n【リンク】\n・[King Gnu『AIZO』MV｜一線級のアーティストたちがガチンコで競い合って、極上のカオスを創出！-CGWORLD.jp](https://cgworld.jp/regular/202604-KingGnu-AIZO.html)\n・[【インタビュー】原点回帰、初期衝動──King Gnu、新曲“AIZO”をメンバー全員が語るWEB特別編集版インタビュー-rockinon.com](https://rockinon.com/interview/detail/214183)\n", "yt": "zz2a9Q2Wru0", "yt2": "mcsB7sG43GE", "tweets": ["https://x.com/KingGnu_JP/status/2014261758244876454", "https://x.com/KingGnu_JP/status/2013513460814848221", "https://x.com/KingGnu_JP/status/2007980368545161539", "https://x.com/KingGnu_JP/status/2009283119321341983", "https://x.com/KingGnu_JP/status/2009278925457838146", "https://x.com/KingGnu_JP/status/2010551055080210740", "https://x.com/KingGnu_JP/status/2010003701256028361", "https://x.com/KingGnu_JP/status/2011090863393513742", "https://x.com/KingGnu_JP/status/2022596689195102438", "https://x.com/KingGnu_JP/status/2011832194059354300", "https://x.com/KingGnu_JP/status/2014492623604723800", "https://x.com/KingGnu_JP/status/2012088434907853270", "https://x.com/KingGnu_JP/status/2021524615126761634", "https://x.com/KingGnu_JP/status/2021871908757651666", "https://x.com/KingGnu_JP/status/2011876037777637651", "https://x.com/KingGnu_JP/status/2017209220756812018", "https://x.com/KingGnu_JP/status/2009460117746639187", "https://x.com/KingGnu_JP/status/2013182267171201024", "https://x.com/KingGnu_JP/status/2044219155688370604", "https://x.com/KingGnu_JP/status/2027051035995303958", "https://x.com/KingGnu_JP/status/2011226760676065717", "https://x.com/KingGnu_JP/status/2044732544399388752", "https://x.com/KingGnu_JP/status/2037197886883008608", "https://x.com/KingGnu_JP/status/2038541745282236437", "https://x.com/KingGnu_JP/status/2009302102007533614", "https://x.com/KingGnu_JP/status/2038602142513066356", "https://x.com/KingGnu_JP/status/2014367570758172967", "https://x.com/KingGnu_JP/status/2021979822893978102", "https://x.com/KingGnu_JP/status/2041108660437286944", "https://x.com/KingGnu_JP/status/2040398997958115535", "https://x.com/KingGnu_JP/status/2002297112709771676", "https://x.com/KingGnu_JP/status/2002235008166015453", "https://x.com/KingGnu_JP/status/2001668787112734825"], "snsTweets": [], "spotify": "https://open.spotify.com/intl-ja/album/7BAFUXup2XFZpcnCmLjXmM", "externalVideo": "", "hideVideo": false, "lyrics": "https://www.uta-net.com/song/386031/", "shorts": ["ukIv6vuVtZ4"], "album": null, "isAlbumTrack": false, "albumText": "", "slug": "aizo", "appleMusic": ""};
     const LIVE_HISTORY = [{"date": "2026.07.15", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "横浜アリーナ", "source": "kinggnu"}, {"date": "2026.07.14", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "横浜アリーナ", "source": "kinggnu"}, {"date": "2026.06.21", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "KSPO DOME", "source": "kinggnu"}, {"date": "2026.06.20", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "KSPO DOME", "source": "kinggnu"}, {"date": "2026.06.07", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "Taipei Arena", "source": "kinggnu"}, {"date": "2026.06.06", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "Taipei Arena", "source": "kinggnu"}, {"date": "2026.05.30", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "AsiaWorld-Arena", "source": "kinggnu"}, {"date": "2026.05.29", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "AsiaWorld-Arena", "source": "kinggnu"}, {"date": "2026.05.23", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "One Bangkok Forum", "source": "kinggnu"}, {"date": "2026.05.10", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "朱鷺メッセ・新潟コンベンションセンター", "source": "kinggnu"}, {"date": "2026.05.09", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "朱鷺メッセ・新潟コンベンションセンター", "source": "kinggnu"}, {"date": "2026.05.02", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "真駒内セキスイハイムアイスアリーナ", "source": "kinggnu"}, {"date": "2026.05.01", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "真駒内セキスイハイムアイスアリーナ", "source": "kinggnu"}, {"date": "2026.04.22", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "マリンメッセ福岡 A館", "source": "kinggnu"}, {"date": "2026.04.21", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "マリンメッセ福岡 A館", "source": "kinggnu"}, {"date": "2026.04.15", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "LaLa arena TOKYO-BAY", "source": "kinggnu"}, {"date": "2026.04.14", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "LaLa arena TOKYO-BAY", "source": "kinggnu"}, {"date": "2026.04.05", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "広島グリーンアリーナ", "source": "kinggnu"}, {"date": "2026.04.04", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "広島グリーンアリーナ", "source": "kinggnu"}, {"date": "2026.03.29", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "ポートメッセなごや 第1展示館", "source": "kinggnu"}, {"date": "2026.03.28", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "ポートメッセなごや 第1展示館", "source": "kinggnu"}, {"date": "2026.03.19", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "有明アリーナ", "source": "kinggnu"}, {"date": "2026.03.18", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "有明アリーナ", "source": "kinggnu"}, {"date": "2026.03.12", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "あなぶきアリーナ香川", "source": "kinggnu"}, {"date": "2026.03.11", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "あなぶきアリーナ香川", "source": "kinggnu"}, {"date": "2026.03.04", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "大阪城ホール", "source": "kinggnu"}, {"date": "2026.03.03", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "大阪城ホール", "source": "kinggnu"}, {"date": "2026.02.22", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "セキスイハイムスーパーアリーナ", "source": "kinggnu"}, {"date": "2026.02.21", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "セキスイハイムスーパーアリーナ", "source": "kinggnu"}];
   </script>
   <script>
@@ -550,6 +563,45 @@
     }
 
     renderTweetsCarouselPage(container);
+  }
+
+  const SNS_INITIAL_COUNT = 2;
+  const SNS_MORE_COUNT = 6;
+
+  function snsItemHtml(url) {
+    const m = url.match(/^https?:\/\/(?:www\.)?(?:x|twitter)\.com\/([^/]+)\/status\/(\d+)/);
+    if (!m) return '';
+    return `<div class="sns-item"><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="https://twitter.com/${escH(m[1])}/status/${escH(m[2])}">X の投稿を見る</a></blockquote></div>`;
+  }
+
+  function renderSns(tweets, extra) {
+    const area = document.getElementById('snsArea');
+    // {{TWEETS}} を extra に置いた曲（SO BAD）は情報欄のカルーセル表示を優先する
+    if (!tweets || !tweets.length || (extra || '').includes('{{TWEETS}}')) {
+      area.innerHTML = '';
+      return;
+    }
+    const initial = tweets.slice(0, SNS_INITIAL_COUNT);
+    let rest = tweets.slice(SNS_INITIAL_COUNT);
+    area.innerHTML = `
+      <div class="section-label">SNS（全${tweets.length}件）</div>
+      <div class="sns-grid" id="snsGrid">${initial.map(snsItemHtml).join('')}</div>
+      ${rest.length ? `<button type="button" class="show-more-btn" id="snsShowMore">もっと表示（他${rest.length}件）</button>` : ''}`;
+    loadTwitterWidgets().then(twttr => {
+      if (twttr && twttr.widgets) twttr.widgets.load(area);
+    });
+    if (rest.length) {
+      document.getElementById('snsShowMore').addEventListener('click', function onClick() {
+        const grid = document.getElementById('snsGrid');
+        grid.insertAdjacentHTML('beforeend', rest.slice(0, SNS_MORE_COUNT).map(snsItemHtml).join(''));
+        rest = rest.slice(SNS_MORE_COUNT);
+        if (rest.length) this.textContent = `もっと表示（他${rest.length}件）`;
+        else this.remove();
+        loadTwitterWidgets().then(twttr => {
+          if (twttr && twttr.widgets) twttr.widgets.load(grid);
+        });
+      });
+    }
   }
 
   let shortsData = [];
@@ -830,6 +882,7 @@
     setInfo('infoYear', song.year);
     setNote('infoNote', song.note);
     setExtra('infoExtraText', song.extra, song.tweets);
+    renderSns(song.snsTweets && song.snsTweets.length ? song.snsTweets : song.tweets, song.snsTweets && song.snsTweets.length ? '' : song.extra);
     setLyrics(song.lyrics);
 
     const visibleExternalVideo = song.hideVideo ? '' : song.externalVideo;
@@ -977,5 +1030,64 @@
     })();
   </script>
 
+<script>
+  // ページ内目次: セクション見出し（.section-label / .sec-label）からタップで移動できるリンクを生成する
+  (function () {
+    var SELECTOR = '.content .section-label, .content .sec-label';
+    var lastKey = '';
+    var timer = null;
+
+    function labelText(el) {
+      var text = '';
+      el.childNodes.forEach(function (n) { if (n.nodeType === 3) text += n.textContent; });
+      return text.replace(/（[^）]*）/g, '').trim();
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+    }
+
+    function build() {
+      var content = document.querySelector('.content');
+      if (!content) return;
+      var items = [];
+      document.querySelectorAll(SELECTOR).forEach(function (el, i) {
+        var text = labelText(el);
+        if (!text) return;
+        if (!el.id) el.id = 'toc-' + i;
+        items.push({ id: el.id, text: text });
+      });
+      var key = items.map(function (it) { return it.id + ':' + it.text; }).join('|');
+      if (key === lastKey) return;
+      lastKey = key;
+      var nav = document.getElementById('pageToc');
+      if (items.length < 2) {
+        if (nav) nav.remove();
+        return;
+      }
+      if (!nav) {
+        nav = document.createElement('nav');
+        nav.id = 'pageToc';
+        nav.className = 'page-toc';
+        nav.setAttribute('aria-label', 'ページ内目次');
+        content.insertBefore(nav, content.firstChild);
+      }
+      nav.innerHTML = '<span class="page-toc-title">目次</span>' + items.map(function (it) {
+        return '<a href="#' + escapeHtml(it.id) + '">' + escapeHtml(it.text) + '</a>';
+      }).join('');
+    }
+
+    function schedule() {
+      clearTimeout(timer);
+      timer = setTimeout(build, 150);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var content = document.querySelector('.content');
+      if (content) new MutationObserver(schedule).observe(content, { childList: true, subtree: true });
+      build();
+    });
+  })();
+</script>
 </body>
 </html>

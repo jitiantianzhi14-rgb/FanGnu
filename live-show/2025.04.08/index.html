@@ -143,8 +143,12 @@
     .source-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--md-outline-variant); border-radius: 999px; font-size: 12px; color: var(--md-on-surface-variant); background: var(--md-surface-container-low); transition: color 0.15s, border-color 0.15s; }
     .source-link:hover { color: var(--md-primary); border-color: var(--md-primary); }
     .source-link .material-symbols-outlined { font-size: 14px; }
-    .source-tweet { display: flex; justify-content: center; margin-bottom: 1rem; }
+    .source-tweets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; align-items: start; margin-bottom: 1rem; }
+    .source-tweet { display: flex; justify-content: center; min-width: 0; }
     .source-tweet .twitter-tweet { margin: 0 auto; }
+    .show-more-btn { display: block; width: 100%; margin: 0 0 1rem; padding: 0.7rem; font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; background: transparent; color: var(--md-primary); border: 1px solid var(--md-outline); border-radius: 100px; cursor: pointer; transition: background 0.15s; }
+    .show-more-btn:hover { background: var(--md-primary-container); border-color: transparent; }
+    @media (max-width: 768px) { .source-tweets { grid-template-columns: minmax(0, 1fr); } }
 
     .stack-track { height: 20px; max-height: 20px; display: flex; gap: 2px; }
     .stack-seg { height: 20px; }
@@ -179,6 +183,14 @@
       .map-area { max-width: 100%; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
+      /* ページ内目次 */
+    html { scroll-behavior: smooth; }
+    .section-label, .sec-label { scroll-margin-top: 72px; }
+    .page-toc { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .page-toc-title { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin-right: 4px; }
+    .page-toc a { display: inline-flex; align-items: center; padding: 6px 14px; border: 1px solid var(--md-outline-variant); border-radius: 999px; font-size: 12px; color: var(--md-on-surface-variant); background: var(--md-surface-container-low); transition: color 0.15s, border-color 0.15s; }
+    .page-toc a:hover { color: var(--md-primary); border-color: var(--md-primary); }
+    @media (max-width: 600px) { .page-toc { flex-wrap: nowrap; overflow-x: auto; margin: 0 -2rem; padding: 0 2rem 4px; scrollbar-width: none; } .page-toc::-webkit-scrollbar { display: none; } .page-toc a, .page-toc-title { flex: none; } }
   </style>
 </head>
 <body>
@@ -259,7 +271,7 @@
   </footer>
 
   <script>
-    const SHOW_DATA = {"isSrvvinci": false, "urlSlug": "2025.04.08", "tour": {"name": "KING GNU LIVEHOUSE TOUR 2025 CLUB GNU EDITION"}, "show": {"date": "2025.04.08", "venue": "東京ガーデンシアター", "location": "東京都江東区有明２丁目１−６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/56URujROBYyOMRhQ0FuO7b", "note": "OPEN 18:00 / START 19:00,追加公演", "videos": [{"yt": "kF-YXA1wgDU"}], "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "一途", "ロウラヴ", "MASCARA", "SUNNY SIDE UP", "雨燦々"]}};
+    const SHOW_DATA = {"isSrvvinci": false, "urlSlug": "2025.04.08", "tour": {"name": "KING GNU LIVEHOUSE TOUR 2025 CLUB GNU EDITION"}, "show": {"date": "2025.04.08", "venue": "東京ガーデンシアター", "location": "東京都江東区有明２丁目１−６", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/56URujROBYyOMRhQ0FuO7b", "note": "OPEN 18:00 / START 19:00,追加公演", "videos": [{"yt": "kF-YXA1wgDU"}], "setlist": ["):阿修羅:(", "Flash!!!", "Sorrows", "あなたは蜃気楼", "ねっこ", "硝子窓", "The hole", "Hitman", "Bedtown", "McDonald Romance", "Prayer X", "Tokyo Rendez-Vous", "SPECIALZ", "飛行艇", "一途", "ロウラヴ", "MASCARA", "SUNNY SIDE UP", "雨燦々"], "source": ["https://x.com/KingGnu_JP/status/2004477287077757419", "https://x.com/KingGnu_JP/status/2006198629854220360", "https://x.com/KingGnu_JP/status/1966441669059846247", "https://x.com/KingGnu_JP/status/1912094801316491544", "https://x.com/KingGnu_JP/status/1909938090359353459", "https://x.com/KingGnu_JP/status/1888890661128053077", "https://x.com/KingGnu_JP/status/1888883103407448133", "https://x.com/KingGnu_JP/status/1887063617280831762", "https://x.com/KingGnu_JP/status/1880540633791705292", "https://x.com/KingGnu_JP/status/1876475885811122309", "https://x.com/KingGnu_JP/status/1876191982269386823", "https://x.com/KingGnu_JP/status/1912340178858905834", "https://x.com/KingGnu_JP/status/1910165850813775986", "https://x.com/KingGnu_JP/status/1908806896464941544", "https://x.com/KingGnu_JP/status/1901559133473853594", "https://x.com/KingGnu_JP/status/1899037518584017108", "https://x.com/KingGnu_JP/status/1895760934095729061", "https://x.com/KingGnu_JP/status/1893586606264652221", "https://x.com/KingGnu_JP/status/1891412279796568392", "https://x.com/KingGnu_JP/status/1888890654723321977"]}};
   </script>
   <script>
   function escH(s) {
@@ -678,10 +690,14 @@
 
     const linkHtml = links.length ? `<ul class="source-list">${links.map(u => `
       <li><a class="source-link" href="${escH(u.href)}" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>${escH(u.hostname.replace(/^www\./, ''))}</a></li>`).join('')}</ul>` : '';
-    const tweetHtml = tweets.map(t => `
-      <div class="source-tweet"><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="${escH(t)}">X の投稿を見る</a></blockquote></div>`).join('');
+    const tweetItemHtml = t => `
+      <div class="source-tweet"><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="${escH(t)}">X の投稿を見る</a></blockquote></div>`;
+    const TWEETS_INITIAL_COUNT = 2;
+    const TWEETS_MORE_COUNT = 6;
+    let restTweets = tweets.slice(TWEETS_INITIAL_COUNT);
+    const tweetHtml = tweets.length ? `<div class="source-tweets" id="sourceTweets">${tweets.slice(0, TWEETS_INITIAL_COUNT).map(tweetItemHtml).join('')}</div>${restTweets.length ? `<button type="button" class="show-more-btn" id="sourceTweetsMore">もっと表示（他${restTweets.length}件）</button>` : ''}` : '';
 
-    area.innerHTML = `<div class="section-label">出典</div>${linkHtml}${tweetHtml}`;
+    area.innerHTML = `<div class="section-label">SNS</div>${linkHtml}${tweetHtml}`;
 
     if (tweets.length) {
       const s = document.createElement('script');
@@ -689,6 +705,17 @@
       s.async = true;
       s.charset = 'utf-8';
       document.body.appendChild(s);
+    }
+
+    if (restTweets.length) {
+      document.getElementById('sourceTweetsMore').addEventListener('click', function onClick() {
+        const grid = document.getElementById('sourceTweets');
+        grid.insertAdjacentHTML('beforeend', restTweets.slice(0, TWEETS_MORE_COUNT).map(tweetItemHtml).join(''));
+        restTweets = restTweets.slice(TWEETS_MORE_COUNT);
+        if (restTweets.length) this.textContent = `もっと表示（他${restTweets.length}件）`;
+        else this.remove();
+        if (window.twttr && window.twttr.widgets) window.twttr.widgets.load(grid);
+      });
     }
   }
 
@@ -829,5 +856,64 @@
     })();
   </script>
 
+<script>
+  // ページ内目次: セクション見出し（.section-label / .sec-label）からタップで移動できるリンクを生成する
+  (function () {
+    var SELECTOR = '.content .section-label, .content .sec-label';
+    var lastKey = '';
+    var timer = null;
+
+    function labelText(el) {
+      var text = '';
+      el.childNodes.forEach(function (n) { if (n.nodeType === 3) text += n.textContent; });
+      return text.replace(/（[^）]*）/g, '').trim();
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+    }
+
+    function build() {
+      var content = document.querySelector('.content');
+      if (!content) return;
+      var items = [];
+      document.querySelectorAll(SELECTOR).forEach(function (el, i) {
+        var text = labelText(el);
+        if (!text) return;
+        if (!el.id) el.id = 'toc-' + i;
+        items.push({ id: el.id, text: text });
+      });
+      var key = items.map(function (it) { return it.id + ':' + it.text; }).join('|');
+      if (key === lastKey) return;
+      lastKey = key;
+      var nav = document.getElementById('pageToc');
+      if (items.length < 2) {
+        if (nav) nav.remove();
+        return;
+      }
+      if (!nav) {
+        nav = document.createElement('nav');
+        nav.id = 'pageToc';
+        nav.className = 'page-toc';
+        nav.setAttribute('aria-label', 'ページ内目次');
+        content.insertBefore(nav, content.firstChild);
+      }
+      nav.innerHTML = '<span class="page-toc-title">目次</span>' + items.map(function (it) {
+        return '<a href="#' + escapeHtml(it.id) + '">' + escapeHtml(it.text) + '</a>';
+      }).join('');
+    }
+
+    function schedule() {
+      clearTimeout(timer);
+      timer = setTimeout(build, 150);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var content = document.querySelector('.content');
+      if (content) new MutationObserver(schedule).observe(content, { childList: true, subtree: true });
+      build();
+    });
+  })();
+</script>
 </body>
 </html>

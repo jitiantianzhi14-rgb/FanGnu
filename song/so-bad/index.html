@@ -130,6 +130,10 @@
 
     .tweet-carousel { margin: 14px 0; }
     .tweet-carousel .shorts-controls { margin-top: 10px; }
+    .sns-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; align-items: start; }
+    .sns-item { display: flex; justify-content: center; min-width: 0; }
+    .sns-item .twitter-tweet { margin: 0 auto; }
+    @media (max-width: 768px) { .sns-grid { grid-template-columns: minmax(0, 1fr); } }
 
     .no-video { font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--md-on-surface-variant); padding: 3rem 0; text-align: center; border: 1px dashed var(--md-outline-variant); border-radius: 14px; }
 
@@ -209,6 +213,14 @@
       .live-stat.count .live-stat-value { font-size: 26px; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
+      /* ページ内目次 */
+    html { scroll-behavior: smooth; }
+    .section-label, .sec-label { scroll-margin-top: 72px; }
+    .page-toc { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .page-toc-title { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin-right: 4px; }
+    .page-toc a { display: inline-flex; align-items: center; padding: 6px 14px; border: 1px solid var(--md-outline-variant); border-radius: 999px; font-size: 12px; color: var(--md-on-surface-variant); background: var(--md-surface-container-low); transition: color 0.15s, border-color 0.15s; }
+    .page-toc a:hover { color: var(--md-primary); border-color: var(--md-primary); }
+    @media (max-width: 600px) { .page-toc { flex-wrap: nowrap; overflow-x: auto; margin: 0 -2rem; padding: 0 2rem 4px; scrollbar-width: none; } .page-toc::-webkit-scrollbar { display: none; } .page-toc a, .page-toc-title { flex: none; } }
   </style>
 </head>
 <body>
@@ -299,6 +311,7 @@
 
     <div id="liveYearsArea"></div>
     <div id="liveHistoryArea"></div>
+    <div id="snsArea"></div>
 
     <div class="action-buttons">
       <a href="#" id="discographyLink" class="action-btn outline">← ディスコグラフィーに戻る</a>
@@ -317,7 +330,7 @@
   </footer>
 
   <script>
-    const SONG_DATA = {"isSrvvinci": false, "type": "配信SG", "title": "SO BAD", "liveTitle": "", "year": "2025.09.05", "note": "ユニバーサル・スタジオ・ジャパン『ゾンビ・デ・ダンス』テーマソング\nユニバーサル・スタジオ・ジャパン『【正気なんか、失え。】USJハロウィーン』TVCMソング\nユニバーサル・スタジオ・ジャパン「ハリウッド・ドリーム・ザ・ライド」搭載曲", "extra": "【概要】\n・King Gnuにとって10th Digital Single\n・MVは2025.10.09に公開\n\n\n【情報欄】\n・歌詞では「最悪で最高♡」と表記されることもある\n・ライブではアレンジでアウトロの後に演奏が追加され，ギターソロなども追加される．\n・2025年10月17日に放送されたMステに出演し，ユニバーサルスタジオジャパンより楽曲を披露した．\n・コーラスとしてkiki vivi lilyが参加している．\n・リリース日にメンバー全員集まってインスタライブが行われた．このインスタライブでは路上，車内で「[Vinyl](../../song/vinyl/)」「[Prayer X](../../song/prayer-x/)」「[McDonald Romance](../../song/mcdonald-romance/)」「[ロウラヴ](../../song/ro-love-tokyo-rendez-vous/)」が演奏された．\n・常田がSO BADリリースの3か月前にXにてSO BADの歌詞の一部「よそはよそ　うちはうち」と投稿した．[参考](https://x.com/DaikiTsuneta/status/1933767081427914854)\n・TikTokにて「#最悪で最高」とつけて投稿するとCLUB GNU会員限定10名には抽選で限定グッズが当たるTikTok投稿キャンペーンが実施された．\n・SO BADの宣伝は常田と新井が担当しており，XにてSO BADの音源を付けた常田の携帯にある動画を投稿した．また常田は，「前回の井口×オスリンの過激CMに対抗すべく、今回は新井×常田でCMを作りました。こっちはタダなのにあっちは予算しっかり使っててズルいです。成金の悪趣味ですね。新井にオムツのCMが来たら良いな」と投稿していた．（[参考](https://x.com/DaikiTsuneta/status/1965306984691118396)）\n{{TWEETS}}\n\n\n【リンク】\n・[【JAPAN最新号】King Gnuは何を終わらせるのか──《KING GNU IS DEAD》と歌う新曲“SO BAD”徹底レビュー-rockinon.com](https://rockinon.com/news/detail/212989)\n・[King Gnu メンバーがアニメキャラ化！USJ「ゾンビ・デ・ダンス」テーマソング「SO BAD」MVプレミア公開が決定-thefirsttimes](https://www.thefirsttimes.jp/news/0000700555/)\n・[King Gnu、「凶悪且つオルタナティブな」新曲「SO BAD」がUSJ【ハロウィーン・ホラー・ナイト】『ゾンビ・デ・ダンス』テーマソングに決定（コメントあり）-BillboardJAPAN](https://www.billboard-japan.com/d_news/detail/151464/2)", "yt": "d4st4aEjQ28", "yt2": "jTJsm9msHGU", "tweets": ["https://x.com/DaikiTsuneta/status/1964609952934461508", "https://x.com/DaikiTsuneta/status/1964938535913558091", "https://x.com/DaikiTsuneta/status/1965304365444653168", "https://x.com/DaikiTsuneta/status/1965682233882329447", "https://x.com/DaikiTsuneta/status/1966047964608253961", "https://x.com/DaikiTsuneta/status/1963898285707636981", "https://x.com/DaikiTsuneta/status/1964246017517252675", "https://x.com/DaikiTsuneta/status/1964461797773365269"], "spotify": "https://open.spotify.com/intl-ja/album/4Qln8io3Qbczk1OSHVTTtG", "externalVideo": "", "hideVideo": false, "lyrics": "https://www.uta-net.com/song/379461/", "shorts": [], "album": null, "isAlbumTrack": false, "albumText": "", "slug": "so-bad", "appleMusic": ""};
+    const SONG_DATA = {"isSrvvinci": false, "type": "配信SG", "title": "SO BAD", "liveTitle": "", "year": "2025.09.05", "note": "ユニバーサル・スタジオ・ジャパン『ゾンビ・デ・ダンス』テーマソング\nユニバーサル・スタジオ・ジャパン『【正気なんか、失え。】USJハロウィーン』TVCMソング\nユニバーサル・スタジオ・ジャパン「ハリウッド・ドリーム・ザ・ライド」搭載曲", "extra": "【概要】\n・King Gnuにとって10th Digital Single\n・MVは2025.10.09に公開\n\n\n【情報欄】\n・歌詞では「最悪で最高♡」と表記されることもある\n・ライブではアレンジでアウトロの後に演奏が追加され，ギターソロなども追加される．\n・2025年10月17日に放送されたMステに出演し，ユニバーサルスタジオジャパンより楽曲を披露した．\n・コーラスとしてkiki vivi lilyが参加している．\n・リリース日にメンバー全員集まってインスタライブが行われた．このインスタライブでは路上，車内で「[Vinyl](../../song/vinyl/)」「[Prayer X](../../song/prayer-x/)」「[McDonald Romance](../../song/mcdonald-romance/)」「[ロウラヴ](../../song/ro-love-tokyo-rendez-vous/)」が演奏された．\n・常田がSO BADリリースの3か月前にXにてSO BADの歌詞の一部「よそはよそ　うちはうち」と投稿した．[参考](https://x.com/DaikiTsuneta/status/1933767081427914854)\n・TikTokにて「#最悪で最高」とつけて投稿するとCLUB GNU会員限定10名には抽選で限定グッズが当たるTikTok投稿キャンペーンが実施された．\n・SO BADの宣伝は常田と新井が担当しており，XにてSO BADの音源を付けた常田の携帯にある動画を投稿した．また常田は，「前回の井口×オスリンの過激CMに対抗すべく、今回は新井×常田でCMを作りました。こっちはタダなのにあっちは予算しっかり使っててズルいです。成金の悪趣味ですね。新井にオムツのCMが来たら良いな」と投稿していた．（[参考](https://x.com/DaikiTsuneta/status/1965306984691118396)）\n{{TWEETS}}\n\n\n【リンク】\n・[【JAPAN最新号】King Gnuは何を終わらせるのか──《KING GNU IS DEAD》と歌う新曲“SO BAD”徹底レビュー-rockinon.com](https://rockinon.com/news/detail/212989)\n・[King Gnu メンバーがアニメキャラ化！USJ「ゾンビ・デ・ダンス」テーマソング「SO BAD」MVプレミア公開が決定-thefirsttimes](https://www.thefirsttimes.jp/news/0000700555/)\n・[King Gnu、「凶悪且つオルタナティブな」新曲「SO BAD」がUSJ【ハロウィーン・ホラー・ナイト】『ゾンビ・デ・ダンス』テーマソングに決定（コメントあり）-BillboardJAPAN](https://www.billboard-japan.com/d_news/detail/151464/2)", "yt": "d4st4aEjQ28", "yt2": "jTJsm9msHGU", "tweets": ["https://x.com/DaikiTsuneta/status/1964609952934461508", "https://x.com/DaikiTsuneta/status/1964938535913558091", "https://x.com/DaikiTsuneta/status/1965304365444653168", "https://x.com/DaikiTsuneta/status/1965682233882329447", "https://x.com/DaikiTsuneta/status/1966047964608253961", "https://x.com/DaikiTsuneta/status/1963898285707636981", "https://x.com/DaikiTsuneta/status/1964246017517252675", "https://x.com/DaikiTsuneta/status/1964461797773365269"], "snsTweets": ["https://x.com/KingGnu_JP/status/1983504088084922395", "https://x.com/KingGnu_JP/status/1983141709350310146", "https://x.com/KingGnu_JP/status/1982628315891658945", "https://x.com/KingGnu_JP/status/1981692147834466602", "https://x.com/KingGnu_JP/status/1981661958270001602", "https://x.com/KingGnu_JP/status/1981329766624968788", "https://x.com/KingGnu_JP/status/1981299563102425185", "https://x.com/KingGnu_JP/status/1980909328501735914", "https://x.com/KingGnu_JP/status/1979169273525211346", "https://x.com/KingGnu_JP/status/1978781718854426901", "https://x.com/KingGnu_JP/status/1978777953585561933", "https://x.com/KingGnu_JP/status/1978430661825581361", "https://x.com/KingGnu_JP/status/1978415556354314323", "https://x.com/KingGnu_JP/status/1977705884928360838", "https://x.com/KingGnu_JP/status/1976981103614259244", "https://x.com/KingGnu_JP/status/1976573422726713551", "https://x.com/KingGnu_JP/status/1976256831547900227", "https://x.com/KingGnu_JP/status/1975848642763497616", "https://x.com/KingGnu_JP/status/1975531554031214999", "https://x.com/KingGnu_JP/status/1968163002689130921", "https://x.com/KingGnu_JP/status/1963889857173782880", "https://x.com/KingGnu_JP/status/1963618061258203489", "https://x.com/KingGnu_JP/status/1958816426917031945", "https://x.com/KingGnu_JP/status/1944471894818013242"], "spotify": "https://open.spotify.com/intl-ja/album/4Qln8io3Qbczk1OSHVTTtG", "externalVideo": "", "hideVideo": false, "lyrics": "https://www.uta-net.com/song/379461/", "shorts": [], "album": null, "isAlbumTrack": false, "albumText": "", "slug": "so-bad", "appleMusic": ""};
     const LIVE_HISTORY = [{"date": "2026.07.15", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "横浜アリーナ", "source": "kinggnu"}, {"date": "2026.07.14", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "横浜アリーナ", "source": "kinggnu"}, {"date": "2026.06.21", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "KSPO DOME", "source": "kinggnu"}, {"date": "2026.06.20", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "KSPO DOME", "source": "kinggnu"}, {"date": "2026.06.07", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "Taipei Arena", "source": "kinggnu"}, {"date": "2026.06.06", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "Taipei Arena", "source": "kinggnu"}, {"date": "2026.05.30", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "AsiaWorld-Arena", "source": "kinggnu"}, {"date": "2026.05.29", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "AsiaWorld-Arena", "source": "kinggnu"}, {"date": "2026.05.23", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "One Bangkok Forum", "source": "kinggnu"}, {"date": "2026.05.10", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "朱鷺メッセ・新潟コンベンションセンター", "source": "kinggnu"}, {"date": "2026.05.09", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "朱鷺メッセ・新潟コンベンションセンター", "source": "kinggnu"}, {"date": "2026.05.02", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "真駒内セキスイハイムアイスアリーナ", "source": "kinggnu"}, {"date": "2026.05.01", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "真駒内セキスイハイムアイスアリーナ", "source": "kinggnu"}, {"date": "2026.04.22", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "マリンメッセ福岡 A館", "source": "kinggnu"}, {"date": "2026.04.21", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "マリンメッセ福岡 A館", "source": "kinggnu"}, {"date": "2026.04.15", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "LaLa arena TOKYO-BAY", "source": "kinggnu"}, {"date": "2026.04.14", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "LaLa arena TOKYO-BAY", "source": "kinggnu"}, {"date": "2026.04.05", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "広島グリーンアリーナ", "source": "kinggnu"}, {"date": "2026.04.04", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "広島グリーンアリーナ", "source": "kinggnu"}, {"date": "2026.03.29", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "ポートメッセなごや 第1展示館", "source": "kinggnu"}, {"date": "2026.03.28", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "ポートメッセなごや 第1展示館", "source": "kinggnu"}, {"date": "2026.03.19", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "有明アリーナ", "source": "kinggnu"}, {"date": "2026.03.18", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "有明アリーナ", "source": "kinggnu"}, {"date": "2026.03.12", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "あなぶきアリーナ香川", "source": "kinggnu"}, {"date": "2026.03.11", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "あなぶきアリーナ香川", "source": "kinggnu"}, {"date": "2026.03.04", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "大阪城ホール", "source": "kinggnu"}, {"date": "2026.03.03", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "大阪城ホール", "source": "kinggnu"}, {"date": "2026.02.22", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "セキスイハイムスーパーアリーナ", "source": "kinggnu"}, {"date": "2026.02.21", "tourName": "King Gnu CEN+RAL Tour 2026", "venue": "セキスイハイムスーパーアリーナ", "source": "kinggnu"}];
   </script>
   <script>
@@ -554,6 +567,45 @@
     }
 
     renderTweetsCarouselPage(container);
+  }
+
+  const SNS_INITIAL_COUNT = 2;
+  const SNS_MORE_COUNT = 6;
+
+  function snsItemHtml(url) {
+    const m = url.match(/^https?:\/\/(?:www\.)?(?:x|twitter)\.com\/([^/]+)\/status\/(\d+)/);
+    if (!m) return '';
+    return `<div class="sns-item"><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="https://twitter.com/${escH(m[1])}/status/${escH(m[2])}">X の投稿を見る</a></blockquote></div>`;
+  }
+
+  function renderSns(tweets, extra) {
+    const area = document.getElementById('snsArea');
+    // {{TWEETS}} を extra に置いた曲（SO BAD）は情報欄のカルーセル表示を優先する
+    if (!tweets || !tweets.length || (extra || '').includes('{{TWEETS}}')) {
+      area.innerHTML = '';
+      return;
+    }
+    const initial = tweets.slice(0, SNS_INITIAL_COUNT);
+    let rest = tweets.slice(SNS_INITIAL_COUNT);
+    area.innerHTML = `
+      <div class="section-label">SNS（全${tweets.length}件）</div>
+      <div class="sns-grid" id="snsGrid">${initial.map(snsItemHtml).join('')}</div>
+      ${rest.length ? `<button type="button" class="show-more-btn" id="snsShowMore">もっと表示（他${rest.length}件）</button>` : ''}`;
+    loadTwitterWidgets().then(twttr => {
+      if (twttr && twttr.widgets) twttr.widgets.load(area);
+    });
+    if (rest.length) {
+      document.getElementById('snsShowMore').addEventListener('click', function onClick() {
+        const grid = document.getElementById('snsGrid');
+        grid.insertAdjacentHTML('beforeend', rest.slice(0, SNS_MORE_COUNT).map(snsItemHtml).join(''));
+        rest = rest.slice(SNS_MORE_COUNT);
+        if (rest.length) this.textContent = `もっと表示（他${rest.length}件）`;
+        else this.remove();
+        loadTwitterWidgets().then(twttr => {
+          if (twttr && twttr.widgets) twttr.widgets.load(grid);
+        });
+      });
+    }
   }
 
   let shortsData = [];
@@ -834,6 +886,7 @@
     setInfo('infoYear', song.year);
     setNote('infoNote', song.note);
     setExtra('infoExtraText', song.extra, song.tweets);
+    renderSns(song.snsTweets && song.snsTweets.length ? song.snsTweets : song.tweets, song.snsTweets && song.snsTweets.length ? '' : song.extra);
     setLyrics(song.lyrics);
 
     const visibleExternalVideo = song.hideVideo ? '' : song.externalVideo;
@@ -981,5 +1034,64 @@
     })();
   </script>
 
+<script>
+  // ページ内目次: セクション見出し（.section-label / .sec-label）からタップで移動できるリンクを生成する
+  (function () {
+    var SELECTOR = '.content .section-label, .content .sec-label';
+    var lastKey = '';
+    var timer = null;
+
+    function labelText(el) {
+      var text = '';
+      el.childNodes.forEach(function (n) { if (n.nodeType === 3) text += n.textContent; });
+      return text.replace(/（[^）]*）/g, '').trim();
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+    }
+
+    function build() {
+      var content = document.querySelector('.content');
+      if (!content) return;
+      var items = [];
+      document.querySelectorAll(SELECTOR).forEach(function (el, i) {
+        var text = labelText(el);
+        if (!text) return;
+        if (!el.id) el.id = 'toc-' + i;
+        items.push({ id: el.id, text: text });
+      });
+      var key = items.map(function (it) { return it.id + ':' + it.text; }).join('|');
+      if (key === lastKey) return;
+      lastKey = key;
+      var nav = document.getElementById('pageToc');
+      if (items.length < 2) {
+        if (nav) nav.remove();
+        return;
+      }
+      if (!nav) {
+        nav = document.createElement('nav');
+        nav.id = 'pageToc';
+        nav.className = 'page-toc';
+        nav.setAttribute('aria-label', 'ページ内目次');
+        content.insertBefore(nav, content.firstChild);
+      }
+      nav.innerHTML = '<span class="page-toc-title">目次</span>' + items.map(function (it) {
+        return '<a href="#' + escapeHtml(it.id) + '">' + escapeHtml(it.text) + '</a>';
+      }).join('');
+    }
+
+    function schedule() {
+      clearTimeout(timer);
+      timer = setTimeout(build, 150);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var content = document.querySelector('.content');
+      if (content) new MutationObserver(schedule).observe(content, { childList: true, subtree: true });
+      build();
+    });
+  })();
+</script>
 </body>
 </html>

@@ -126,6 +126,10 @@
 
     .tweet-carousel { margin: 14px 0; }
     .tweet-carousel .shorts-controls { margin-top: 10px; }
+    .sns-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; align-items: start; }
+    .sns-item { display: flex; justify-content: center; min-width: 0; }
+    .sns-item .twitter-tweet { margin: 0 auto; }
+    @media (max-width: 768px) { .sns-grid { grid-template-columns: minmax(0, 1fr); } }
 
     .no-video { font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--md-on-surface-variant); padding: 3rem 0; text-align: center; border: 1px dashed var(--md-outline-variant); border-radius: 14px; }
 
@@ -205,6 +209,14 @@
       .live-stat.count .live-stat-value { font-size: 26px; }
       .footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
+      /* ページ内目次 */
+    html { scroll-behavior: smooth; }
+    .section-label, .sec-label { scroll-margin-top: 72px; }
+    .page-toc { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .page-toc-title { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--md-on-surface-variant); margin-right: 4px; }
+    .page-toc a { display: inline-flex; align-items: center; padding: 6px 14px; border: 1px solid var(--md-outline-variant); border-radius: 999px; font-size: 12px; color: var(--md-on-surface-variant); background: var(--md-surface-container-low); transition: color 0.15s, border-color 0.15s; }
+    .page-toc a:hover { color: var(--md-primary); border-color: var(--md-primary); }
+    @media (max-width: 600px) { .page-toc { flex-wrap: nowrap; overflow-x: auto; margin: 0 -2rem; padding: 0 2rem 4px; scrollbar-width: none; } .page-toc::-webkit-scrollbar { display: none; } .page-toc a, .page-toc-title { flex: none; } }
   </style>
 </head>
 <body>
@@ -295,6 +307,7 @@
 
     <div id="liveYearsArea"></div>
     <div id="liveHistoryArea"></div>
+    <div id="snsArea"></div>
 
     <div class="action-buttons">
       <a href="#" id="discographyLink" class="action-btn outline">← ディスコグラフィーに戻る</a>
@@ -313,7 +326,7 @@
   </footer>
 
   <script>
-    const SONG_DATA = {"isSrvvinci": true, "type": "ALBUM", "title": "Abnormal Pressure", "liveTitle": "", "year": "2015.09.16", "note": "", "extra": "【概要】\n・[Srv.Vinci 1st Album「Mad me more softly」](../../srvvinci-discography/?album=Mad%20me%20more%20softly)の8曲目である．\n・日本語では「異常圧力」と訳される．", "yt": "", "yt2": "", "tweets": [], "spotify": "", "appleMusic": "https://music.apple.com/jp/song/abnormal-pressure/1040415546", "externalVideo": "", "hideVideo": false, "lyrics": "https://petitlyrics.com/lyrics/3029076", "shorts": [], "album": {"title": "Mad me more softly", "num": 8}, "isAlbumTrack": true, "albumText": "", "slug": "abnormal-pressure"};
+    const SONG_DATA = {"isSrvvinci": true, "type": "ALBUM", "title": "Abnormal Pressure", "liveTitle": "", "year": "2015.09.16", "note": "", "extra": "【概要】\n・[Srv.Vinci 1st Album「Mad me more softly」](../../srvvinci-discography/?album=Mad%20me%20more%20softly)の8曲目である．\n・日本語では「異常圧力」と訳される．", "yt": "", "yt2": "", "tweets": [], "snsTweets": [], "spotify": "", "appleMusic": "https://music.apple.com/jp/song/abnormal-pressure/1040415546", "externalVideo": "", "hideVideo": false, "lyrics": "https://petitlyrics.com/lyrics/3029076", "shorts": [], "album": {"title": "Mad me more softly", "num": 8}, "isAlbumTrack": true, "albumText": "", "slug": "abnormal-pressure"};
     const LIVE_HISTORY = [];
   </script>
   <script>
@@ -550,6 +563,45 @@
     }
 
     renderTweetsCarouselPage(container);
+  }
+
+  const SNS_INITIAL_COUNT = 2;
+  const SNS_MORE_COUNT = 6;
+
+  function snsItemHtml(url) {
+    const m = url.match(/^https?:\/\/(?:www\.)?(?:x|twitter)\.com\/([^/]+)\/status\/(\d+)/);
+    if (!m) return '';
+    return `<div class="sns-item"><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="https://twitter.com/${escH(m[1])}/status/${escH(m[2])}">X の投稿を見る</a></blockquote></div>`;
+  }
+
+  function renderSns(tweets, extra) {
+    const area = document.getElementById('snsArea');
+    // {{TWEETS}} を extra に置いた曲（SO BAD）は情報欄のカルーセル表示を優先する
+    if (!tweets || !tweets.length || (extra || '').includes('{{TWEETS}}')) {
+      area.innerHTML = '';
+      return;
+    }
+    const initial = tweets.slice(0, SNS_INITIAL_COUNT);
+    let rest = tweets.slice(SNS_INITIAL_COUNT);
+    area.innerHTML = `
+      <div class="section-label">SNS（全${tweets.length}件）</div>
+      <div class="sns-grid" id="snsGrid">${initial.map(snsItemHtml).join('')}</div>
+      ${rest.length ? `<button type="button" class="show-more-btn" id="snsShowMore">もっと表示（他${rest.length}件）</button>` : ''}`;
+    loadTwitterWidgets().then(twttr => {
+      if (twttr && twttr.widgets) twttr.widgets.load(area);
+    });
+    if (rest.length) {
+      document.getElementById('snsShowMore').addEventListener('click', function onClick() {
+        const grid = document.getElementById('snsGrid');
+        grid.insertAdjacentHTML('beforeend', rest.slice(0, SNS_MORE_COUNT).map(snsItemHtml).join(''));
+        rest = rest.slice(SNS_MORE_COUNT);
+        if (rest.length) this.textContent = `もっと表示（他${rest.length}件）`;
+        else this.remove();
+        loadTwitterWidgets().then(twttr => {
+          if (twttr && twttr.widgets) twttr.widgets.load(grid);
+        });
+      });
+    }
   }
 
   let shortsData = [];
@@ -830,6 +882,7 @@
     setInfo('infoYear', song.year);
     setNote('infoNote', song.note);
     setExtra('infoExtraText', song.extra, song.tweets);
+    renderSns(song.snsTweets && song.snsTweets.length ? song.snsTweets : song.tweets, song.snsTweets && song.snsTweets.length ? '' : song.extra);
     setLyrics(song.lyrics);
 
     const visibleExternalVideo = song.hideVideo ? '' : song.externalVideo;
@@ -977,5 +1030,64 @@
     })();
   </script>
 
+<script>
+  // ページ内目次: セクション見出し（.section-label / .sec-label）からタップで移動できるリンクを生成する
+  (function () {
+    var SELECTOR = '.content .section-label, .content .sec-label';
+    var lastKey = '';
+    var timer = null;
+
+    function labelText(el) {
+      var text = '';
+      el.childNodes.forEach(function (n) { if (n.nodeType === 3) text += n.textContent; });
+      return text.replace(/（[^）]*）/g, '').trim();
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+    }
+
+    function build() {
+      var content = document.querySelector('.content');
+      if (!content) return;
+      var items = [];
+      document.querySelectorAll(SELECTOR).forEach(function (el, i) {
+        var text = labelText(el);
+        if (!text) return;
+        if (!el.id) el.id = 'toc-' + i;
+        items.push({ id: el.id, text: text });
+      });
+      var key = items.map(function (it) { return it.id + ':' + it.text; }).join('|');
+      if (key === lastKey) return;
+      lastKey = key;
+      var nav = document.getElementById('pageToc');
+      if (items.length < 2) {
+        if (nav) nav.remove();
+        return;
+      }
+      if (!nav) {
+        nav = document.createElement('nav');
+        nav.id = 'pageToc';
+        nav.className = 'page-toc';
+        nav.setAttribute('aria-label', 'ページ内目次');
+        content.insertBefore(nav, content.firstChild);
+      }
+      nav.innerHTML = '<span class="page-toc-title">目次</span>' + items.map(function (it) {
+        return '<a href="#' + escapeHtml(it.id) + '">' + escapeHtml(it.text) + '</a>';
+      }).join('');
+    }
+
+    function schedule() {
+      clearTimeout(timer);
+      timer = setTimeout(build, 150);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var content = document.querySelector('.content');
+      if (content) new MutationObserver(schedule).observe(content, { childList: true, subtree: true });
+      build();
+    });
+  })();
+</script>
 </body>
 </html>
