@@ -625,6 +625,18 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 
+  function todayYMD() {
+    const d = new Date();
+    return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+  }
+
+  function isHeldShow(show) {
+    // 開催実績としてカウントするのは、中止でなく、かつ今日までに実際に開催された公演のみ
+    if ((show.status || '').includes('中止')) return false;
+    if (!show.date) return false;
+    return show.date <= todayYMD();
+  }
+
   function normalizeTitle(title) {
     return title
       .replace(/\s*★.*$/, '')
@@ -736,7 +748,7 @@
 
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
-        if ((show.status || '').includes('中止')) return; // 中止（または中止/延期未確定）の公演は開催実績として数えない
+        if (!isHeldShow(show)) return;
         showCount++;
         const info = { date: show.date, tourName: tour.name, venue: show.venue, isSrvvinci: (svLive.tours || []).includes(tour) };
         if (!last || show.date > last.date) last = info;
@@ -761,7 +773,7 @@
       });
     });
 
-    const tourCount = allTours.filter(tour => (tour.shows || []).some(show => !(show.status || '').includes('中止'))).length; // 開催された公演が1件もないツアーは数えない
+    const tourCount = allTours.filter(tour => (tour.shows || []).some(isHeldShow)).length; // 開催された公演が1件もないツアーは数えない
     return { tourCount, showCount, last, songCounts, prefCounts, countryCounts, venueCounts };
   }
 
@@ -842,7 +854,7 @@
 
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
-        if ((show.status || '').includes('中止')) return; // 中止（または中止/延期未確定）の公演は開催実績として数えない
+        if (!isHeldShow(show)) return;
         const year = (show.date || '').slice(0, 4);
         if (!year) return;
         const uniqueKeys = new Set();
@@ -1115,7 +1127,7 @@
 
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
-        if ((show.status || '').includes('中止')) return; // 中止（または中止/延期未確定）の公演は開催実績として数えない
+        if (!isHeldShow(show)) return;
         // SE・開会セレモニーなど実在の楽曲ではないセットリスト表記や、インスト曲を除外してから先頭/末尾を判定する
         const songs = (show.setlist || [])
           .map(normalizeTitle)

@@ -437,14 +437,25 @@
     return roots.size;
   }
 
+  function todayYMD() {
+    const d = new Date();
+    return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+  }
+
+  function isHeldShow(show) {
+    // 開催実績としてカウントするのは、中止でなく、かつ今日までに実際に開催された公演のみ
+    if ((show.status || '').includes('中止')) return false;
+    if (!show.date) return false;
+    return show.date <= todayYMD();
+  }
+
   function findLastShow(kgLive, svLive) {
     const svTours = svLive.tours || [];
     const allTours = [...(kgLive.tours || []), ...svTours];
     let last = null;
     allTours.forEach(tour => {
       (tour.shows || []).forEach(show => {
-        if ((show.status || '').includes('中止')) return;
-        if (!show.date) return;
+        if (!isHeldShow(show)) return;
         if (!last || show.date > last.date) {
           last = { date: show.date, tourName: tour.name, isSrvvinci: svTours.includes(tour) };
         }
@@ -456,7 +467,7 @@
   function renderStats(kgLive, svLive, kgDisc) {
     document.getElementById('statDays').innerHTML = `${daysSinceRename()}<span class="summary-unit">日</span>`;
     document.getElementById('statSongs').innerHTML = `${countKingGnuSongs(kgDisc)}<span class="summary-unit">曲</span>`;
-    const heldTourCount = (kgLive.tours || []).filter(tour => (tour.shows || []).some(show => !(show.status || '').includes('中止'))).length; // 開催された公演が1件もないツアーは数えない
+    const heldTourCount = (kgLive.tours || []).filter(tour => (tour.shows || []).some(isHeldShow)).length; // 開催された公演が1件もないツアーは数えない
     document.getElementById('statTours').innerHTML = `${heldTourCount}<span class="summary-unit">件</span>`;
     const last = findLastShow(kgLive, svLive);
     document.getElementById('statLast').innerHTML = last

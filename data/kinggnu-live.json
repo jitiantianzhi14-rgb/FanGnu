@@ -1,6 +1,17 @@
 {
   "tours": [
     {
+      "year": "2027",
+      "name": "King Gnu 10th Anniversary Opening Live “KICKOFF”",
+      "scale": "LIVE",
+      "shows": [
+        { "date": "2027.02.17", "venue": "東京ドーム", "location": "東京都文京区後楽１丁目３−６１", "status": "", "note": "OPEN 16:30 / START 18:30", "setlist": [], "source": ["https://x.com/KingGnu_JP/status/2103046784163643634", "https://x.com/KingGnu_JP/status/2077362552015827228", "https://x.com/KingGnu_JP/status/2077362794261786771"] },
+        { "date": "2027.02.18", "venue": "東京ドーム", "location": "東京都文京区後楽１丁目３−６１", "status": "", "note": "OPEN 16:30 / START 18:30", "setlist": [], "source": ["https://x.com/KingGnu_JP/status/2103046784163643634", "https://x.com/KingGnu_JP/status/2077362552015827228", "https://x.com/KingGnu_JP/status/2077362794261786771"] },
+        { "date": "2027.03.13", "venue": "京セラドーム大阪", "location": "大阪府大阪市西区千代崎３丁目中２−中２−１", "status": "", "note": "OPEN 15:00 / START 17:00", "setlist": [], "source": ["https://x.com/KingGnu_JP/status/2103046784163643634", "https://x.com/KingGnu_JP/status/2077362552015827228", "https://x.com/KingGnu_JP/status/2077362794261786771"] },
+        { "date": "2027.03.14", "venue": "京セラドーム大阪", "location": "大阪府大阪市西区千代崎３丁目中２−中２−１", "status": "", "note": "OPEN 15:00 / START 17:00", "setlist": [], "source": ["https://x.com/KingGnu_JP/status/2103046784163643634", "https://x.com/KingGnu_JP/status/2077362552015827228", "https://x.com/KingGnu_JP/status/2077362794261786771"] }
+      ]
+    },
+    {
       "year": "2026",
       "name": "King Gnu CEN+RAL Tour 2026",
       "scale": "LIVE",
