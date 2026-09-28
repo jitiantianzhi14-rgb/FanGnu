@@ -149,6 +149,13 @@
     .source-tweet .twitter-tweet { margin: 0 auto; }
     .show-more-btn { display: block; width: 100%; margin: 0 0 1rem; padding: 0.7rem; font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; background: transparent; color: var(--md-primary); border: 1px solid var(--md-outline); border-radius: 100px; cursor: pointer; transition: background 0.15s; }
     .show-more-btn:hover { background: var(--md-primary-container); border-color: transparent; }
+    .sns-item.is-loading, .source-tweet.is-loading { min-height: 80px; display: flex; align-items: center; justify-content: center; }
+    .sns-item.is-loading .twitter-tweet, .source-tweet.is-loading .twitter-tweet { visibility: hidden; position: absolute; }
+    .tweet-spinner { display: none; width: 22px; height: 22px; border: 3px solid var(--md-outline-variant); border-top-color: var(--md-primary); border-radius: 50%; animation: btn-spin 0.7s linear infinite; }
+    .sns-item.is-loading .tweet-spinner, .source-tweet.is-loading .tweet-spinner { display: block; }
+    .btn-spinner { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -2px; border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%; animation: btn-spin 0.6s linear infinite; }
+    @keyframes btn-spin { to { transform: rotate(360deg); } }
+    .show-more-btn.is-loading { opacity: 0.7; cursor: default; }
     @media (max-width: 768px) { .source-tweets { grid-template-columns: minmax(0, 1fr); } }
 
     .stack-track { height: 20px; max-height: 20px; display: flex; gap: 2px; }
@@ -272,7 +279,7 @@
   </footer>
 
   <script>
-    const SHOW_DATA = {"isSrvvinci": false, "urlSlug": "2023.05.21", "tour": {"name": "King Gnu Stadium Live Tour 2023 CLOSING CEREMONY"}, "show": {"date": "2023.05.21", "venue": "ヤンマースタジアム長居", "location": "大阪府大阪市東住吉区長居公園1-1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4nstt2KQhy3DDL7C8W0DJD", "setlist": ["雨燦々", "飛行艇", "小さな惑星", "BOY", "Teenager Forever", "開会式", "Tokyo Rendez-Vous", "傘", "ユーモア", "Don't Stop the Clocks", "カメレオン", "三文小説", "泡", "幕間", "どろん", "Overflow（李明海カバー）", "Prayer X", "Slumberland", "Stardom", "一途", "逆夢", "壇上", "サマーレイン・ダイバー", "閉会式", "白日", "McDonald Romance", "Flash!!!"]}};
+    const SHOW_DATA = {"isSrvvinci": false, "urlSlug": "2023.05.21", "tour": {"name": "King Gnu Stadium Live Tour 2023 CLOSING CEREMONY"}, "show": {"date": "2023.05.21", "venue": "ヤンマースタジアム長居", "location": "大阪府大阪市東住吉区長居公園1-1", "status": "", "spotifyPlaylist": "https://open.spotify.com/playlist/4nstt2KQhy3DDL7C8W0DJD", "setlist": ["雨燦々", "飛行艇", "小さな惑星", "BOY", "Teenager Forever", "開会式", "Tokyo Rendez-Vous", "傘", "ユーモア", "Don't Stop the Clocks", "カメレオン", "三文小説", "泡", "幕間", "どろん", "Overflow（李明海カバー）", "Prayer X", "Slumberland", "Stardom", "一途", "逆夢", "壇上", "サマーレイン・ダイバー", "閉会式", "白日", "McDonald Romance", "Flash!!!"], "source": ["https://x.com/KingGnu_JP/status/1625419651193901056", "https://x.com/KingGnu_JP/status/1689562228499107840", "https://x.com/KingGnu_JP/status/1666762295786217473", "https://x.com/KingGnu_JP/status/1665252152699240449", "https://x.com/KingGnu_JP/status/1664973158129238018", "https://x.com/KingGnu_JP/status/1664799127920873472", "https://x.com/KingGnu_JP/status/1664558073757978624", "https://x.com/KingGnu_JP/status/1664489277688885248", "https://x.com/KingGnu_JP/status/1664218179529474048", "https://x.com/KingGnu_JP/status/1664203635780382720", "https://x.com/KingGnu_JP/status/1663852201780056064", "https://x.com/KingGnu_JP/status/1663505147488768001", "https://x.com/KingGnu_JP/status/1663123047925284865", "https://x.com/KingGnu_JP/status/1661295976584445952", "https://x.com/KingGnu_JP/status/1660571200303628288", "https://x.com/KingGnu_JP/status/1660178631283601409", "https://x.com/KingGnu_JP/status/1659816639020560385", "https://x.com/KingGnu_JP/status/1659484598072664064", "https://x.com/KingGnu_JP/status/1659121773353504768", "https://x.com/KingGnu_JP/status/1658805034673655808", "https://x.com/KingGnu_JP/status/1658759529277046784", "https://x.com/KingGnu_JP/status/1658396884539699201", "https://x.com/KingGnu_JP/status/1658034869367357441", "https://x.com/KingGnu_JP/status/1656948741147086855", "https://x.com/KingGnu_JP/status/1656947998369386497", "https://x.com/KingGnu_JP/status/1656947333081231362", "https://x.com/KingGnu_JP/status/1656222585074651136", "https://x.com/KingGnu_JP/status/1655044785210822657", "https://x.com/KingGnu_JP/status/1654411164724625408", "https://x.com/KingGnu_JP/status/1653323479419342848", "https://x.com/KingGnu_JP/status/1652992020246597632", "https://x.com/KingGnu_JP/status/1651153664718012422", "https://x.com/KingGnu_JP/status/1650058932067647490", "https://x.com/KingGnu_JP/status/1647536565344952323", "https://x.com/KingGnu_JP/status/1644626657326829568", "https://x.com/KingGnu_JP/status/1638828377661636609"]}};
   </script>
   <script>
   function escH(s) {
@@ -673,6 +680,21 @@
     return m ? `https://twitter.com/${m[1]}/status/${m[2]}` : null;
   }
 
+  let twitterWidgetsPromise = null;
+  function loadTwitterWidgets() {
+    if (twitterWidgetsPromise) return twitterWidgetsPromise;
+    twitterWidgetsPromise = new Promise(resolve => {
+      if (window.twttr && window.twttr.widgets) { resolve(window.twttr); return; }
+      const script = document.createElement('script');
+      script.src = 'https://platform.twitter.com/widgets.js';
+      script.async = true;
+      script.charset = 'utf-8';
+      script.onload = () => resolve(window.twttr);
+      document.head.appendChild(script);
+    });
+    return twitterWidgetsPromise;
+  }
+
   function renderSources(source) {
     const area = document.getElementById('sourceArea');
     const urls = toSourceUrls(source);
@@ -692,7 +714,7 @@
     const linkHtml = links.length ? `<ul class="source-list">${links.map(u => `
       <li><a class="source-link" href="${escH(u.href)}" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>${escH(u.hostname.replace(/^www\./, ''))}</a></li>`).join('')}</ul>` : '';
     const tweetItemHtml = t => `
-      <div class="source-tweet"><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="${escH(t)}">X の投稿を見る</a></blockquote></div>`;
+      <div class="source-tweet is-loading"><span class="tweet-spinner" aria-hidden="true"></span><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="${escH(t)}">X の投稿を見る</a></blockquote></div>`;
     const TWEETS_INITIAL_COUNT = 2;
     const TWEETS_MORE_COUNT = 6;
     let restTweets = tweets.slice(TWEETS_INITIAL_COUNT);
@@ -701,21 +723,35 @@
     area.innerHTML = `<div class="section-label">SNS</div>${linkHtml}${tweetHtml}`;
 
     if (tweets.length) {
-      const s = document.createElement('script');
-      s.src = 'https://platform.twitter.com/widgets.js';
-      s.async = true;
-      s.charset = 'utf-8';
-      document.body.appendChild(s);
+      loadTwitterWidgets().then(twttr => {
+        return (twttr && twttr.widgets) ? twttr.widgets.load(area) : null;
+      }).then(() => {
+        area.querySelectorAll('.source-tweet.is-loading').forEach(el => el.classList.remove('is-loading'));
+      });
     }
 
     if (restTweets.length) {
       document.getElementById('sourceTweetsMore').addEventListener('click', function onClick() {
+        const btn = this;
         const grid = document.getElementById('sourceTweets');
-        grid.insertAdjacentHTML('beforeend', restTweets.slice(0, TWEETS_MORE_COUNT).map(tweetItemHtml).join(''));
+        const toAdd = restTweets.slice(0, TWEETS_MORE_COUNT);
         restTweets = restTweets.slice(TWEETS_MORE_COUNT);
-        if (restTweets.length) this.textContent = `もっと表示（他${restTweets.length}件）`;
-        else this.remove();
-        if (window.twttr && window.twttr.widgets) window.twttr.widgets.load(grid);
+        btn.disabled = true;
+        btn.classList.add('is-loading');
+        btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>読み込み中…';
+        grid.insertAdjacentHTML('beforeend', toAdd.map(tweetItemHtml).join(''));
+        loadTwitterWidgets().then(twttr => {
+          return (twttr && twttr.widgets) ? twttr.widgets.load(grid) : null;
+        }).then(() => {
+          grid.querySelectorAll('.source-tweet.is-loading').forEach(el => el.classList.remove('is-loading'));
+          if (restTweets.length) {
+            btn.disabled = false;
+            btn.classList.remove('is-loading');
+            btn.textContent = `もっと表示（他${restTweets.length}件）`;
+          } else {
+            btn.remove();
+          }
+        });
       });
     }
   }

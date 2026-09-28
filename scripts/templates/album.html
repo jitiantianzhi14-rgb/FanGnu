@@ -123,6 +123,20 @@
     .footer-copy a { text-decoration: underline; text-underline-offset: 2px; }
     .footer-copy a:hover { color: var(--md-primary); }
 
+
+    .sns-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; align-items: start; }
+    .sns-item { display: flex; justify-content: center; min-width: 0; }
+    .sns-item .twitter-tweet { margin: 0 auto; }
+    @media (max-width: 768px) { .sns-grid { grid-template-columns: minmax(0, 1fr); } }
+    .show-more-btn { display: block; width: 100%; margin-top: 10px; padding: 0.7rem; font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; background: transparent; color: var(--md-primary); border: 1px solid var(--md-outline); border-radius: 100px; cursor: pointer; transition: background 0.15s; }
+    .show-more-btn:hover { background: var(--md-primary-container); border-color: transparent; }
+    .sns-item.is-loading, .source-tweet.is-loading { min-height: 80px; display: flex; align-items: center; justify-content: center; }
+    .sns-item.is-loading .twitter-tweet, .source-tweet.is-loading .twitter-tweet { visibility: hidden; position: absolute; }
+    .tweet-spinner { display: none; width: 22px; height: 22px; border: 3px solid var(--md-outline-variant); border-top-color: var(--md-primary); border-radius: 50%; animation: btn-spin 0.7s linear infinite; }
+    .sns-item.is-loading .tweet-spinner, .source-tweet.is-loading .tweet-spinner { display: block; }
+    .btn-spinner { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -2px; border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%; animation: btn-spin 0.6s linear infinite; }
+    @keyframes btn-spin { to { transform: rotate(360deg); } }
+    .show-more-btn.is-loading { opacity: 0.7; cursor: default; }
     @media (max-width: 768px) {
       .page-header-title { font-size: 24px; }
       .album-info-row { flex-direction: column; gap: 4px; }
@@ -200,6 +214,8 @@
       <div id="tracksArea"></div>
     </div>
 
+    <div id="snsArea"></div>
+
     <div class="action-buttons">
       <a href="#" id="amazonLink" class="action-btn" target="_blank" rel="noopener sponsored">Amazonで探す</a>
       <a href="#" id="discographyLink" class="action-btn outline">← ディスコグラフィーに戻る</a>
@@ -219,6 +235,73 @@
   <script>
   function escH(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  let twitterWidgetsPromise = null;
+  function loadTwitterWidgets() {
+    if (twitterWidgetsPromise) return twitterWidgetsPromise;
+    twitterWidgetsPromise = new Promise(resolve => {
+      if (window.twttr && window.twttr.widgets) { resolve(window.twttr); return; }
+      const script = document.createElement('script');
+      script.src = 'https://platform.twitter.com/widgets.js';
+      script.async = true;
+      script.charset = 'utf-8';
+      script.onload = () => resolve(window.twttr);
+      document.head.appendChild(script);
+    });
+    return twitterWidgetsPromise;
+  }
+
+  const SNS_INITIAL_COUNT = 2;
+  const SNS_MORE_COUNT = 6;
+
+  function snsItemHtml(url) {
+    const m = url.match(/^https?:\/\/(?:www\.)?(?:x|twitter)\.com\/([^/]+)\/status\/(\d+)/);
+    if (!m) return '';
+    return `<div class="sns-item is-loading"><span class="tweet-spinner" aria-hidden="true"></span><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="https://twitter.com/${escH(m[1])}/status/${escH(m[2])}">X の投稿を見る</a></blockquote></div>`;
+  }
+
+  function renderSns(tweets) {
+    const area = document.getElementById('snsArea');
+    if (!tweets || !tweets.length) {
+      area.innerHTML = '';
+      return;
+    }
+    const initial = tweets.slice(0, SNS_INITIAL_COUNT);
+    let rest = tweets.slice(SNS_INITIAL_COUNT);
+    area.innerHTML = `
+      <div class="section-label">SNS（全${tweets.length}件）</div>
+      <div class="sns-grid" id="snsGrid">${initial.map(snsItemHtml).join('')}</div>
+      ${rest.length ? `<button type="button" class="show-more-btn" id="snsShowMore">もっと表示（他${rest.length}件）</button>` : ''}`;
+    loadTwitterWidgets().then(twttr => {
+      return (twttr && twttr.widgets) ? twttr.widgets.load(area) : null;
+    }).then(() => {
+      area.querySelectorAll('.sns-item.is-loading').forEach(el => el.classList.remove('is-loading'));
+    });
+    if (rest.length) {
+      document.getElementById('snsShowMore').addEventListener('click', function onClick() {
+        const btn = this;
+        const grid = document.getElementById('snsGrid');
+        const toAdd = rest.slice(0, SNS_MORE_COUNT);
+        rest = rest.slice(SNS_MORE_COUNT);
+        btn.disabled = true;
+        btn.classList.add('is-loading');
+        btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>読み込み中…';
+        grid.insertAdjacentHTML('beforeend', toAdd.map(snsItemHtml).join(''));
+        loadTwitterWidgets().then(twttr => {
+          return (twttr && twttr.widgets) ? twttr.widgets.load(grid) : null;
+        }).then(() => {
+          grid.querySelectorAll('.sns-item.is-loading').forEach(el => el.classList.remove('is-loading'));
+          if (rest.length) {
+            btn.disabled = false;
+            btn.classList.remove('is-loading');
+            btn.textContent = `もっと表示（他${rest.length}件）`;
+          } else {
+            btn.remove();
+          }
+        });
+      });
+    }
   }
 
   function setInfo(id, value) {
@@ -304,6 +387,7 @@
     setInfo('infoYear', album.year);
     setExtra('infoExtraText', album.extra);
     renderTracks(album.tracks);
+    renderSns(album.tweets);
     const backHref = isSrvvinci ? '../srvvinci-discography/' : '../discography/';
     document.getElementById('discographyLink').href = `${backHref}?album=${encodeURIComponent(album.title)}`;
     const artistName = isSrvvinci ? 'Srv.Vinci' : 'King Gnu';
@@ -323,6 +407,7 @@
     setInfo('infoYear', '');
     setExtra('infoExtraText', '');
     renderTracks([]);
+    renderSns([]);
     document.getElementById('discographyLink').href = isSrvvinci ? '../srvvinci-discography/' : '../discography/';
     document.getElementById('amazonLink').style.display = 'none';
     document.getElementById('amazonDisclosure').style.display = 'none';

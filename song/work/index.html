@@ -178,6 +178,13 @@
     .lh-venue { font-size: 11px; color: var(--md-on-surface-variant); white-space: nowrap; }
     .show-more-btn { display: block; width: 100%; margin-top: 10px; padding: 0.7rem; font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; background: transparent; color: var(--md-primary); border: 1px solid var(--md-outline); border-radius: 100px; cursor: pointer; transition: background 0.15s; }
     .show-more-btn:hover { background: var(--md-primary-container); border-color: transparent; }
+    .sns-item.is-loading, .source-tweet.is-loading { min-height: 80px; display: flex; align-items: center; justify-content: center; }
+    .sns-item.is-loading .twitter-tweet, .source-tweet.is-loading .twitter-tweet { visibility: hidden; position: absolute; }
+    .tweet-spinner { display: none; width: 22px; height: 22px; border: 3px solid var(--md-outline-variant); border-top-color: var(--md-primary); border-radius: 50%; animation: btn-spin 0.7s linear infinite; }
+    .sns-item.is-loading .tweet-spinner, .source-tweet.is-loading .tweet-spinner { display: block; }
+    .btn-spinner { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -2px; border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%; animation: btn-spin 0.6s linear infinite; }
+    @keyframes btn-spin { to { transform: rotate(360deg); } }
+    .show-more-btn.is-loading { opacity: 0.7; cursor: default; }
 
     .action-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
     .action-btn { flex: 1 1 0; min-width: 200px; text-align: center; font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; border-radius: 100px; padding: 1.1rem 1.5rem; background: var(--md-primary); color: var(--md-on-primary); transition: box-shadow 0.15s; }
@@ -326,7 +333,7 @@
   </footer>
 
   <script>
-    const SONG_DATA = {"isSrvvinci": false, "type": "ALBUM", "title": "W●RK", "liveTitle": "", "year": "2024.10.04", "note": "", "extra": "【概要】\n・millennium parade（現：ꉈꀧ꒒꒒ꁄꍈꍈꀧ꒦ꉈ ꉣꅔꎡꅔꁕꁄ）4th Singleである．\n・同楽曲は東京ドーム公演2日間でのみサプライズ演奏されている．\n\n\n【情報欄】\n・東京ドームにおける椎名林檎の出演の発案は新井さんである．\n・スタッフ側も緊張感が漂っており，椎名林檎がニンジンすきと知ったスタッフがあらゆる産地のニンジンジュースを楽屋に置いていた．そのことをメンバーは知らなかったため後に椎名から常田に連絡が来て「いったい何のこと？」と思ったそうだ．", "yt": "OCQhAtsKe4E", "yt2": "", "tweets": [], "snsTweets": [], "spotify": "https://open.spotify.com/intl-ja/track/1Gl2g67pEGlaxiP10NlsvQ", "externalVideo": "", "hideVideo": false, "lyrics": "https://www.uta-net.com/song/338219/", "shorts": [], "album": {"title": "King Gnu Dome Tour「THE GREATEST UNKNOWN」at TOKYO DOME", "num": 15}, "isAlbumTrack": true, "albumText": "", "slug": "work", "appleMusic": ""};
+    const SONG_DATA = {"isSrvvinci": false, "type": "ALBUM", "title": "W●RK", "liveTitle": "", "year": "2024.10.04", "note": "", "extra": "【概要】\n・millennium parade（現：ꉈꀧ꒒꒒ꁄꍈꍈꀧ꒦ꉈ ꉣꅔꎡꅔꁕꁄ）4th Singleである．\n・同楽曲は東京ドーム公演2日間でのみサプライズ演奏されている．\n\n\n【情報欄】\n・東京ドームにおける椎名林檎の出演の発案は新井さんである．\n・スタッフ側も緊張感が漂っており，椎名林檎がニンジンすきと知ったスタッフがあらゆる産地のニンジンジュースを楽屋に置いていた．そのことをメンバーは知らなかったため後に椎名から常田に連絡が来て「いったい何のこと？」と思ったそうだ．", "yt": "OCQhAtsKe4E", "yt2": "", "tweets": ["https://x.com/KingGnu_JP/status/1834466777268723907", "https://x.com/KingGnu_JP/status/1833445313841177058", "https://x.com/KingGnu_JP/status/1833339617031983377"], "snsTweets": [], "spotify": "https://open.spotify.com/intl-ja/track/1Gl2g67pEGlaxiP10NlsvQ", "externalVideo": "", "hideVideo": false, "lyrics": "https://www.uta-net.com/song/338219/", "shorts": [], "album": {"title": "King Gnu Dome Tour「THE GREATEST UNKNOWN」at TOKYO DOME", "num": 15}, "isAlbumTrack": true, "albumText": "", "slug": "work", "appleMusic": ""};
     const LIVE_HISTORY = [{"date": "2024.01.28", "tourName": "King Gnu Dome Tour「THE GREATEST UNKNOWN」", "venue": "東京ドーム", "source": "kinggnu"}, {"date": "2024.01.27", "tourName": "King Gnu Dome Tour「THE GREATEST UNKNOWN」", "venue": "東京ドーム", "source": "kinggnu"}];
   </script>
   <script>
@@ -571,7 +578,7 @@
   function snsItemHtml(url) {
     const m = url.match(/^https?:\/\/(?:www\.)?(?:x|twitter)\.com\/([^/]+)\/status\/(\d+)/);
     if (!m) return '';
-    return `<div class="sns-item"><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="https://twitter.com/${escH(m[1])}/status/${escH(m[2])}">X の投稿を見る</a></blockquote></div>`;
+    return `<div class="sns-item is-loading"><span class="tweet-spinner" aria-hidden="true"></span><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="https://twitter.com/${escH(m[1])}/status/${escH(m[2])}">X の投稿を見る</a></blockquote></div>`;
   }
 
   function renderSns(tweets, extra) {
@@ -588,17 +595,31 @@
       <div class="sns-grid" id="snsGrid">${initial.map(snsItemHtml).join('')}</div>
       ${rest.length ? `<button type="button" class="show-more-btn" id="snsShowMore">もっと表示（他${rest.length}件）</button>` : ''}`;
     loadTwitterWidgets().then(twttr => {
-      if (twttr && twttr.widgets) twttr.widgets.load(area);
+      return (twttr && twttr.widgets) ? twttr.widgets.load(area) : null;
+    }).then(() => {
+      area.querySelectorAll('.sns-item.is-loading').forEach(el => el.classList.remove('is-loading'));
     });
     if (rest.length) {
       document.getElementById('snsShowMore').addEventListener('click', function onClick() {
+        const btn = this;
         const grid = document.getElementById('snsGrid');
-        grid.insertAdjacentHTML('beforeend', rest.slice(0, SNS_MORE_COUNT).map(snsItemHtml).join(''));
+        const toAdd = rest.slice(0, SNS_MORE_COUNT);
         rest = rest.slice(SNS_MORE_COUNT);
-        if (rest.length) this.textContent = `もっと表示（他${rest.length}件）`;
-        else this.remove();
+        btn.disabled = true;
+        btn.classList.add('is-loading');
+        btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>読み込み中…';
+        grid.insertAdjacentHTML('beforeend', toAdd.map(snsItemHtml).join(''));
         loadTwitterWidgets().then(twttr => {
-          if (twttr && twttr.widgets) twttr.widgets.load(grid);
+          return (twttr && twttr.widgets) ? twttr.widgets.load(grid) : null;
+        }).then(() => {
+          grid.querySelectorAll('.sns-item.is-loading').forEach(el => el.classList.remove('is-loading'));
+          if (rest.length) {
+            btn.disabled = false;
+            btn.classList.remove('is-loading');
+            btn.textContent = `もっと表示（他${rest.length}件）`;
+          } else {
+            btn.remove();
+          }
         });
       });
     }
