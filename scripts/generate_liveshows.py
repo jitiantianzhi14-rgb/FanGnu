@@ -8,7 +8,7 @@ live-show/<date>/index.html (King Gnu) or live-show/<date>-srvvinci/index.html
 import json
 import os
 
-ROOT = r"c:/fanGNU"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_PATH = os.path.join(ROOT, "scripts", "templates", "live-show.html")
 OUT_BASE = os.path.join(ROOT, "live-show")
 

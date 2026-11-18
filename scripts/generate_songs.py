@@ -8,7 +8,7 @@ import json
 import os
 import re
 
-ROOT = r"c:/fanGNU"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_PATH = os.path.join(ROOT, "scripts", "templates", "song.html")
 OUT_BASE = os.path.join(ROOT, "song")
 

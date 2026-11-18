@@ -10,7 +10,7 @@ import os
 import re
 import urllib.parse
 
-ROOT = r"c:/fanGNU"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_PATH = os.path.join(ROOT, "scripts", "templates", "video.html")
 OUT_BASE = os.path.join(ROOT, "video")
 
